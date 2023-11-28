@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FunDsTyphography {
-  const FunDsTyphography._();
+class FunDsTypography {
+  const FunDsTypography._();
 
   /*
   ..body18U = Underline text Style

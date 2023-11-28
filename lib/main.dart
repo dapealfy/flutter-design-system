@@ -107,11 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
-              style: FunDsTyphography.body14U,
+              style: FunDsTypography.body14U,
             ),
             Text(
               '$_counter',
-              style: FunDsTyphography.heading24,
+              style: FunDsTypography.heading24,
             ),
           ],
         ),
