@@ -1,5 +1,5 @@
-class MyIcons {
-  MyIcons._();
+class FunDsIconography {
+  FunDsIconography._();
 
   static const String actionIcCheckCircle =
       'assets/icons/action/ic_check_circle.svg';
