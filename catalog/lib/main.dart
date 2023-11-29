@@ -17,29 +17,39 @@ class MyApp extends StatelessWidget {
       initialStory: 'Home',
       stories: buildStory(entries),
       wrapperBuilder: (context, child) {
-        return FutureBuilder(
-          future: ScreenUtil.ensureScreenSizeAndInit(
-            context,
-            minTextAdapt: true,
-            designSize: const Size(360, 640),
-            splitScreenMode: false,
-          ),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return MaterialApp(
-                theme: ThemeData.light(),
-                darkTheme: ThemeData.dark(),
-                debugShowCheckedModeBanner: false,
-                home: Scaffold(body: Center(child: child)),
-              );
-            }
-            return const SizedBox.shrink();
+        // Bulder is needed to initialize ScreenUtil
+        // Otherwiese it will get wrong MediaQuery
+        return Builder(
+          builder: (context) {
+            ScreenUtil.init(
+              context,
+              minTextAdapt: true,
+              designSize: const Size(360, 640),
+              splitScreenMode: false,
+            );
+
+            return MaterialApp(
+              theme: ThemeData.light(),
+              darkTheme: ThemeData.dark(),
+              debugShowCheckedModeBanner: false,
+              home: Scaffold(
+                body: Center(
+                  child: child,
+                ),
+              ),
+            );
           },
         );
       },
       plugins: [
         ThemeModePlugin(initialTheme: ThemeMode.light),
-        DeviceFramePlugin(),
+        DeviceFramePlugin(
+          initialData: (
+            isFrameVisible: true,
+            device: Devices.android.samsungGalaxyS20,
+            orientation: Orientation.portrait,
+          ),
+        ),
       ],
     );
   }
