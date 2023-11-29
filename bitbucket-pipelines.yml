@@ -26,7 +26,7 @@ definitions:
         script:
           - cd catalog
           - curl -sL https://firebase.tools | bash
-          - firebase logout --token $FIREBASE_TOKEN
+          - unset FIREBASE_TOKEN
           - echo $FIREBASE_SERVICE_ACCOUNT | base64 -d > /tmp/firebase-service-account.json
           - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
           - ./scripts/deploy_hosting_preview.sh
