@@ -15,17 +15,20 @@ definitions:
     - step: &deploy-catalog-main
         name: Deploy catalog main
         script:
-          - curl -sL https://firebase.tools | bash
           - cd catalog
-          - ./scripts/deploy_hosting_main.sh
+          - curl -sL https://firebase.tools | bash
+          - echo $(FIREBASE_SERVICE_ACCOUNT) | base64 -d > /tmp/firebase-service-account.json
+          - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
+          - firebase deploy --only hosting --non-interactive
 
     - step: &deploy-catalog-preview
         name: Deploy catalog preview
         script:
-          - curl -sL https://firebase.tools | bash
           - cd catalog
+          - curl -sL https://firebase.tools | bash
+          - echo $(FIREBASE_SERVICE_ACCOUNT) | base64 -d > /tmp/firebase-service-account.json
+          - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
           - ./scripts/deploy_hosting_preview.sh
-    
 
 clone:
   depth: full
