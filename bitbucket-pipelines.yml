@@ -1,0 +1,41 @@
+---
+image: ghcr.io/cirruslabs/flutter:3.13.9
+
+definitions:
+  steps:
+    - step: &build-catalog
+        name: Build catalog
+        script:
+          - cd catalog
+          - flutter pub get
+          - flutter build web --release
+        artifacts:
+          - catalog/build/web/**
+
+    - step: &deploy-catalog-main
+        name: Deploy catalog main
+        script:
+          - curl -sL https://firebase.tools | bash
+          - cd catalog
+          - ./scripts/deploy_hosting_main.sh
+
+    - step: &deploy-catalog-preview
+        name: Deploy catalog preview
+        script:
+          - curl -sL https://firebase.tools | bash
+          - cd catalog
+          - ./scripts/deploy_hosting_preview.sh
+    
+
+clone:
+  depth: full
+
+pipelines:
+  branches:
+    master:
+      - step: *build-catalog
+      - step: *deploy-catalog-main
+  pull-requests:
+    '{feature/*,bugfix/*}':
+      - step: *build-catalog
+      - step: *deploy-catalog-preview

@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "testing-project-b8e11"
+  },
+  "targets": {
+    "testing-project-b8e11": {
+      "hosting": {
+        "funds": [
+          "amartha-flutter-funds"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
