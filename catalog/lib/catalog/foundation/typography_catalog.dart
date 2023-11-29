@@ -2,13 +2,13 @@ import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_design_system/typography/typography.dart';
 
-class TypograhpyCatalog extends StatelessWidget {
-  const TypograhpyCatalog({super.key});
+class TypographyCatalog extends StatelessWidget {
+  const TypographyCatalog({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CatalogPage(
-      title: 'Typograhpy',
+      title: 'Typography',
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -19,7 +19,9 @@ class TypograhpyCatalog extends StatelessWidget {
             Text('Heading 20', style: FunDsTypography.heading20),
             Text('Heading 16', style: FunDsTypography.heading16),
             Text('Heading 14', style: FunDsTypography.heading14),
-            const SizedBox(height: 40,),
+            const SizedBox(
+              height: 40,
+            ),
             Text('~~~~Body~~~~', style: FunDsTypography.body18B),
             Text('Body 18', style: FunDsTypography.body18),
             Text('Body 18 Underline', style: FunDsTypography.body18U),
@@ -38,7 +40,7 @@ class TypograhpyCatalog extends StatelessWidget {
             Text('Body 10 Bold', style: FunDsTypography.body10B),
           ],
         ),
-      )
+      ),
     );
   }
 }
