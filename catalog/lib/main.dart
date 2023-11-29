@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       stories: buildStory(entries),
       wrapperBuilder: (context, child) {
         // Bulder is needed to initialize ScreenUtil
-        // Otherwiese it will get wrong MediaQuery
+        // Otherwise it will get wrong MediaQuery
         return Builder(
           builder: (context) {
             ScreenUtil.init(
