@@ -1,3 +1,4 @@
+import 'package:catalog/catalog/example/example_component.dart';
 import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
@@ -7,21 +8,23 @@ class ExampleCatalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textKnob = context.knobs.text(
-      label: 'Text Knob',
-      initial: 'Text Knob',
+    final title = context.knobs.text(
+      label: 'title',
+      description: 'Text knob for title',
+      initial: 'Your title',
     );
 
-    final sliderKnob = context.knobs.sliderInt(
-      label: 'Slider Knob',
+    final numberKnob = context.knobs.sliderInt(
+      label: 'number',
+      description: 'Slider knob for number',
       initial: 5,
       min: 0,
       max: 10,
     );
 
     final optionKnobs = context.knobs.options<OptionEnum>(
-      label: 'Option Knob',
-      description: 'Option Knob description',
+      label: 'option',
+      description: 'Option knob',
       initial: OptionEnum.option1,
       options: [
         const Option(label: 'Option 1', value: OptionEnum.option1),
@@ -30,8 +33,9 @@ class ExampleCatalog extends StatelessWidget {
       ],
     );
 
-    final boolKnob = context.knobs.boolean(
-      label: 'Bool Knob',
+    final toogleKnob = context.knobs.boolean(
+      label: 'toogle',
+      description: 'Boolean knob for toogle',
       initial: false,
     );
 
@@ -40,24 +44,17 @@ class ExampleCatalog extends StatelessWidget {
       description: 'Example description that you can put here',
       child: Column(
         children: [
-          Text(textKnob),
-          Text(
-            'Slider value : $sliderKnob',
-          ),
-          Text(
-            'Option value : ${optionKnobs.name}',
-          ),
-          Text(
-            'Bool value : ${boolKnob.toString()}',
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: ExampleComponent(
+              title: title,
+              number: numberKnob,
+              toogle: toogleKnob,
+              option: optionKnobs,
+            ),
           ),
         ],
       ),
     );
   }
-}
-
-enum OptionEnum {
-  option1,
-  option2,
-  option3,
 }

@@ -22,6 +22,10 @@ class MyApp extends StatelessWidget {
           return Storybook(
             initialStory: 'Home',
             stories: buildStory(entries),
+            plugins: [
+              ThemeModePlugin(initialTheme: ThemeMode.light),
+              DeviceFramePlugin(),
+            ],
           );
         });
   }
