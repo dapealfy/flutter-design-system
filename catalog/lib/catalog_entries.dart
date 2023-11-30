@@ -17,7 +17,7 @@ final entries = [
   ),
   Entry(
     name: 'Foundation/Typography',
-    builder: (context) => const TypograhpyCatalog(),
+    builder: (context) => const TypographyCatalog(),
   ),
 
   // Example

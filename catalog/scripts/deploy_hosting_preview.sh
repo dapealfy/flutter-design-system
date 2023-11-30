@@ -2,9 +2,6 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-# Run firebase hosting deploy
-firebase use --token $FIREBASE_TOKEN testing-project-b8e11
-
 # Get the deployed URL from the Firebase CLI output using awk
 deployed_url=$(firebase hosting:channel:deploy "pr-$BITBUCKET_PR_ID"  --non-interactive --json | grep -o '"url": *"[^"]*"' | awk -F'"' '{print $4}')
 
