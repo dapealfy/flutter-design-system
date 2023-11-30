@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/typography/typography.dart';
+import 'package:flutter_design_system/styles/typography.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
