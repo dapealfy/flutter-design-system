@@ -9,7 +9,6 @@ class AIconCatalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String fdsPackage = 'packages/flutter_design_system/';
     const List<double> iconSizes = [16, 20, 24, 32, 40];
 
     return CatalogPage(
@@ -44,7 +43,7 @@ class AIconCatalog extends StatelessWidget {
                       itemCount: iconSizes.length,
                       itemBuilder: (context, index) {
                         return AIcon(
-                            funDsIconography: fdsPackage +
+                            funDsIconography:
                                 FunDsIconography.getAllIcons()[indexAllIcons],
                             size: iconSizes[index]);
                       },
