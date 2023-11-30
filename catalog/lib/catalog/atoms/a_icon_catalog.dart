@@ -13,50 +13,47 @@ class AIconCatalog extends StatelessWidget {
     const List<double> iconSizes = [16, 20, 24, 32, 40];
 
     return CatalogPage(
-        title: 'AIcon',
-        child: Column(
-          children: [
-            SizedBox(
-              width: 1.sw,
-              child: ListView.builder(
-                shrinkWrap: true,
-                padding: EdgeInsets.zero,
-                physics: const ClampingScrollPhysics(),
-                itemCount: FunDsIconography.getAllIcons().length,
-                itemBuilder: (context, indexAllIcons) {
-                  return SizedBox(
-                    width: 1.sw,
-                    height: 50.h,
-                    child: Row(
-                      children: [
-                        Text(
-                          FunDsIconography.getAllIcons()[indexAllIcons]
-                              .split('/')
-                              .last
-                              .replaceAll('.svg', ''),
-                        ),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: iconSizes.length,
-                          itemBuilder: (context, index) {
-                            return AIcon(
-                                funDsIconography: fdsPackage +
-                                    FunDsIconography.getAllIcons()[
-                                        indexAllIcons],
-                                size: iconSizes[index]);
-                          },
-                        ),
-                      ],
+        title: 'AIcon (size: 16,20,24,32,40)',
+        child: SizedBox(
+          width: 1.sw,
+          child: ListView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.zero,
+            physics: const ClampingScrollPhysics(),
+            itemCount: FunDsIconography.getAllIcons().length,
+            itemBuilder: (context, indexAllIcons) {
+              return Container(
+                width: 1.sw,
+                height: 50.h,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      FunDsIconography.getAllIcons()[indexAllIcons]
+                          .split('/')
+                          .last
+                          .replaceAll('.svg', ''),
                     ),
-                  );
-                },
-              ),
-            ),
-          ],
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: iconSizes.length,
+                      itemBuilder: (context, index) {
+                        return AIcon(
+                            funDsIconography: fdsPackage +
+                                FunDsIconography.getAllIcons()[indexAllIcons],
+                            size: iconSizes[index]);
+                      },
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         ));
   }
 }
