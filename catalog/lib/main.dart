@@ -1,5 +1,6 @@
 import 'package:catalog/catalog_entries.dart';
 import 'package:catalog/core/story_builder.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,13 +44,15 @@ class MyApp extends StatelessWidget {
       },
       plugins: [
         ThemeModePlugin(initialTheme: ThemeMode.light),
-        DeviceFramePlugin(
-          initialData: (
-            isFrameVisible: true,
-            device: Devices.android.samsungGalaxyS20,
-            orientation: Orientation.portrait,
-          ),
-        ),
+        kIsWeb
+            ? DeviceFramePlugin(
+                initialData: (
+                  isFrameVisible: true,
+                  device: Devices.android.samsungGalaxyS20,
+                  orientation: Orientation.portrait,
+                ),
+              )
+            : DeviceFramePlugin(),
       ],
     );
   }
