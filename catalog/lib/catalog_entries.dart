@@ -1,4 +1,4 @@
-import 'package:catalog/catalog/example/example_catalog.dart';
+import 'package:catalog/catalog/atoms/a_icon_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
@@ -19,11 +19,8 @@ final entries = [
     name: 'Foundation/Typography',
     builder: (context) => const TypographyCatalog(),
   ),
-
-  // Example
   Entry(
-    name: 'Example/Example',
-    description: 'See the example here',
-    builder: (context) => const ExampleCatalog(),
+    name: 'Foundation/Icon',
+    builder: (context) => const AIconCatalog(),
   ),
 ];

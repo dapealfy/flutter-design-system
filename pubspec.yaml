@@ -29,6 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.7
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -62,6 +63,13 @@ flutter:
   assets:
     - assets/fonts/
   #   - images/a_dot_ham.jpeg
+    - assets/icons/action/
+    - assets/icons/basic/
+    - assets/icons/communication/
+    - assets/icons/document/
+    - assets/icons/info/
+    - assets/icons/navigation/
+    - assets/icons/transaction/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
