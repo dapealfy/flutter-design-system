@@ -3,12 +3,10 @@ import 'package:flutter/painting.dart';
 class FunDsColors {
   const FunDsColors._();
 
-  /**
-   * Primary Colors
-   * Primary used for primary actions such, URL Link, Main CTA,
-   * secondary/option CTA (border only/nude),
-   * primary control (radio button, checkboxes, stepper, progress bar, etc).
-   */
+  /// Primary Colors
+  /// Primary used for primary actions such, URL Link, Main CTA,
+  /// secondary/option CTA (border only/nude),
+  /// primary control (radio button, checkboxes, stepper, progress bar, etc).
 
   static Color get colorPrimary => colorPrimary500;
   static Color get colorPrimaryLight => colorPrimary200;
@@ -22,11 +20,9 @@ class FunDsColors {
   static const Color colorPrimary700 = Color(0xFF612966);
   static const Color colorPrimary900 = Color(0xFF3D1042);
 
-  /**
-   * Neutral Colors
-   * The neutral one will be used for text, disable actions, to make it dull,
-   * less prominent yet important to be noticed by our users.
-   */
+  /// Neutral Colors
+  /// The neutral one will be used for text, disable actions, to make it dull,
+  /// less prominent yet important to be noticed by our users.
 
   static const Color colorWhite = Color(0xFFFFFFFF);
   static const Color colorBlack = Color(0xFF000000);
@@ -40,13 +36,11 @@ class FunDsColors {
   static const Color colorNeutral700 = Color(0xFF525C6A);
   static const Color colorNeutral900 = Color(0xFF111928);
 
-  /**
-   * Saturated Colors
-   * Use saturated color as a limited specific accent for UI and not limited to
-   * its color for the illustrations.
-   *
-   * These sets of color defined as a specific token, as well.
-   */
+  /// Saturated Colors
+  /// Use saturated color as a limited specific accent for UI and not limited to
+  /// its color for the illustrations.
+  ///
+  /// These sets of color defined as a specific token, as well.
 
   // Saturated Blue
   static const Color colorBlue50 = Color(0xFFEDF7FF);
@@ -92,5 +86,4 @@ class FunDsColors {
   static const Color colorRed600 = Color(0xFFAC2B26);
   static const Color colorRed700 = Color(0xFF81201D);
   static const Color colorRed800 = Color(0xFF4C0C0A);
-
 }

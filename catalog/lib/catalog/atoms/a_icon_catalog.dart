@@ -1,7 +1,6 @@
 import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_design_system/assets/icons.dart';
-import 'package:flutter_design_system/components/components.dart';
+import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AIconCatalog extends StatelessWidget {

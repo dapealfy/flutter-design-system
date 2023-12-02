@@ -1,7 +1,6 @@
 import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/styles/typography.dart';
-import 'package:flutter_design_system/styles/color.dart';
+import 'package:flutter_design_system/funds.dart';
 
 class ColorsCatalog extends StatelessWidget {
   const ColorsCatalog({super.key});
