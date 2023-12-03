@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/typography/typography.dart';
+import 'package:flutter_design_system/widget/button/FunDsButton.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -113,6 +114,18 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: FunDsTypography.heading24,
             ),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: FunDsButton(
+                type: ButtonType.xLarge,
+                variant: ButtonVariant.primary,
+                onPressed: (){
+
+                },
+                enabled: true,
+                text: 'Hai',
+              ),
+            )
           ],
         ),
       ),
