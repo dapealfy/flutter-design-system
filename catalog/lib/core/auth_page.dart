@@ -17,7 +17,6 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  // HMAC hash in int to make it harded to reverse
   final Uint8List _password = Uint8List.fromList([
     4,
     203,
@@ -53,8 +52,7 @@ class _AuthPageState extends State<AuthPage> {
     246
   ]);
 
-  // Hmac key in int to make it harded to reverse
-  static const hmacKey = <int>[
+  static const _hmacKey = <int>[
     0x32,
     0x1b,
     0x555,
@@ -75,18 +73,21 @@ class _AuthPageState extends State<AuthPage> {
   final passwordController = TextEditingController();
 
   void checkPassword(String value) {
-    // Multiple function hash to give more security
-    final hmac = Hmac(sha256, hmacKey);
-    final hmacValue = hmac.convert(sha1.convert(utf8.encode(value)).bytes);
-    if (hmacValue.bytes.toString() == _password.toString()) {
-      setState(() {
-        authenticated = true;
-      });
-    } else {
-      setState(() {
-        wrongPassword = true;
-      });
-    }
+    setState(() {
+      final result = validate(value);
+      authenticated = result;
+      wrongPassword = !result;
+    });
+  }
+
+  bool validate(String value) {
+    // Multiple hash functions to make it harder to brute force (hopefully)
+    // NOTE: Client side hashing is not secure and can be tampered,
+    // but it's better than nothing
+    final hmac = Hmac(sha256, _hmacKey);
+    final hmacValue =
+        hmac.convert(sha1.convert(utf8.encode(value)).bytes).bytes;
+    return _password.toString() == hmacValue.toString();
   }
 
   @override
@@ -110,7 +111,7 @@ class _AuthPageState extends State<AuthPage> {
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(),
                           labelText: 'Password',
-                          errorText: wrongPassword ? 'Wrong password' : null,
+                          errorText: wrongPassword ? 'Invalid' : null,
                           suffixIcon: IconButton(
                             icon: Icon(
                               showPassword
