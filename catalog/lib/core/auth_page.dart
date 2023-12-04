@@ -18,7 +18,7 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   static const String _password =
-      '90983a77eb47a739452139e9cfc87cfff5692b262bee4e222a35d743e3ec15c9';
+      '3bfb0cea0223f24f9c2d4d258343f2b5238cf6e1a07beea612c19cc711f54e2f';
 
   bool authenticated = false;
   bool showPassword = false;
