@@ -17,8 +17,56 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  static const String _password =
-      '3bfb0cea0223f24f9c2d4d258343f2b5238cf6e1a07beea612c19cc711f54e2f';
+  // HMAC hash in int to make it harded to reverse
+  final Uint8List _password = Uint8List.fromList([
+    4,
+    203,
+    89,
+    114,
+    47,
+    167,
+    207,
+    29,
+    51,
+    119,
+    9,
+    197,
+    198,
+    195,
+    24,
+    132,
+    245,
+    0,
+    178,
+    146,
+    16,
+    92,
+    69,
+    195,
+    134,
+    23,
+    204,
+    223,
+    182,
+    59,
+    29,
+    246
+  ]);
+
+  // Hmac key in int to make it harded to reverse
+  static const hmacKey = <int>[
+    0x32,
+    0x1b,
+    0x555,
+    0x44,
+    0x94,
+    0x345,
+    0x66,
+    0x43,
+    0xf2,
+    0xc15,
+    0x1c1
+  ];
 
   bool authenticated = false;
   bool showPassword = false;
@@ -27,8 +75,10 @@ class _AuthPageState extends State<AuthPage> {
   final passwordController = TextEditingController();
 
   void checkPassword(String value) {
-    final passwordHash = sha256.convert(utf8.encode(value)).toString();
-    if (passwordHash == _password) {
+    // Multiple function hash to give more security
+    final hmac = Hmac(sha256, hmacKey);
+    final hmacValue = hmac.convert(sha1.convert(utf8.encode(value)).bytes);
+    if (hmacValue.bytes.toString() == _password.toString()) {
       setState(() {
         authenticated = true;
       });
