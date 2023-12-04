@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/typography/typography.dart';
 import 'package:flutter_design_system/widget/button/FunDsButton.dart';
+import 'package:flutter_design_system/widget/button/FunDsGroupButton.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -89,42 +89,29 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-              style: FunDsTypography.body14U,
+        child: FunDsGroupButton(
+          variant: GroupButtonVariant.horizontal,
+          listButton: [
+            FunDsButton(
+              type: ButtonType.medium,
+              variant: ButtonVariant.destructiveOutline,
+              onPressed: (){},
+              enabled: true,
+              text: 'Hai',
             ),
-            Text(
-              '$_counter',
-              style: FunDsTypography.heading24,
+            FunDsButton(
+              type: ButtonType.medium,
+              variant: ButtonVariant.destructive,
+              onPressed: (){},
+              enabled: true,
+              text: 'Hai',
             ),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: FunDsButton(
-                type: ButtonType.xLarge,
-                variant: ButtonVariant.primary,
-                onPressed: (){
-
-                },
-                enabled: true,
-                text: 'Hai',
-              ),
+            FunDsButton(
+              type: ButtonType.medium,
+              variant: ButtonVariant.ghost,
+              onPressed: (){},
+              enabled: true,
+              text: 'Hai',
             )
           ],
         ),
