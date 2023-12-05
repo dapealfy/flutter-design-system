@@ -1,4 +1,5 @@
 import 'package:catalog/catalog/atoms/a_icon_catalog.dart';
+import 'package:catalog/catalog/example/example_catalog.dart';
 import 'package:catalog/catalog/foundation/button_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/group_button_catalog.dart';
