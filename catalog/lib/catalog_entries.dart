@@ -33,4 +33,11 @@ final entries = [
     name: 'Foundation/Group Button',
     builder: (context) => const GroupButtonCatalog(),
   ),
+
+  // Example
+  Entry(
+    name: 'Example/Example',
+    description: 'See the example here',
+    builder: (context) => const ExampleCatalog(),
+  ),
 ];
