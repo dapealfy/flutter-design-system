@@ -1,4 +1,5 @@
 import 'package:catalog/catalog_entries.dart';
+import 'package:catalog/core/auth_page.dart';
 import 'package:catalog/core/story_builder.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,46 +15,48 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Storybook(
-      initialStory: 'Home',
-      stories: buildStory(entries),
-      wrapperBuilder: (context, child) {
-        // Bulder is needed to initialize ScreenUtil
-        // Otherwise it will get wrong MediaQuery
-        return Builder(
-          builder: (context) {
-            ScreenUtil.init(
-              context,
-              minTextAdapt: true,
-              designSize: const Size(360, 640),
-              splitScreenMode: false,
-            );
+    return AuthPage(
+      child: Storybook(
+        initialStory: 'Home',
+        stories: buildStory(entries),
+        wrapperBuilder: (context, child) {
+          // Bulder is needed to initialize ScreenUtil
+          // Otherwise it will get wrong MediaQuery
+          return Builder(
+            builder: (context) {
+              ScreenUtil.init(
+                context,
+                minTextAdapt: true,
+                designSize: const Size(360, 640),
+                splitScreenMode: false,
+              );
 
-            return MaterialApp(
-              theme: ThemeData.light(),
-              darkTheme: ThemeData.dark(),
-              debugShowCheckedModeBanner: false,
-              home: Scaffold(
-                body: Center(
-                  child: child,
+              return MaterialApp(
+                theme: ThemeData.light(),
+                darkTheme: ThemeData.dark(),
+                debugShowCheckedModeBanner: false,
+                home: Scaffold(
+                  body: Center(
+                    child: child,
+                  ),
                 ),
-              ),
-            );
-          },
-        );
-      },
-      plugins: [
-        ThemeModePlugin(initialTheme: ThemeMode.light),
-        kIsWeb
-            ? DeviceFramePlugin(
-                initialData: (
-                  isFrameVisible: true,
-                  device: Devices.android.samsungGalaxyS20,
-                  orientation: Orientation.portrait,
-                ),
-              )
-            : DeviceFramePlugin(),
-      ],
+              );
+            },
+          );
+        },
+        plugins: [
+          ThemeModePlugin(initialTheme: ThemeMode.light),
+          kIsWeb
+              ? DeviceFramePlugin(
+                  initialData: (
+                    isFrameVisible: true,
+                    device: Devices.android.samsungGalaxyS20,
+                    orientation: Orientation.portrait,
+                  ),
+                )
+              : DeviceFramePlugin(),
+        ],
+      ),
     );
   }
 }
