@@ -43,7 +43,7 @@ class FunDsGroupButton extends StatelessWidget {
             return Column(
               children: [
                 SizedBox(width: double.infinity, child: value),
-                SizedBox(height: 8.h)
+                SizedBox(height: 12.h)
               ],
             );
           }).toList(),
@@ -62,13 +62,15 @@ class FunDsGroupButton extends StatelessWidget {
               crossAxisCount: 2,
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
+              crossAxisSpacing: 12.w,
+              mainAxisSpacing: 12.h,
               childAspectRatio: getAspectRation(),
               children: list,
             ),
             Visibility(
               visible: (lastList != null),
               child: Column(children: [
-                SizedBox(height: 8.h),
+                SizedBox(height: 12.h),
                 SizedBox(
                   width: double.infinity,
                   child: (lastList != null)

@@ -23,6 +23,18 @@ class GroupButtonCatalog extends StatelessWidget {
       ),
       FunDsButton(
         onPressed: () {},
+        type: FunDsButtonType.medium,
+        variant: FunDsButtonVariant.secondary,
+        text: 'Button Secondary',
+      ),
+      FunDsButton(
+        onPressed: () {},
+        type: FunDsButtonType.medium,
+        variant: FunDsButtonVariant.secondary,
+        text: 'Button Secondary',
+      ),
+      FunDsButton(
+        onPressed: () {},
         type: FunDsButtonType.xLarge,
         variant: FunDsButtonVariant.tertiary,
         text: 'Button Tertiary',
