@@ -6,7 +6,8 @@ definitions:
     - step: &analyze-test
         name: Run tests
         script:
-          - flutter pub get
+          - cd catalog && flutter pub get
+          - cd .. && flutter pub get
           - flutter analyze
           - flutter test
 
