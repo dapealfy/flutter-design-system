@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_design_system/src/widget/button/button.dart';
+import 'package:flutter_design_system/src/components/button/button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FunDsGroupButton extends StatelessWidget {
@@ -57,6 +57,7 @@ class FunDsGroupButton extends StatelessWidget {
           list.removeLast();
         }
         return Column(
+          key: key,
           children: [
             GridView.count(
               crossAxisCount: 2,

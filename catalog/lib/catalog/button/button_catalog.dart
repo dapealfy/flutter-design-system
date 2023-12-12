@@ -33,27 +33,30 @@ class ButtonCatalog extends StatelessWidget {
 
     return CatalogPage(
       title: 'Button',
+      description: 'Widget name: FunDsButton',
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: buttonVariant.map((variant){
+              children: buttonVariant.map((variant) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(bottom: 12.h,top: 20.h),
-                      child: Text('~~${variant.name.toUpperCase()}', style: FunDsTypography.heading24),
+                      padding: EdgeInsets.only(bottom: 12.h, top: 20.h),
+                      child: Text('~~${variant.name.toUpperCase()}',
+                          style: FunDsTypography.heading24),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: buttonType.map((typeButton){
+                      children: buttonType.map((typeButton) {
                         return Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: FunDsButton(
-                            onPressed: (){},
+                            key: Key('$variant ${typeButton.name}'),
+                            onPressed: () {},
                             type: typeButton,
                             enabled: toogleKnob,
                             variant: variant,
@@ -71,5 +74,4 @@ class ButtonCatalog extends StatelessWidget {
       ),
     );
   }
-
 }

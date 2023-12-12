@@ -45,6 +45,7 @@ class _FunDsButtonState extends State<FunDsButton> {
 
   Widget _buildPrimary() {
     return Container(
+      key: widget.key,
       height: _getButtonHeight(),
       decoration: BoxDecoration(
         border: _isFocused
