@@ -2,6 +2,7 @@ import 'package:catalog/catalog/atoms/a_icon_catalog.dart';
 import 'package:catalog/catalog/example/example_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
+import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
 import 'package:catalog/core/home_catalog.dart';
 
@@ -23,6 +24,11 @@ final entries = [
   Entry(
     name: 'Foundation/Icon',
     builder: (context) => const AIconCatalog(),
+  ),
+
+  Entry(
+    name: 'Input Field/Text Field',
+    builder: (context) => const TextFieldCatalog(),
   ),
 
   // Example

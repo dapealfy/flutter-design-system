@@ -3,6 +3,13 @@ image: ghcr.io/cirruslabs/flutter:3.13.9
 
 definitions:
   steps:
+    - step: &analyze-test
+        name: Run tests
+        script:
+          - flutter pub get
+          - flutter analyze
+          - flutter test
+
     - step: &build-catalog
         name: Build catalog
         script:
@@ -36,9 +43,11 @@ clone:
 pipelines:
   branches:
     master:
+      - step: *analyze-test
       - step: *build-catalog
       - step: *deploy-catalog-main
   pull-requests:
     '{feature/*,bugfix/*}':
+      - step: *analyze-test
       - step: *build-catalog
       - step: *deploy-catalog-preview
