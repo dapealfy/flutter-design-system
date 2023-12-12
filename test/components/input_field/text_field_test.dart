@@ -66,10 +66,10 @@ void main() {
       await tester.pumpWidget(
         buildTestableWidget(
           child: FunDsTextField(
-            labelText: 'Test Label',
-            descriptionText: 'Test Description',
+            label: const Text('Test Label'),
+            description: const Text('Test Description'),
             hintText: 'Test Hint',
-            helperText: 'Test Helper',
+            helper: const Text('Test Helper'),
             controller: controller,
             prefix: const Text('Prefix'),
             suffix1: const Text('Suffix 1'),
