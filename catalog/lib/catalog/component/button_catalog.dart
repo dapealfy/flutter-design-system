@@ -13,6 +13,7 @@ class ButtonCatalog extends StatelessWidget {
       FunDsButtonVariant.primary,
       FunDsButtonVariant.secondary,
       FunDsButtonVariant.tertiary,
+      FunDsButtonVariant.ghost,
       FunDsButtonVariant.destructive,
       FunDsButtonVariant.destructiveOutline,
     ];

@@ -62,7 +62,7 @@ class _FunDsButtonState extends State<FunDsButton> {
           decoration: ShapeDecoration(
             gradient: widget.enabled
                 ? LinearGradient(
-                    begin: const Alignment(0.00, -1.2),
+                    begin: const Alignment(0, -1.2),
                     end: const Alignment(0, 0),
                     colors: [
                       Colors.white.withOpacity(0.12),
@@ -74,7 +74,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 ? const [
                     BoxShadow(
                       color: FunDsColors.colorPrimary600,
-                      blurRadius: 3,
+                      blurRadius: 1,
                       offset: Offset(0, 1),
                       spreadRadius: 0,
                     ),
@@ -137,7 +137,7 @@ class _FunDsButtonState extends State<FunDsButton> {
         border: _isFocused
             ? Border.all(
                 color: FunDsColors.colorPrimary200,
-                width: 2.0,
+                width: 1.0,
                 style: BorderStyle.solid,
               )
             : null,
@@ -193,7 +193,7 @@ class _FunDsButtonState extends State<FunDsButton> {
         border: _isFocused
             ? Border.all(
                 color: FunDsColors.colorNeutral200,
-                width: 2.0,
+                width: 1.0,
                 style: BorderStyle.solid,
               )
             : null,
@@ -201,41 +201,68 @@ class _FunDsButtonState extends State<FunDsButton> {
       ),
       height: _getButtonHeight(),
       child: Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: OutlinedButton(
-          onFocusChange: (isFocused) => setState(() {
-            _isFocused = isFocused;
-          }),
-          onPressed: widget.enabled ? widget.onPressed : null,
-          style: widget.enabled
-              ? ButtonStyle(
-                  animationDuration: const Duration(milliseconds: 500),
-                  overlayColor:
-                      MaterialStateProperty.all(FunDsColors.colorNeutral50),
-                  backgroundColor:
-                      MaterialStateProperty.all(FunDsColors.colorWhite),
-                  side: MaterialStateProperty.all(const BorderSide(
-                    color: FunDsColors.colorNeutral200,
-                    width: 1.0,
-                    style: BorderStyle.solid,
-                  )),
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.r)),
+        padding: const EdgeInsets.all(1),
+        child: Container(
+          decoration: ShapeDecoration(
+            gradient: widget.enabled
+                ? LinearGradient(
+                    begin: const Alignment(0, -1.2),
+                    end: const Alignment(0, 0),
+                    colors: [
+                      Colors.white.withOpacity(0.12),
+                      FunDsColors.colorNeutral200
+                    ],
+                  )
+                : null,
+            shadows: widget.enabled
+                ? const [
+                    BoxShadow(
+                      color: FunDsColors.colorNeutral200,
+                      blurRadius: 1,
+                      offset: Offset(0, 1),
+                      spreadRadius: 0,
+                    )
+                  ]
+                : [],
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                width: 1,
+                color: Colors.white.withOpacity(0.12),
+              ),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+          ),
+          child: OutlinedButton(
+            onFocusChange: (isFocused) => setState(() {
+              _isFocused = isFocused;
+            }),
+            onPressed: widget.enabled ? widget.onPressed : null,
+            style: widget.enabled
+                ? ButtonStyle(
+                    animationDuration: const Duration(milliseconds: 500),
+                    overlayColor:
+                        MaterialStateProperty.all(FunDsColors.colorNeutral50),
+                    backgroundColor:
+                        MaterialStateProperty.all(FunDsColors.colorWhite),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.r)),
+                    ),
+                  )
+                : ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.r)),
+                    ),
                   ),
-                )
-              : ButtonStyle(
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.r)),
-                  ),
-                ),
-          child: Text(
-            widget.text,
-            textAlign: TextAlign.center,
-            style: _getTextStyle(
-              widget.enabled ?
-              FunDsColors.colorNeutral900 :FunDsColors.colorNeutral500 ,
+            child: Text(
+              widget.text,
+              textAlign: TextAlign.center,
+              style: _getTextStyle(
+                widget.enabled
+                    ? FunDsColors.colorNeutral900
+                    : FunDsColors.colorNeutral500,
+              ),
             ),
           ),
         ),
@@ -249,7 +276,7 @@ class _FunDsButtonState extends State<FunDsButton> {
         border: _isFocused
             ? Border.all(
                 color: FunDsColors.colorPrimary200,
-                width: 2.0,
+                width: 1.0,
                 style: BorderStyle.solid,
               )
             : null,
@@ -276,16 +303,17 @@ class _FunDsButtonState extends State<FunDsButton> {
                 ),
               )
             : ButtonStyle(
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.r)),
-                ),
+                side: MaterialStateProperty.all(const BorderSide(
+                  color: Colors.transparent,
+                )),
               ),
         child: Text(
           widget.text,
           textAlign: TextAlign.center,
           style: _getTextStyle(
-            FunDsColors.colorPrimary,
+            widget.enabled
+                ? FunDsColors.colorPrimary
+                : FunDsColors.colorNeutral500,
           ),
         ),
       ),
@@ -386,53 +414,64 @@ class _FunDsButtonState extends State<FunDsButton> {
         border: _isFocused
             ? Border.all(
                 color: FunDsColors.colorRed400,
-                width: 2.0,
+                width: 1.0,
                 style: BorderStyle.solid,
               )
             : null,
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: OutlinedButton(
-          onFocusChange: (isFocused) => setState(() {
-            _isFocused = isFocused;
-          }),
-          onPressed: widget.enabled ? widget.onPressed : null,
-          style: widget.enabled
-              ? ButtonStyle(
-                  animationDuration: const Duration(milliseconds: 500),
-                  overlayColor:
-                      MaterialStateProperty.all(FunDsColors.colorRed50),
-                  backgroundColor:
-                      MaterialStateProperty.all(FunDsColors.colorWhite),
-                  side: MaterialStateProperty.all(BorderSide(
-                    color: _isFocused
+        padding: const EdgeInsets.all(1),
+        child: Container(
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                width: 1,
+                color: Colors.white.withOpacity(0.12),
+              ),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+          ),
+          child: OutlinedButton(
+            onFocusChange: (isFocused) => setState(() {
+              _isFocused = isFocused;
+            }),
+            onPressed: widget.enabled ? widget.onPressed : null,
+            style: widget.enabled
+                ? ButtonStyle(
+                    animationDuration: const Duration(milliseconds: 500),
+                    overlayColor:
+                        MaterialStateProperty.all(FunDsColors.colorRed50),
+                    backgroundColor:
+                        MaterialStateProperty.all(FunDsColors.colorWhite),
+                    side: MaterialStateProperty.all(BorderSide(
+                      color: _isFocused
+                          ? FunDsColors.colorRed600
+                          : FunDsColors.colorRed500,
+                      width: 1.0,
+                      style: BorderStyle.solid,
+                    )),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.r)),
+                    ),
+                  )
+                : ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.r)),
+                    ),
+                  ),
+            child: Text(
+              widget.text,
+              textAlign: TextAlign.center,
+              style: _getTextStyle(
+                widget.enabled
+                    ? _isFocused
                         ? FunDsColors.colorRed600
-                        : FunDsColors.colorRed500,
-                    width: 1.0,
-                    style: BorderStyle.solid,
-                  )),
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.r)),
-                  ),
-                )
-              : ButtonStyle(
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.r)),
-                  ),
-                ),
-          child: Text(
-            widget.text,
-            textAlign: TextAlign.center,
-            style: _getTextStyle(
-              widget.enabled
-                  ? _isFocused
-                      ? FunDsColors.colorRed600
-                      : FunDsColors.colorRed500
-                  : FunDsColors.colorNeutral500,
+                        : FunDsColors.colorRed500
+                    : FunDsColors.colorNeutral500,
+              ),
             ),
           ),
         ),
