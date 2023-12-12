@@ -1,8 +1,8 @@
 import 'package:catalog/catalog/atoms/a_icon_catalog.dart';
+import 'package:catalog/catalog/component/button_catalog.dart';
+import 'package:catalog/catalog/component/group_button_catalog.dart';
 import 'package:catalog/catalog/example/example_catalog.dart';
-import 'package:catalog/catalog/foundation/button_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
-import 'package:catalog/catalog/foundation/group_button_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
 import 'package:catalog/core/home_catalog.dart';
@@ -26,19 +26,19 @@ final entries = [
     name: 'Foundation/Icon',
     builder: (context) => const AIconCatalog(),
   ),
-  Entry(
-    name: 'Foundation/Button',
-    builder: (context) => const ButtonCatalog(),
-  ),
-  Entry(
-    name: 'Foundation/Group Button',
-    builder: (context) => const GroupButtonCatalog(),
-  ),
-
   // Example
   Entry(
     name: 'Example/Example',
     description: 'See the example here',
     builder: (context) => const ExampleCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Button',
+    builder: (context) => const ButtonCatalog(),
+  ),
+  Entry(
+    name: 'Component/Group Button',
+    builder: (context) => const GroupButtonCatalog(),
   ),
 ];
