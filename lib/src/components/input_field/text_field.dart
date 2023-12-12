@@ -219,6 +219,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
     }
 
     if (!widget.enabled) {
+      innerBorderColor = FunDsColors.colorNeutral200;
       labelColor = FunDsColors.colorNeutral500;
       containerColor = FunDsColors.colorNeutral50;
       descriptionColor = FunDsColors.colorNeutral500;
