@@ -1,4 +1,6 @@
 import 'package:catalog/catalog/atoms/a_icon_catalog.dart';
+import 'package:catalog/catalog/button/button_catalog.dart';
+import 'package:catalog/catalog/button/group_button_catalog.dart';
 import 'package:catalog/catalog/example/example_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
@@ -29,6 +31,15 @@ final entries = [
   Entry(
     name: 'Input Field/Text Field',
     builder: (context) => const TextFieldCatalog(),
+  ),
+
+  Entry(
+    name: 'Button/Button',
+    builder: (context) => const ButtonCatalog(),
+  ),
+  Entry(
+    name: 'Button/Group Button',
+    builder: (context) => const GroupButtonCatalog(),
   ),
 
   // Example
