@@ -45,14 +45,14 @@ class GroupButtonCatalog extends StatelessWidget {
         children: [
           Text('~~Vertical', style: FunDsTypography.heading24),
           FunDsGroupButton(
-            key: Key('Vertical Group Button'),
+            key: const Key('Vertical Group Button'),
             variant: FunDsGroupButtonVariant.vertical,
             listButton: listButton,
           ),
           SizedBox(height: 12.h),
           Text('~~Combo', style: FunDsTypography.heading24),
           FunDsGroupButton(
-            key: Key('Combo Group Button'),
+            key: const Key('Combo Group Button'),
             variant: FunDsGroupButtonVariant.combo,
             listButton: listButton,
             childCombo: const Text(
@@ -63,7 +63,7 @@ class GroupButtonCatalog extends StatelessWidget {
           SizedBox(height: 12.h),
           Text('~~Horizontal', style: FunDsTypography.heading24),
           FunDsGroupButton(
-            key: Key('Horizontal Group Button'),
+            key: const Key('Horizontal Group Button'),
             variant: FunDsGroupButtonVariant.horizontal,
             listButton: listButton,
           ),

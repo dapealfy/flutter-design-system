@@ -4,6 +4,7 @@ import 'package:catalog/catalog/button/group_button_catalog.dart';
 import 'package:catalog/catalog/example/example_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
+import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
 import 'package:catalog/core/home_catalog.dart';
 
@@ -26,11 +27,10 @@ final entries = [
     name: 'Foundation/Icon',
     builder: (context) => const AIconCatalog(),
   ),
-  // Example
+
   Entry(
-    name: 'Example/Example',
-    description: 'See the example here',
-    builder: (context) => const ExampleCatalog(),
+    name: 'Input Field/Text Field',
+    builder: (context) => const TextFieldCatalog(),
   ),
 
   Entry(
@@ -40,5 +40,12 @@ final entries = [
   Entry(
     name: 'Button/Group Button',
     builder: (context) => const GroupButtonCatalog(),
+  ),
+
+  // Example
+  Entry(
+    name: 'Example/Example',
+    description: 'See the example here',
+    builder: (context) => const ExampleCatalog(),
   ),
 ];
