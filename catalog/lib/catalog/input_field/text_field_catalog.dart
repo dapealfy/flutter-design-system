@@ -45,7 +45,7 @@ class TextFieldCatalog extends StatelessWidget {
             style: FunDsTypography.body14,
           ),
           SizedBox(width: 4.w),
-          AIcon(
+          FunDsIcon(
             funDsIconography: FunDsIconography.basicIcChevronDown,
             size: 16.spMin,
           )
@@ -94,7 +94,7 @@ class TextFieldCatalog extends StatelessWidget {
             style: FunDsTypography.body14,
           ),
           SizedBox(width: 4.w),
-          AIcon(
+          FunDsIcon(
             funDsIconography: FunDsIconography.basicIcChevronDown,
             size: 16.spMin,
           )
@@ -128,7 +128,7 @@ class TextFieldCatalog extends StatelessWidget {
         const Option(label: 'null', value: null),
         Option(
           label: 'Custom',
-          value: AIcon(
+          value: FunDsIcon(
             funDsIconography: FunDsIconography.actionIcCloud,
             size: 16.spMin,
           ),
@@ -143,7 +143,7 @@ class TextFieldCatalog extends StatelessWidget {
         const Option(label: 'null', value: null),
         Option(
           label: 'Custom',
-          value: AIcon(
+          value: FunDsIcon(
             funDsIconography: FunDsIconography.actionIcEyeOpen,
             size: 16.spMin,
           ),
@@ -158,7 +158,7 @@ class TextFieldCatalog extends StatelessWidget {
         const Option(label: 'null', value: null),
         Option(
           label: 'Custom',
-          value: AIcon(
+          value: FunDsIcon(
             funDsIconography: FunDsIconography.actionIcFilter,
             size: 16.spMin,
           ),

@@ -11,7 +11,7 @@ class AIconCatalog extends StatelessWidget {
     const List<double> iconSizes = [16, 20, 24, 32, 40];
 
     return CatalogPage(
-        title: 'AIcon (size: 16,20,24,32,40)',
+        title: 'Icon (size: 16,20,24,32,40)',
         child: SizedBox(
           width: 1.sw,
           child: ListView.builder(
@@ -41,7 +41,7 @@ class AIconCatalog extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: iconSizes.length,
                       itemBuilder: (context, index) {
-                        return AIcon(
+                        return FunDsIcon(
                             funDsIconography:
                                 FunDsIconography.getAllIcons()[indexAllIcons],
                             size: iconSizes[index]);
