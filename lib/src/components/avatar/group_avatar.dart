@@ -40,16 +40,31 @@ class FunDsGroupAvatar extends StatelessWidget {
                 ),
               )
             else
-              Positioned(
-                left: index * size * 0.8,
-                child: listAvatar[index].copyWith(
-                  size: size,
-                  border: Border.all(
-                    color: FunDsColors.colorWhite,
-                    width: 2,
-                  ),
-                ),
-              ),
+              (listAvatar[index].initialText != null)
+                  ? Positioned(
+                      left: index * size * 0.8,
+                      child: FunDsAvatar(
+                        size: size,
+                        initialText: listAvatar[index].initialText,
+                        backgroundColor: listAvatar[index].backgroundColor,
+                        foregroundColor: listAvatar[index].foregroundColor,
+                        shape: FunDsAvatarShape.round,
+                        border: Border.all(
+                          color: FunDsColors.colorWhite,
+                          width: 2,
+                        ),
+                      ),
+                    )
+                  : Positioned(
+                      left: index * size * 0.8,
+                      child: listAvatar[index].copyWith(
+                        size: size,
+                        border: Border.all(
+                          color: FunDsColors.colorWhite,
+                          width: 2,
+                        ),
+                      ),
+                    ),
         ],
       ),
     );

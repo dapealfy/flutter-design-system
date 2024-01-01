@@ -3,7 +3,10 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FunDsAvatar extends StatelessWidget {
-  /// Typically [Text], [Svg] widget.
+  /// The text to display as the avatar.
+  final String? initialText;
+
+  /// Typically [Svg] widget.
   /// If the [FunDsAvatar] is to have an image, used [backgroundImage] instead.
   final Widget? child;
 
@@ -23,6 +26,7 @@ class FunDsAvatar extends StatelessWidget {
   /// Create FunDsAvatar of all types i.e. round,rectangle with different sizes.
   const FunDsAvatar({
     Key? key,
+    this.initialText,
     this.child,
     this.backgroundColor,
     this.foregroundColor,
@@ -51,6 +55,14 @@ class FunDsAvatar extends StatelessWidget {
       size: size ?? this.size,
       shape: shape ?? this.shape,
     );
+  }
+
+  String _getInitials(String text) {
+    if (text.length >= 2) {
+      return text.substring(0, 2).toUpperCase();
+    } else {
+      return '';
+    }
   }
 
   double get _borderRadius {
@@ -139,47 +151,52 @@ class FunDsAvatar extends StatelessWidget {
     final Color? backgroundColor = this.backgroundColor;
     final ThemeData theme = Theme.of(context);
     return Container(
-        constraints: BoxConstraints(
-          minHeight: size,
-          minWidth: size,
-          maxWidth: size,
-          maxHeight: size,
-        ),
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          image: backgroundImage != null
-              ? DecorationImage(
-                  image: backgroundImage!,
-                  fit: BoxFit.cover,
-                )
-              : null,
-          shape: _avatarShape,
-          border: border,
-          borderRadius: shape == FunDsAvatarShape.rectangle
-              ? BorderRadius.circular(_borderRadius)
-              : null,
-        ),
-        child: child == null
-            ? null
-            : (child is Text)
-                ? Center(
-                    child: MediaQuery(
-                      data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-                      child: IconTheme(
-                        data: theme.iconTheme.copyWith(color: _textStyle.color),
-                        child: DefaultTextStyle(
-                          style: _textStyle,
-                          child: child!,
-                        ),
-                      ),
-                    ),
-                  )
-                : Center(
-                    child: SizedBox(
-                      width: _iconSize,
-                      height: _iconSize,
-                      child: child!,
-                    ),
-                  ));
+      constraints: BoxConstraints(
+        minHeight: size,
+        minWidth: size,
+        maxWidth: size,
+        maxHeight: size,
+      ),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        image: backgroundImage != null
+            ? DecorationImage(
+                image: backgroundImage!,
+                fit: BoxFit.cover,
+              )
+            : null,
+        shape: _avatarShape,
+        border: border,
+        borderRadius: shape == FunDsAvatarShape.rectangle
+            ? BorderRadius.circular(_borderRadius)
+            : null,
+      ),
+      child: child == null && initialText != null
+
+          /// Text Avatar
+          ? Center(
+              child: MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+                child: IconTheme(
+                  data: theme.iconTheme.copyWith(color: _textStyle.color),
+                  child: DefaultTextStyle(
+                    style: _textStyle,
+                    child: Text(_getInitials(initialText ?? '')),
+                  ),
+                ),
+              ),
+            )
+          : (child == null)
+              ? null
+
+              /// Icon Avatar
+              : Center(
+                  child: SizedBox(
+                    width: _iconSize,
+                    height: _iconSize,
+                    child: child!,
+                  ),
+                ),
+    );
   }
 }

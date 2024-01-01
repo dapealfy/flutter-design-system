@@ -35,46 +35,46 @@ class GroupAvatarCatalog extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(8, 16, 0, 8),
           child: Text('Text Avatar', style: FunDsTypography.heading16),
         ),
-        FunDsGroupAvatar(
+        const FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
           ],
-          size: FunDsAvatarSize.medium,
+          size: FunDsAvatarSize.large,
         ),
         const SizedBox(height: 16),
-        FunDsGroupAvatar(
+        const FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
@@ -83,22 +83,22 @@ class GroupAvatarCatalog extends StatelessWidget {
           size: FunDsAvatarSize.small,
         ),
         const SizedBox(height: 16),
-        FunDsGroupAvatar(
+        const FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
             FunDsAvatar(
-              child: Text('AF'),
+              initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
@@ -120,7 +120,7 @@ class GroupAvatarCatalog extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(8, 24, 0, 8),
           child: Text('Image Avatar', style: FunDsTypography.heading16),
         ),
-        FunDsGroupAvatar(
+        const FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
               backgroundImage: AssetImage(
@@ -238,7 +238,7 @@ class GroupAvatarCatalog extends StatelessWidget {
           size: FunDsAvatarSize.medium,
         ),
         const SizedBox(height: 16),
-        FunDsGroupAvatar(
+        const FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
               backgroundImage: AssetImage(
@@ -356,7 +356,7 @@ class GroupAvatarCatalog extends StatelessWidget {
           size: FunDsAvatarSize.small,
         ),
         const SizedBox(height: 16),
-        FunDsGroupAvatar(
+        const FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
               backgroundImage: AssetImage(
@@ -490,68 +490,68 @@ class GroupAvatarCatalog extends StatelessWidget {
         FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
-              child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
-              ),
               size: FunDsAvatarSize.xxl,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xl,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.large,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.medium,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.small,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xxs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xxs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.infoIcProfil,
+              ),
             ),
           ],
           size: FunDsAvatarSize.medium,
@@ -560,68 +560,68 @@ class GroupAvatarCatalog extends StatelessWidget {
         FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
-              child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
-              ),
               size: FunDsAvatarSize.xxl,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xl,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.large,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.medium,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.small,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xxs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xxs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.infoIcProfil,
+              ),
             ),
           ],
           size: FunDsAvatarSize.small,
@@ -630,68 +630,68 @@ class GroupAvatarCatalog extends StatelessWidget {
         FunDsGroupAvatar(
           listAvatar: [
             FunDsAvatar(
-              child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
-              ),
               size: FunDsAvatarSize.xxl,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xl,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.large,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.medium,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.small,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xxs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
-            ),
-            FunDsAvatar(
               child: SvgPicture.asset(
                 FunDsIconography.infoIcProfil,
               ),
+            ),
+            FunDsAvatar(
               size: FunDsAvatarSize.xxs,
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.infoIcProfil,
+              ),
             ),
           ],
           size: FunDsAvatarSize.xs,
