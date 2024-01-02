@@ -89,13 +89,12 @@ class FunDsCalendar extends StatefulWidget {
 }
 
 class _FunDsCalendarState extends State<FunDsCalendar> {
-  late DateTime selectedDate = widget.initialDate;
-
   DateTime get effectiveMinDate => widget.minDate ?? DateTime(1950, 1, 1);
 
   // Month 13 day 0 means last day of the month 12
   DateTime get effectiveMaxDate => widget.maxDate ?? DateTime(3000, 13, 0);
 
+  late DateTime selectedDate;
   late FixedExtentScrollController dayController;
   late FixedExtentScrollController monthController;
   late FixedExtentScrollController yearController;
@@ -111,7 +110,9 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
 
     // Make sure initial date not exceed max date
     if (widget.initialDate.isAfter(effectiveMaxDate)) {
-      selectedDate = widget.maxDate ?? widget.initialDate;
+      selectedDate = effectiveMaxDate;
+    } else {
+      selectedDate = widget.initialDate;
     }
 
     _initDay(selectedDate);
