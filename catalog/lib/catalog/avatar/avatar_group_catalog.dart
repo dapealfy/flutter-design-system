@@ -9,7 +9,7 @@ class GroupAvatarCatalog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CatalogPage(
-      title: 'Group Avatar (size: medium, small, xs)',
+      title: 'Group Avatar (size: xxl, xl, large, medium, small, xs, xxs)',
       child: SingleChildScrollView(
         child: ListView(
           shrinkWrap: true,
@@ -55,12 +55,162 @@ class GroupAvatarCatalog extends StatelessWidget {
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+          ],
+          size: FunDsAvatarSize.xxl,
+        ),
+        const SizedBox(height: 16),
+        const FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+          ],
+          size: FunDsAvatarSize.xl,
+        ),
+        const SizedBox(height: 16),
+        const FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
           ],
           size: FunDsAvatarSize.large,
         ),
         const SizedBox(height: 16),
         const FunDsGroupAvatar(
           listAvatar: [
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+          ],
+          size: FunDsAvatarSize.medium,
+        ),
+        const SizedBox(height: 16),
+        const FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
             FunDsAvatar(
               initialText: 'AF',
               backgroundColor: FunDsColors.colorPrimary100,
@@ -103,8 +253,56 @@ class GroupAvatarCatalog extends StatelessWidget {
               foregroundColor: FunDsColors.colorPrimary500,
               shape: FunDsAvatarShape.round,
             ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
           ],
           size: FunDsAvatarSize.xs,
+        ),
+        const SizedBox(height: 16),
+        const FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              initialText: 'AF',
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+          ],
+          size: FunDsAvatarSize.xxs,
         ),
       ],
     );
@@ -235,6 +433,346 @@ class GroupAvatarCatalog extends StatelessWidget {
               shape: FunDsAvatarShape.round,
             ),
           ],
+          size: FunDsAvatarSize.xxl,
+        ),
+        const SizedBox(height: 16),
+        const FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+          ],
+          size: FunDsAvatarSize.xl,
+        ),
+        const SizedBox(height: 16),
+        const FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxl,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xl,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.large,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.medium,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.small,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+          ],
+          size: FunDsAvatarSize.large,
+        ),
+        const SizedBox(height: 16),
+        const FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxl,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xl,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.large,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.medium,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.small,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+          ],
           size: FunDsAvatarSize.medium,
         ),
         const SizedBox(height: 16),
@@ -472,6 +1010,124 @@ class GroupAvatarCatalog extends StatelessWidget {
             ),
           ],
           size: FunDsAvatarSize.xs,
+        ),
+        const SizedBox(height: 16),
+        const FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxl,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xl,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.large,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.medium,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.small,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+            FunDsAvatar(
+              backgroundImage: AssetImage(
+                  'packages/flutter_design_system/assets/images/user_1.jpeg'),
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: FunDsAvatarShape.round,
+            ),
+          ],
+          size: FunDsAvatarSize.xxs,
         ),
       ],
     );
@@ -494,7 +1150,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -502,7 +1158,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -510,7 +1166,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -518,7 +1174,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -526,7 +1182,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -534,7 +1190,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -542,7 +1198,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -550,7 +1206,217 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+          ],
+          size: FunDsAvatarSize.xxl,
+        ),
+        const SizedBox(height: 16),
+        FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxl,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xl,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.large,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.medium,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.small,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+          ],
+          size: FunDsAvatarSize.xl,
+        ),
+        const SizedBox(height: 16),
+        FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxl,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xl,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.large,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.medium,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.small,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+          ],
+          size: FunDsAvatarSize.large,
+        ),
+        const SizedBox(height: 16),
+        FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxl,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xl,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.large,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.medium,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.small,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
               ),
             ),
           ],
@@ -564,7 +1430,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -572,7 +1438,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -580,7 +1446,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -588,7 +1454,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -596,7 +1462,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -604,7 +1470,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -612,7 +1478,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -620,7 +1486,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
           ],
@@ -634,7 +1500,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -642,7 +1508,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -650,7 +1516,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -658,7 +1524,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -666,7 +1532,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -674,7 +1540,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -682,7 +1548,7 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
             FunDsAvatar(
@@ -690,11 +1556,81 @@ class GroupAvatarCatalog extends StatelessWidget {
               backgroundColor: FunDsColors.colorNeutral200,
               shape: FunDsAvatarShape.round,
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
             ),
           ],
           size: FunDsAvatarSize.xs,
+        ),
+        const SizedBox(height: 16),
+        FunDsGroupAvatar(
+          listAvatar: [
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxl,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xl,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.large,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.medium,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.small,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+            FunDsAvatar(
+              size: FunDsAvatarSize.xxs,
+              backgroundColor: FunDsColors.colorNeutral200,
+              shape: FunDsAvatarShape.round,
+              child: SvgPicture.asset(
+                FunDsIconography.iconAvatar,
+              ),
+            ),
+          ],
+          size: FunDsAvatarSize.xxs,
         ),
         const SizedBox(height: 16),
       ],

@@ -27,9 +27,8 @@ class FunDsGroupAvatar extends StatelessWidget {
               Positioned(
                 left: 4 * size * 0.8, // Position the summary count
                 child: FunDsAvatar(
-                  child: Text(
-                    '+${(listAvatar.length - 4 > 9) ? 9 : listAvatar.length - 4}',
-                  ),
+                  initialText:
+                      '+${(listAvatar.length - 4 > 9) ? 9 : listAvatar.length - 4}',
                   size: size,
                   backgroundColor: FunDsColors.colorNeutral200,
                   foregroundColor: FunDsColors.colorNeutral900,

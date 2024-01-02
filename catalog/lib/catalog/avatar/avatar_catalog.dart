@@ -316,7 +316,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.round,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -324,7 +324,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.round,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -332,7 +332,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.round,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -340,7 +340,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.round,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -348,7 +348,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.round,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -356,7 +356,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.round,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -364,7 +364,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.round,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
             ],
@@ -380,7 +380,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.rectangle,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -388,7 +388,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.rectangle,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -396,7 +396,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.rectangle,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -404,7 +404,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.rectangle,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -412,7 +412,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.rectangle,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -420,7 +420,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.rectangle,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
               FunDsAvatar(
@@ -428,7 +428,7 @@ class SingleAvatarCatalog extends StatelessWidget {
                 backgroundColor: FunDsColors.colorNeutral200,
                 shape: FunDsAvatarShape.rectangle,
                 child: SvgPicture.asset(
-                  FunDsIconography.infoIcProfil,
+                  FunDsIconography.iconAvatar,
                 ),
               ),
             ],

@@ -215,7 +215,7 @@ void main() {
           buildTestableWidget(
             child: FunDsAvatar(
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
               size: FunDsAvatarSize.xxs,
               backgroundColor: FunDsColors.colorNeutral200,
@@ -250,7 +250,7 @@ void main() {
           buildTestableWidget(
             child: FunDsAvatar(
               child: SvgPicture.asset(
-                FunDsIconography.infoIcProfil,
+                FunDsIconography.iconAvatar,
               ),
               size: FunDsAvatarSize.xxs,
               backgroundColor: FunDsColors.colorNeutral200,

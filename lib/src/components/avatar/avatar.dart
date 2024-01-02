@@ -149,7 +149,6 @@ class FunDsAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color? backgroundColor = this.backgroundColor;
-    final ThemeData theme = Theme.of(context);
     return Container(
       constraints: BoxConstraints(
         minHeight: size,
@@ -175,15 +174,9 @@ class FunDsAvatar extends StatelessWidget {
 
           /// Text Avatar
           ? Center(
-              child: MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-                child: IconTheme(
-                  data: theme.iconTheme.copyWith(color: _textStyle.color),
-                  child: DefaultTextStyle(
-                    style: _textStyle,
-                    child: Text(_getInitials(initialText ?? '')),
-                  ),
-                ),
+              child: Text(
+                _getInitials(initialText ?? ''),
+                style: _textStyle,
               ),
             )
           : (child == null)

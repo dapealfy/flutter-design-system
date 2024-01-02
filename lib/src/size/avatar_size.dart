@@ -10,4 +10,16 @@ class FunDsAvatarSize {
   static const double small = 32;
   static const double xs = 24;
   static const double xxs = 20;
+
+  static List<double> getAllFunDsAvatarSize() {
+    return [
+      xxl,
+      xl,
+      large,
+      medium,
+      small,
+      xs,
+      xxs,
+    ];
+  }
 }
