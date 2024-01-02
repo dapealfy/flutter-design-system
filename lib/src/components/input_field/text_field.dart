@@ -79,6 +79,9 @@ class FunDsTextField extends StatefulWidget {
   /// Will limit the length of the text field
   final int? maxLength;
 
+  /// Will change the keyboard type
+  final TextInputType? keyboardType;
+
   /// Wwill format the text of the text field
   final List<TextInputFormatter>? inputFormatters;
 
@@ -118,6 +121,7 @@ class FunDsTextField extends StatefulWidget {
     this.onChangedDebounced,
     this.debounceDuration,
     this.maxLength,
+    this.keyboardType,
     this.inputFormatters,
     this.textInputAction,
     this.onSubmitted,
@@ -342,6 +346,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
                         focusNode: _focusNode,
                         enabled: widget.enabled,
                         controller: _effectiveController,
+                        keyboardType: widget.keyboardType,
                         textInputAction: widget.textInputAction,
                         onSubmitted: widget.onSubmitted,
                         inputFormatters: [
