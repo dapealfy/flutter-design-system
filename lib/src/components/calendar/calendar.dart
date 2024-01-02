@@ -294,10 +294,15 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
             children: [
               Row(
                 children: [
-                  const AIcon(
-                    key: Key('calendar-close'),
-                    funDsIconography: FunDsIconography.actionIcCrossNude,
-                    size: 24,
+                  GestureDetector(
+                    onTap: () {
+                      widget.onCancel();
+                    },
+                    child: const AIcon(
+                      key: Key('calendar-close'),
+                      funDsIconography: FunDsIconography.actionIcCrossNude,
+                      size: 24,
+                    ),
                   ),
                   SizedBox(width: 16.w),
                   DefaultTextStyle(
