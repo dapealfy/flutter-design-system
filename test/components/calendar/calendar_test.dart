@@ -58,11 +58,8 @@ void main() {
       expect(find.text(CalendarUtils.getMonthName(initialDate.month)),
           findsOneWidget);
 
-      // Scroll to previous year
-      await tester.drag(
-        find.byKey(const Key('calendar-year')),
-        Offset(0, FunDsCalendar.itemExtent),
-      );
+      // Tap to previous year
+      await tester.tap(find.text((initialDate.year - 1).toString()));
       await tester.pumpAndSettle();
       expect(find.text((initialDate.year - 1).toString()), findsOneWidget);
 

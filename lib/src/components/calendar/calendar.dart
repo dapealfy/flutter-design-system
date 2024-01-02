@@ -137,7 +137,7 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
     super.dispose();
   }
 
-  DateTime getSelectedDate() {
+  DateTime _getSelectedDate() {
     final selectedDay = dayController.selectedItem + dayRange.start;
     final selectedMonth = monthController.selectedItem + monthRange.start;
     final selectedYear = yearController.selectedItem + yearRange.start;
@@ -160,11 +160,11 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
     return selectedDate;
   }
 
-  void selectDate({
+  void _onSelectDate({
     bool isMonth = false,
     bool isYear = false,
   }) {
-    final activeDate = getSelectedDate();
+    final activeDate = _getSelectedDate();
 
     // Re init picker value, in case the selected date is not valid (ex: 31 feb)
 
@@ -181,7 +181,7 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
 
     // The selected date might be changed after re init. Get the real selected date
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      selectedDate = getSelectedDate();
+      selectedDate = _getSelectedDate();
       if (widget.validation != null) {
         errorText = widget.validation?.call(selectedDate);
       }
@@ -226,87 +226,46 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
     yearRange = (start: firstYear.year, end: lastYear.year);
   }
 
-  Widget buildDayPicker() {
-    return ListWheelScrollView(
+  Widget _buildDayPicker() {
+    return _CalendarList(
       key: const Key('calendar-day'),
-      itemExtent: FunDsCalendar.itemExtent,
-      diameterRatio: 10,
       controller: dayController,
-      physics: const FixedExtentScrollPhysics(),
+      range: dayRange,
       onSelectedItemChanged: (index) {
-        selectDate();
+        _onSelectDate();
       },
-      children: List.generate(
-        dayRange.end - dayRange.start + 1,
-        (index) {
-          final day = dayRange.start + index;
-          return Text(
-            '$day',
-            style: selectedDate.day == day
-                ? FunDsTypography.heading20
-                    .copyWith(color: FunDsColors.colorPrimary500)
-                : FunDsTypography.body16.copyWith(
-                    color: FunDsColors.colorNeutral500,
-                  ),
-          );
-        },
-      ),
+      selectedItem: selectedDate.day,
+      itemBuilder: (indexInRange) => Text('$indexInRange'),
     );
   }
 
-  Widget buildMonthPicker() {
-    return ListWheelScrollView(
+  Widget _buildMonthPicker() {
+    return _CalendarList(
       key: const Key('calendar-month'),
-      itemExtent: FunDsCalendar.itemExtent,
-      diameterRatio: 10,
       controller: monthController,
-      physics: const FixedExtentScrollPhysics(),
-      onSelectedItemChanged: (index) {
-        selectDate(isMonth: true);
+      range: monthRange,
+      onSelectedItemChanged: (indexInRange) {
+        _onSelectDate(isMonth: true);
       },
-      children: List.generate(
-        monthRange.end - monthRange.start + 1,
-        (index) {
-          final month = monthRange.start + index;
-          return Text(
-            CalendarUtils.getMonthName(month),
-            style: selectedDate.month == month
-                ? FunDsTypography.heading20
-                    .copyWith(color: FunDsColors.colorPrimary500)
-                : FunDsTypography.body16.copyWith(
-                    color: FunDsColors.colorNeutral500,
-                  ),
-          );
-        },
-      ),
+      selectedItem: selectedDate.month,
+      itemBuilder: (indexInRange) {
+        return Text(CalendarUtils.getMonthName(indexInRange));
+      },
     );
   }
 
-  Widget buildYearPicker() {
-    return ListWheelScrollView(
+  Widget _buildYearPicker() {
+    return _CalendarList(
       key: const Key('calendar-year'),
-      itemExtent: FunDsCalendar.itemExtent,
-      diameterRatio: 10,
       controller: yearController,
-      physics: const FixedExtentScrollPhysics(),
-      onSelectedItemChanged: (index) {
-        selectDate(isYear: true);
+      range: yearRange,
+      onSelectedItemChanged: (indexInRange) {
+        _onSelectDate(isYear: true);
       },
-      children: List.generate(
-        yearRange.end - yearRange.start + 1,
-        (index) {
-          final year = yearRange.start + index;
-          return Text(
-            '$year',
-            style: selectedDate.year == year
-                ? FunDsTypography.heading20
-                    .copyWith(color: FunDsColors.colorPrimary500)
-                : FunDsTypography.body16.copyWith(
-                    color: FunDsColors.colorNeutral500,
-                  ),
-          );
-        },
-      ),
+      selectedItem: selectedDate.year,
+      itemBuilder: (indexInRange) {
+        return Text('$indexInRange');
+      },
     );
   }
 
@@ -355,21 +314,16 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
               SizedBox(height: 20.h),
               SizedBox(
                 height: FunDsCalendar.itemExtent * 5,
-                child: Stack(
-                  fit: StackFit.expand,
+                child: Row(
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: buildMonthPicker(),
-                        ),
-                        Expanded(
-                          child: buildDayPicker(),
-                        ),
-                        Expanded(
-                          child: buildYearPicker(),
-                        ),
-                      ],
+                    Expanded(
+                      child: _buildMonthPicker(),
+                    ),
+                    Expanded(
+                      child: _buildDayPicker(),
+                    ),
+                    Expanded(
+                      child: _buildYearPicker(),
                     ),
                   ],
                 ),
@@ -425,6 +379,61 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
         ),
         SizedBox(height: 12.h)
       ],
+    );
+  }
+}
+
+class _CalendarList extends StatelessWidget {
+  final FixedExtentScrollController controller;
+  final Range range;
+  final Function(int index) onSelectedItemChanged;
+  final int selectedItem;
+  final Widget Function(int indexInRange) itemBuilder;
+
+  const _CalendarList({
+    super.key,
+    required this.controller,
+    required this.range,
+    required this.onSelectedItemChanged,
+    required this.selectedItem,
+    required this.itemBuilder,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListWheelScrollView(
+      itemExtent: FunDsCalendar.itemExtent,
+      diameterRatio: 10,
+      controller: controller,
+      physics: const FixedExtentScrollPhysics(),
+      onSelectedItemChanged: (index) {
+        onSelectedItemChanged(index);
+      },
+      children: List.generate(
+        range.end - range.start + 1,
+        (index) {
+          final indexInRange = range.start + index;
+
+          return GestureDetector(
+            onTap: () {
+              controller.animateToItem(
+                index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+            child: DefaultTextStyle(
+              style: selectedItem == indexInRange
+                  ? FunDsTypography.heading20
+                      .copyWith(color: FunDsColors.colorPrimary500)
+                  : FunDsTypography.body16.copyWith(
+                      color: FunDsColors.colorNeutral500,
+                    ),
+              child: itemBuilder(indexInRange),
+            ),
+          );
+        },
+      ),
     );
   }
 }
