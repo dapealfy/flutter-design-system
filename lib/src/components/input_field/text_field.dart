@@ -343,7 +343,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
                         key: const Key('textField'),
                         obscureText: widget.obscureText,
                         onChanged: _handleOnChange,
-                        focusNode: _focusNode,
+                        focusNode: _effectiveFocusNode,
                         enabled: widget.enabled,
                         controller: _effectiveController,
                         keyboardType: widget.keyboardType,
