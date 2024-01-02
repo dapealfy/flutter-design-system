@@ -73,7 +73,7 @@ class BottomSheetCatalog extends StatelessWidget {
               onPressed: () {
                 FunDsCustomBottomSheet.showBottomSheet(
                   context: context,
-                  child: Text('Ini bisa diisi widget apapun'),
+                  child: const Text('Ini bisa diisi widget apapun'),
                 );
               },
             )
