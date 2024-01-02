@@ -46,12 +46,14 @@ class BottomSheetCatalog extends StatelessWidget {
                     variant: FunDsGroupButtonVariant.horizontal,
                     listButton: [
                       FunDsButton(
+                        key: const Key('btn_bottom_sheet_tutup'),
                         type: FunDsButtonType.medium,
                         text: 'Tutup',
                         variant: FunDsButtonVariant.secondary,
                         onPressed: () {},
                       ),
                       FunDsButton(
+                        key: const Key('btn_bottom_sheet_lanjutkan'),
                         type: FunDsButtonType.medium,
                         text: 'Lanjutkan',
                         variant: FunDsButtonVariant.primary,

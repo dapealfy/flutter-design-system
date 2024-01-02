@@ -14,11 +14,14 @@ class FunDsCustomBottomSheet extends StatelessWidget {
     Key? key,
     required BuildContext context,
     required Widget child,
+    double? barrierOpacity,
   }) {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
       backgroundColor: FunDsColors.colorWhite,
+      barrierColor:
+          FunDsColors.colorNeutral900.withOpacity(barrierOpacity ?? 0.8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(12.r),

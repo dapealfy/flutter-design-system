@@ -5,8 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class FunDsBottomSheet extends StatelessWidget {
   final String image;
-  final String title;//Max 1 line
-  final String desc;//Max 2 line
+  final String title; //Max 1 line
+  final String desc; //Max 2 line
   final FunDsBottomSheetType type;
   final FunDsGroupButton buttons;
 
@@ -27,10 +27,13 @@ class FunDsBottomSheet extends StatelessWidget {
     required String image,
     required FunDsBottomSheetType type,
     required FunDsGroupButton groupButton,
+    double? barrierOpacity,
   }) {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
+      barrierColor:
+          FunDsColors.colorNeutral900.withOpacity(barrierOpacity ?? 0.8),
       backgroundColor: FunDsColors.colorWhite,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -117,11 +120,13 @@ class FunDsBottomSheet extends StatelessWidget {
                 width: 130.w,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
-                  child: image.contains('.svg')
-                      ? SvgPicture.asset(image)
-                      : Uri.parse(image).isAbsolute
-                          ? Image.network(image)
-                          : Image.asset(image),
+                  child: image.isEmpty
+                      ? const SizedBox()
+                      : image.contains('.svg')
+                          ? SvgPicture.asset(image)
+                          : Uri.parse(image).isAbsolute
+                              ? Image.network(image)
+                              : Image.asset(image),
                 ),
               ),
             ),
@@ -172,7 +177,9 @@ class FunDsBottomSheet extends StatelessWidget {
                 padding: EdgeInsets.only(top: 12.h),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
-                  child: image.contains('.svg')
+                  child:image.isEmpty
+                      ? const SizedBox()
+                      : image.contains('.svg')
                       ? SvgPicture.asset(image)
                       : Uri.parse(image).isAbsolute
                           ? Image.network(image)
@@ -193,7 +200,9 @@ class FunDsBottomSheet extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 8.h),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
-                  child: image.contains('.svg')
+                  child:image.isEmpty
+                      ? const SizedBox()
+                      : image.contains('.svg')
                       ? SvgPicture.asset(image)
                       : Uri.parse(image).isAbsolute
                           ? Image.network(image)
