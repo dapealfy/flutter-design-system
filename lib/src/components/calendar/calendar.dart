@@ -110,7 +110,7 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
     super.initState();
 
     // Make sure initial date not exceed max date
-    if (widget.initialDate.isAfter(widget.maxDate ?? DateTime.now())) {
+    if (widget.initialDate.isAfter(effectiveMaxDate)) {
       selectedDate = widget.maxDate ?? widget.initialDate;
     }
 

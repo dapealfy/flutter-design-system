@@ -68,14 +68,14 @@ void main() {
 
       // Scroll back to current year
       await tester.drag(
-        find.byKey(const Key('calendar-year')),
+        find.calendarYearList(),
         Offset(0, -FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
       expect(find.text(errorText), findsNothing);
 
       // Close
-      await tester.tap(find.text('Batal'));
+      await tester.tap(find.calendarCancel());
       await tester.pumpAndSettle();
       expect(find.text('Title'), findsNothing);
 
@@ -85,20 +85,20 @@ void main() {
 
       // Change month to previous
       await tester.drag(
-        find.byKey(const Key('calendar-month')),
+        find.calendarMonthList(),
         Offset(0, FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
 
       // Change day to previous
       await tester.drag(
-        find.byKey(const Key('calendar-day')),
+        find.calendarDayList(),
         Offset(0, FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
 
       // Save
-      await tester.tap(find.text('Simpan'));
+      await tester.tap(find.calendarSave());
 
       // Verify selected date
       expect(
@@ -111,4 +111,12 @@ void main() {
       );
     },
   );
+}
+
+extension FunDsCaledarFinder on CommonFinders {
+  Finder calendarDayList() => find.byKey(const Key('calendar-day'));
+  Finder calendarMonthList() => find.byKey(const Key('calendar-month'));
+  Finder calendarYearList() => find.byKey(const Key('calendar-year'));
+  Finder calendarSave() => find.byKey(const Key('calendar-save'));
+  Finder calendarCancel() => find.byKey(const Key('calendar-cancel'));
 }
