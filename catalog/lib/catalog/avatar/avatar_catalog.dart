@@ -5,6 +5,64 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SingleAvatarCatalog extends StatelessWidget {
   const SingleAvatarCatalog({super.key});
+/*
+  /// Create Avatar with text.
+  const Avatar.text({
+    Key? key,
+    required String avatarText,
+    Color? backgroundColor,
+    Color? foregroundColor,
+    AvatarSize size = AvatarSize.medium,
+    AvatarShape shape = AvatarShape.round,
+    BoxBorder? border,
+  }) : this(
+    key: key,
+    avatarText: avatarText,
+    backgroundColor: backgroundColor,
+    foregroundColor: foregroundColor,
+    size: size,
+    shape: shape,
+    border: border,
+  );
+
+  /// Create Avatar with image from network.
+  const Avatar.network({
+    Key? key,
+    required String imageUrl,
+    Color? backgroundColor,
+    Color? foregroundColor,
+    AvatarSize size = AvatarSize.medium,
+    AvatarShape shape = AvatarShape.round,
+    BoxBorder? border,
+  }) : this(
+    key: key,
+    imageUrl: imageUrl,
+    backgroundColor: backgroundColor,
+    foregroundColor: foregroundColor,
+    size: size,
+    shape: shape,
+    border: border,
+  );
+
+  ///Create Avatar with image from asset.
+  const Avatar.asset({
+    Key? key,
+    required String imagePath,
+    Color? backgroundColor,
+    Color? foregroundColor,
+    AvatarSize size = AvatarSize.medium,
+    AvatarShape shape = AvatarShape.round,
+    BoxBorder? border,
+  }) : this(
+    key: key,
+    imagePath: imagePath,
+    backgroundColor: backgroundColor,
+    foregroundColor: foregroundColor,
+    size: size,
+    shape: shape,
+    border: border,
+  );
+ */
 
   @override
   Widget build(BuildContext context) {
