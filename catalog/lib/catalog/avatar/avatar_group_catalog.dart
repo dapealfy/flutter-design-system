@@ -79,12 +79,12 @@ class GroupAvatarCatalog extends StatelessWidget {
   ListView _buildImageAvatar() {
     List<String> listAvatar = [
       'packages/flutter_design_system/assets/images/user_1.jpeg',
-      'packages/flutter_design_system/assets/images/user_2.jpeg',
-      'packages/flutter_design_system/assets/images/user_3.jpeg',
-      'packages/flutter_design_system/assets/images/user_4.jpeg',
-      'packages/flutter_design_system/assets/images/user_5.jpeg',
-      'packages/flutter_design_system/assets/images/user_1.jpeg',
-      'packages/flutter_design_system/assets/images/user_2.jpeg',
+      'assets/images/user_2.jpeg',
+      'assets/images/user_3.jpeg',
+      'assets/images/user_4.jpeg',
+      'assets/images/user_5.jpeg',
+      'assets/images/user_1.jpeg',
+      'assets/images/user_2.jpeg',
     ];
 
     return ListView(
