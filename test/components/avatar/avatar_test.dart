@@ -1,281 +1,221 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail_image_network/mocktail_image_network.dart';
 
 import '../../utils/test_utils.dart';
 
 void main() {
-  group('Single FunDsAvatar Test', () {
-    testWidgets(
-      'Round FunDsAvatar with backgroundImage from assets',
-      (tester) async {
-        await tester.pumpWidget(buildTestableWidget(
-            child: const FunDsAvatar(
-                backgroundImage: AssetImage('assets/images/user_1.jpeg'),
-                backgroundColor: FunDsColors.colorPrimary100,
-                foregroundColor: FunDsColors.colorPrimary500,
-                size: FunDsAvatarSize.xxl,
-                shape: FunDsAvatarShape.round)));
+  group(
+    'Single Avatar with image from asset Test',
+    () {
+      String imagePath = 'assets/images/user_1.jpeg';
+      testWidgets(
+        'Round Avatar with image from asset',
+        (tester) async {
+          await tester.pumpWidget(buildTestableWidget(
+              child: Avatar.asset(
+                  imagePath: imagePath,
+                  backgroundColor: FunDsColors.colorPrimary100,
+                  foregroundColor: FunDsColors.colorPrimary500,
+                  size: AvatarSize.xxl,
+                  shape: AvatarShape.round)));
 
-        expect(find.byType(FunDsAvatar), findsOneWidget);
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.backgroundImage, 'backgroundImage',
-              const AssetImage('assets/images/user_1.jpeg')),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.backgroundColor, 'backgroundColor',
-              FunDsColors.colorPrimary100),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.foregroundColor, 'foregroundColor',
-              FunDsColors.colorPrimary500),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.size, 'size', FunDsAvatarSize.xxl),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>()
-              .having((t) => t.shape, 'shape', FunDsAvatarShape.round),
-        );
-      },
-    );
+          expect(find.byType(Avatar), findsOneWidget);
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.imagePath, 'imagePath', imagePath),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.backgroundColor, 'backgroundColor',
+                FunDsColors.colorPrimary100),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.foregroundColor, 'foregroundColor',
+                FunDsColors.colorPrimary500),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.size, 'size', AvatarSize.xxl),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.shape, 'shape', AvatarShape.round),
+          );
+        },
+      );
 
-    testWidgets(
-      'Rectangle FunDsAvatar with backgroundImage from assets',
-      (tester) async {
-        await tester.pumpWidget(buildTestableWidget(
-            child: const FunDsAvatar(
-                backgroundImage: AssetImage('assets/images/user_1.jpeg'),
-                backgroundColor: FunDsColors.colorPrimary100,
-                foregroundColor: FunDsColors.colorPrimary500,
-                size: FunDsAvatarSize.xxl,
-                shape: FunDsAvatarShape.rectangle)));
+      testWidgets(
+        'Rectangle Avatar with image from asset',
+        (tester) async {
+          await tester.pumpWidget(buildTestableWidget(
+              child: Avatar(
+                  imagePath: imagePath,
+                  backgroundColor: FunDsColors.colorPrimary100,
+                  foregroundColor: FunDsColors.colorPrimary500,
+                  size: AvatarSize.xxl,
+                  shape: AvatarShape.rectangle)));
 
-        expect(find.byType(FunDsAvatar), findsOneWidget);
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.backgroundImage, 'backgroundImage',
-              const AssetImage('assets/images/user_1.jpeg')),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.backgroundColor, 'backgroundColor',
-              FunDsColors.colorPrimary100),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.foregroundColor, 'foregroundColor',
-              FunDsColors.colorPrimary500),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.size, 'size', FunDsAvatarSize.xxl),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>()
-              .having((t) => t.shape, 'shape', FunDsAvatarShape.rectangle),
-        );
-      },
-    );
+          expect(find.byType(Avatar), findsOneWidget);
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.imagePath, 'imagePath', imagePath),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.backgroundColor, 'backgroundColor',
+                FunDsColors.colorPrimary100),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.foregroundColor, 'foregroundColor',
+                FunDsColors.colorPrimary500),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.size, 'size', AvatarSize.xxl),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>()
+                .having((t) => t.shape, 'shape', AvatarShape.rectangle),
+          );
+        },
+      );
+    },
+  );
 
-    testWidgets(
-      'Rectangle FunDsAvatar with backgroundImage from network',
-      (tester) async {
-        const bgImage = NetworkImage(
-          'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
-        );
+  group(
+    'Single avatar with image from network test',
+        () {
+          testWidgets(
+            'Round Avatar with image from network',
+                (tester) async {
+              const bgImage =
+                  'https://images.unsplash.com/photo-1547721064-da6cfb341d50';
 
-        await mockNetworkImages(() async => tester.pumpWidget(
+              await mockNetworkImages(() async => tester.pumpWidget(
+                  buildTestableWidget(
+                      child: const Avatar.network(
+                          imageUrl: bgImage,
+                          backgroundColor: FunDsColors.colorPrimary100,
+                          foregroundColor: FunDsColors.colorPrimary500,
+                          size: AvatarSize.xxl,
+                          shape: AvatarShape.rectangle))));
+
+              expect(find.byType(Avatar), findsOneWidget);
+              expect(
+                tester.widget(find.byType(Avatar)),
+                isA<Avatar>().having(
+                      (t) => t.imageUrl,
+                  'backgroundImage',
+                  bgImage,
+                ),
+              );
+              expect(
+                tester.widget(find.byType(Avatar)),
+                isA<Avatar>().having((t) => t.backgroundColor, 'backgroundColor',
+                    FunDsColors.colorPrimary100),
+              );
+              expect(
+                tester.widget(find.byType(Avatar)),
+                isA<Avatar>().having((t) => t.foregroundColor, 'foregroundColor',
+                    FunDsColors.colorPrimary500),
+              );
+              expect(
+                tester.widget(find.byType(Avatar)),
+                isA<Avatar>().having((t) => t.size, 'size', AvatarSize.xxl),
+              );
+              expect(
+                tester.widget(find.byType(Avatar)),
+                isA<Avatar>()
+                    .having((t) => t.shape, 'shape', AvatarShape.rectangle),
+              );
+            },
+          );
+        },
+  );
+
+  group(
+    'Single avatar with text',
+    () {
+      testWidgets(
+        'Round Avatar with text Amartha Microfinance will be AM',
+            (tester) async {
+          await tester.pumpWidget(
             buildTestableWidget(
-                child: const FunDsAvatar(
-                    backgroundImage: bgImage,
-                    backgroundColor: FunDsColors.colorPrimary100,
-                    foregroundColor: FunDsColors.colorPrimary500,
-                    size: FunDsAvatarSize.xxl,
-                    shape: FunDsAvatarShape.rectangle))));
-
-        expect(find.byType(FunDsAvatar), findsOneWidget);
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having(
-            (t) => t.backgroundImage,
-            'backgroundImage',
-            bgImage,
-          ),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.backgroundColor, 'backgroundColor',
-              FunDsColors.colorPrimary100),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.foregroundColor, 'foregroundColor',
-              FunDsColors.colorPrimary500),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.size, 'size', FunDsAvatarSize.xxl),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>()
-              .having((t) => t.shape, 'shape', FunDsAvatarShape.rectangle),
-        );
-      },
-    );
-
-    testWidgets(
-      'Round FunDsAvatar with initialText AMARTHA will be AM',
-      (tester) async {
-        await tester.pumpWidget(buildTestableWidget(
-            child: const FunDsAvatar(
-                initialText: 'AMARTHA',
-                backgroundColor: FunDsColors.colorPrimary100,
-                foregroundColor: FunDsColors.colorPrimary500,
-                size: FunDsAvatarSize.xxl,
-                shape: FunDsAvatarShape.round)));
-
-        expect(find.byType(FunDsAvatar), findsOneWidget);
-
-        expect(find.text('AM'), findsOneWidget);
-
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.backgroundColor, 'backgroundColor',
-              FunDsColors.colorPrimary100),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.foregroundColor, 'foregroundColor',
-              FunDsColors.colorPrimary500),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.size, 'size', FunDsAvatarSize.xxl),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>()
-              .having((t) => t.shape, 'shape', FunDsAvatarShape.round),
-        );
-      },
-    );
-
-    testWidgets(
-      'Round FunDsAvatar with initialText A will be A',
-      (tester) async {
-        await tester.pumpWidget(buildTestableWidget(
-            child: const FunDsAvatar(
-                initialText: 'A',
-                backgroundColor: FunDsColors.colorPrimary100,
-                foregroundColor: FunDsColors.colorPrimary500,
-                size: FunDsAvatarSize.xxl,
-                shape: FunDsAvatarShape.rectangle)));
-
-        expect(find.byType(FunDsAvatar), findsOneWidget);
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.initialText, 'initialText', 'A'),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.backgroundColor, 'backgroundColor',
-              FunDsColors.colorPrimary100),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.foregroundColor, 'foregroundColor',
-              FunDsColors.colorPrimary500),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>().having((t) => t.size, 'size', FunDsAvatarSize.xxl),
-        );
-        expect(
-          tester.widget(find.byType(FunDsAvatar)),
-          isA<FunDsAvatar>()
-              .having((t) => t.shape, 'shape', FunDsAvatarShape.rectangle),
-        );
-      },
-    );
-
-    testWidgets(
-      'Round FunDsAvatar with icon',
-      (tester) async {
-        await tester.pumpWidget(
-          buildTestableWidget(
-            child: FunDsAvatar(
-              child: SvgPicture.asset(
-                FunDsIconography.iconAvatar,
-              ),
-              size: FunDsAvatarSize.xxs,
-              backgroundColor: FunDsColors.colorNeutral200,
-              shape: FunDsAvatarShape.round,
+              child: const Avatar.text(
+                  avatarText: 'Amartha Microfinance',
+                  backgroundColor: FunDsColors.colorPrimary100,
+                  foregroundColor: FunDsColors.colorPrimary500,
+                  size: AvatarSize.xxl,
+                  shape: AvatarShape.round),
             ),
-          ),
-        );
+          );
 
-        // Find the FunDsAvatar widget
-        final avatarFinder = find.byType(FunDsAvatar);
+          expect(find.byType(Avatar), findsOneWidget);
 
-        // Ensure the widget is present
-        expect(avatarFinder, findsOneWidget);
+          expect(find.text('AM'), findsOneWidget);
 
-        // Verify properties of the FunDsAvatar
-        final FunDsAvatar avatarWidget =
-            tester.widget<FunDsAvatar>(avatarFinder);
-        expect(avatarWidget.size, equals(FunDsAvatarSize.xxs));
-        expect(
-            avatarWidget.backgroundColor, equals(FunDsColors.colorNeutral200));
-        expect(avatarWidget.shape, equals(FunDsAvatarShape.round));
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.backgroundColor, 'backgroundColor',
+                FunDsColors.colorPrimary100),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.foregroundColor, 'foregroundColor',
+                FunDsColors.colorPrimary500),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.size, 'size', AvatarSize.xxl),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.shape, 'shape', AvatarShape.round),
+          );
+        },
+      );
 
-        // Verify the presence of SvgPicture inside FunDsAvatar
-        expect(find.byType(SvgPicture), findsOneWidget);
-      },
-    );
+      testWidgets(
+        'Round Avatar with text Amartha will be A',
+            (tester) async {
+          await tester.pumpWidget(buildTestableWidget(
+              child: const Avatar.text(
+                  avatarText: 'A',
+                  backgroundColor: FunDsColors.colorPrimary100,
+                  foregroundColor: FunDsColors.colorPrimary500,
+                  size: AvatarSize.xxl,
+                  shape: AvatarShape.rectangle)));
 
-    testWidgets(
-      'Rectangle FunDsAvatar with icon',
-      (tester) async {
-        await tester.pumpWidget(
-          buildTestableWidget(
-            child: FunDsAvatar(
-              child: SvgPicture.asset(
-                FunDsIconography.iconAvatar,
-              ),
-              size: FunDsAvatarSize.xxs,
-              backgroundColor: FunDsColors.colorNeutral200,
-              shape: FunDsAvatarShape.rectangle,
-            ),
-          ),
-        );
-
-        // Find the FunDsAvatar widget
-        final avatarFinder = find.byType(FunDsAvatar);
-
-        // Ensure the widget is present
-        expect(avatarFinder, findsOneWidget);
-
-        // Verify properties of the FunDsAvatar
-        final FunDsAvatar avatarWidget =
-            tester.widget<FunDsAvatar>(avatarFinder);
-        expect(avatarWidget.size, equals(FunDsAvatarSize.xxs));
-        expect(
-            avatarWidget.backgroundColor, equals(FunDsColors.colorNeutral200));
-        expect(avatarWidget.shape, equals(FunDsAvatarShape.rectangle));
-
-        // Verify the presence of SvgPicture inside FunDsAvatar
-        expect(find.byType(SvgPicture), findsOneWidget);
-      },
-    );
-  });
+          expect(find.byType(Avatar), findsOneWidget);
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.avatarText, 'avatarText', 'A'),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.backgroundColor, 'backgroundColor',
+                FunDsColors.colorPrimary100),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.foregroundColor, 'foregroundColor',
+                FunDsColors.colorPrimary500),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>().having((t) => t.size, 'size', AvatarSize.xxl),
+          );
+          expect(
+            tester.widget(find.byType(Avatar)),
+            isA<Avatar>()
+                .having((t) => t.shape, 'shape', AvatarShape.rectangle),
+          );
+        },
+      );
+    },
+  );
 }

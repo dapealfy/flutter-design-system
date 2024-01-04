@@ -1,25 +1,40 @@
-/// [FunDsAvatarSize] is used to change the size of FunDsAvatar Widget.
-class FunDsAvatarSize {
-  static const double xxl = 64;
-  static const double xl = 56;
-  static const double large = 48;
+/// [AvatarSize] is used to change the size of FunDsAvatar Widget.
 
-  /// Default size is [FunDsAvatarSize.medium]
-  static const double medium = 40;
+enum AvatarSize {
+  xxs,
+  xs,
+  small,
 
-  static const double small = 32;
-  static const double xs = 24;
-  static const double xxs = 20;
+  /// Default size is [AvatarSize.medium]
+  medium,
+  large,
+  xl,
+  xxl,
+}
 
-  static List<double> getAllFunDsAvatarSize() {
-    return [
-      xxl,
-      xl,
-      large,
-      medium,
-      small,
-      xs,
-      xxs,
-    ];
+extension AvatarSizeExtension on AvatarSize {
+  double get value {
+    switch (this) {
+      case AvatarSize.xxs:
+        return 20.0;
+      case AvatarSize.xs:
+        return 24.0;
+      case AvatarSize.small:
+        return 32.0;
+      case AvatarSize.medium:
+        return 40.0;
+      case AvatarSize.large:
+        return 48.0;
+      case AvatarSize.xl:
+        return 56.0;
+      case AvatarSize.xxl:
+        return 64.0;
+      default:
+        return 40.0;
+    }
+  }
+
+  static List<AvatarSize> getAllAvatarSize() {
+    return AvatarSize.values.map((size) => size).toList();
   }
 }

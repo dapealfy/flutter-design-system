@@ -217,7 +217,7 @@ class FunDsIconography {
       'packages/flutter_design_system/assets/icons/transaction/ic_wallet.svg';
   static const String transactionIcWithdraw =
       'packages/flutter_design_system/assets/icons/transaction/ic_withdraw.svg';
-  static const String iconAvatar =
+  static const String icAvatar =
       'packages/flutter_design_system/assets/icons/icon_avatar.svg';
 
   static List<String> getAllIcons() {
@@ -330,7 +330,7 @@ class FunDsIconography {
       transactionIcRefreshMoney2,
       transactionIcWallet,
       transactionIcWithdraw,
-      iconAvatar
+      icAvatar
     ];
   }
 }
