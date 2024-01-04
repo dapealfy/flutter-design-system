@@ -72,9 +72,24 @@ class BottomSheetCatalog extends StatelessWidget {
               variant: FunDsButtonVariant.primary,
               onPressed: () {
                 FunDsCustomBottomSheet.showBottomSheet(
-                  context: context,
-                  child: const Text('Ini bisa diisi widget apapun'),
-                );
+                    context: context,
+                    child: ListView.separated(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: const Text('Ini bisa diisi widget apapun'),
+                          subtitle: Text('data ke ${index + 1}'),
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return const Divider(
+                          color: FunDsColors.colorNeutral500,
+                        );
+                      },
+                    ));
               },
             )
           ],

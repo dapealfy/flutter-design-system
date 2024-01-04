@@ -40,7 +40,6 @@ class FunDsCustomBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      key: key,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,8 +74,11 @@ class FunDsCustomBottomSheet extends StatelessWidget {
                 vertical: 12.h,
                 horizontal: 20.w,
               ),
-              child: child,
-            )
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: 500.h),
+                child: child,
+              ),
+            ),
           ],
         ),
       ],
