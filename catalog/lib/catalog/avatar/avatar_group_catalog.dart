@@ -5,6 +5,27 @@ import 'package:flutter_design_system/funds.dart';
 class GroupAvatarCatalog extends StatelessWidget {
   const GroupAvatarCatalog({super.key});
 
+  /*
+  /// Create Avatar Group.
+        GroupAvatar(
+          maxLength: 4,
+          itemCount: listAvatar.length,
+          itemBuilder: (context, index) {
+            return Avatar.asset(
+              imagePath: listAvatar[index],
+              size: AvatarSize.xxl,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: AvatarShape.round,
+              border: Border.all(
+                color: FunDsColors.colorWhite,
+                width: 2,
+              ),
+            );
+          },
+        ),
+   */
+
   @override
   Widget build(BuildContext context) {
     return CatalogPage(
@@ -97,34 +118,20 @@ class GroupAvatarCatalog extends StatelessWidget {
           child: Text('Image Avatar', style: FunDsTypography.heading16),
         ),
         GroupAvatar(
+          maxLength: 4,
           itemCount: listAvatar.length,
           itemBuilder: (context, index) {
-            if (index >= 4) {
-              return Avatar(
-                avatarText:
-                    '+${(listAvatar.length - 4 > 9) ? 9 : listAvatar.length - 4}',
-                size: AvatarSize.xxl,
-                backgroundColor: FunDsColors.colorPrimary100,
-                foregroundColor: FunDsColors.colorPrimary500,
-                shape: AvatarShape.round,
-                border: Border.all(
-                  color: FunDsColors.colorWhite,
-                  width: 2,
-                ),
-              );
-            } else {
-              return Avatar(
-                imagePath: listAvatar[index],
-                size: AvatarSize.xxl,
-                backgroundColor: FunDsColors.colorPrimary100,
-                foregroundColor: FunDsColors.colorPrimary500,
-                shape: AvatarShape.round,
-                border: Border.all(
-                  color: FunDsColors.colorWhite,
-                  width: 2,
-                ),
-              );
-            }
+            return Avatar.asset(
+              imagePath: listAvatar[index],
+              size: AvatarSize.xxl,
+              backgroundColor: FunDsColors.colorPrimary100,
+              foregroundColor: FunDsColors.colorPrimary500,
+              shape: AvatarShape.round,
+              border: Border.all(
+                color: FunDsColors.colorWhite,
+                width: 2,
+              ),
+            );
           },
         ),
       ],
