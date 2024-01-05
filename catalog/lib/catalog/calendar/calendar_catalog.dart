@@ -8,7 +8,7 @@ Widget name: FunDsCalendar
 
 How to Use:
 
-FunDsCalendar.showSheet(
+Calendar.showSheet(
   context,
   titleText: 'Pilih Tanggal',
   minDate: DateTime(2021, 12, 1),
@@ -54,7 +54,7 @@ class CalendarCatalog extends StatelessWidget {
             variant: FunDsButtonVariant.primary,
             text: 'Show',
             onPressed: () {
-              FunDsCalendar.showSheet(
+              Calendar.showSheet(
                 context,
                 titleText: titleText,
                 minDate: DateTime(2000, 12, 1),

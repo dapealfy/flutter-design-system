@@ -8,10 +8,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 typedef Range = ({int start, int end});
 
-class FunDsCalendar extends StatefulWidget {
+class Calendar extends StatefulWidget {
   static final itemExtent = 48.h;
 
-  const FunDsCalendar({
+  const Calendar({
     super.key,
     this.titleText,
     required this.initialDate,
@@ -66,7 +66,7 @@ class FunDsCalendar extends StatefulWidget {
       ),
       builder: (context) {
         return SafeArea(
-          child: FunDsCalendar(
+          child: Calendar(
             titleText: titleText,
             initialDate: initialDate,
             minDate: minDate,
@@ -85,10 +85,10 @@ class FunDsCalendar extends StatefulWidget {
   }
 
   @override
-  State<FunDsCalendar> createState() => _FunDsCalendarState();
+  State<Calendar> createState() => _CalendarState();
 }
 
-class _FunDsCalendarState extends State<FunDsCalendar> {
+class _CalendarState extends State<Calendar> {
   DateTime get effectiveMinDate => widget.minDate ?? DateTime(1950, 1, 1);
 
   // Month 13 day 0 means last day of the month 12
@@ -319,7 +319,7 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
               ),
               SizedBox(height: 20.h),
               SizedBox(
-                height: FunDsCalendar.itemExtent * 5,
+                height: Calendar.itemExtent * 5,
                 child: Row(
                   children: [
                     Expanded(
@@ -340,7 +340,7 @@ class _FunDsCalendarState extends State<FunDsCalendar> {
                     ? CrossFadeState.showFirst
                     : CrossFadeState.showSecond,
                 firstChild: const SizedBox(),
-                secondChild: FunDsTicker(
+                secondChild: Ticker(
                   key: const Key('calendar-error'),
                   child: Text(
                     errorText ?? '',
@@ -408,7 +408,7 @@ class _CalendarList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListWheelScrollView(
-      itemExtent: FunDsCalendar.itemExtent,
+      itemExtent: Calendar.itemExtent,
       diameterRatio: 10,
       controller: controller,
       physics: const FixedExtentScrollPhysics(),

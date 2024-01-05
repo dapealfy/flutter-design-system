@@ -12,8 +12,8 @@ enum FunDsTickerType {
   danger,
 }
 
-class FunDsTicker extends StatelessWidget {
-  const FunDsTicker({
+class Ticker extends StatelessWidget {
+  const Ticker({
     Key? key,
     required this.child,
     required this.type,
