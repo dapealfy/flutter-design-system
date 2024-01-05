@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide TextField;
+import 'package:flutter/material.dart' as m;
 import 'package:flutter/services.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_design_system/src/utils/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FunDsTextField extends StatefulWidget {
+class TextField extends StatefulWidget {
   /// Will be displayed above the text field
   final String? labelText;
 
@@ -96,7 +97,7 @@ class FunDsTextField extends StatefulWidget {
   /// [rightIcon1], [rightIcon2]
   final bool useColorFilterForDisabled;
 
-  const FunDsTextField({
+  const TextField({
     Key? key,
     this.labelText,
     this.label,
@@ -129,10 +130,10 @@ class FunDsTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<FunDsTextField> createState() => _FunDsTextFieldState();
+  State<TextField> createState() => _TextFieldState();
 }
 
-class _FunDsTextFieldState extends State<FunDsTextField> {
+class _TextFieldState extends State<TextField> {
   FocusNode? _focusNode;
   FunDsTextController? _controller;
 
@@ -339,7 +340,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
                         vertical: 6.h,
                         horizontal: 8.w,
                       ),
-                      child: TextField(
+                      child: m.TextField(
                         key: const Key('textField'),
                         obscureText: widget.obscureText,
                         onChanged: _handleOnChange,
