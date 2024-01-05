@@ -345,7 +345,7 @@ class _CalendarState extends State<Calendar> {
                   child: Text(
                     errorText ?? '',
                   ),
-                  type: FunDsTickerType.danger,
+                  type: TickerType.danger,
                   funDsIconography: FunDsIconography.infoIcWarning,
                 ),
               ),

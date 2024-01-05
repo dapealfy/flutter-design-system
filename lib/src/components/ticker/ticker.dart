@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /// Ticker component
 /// https://www.figma.com/file/VWK8ra7NhxzTW9iY4MQ9KG/FunDS---Component-Library?type=design&node-id=6811-49888&mode=design&t=QYete7CRUJnPg0fx-0
 
-enum FunDsTickerType {
+enum TickerType {
   info,
   success,
   warning,
@@ -21,7 +21,7 @@ class Ticker extends StatelessWidget {
     this.funDsIconography,
   }) : super(key: key);
 
-  final FunDsTickerType type;
+  final TickerType type;
   final Widget? iconWidget;
   final String? funDsIconography;
   final Widget child;
@@ -29,24 +29,24 @@ class Ticker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgroundColor = switch (type) {
-      FunDsTickerType.danger => FunDsColors.colorRed50,
-      FunDsTickerType.info => FunDsColors.colorBlue50,
-      FunDsTickerType.success => FunDsColors.colorGreen50,
-      FunDsTickerType.warning => FunDsColors.colorOrange50,
+      TickerType.danger => FunDsColors.colorRed50,
+      TickerType.info => FunDsColors.colorBlue50,
+      TickerType.success => FunDsColors.colorGreen50,
+      TickerType.warning => FunDsColors.colorOrange50,
     };
 
     final borderColor = switch (type) {
-      FunDsTickerType.danger => FunDsColors.colorRed500,
-      FunDsTickerType.info => FunDsColors.colorBlue600,
-      FunDsTickerType.success => FunDsColors.colorGreen500,
-      FunDsTickerType.warning => FunDsColors.colorOrange600,
+      TickerType.danger => FunDsColors.colorRed500,
+      TickerType.info => FunDsColors.colorBlue600,
+      TickerType.success => FunDsColors.colorGreen500,
+      TickerType.warning => FunDsColors.colorOrange600,
     };
 
     final defaultIcon = switch (type) {
-      FunDsTickerType.danger => FunDsIconography.actionIcTrashCan,
-      FunDsTickerType.info => FunDsIconography.infoIcInformation,
-      FunDsTickerType.success => FunDsIconography.actionIcCheckCircle,
-      FunDsTickerType.warning => FunDsIconography.infoIcWarning,
+      TickerType.danger => FunDsIconography.actionIcTrashCan,
+      TickerType.info => FunDsIconography.infoIcInformation,
+      TickerType.success => FunDsIconography.actionIcCheckCircle,
+      TickerType.warning => FunDsIconography.infoIcWarning,
     };
 
     return Container(
