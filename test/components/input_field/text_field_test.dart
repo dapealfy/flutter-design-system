@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/src/components/input_field/funds_text_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_design_system/src/components/input_field/text_field.dart';
-
+import 'package:flutter_design_system/funds.dart' as funds;
 import '../../utils/test_utils.dart';
 
 void main() {
@@ -14,7 +12,7 @@ void main() {
       var userInputDebounced = '';
       await tester.pumpWidget(
         buildTestableWidget(
-          child: FunDsTextField(
+          child: funds.TextField(
             labelText: 'Test Label',
             descriptionText: 'Test Description',
             hintText: 'Test Hint',
@@ -61,11 +59,11 @@ void main() {
   testWidgets(
     'FunDsTextField custom prefix, suffix, icon show correctly',
     (tester) async {
-      final controller = FunDsTextController(text: 'Initial Value');
+      final controller = funds.FunDsTextController(text: 'Initial Value');
 
       await tester.pumpWidget(
         buildTestableWidget(
-          child: FunDsTextField(
+          child: funds.TextField(
             label: const Text('Test Label'),
             description: const Text('Test Description'),
             hintText: 'Test Hint',
@@ -98,11 +96,11 @@ void main() {
   testWidgets(
     'FunDsTextField disable cannot be edited',
     (tester) async {
-      final controller = FunDsTextController(text: 'Initial Value');
+      final controller = funds.FunDsTextController(text: 'Initial Value');
 
       await tester.pumpWidget(
         buildTestableWidget(
-          child: FunDsTextField(
+          child: funds.TextField(
             labelText: 'Test Label',
             descriptionText: 'Test Description',
             hintText: 'Test Hint',
@@ -126,7 +124,7 @@ void main() {
 }
 
 extension FunDsTextFieldFinder on CommonFinders {
-  Finder findFunDsTextField() => find.byType(FunDsTextField);
+  Finder findFunDsTextField() => find.byType(TextField);
   Finder findPrefix() => find.byKey(const Key('prefix'));
   Finder findSuffix1() => find.byKey(const Key('suffix1'));
   Finder findSuffix2() => find.byKey(const Key('suffix2'));

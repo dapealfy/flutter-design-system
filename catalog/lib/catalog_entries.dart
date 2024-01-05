@@ -1,6 +1,8 @@
 import 'package:catalog/catalog/atoms/a_icon_catalog.dart';
 import 'package:catalog/catalog/button/button_catalog.dart';
 import 'package:catalog/catalog/button/group_button_catalog.dart';
+import 'package:catalog/catalog/button/radio_button_catalog.dart';
+import 'package:catalog/catalog/calendar/calendar_catalog.dart';
 import 'package:catalog/catalog/bottom_sheet/bottom_sheet_catalog.dart';
 import 'package:catalog/catalog/example/example_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
@@ -41,6 +43,15 @@ final entries = [
   Entry(
     name: 'Button/Group Button',
     builder: (context) => const GroupButtonCatalog(),
+  ),
+  Entry(
+    name: 'Button/Radio Button',
+    builder: (context) => const RadioButtonCatalog(),
+  ),
+
+  Entry(
+    name: 'Calendar/Calendar',
+    builder: (context) => const CalendarCatalog(),
   ),
 
   Entry(
