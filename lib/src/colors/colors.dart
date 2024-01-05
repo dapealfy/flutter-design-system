@@ -8,8 +8,8 @@ class FunDsColors {
   /// secondary/option CTA (border only/nude),
   /// primary control (radio button, checkboxes, stepper, progress bar, etc).
 
-  static Color get colorPrimary => colorPrimary500;
-  static Color get colorPrimaryLight => colorPrimary200;
+  static const Color colorPrimary = colorPrimary500;
+  static const Color colorPrimaryLight = colorPrimary200;
 
   static const Color colorPrimary100 = Color(0xFFFEF3FF);
   static const Color colorPrimary200 = Color(0xFFE5B8EF);
