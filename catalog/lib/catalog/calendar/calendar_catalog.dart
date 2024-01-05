@@ -4,7 +4,7 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 const _calendarDescription = '''
-Widget name: FunDsCalendar
+Widget name: Calendar
 
 How to Use:
 
