@@ -4,10 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 class FunDsIcon extends StatelessWidget {
   final String funDsIconography;
   final double size;
+  final Color? color;
 
-  const FunDsIcon(
-      {Key? key, required this.funDsIconography, required this.size})
-      : super(key: key);
+  const FunDsIcon({
+    Key? key,
+    required this.funDsIconography,
+    required this.size,
+    this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +19,12 @@ class FunDsIcon extends StatelessWidget {
       funDsIconography,
       width: size,
       height: size,
+      colorFilter: color != null
+          ? ColorFilter.mode(
+              color!,
+              BlendMode.srcIn,
+            )
+          : null,
     );
   }
 }
