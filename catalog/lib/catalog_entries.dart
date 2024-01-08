@@ -1,4 +1,6 @@
-import 'package:catalog/catalog/atoms/a_icon_catalog.dart';
+import 'package:catalog/catalog/avatar/avatar_catalog.dart';
+import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
+import 'package:catalog/catalog/foundation/icon_catalog.dart';
 import 'package:catalog/catalog/button/button_catalog.dart';
 import 'package:catalog/catalog/button/group_button_catalog.dart';
 import 'package:catalog/catalog/button/radio_button_catalog.dart';
@@ -28,6 +30,16 @@ final entries = [
   Entry(
     name: 'Foundation/Icon',
     builder: (context) => const AIconCatalog(),
+  ),
+
+  Entry(
+    name: 'Avatar/Single Avatar',
+    builder: (context) => const SingleAvatarCatalog(),
+  ),
+
+  Entry(
+    name: 'Avatar/Group Avatar',
+    builder: (context) => const GroupAvatarCatalog(),
   ),
 
   Entry(

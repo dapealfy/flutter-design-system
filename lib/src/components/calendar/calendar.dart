@@ -299,7 +299,7 @@ class _CalendarState extends State<Calendar> {
                     onTap: () {
                       widget.onCancel();
                     },
-                    child: const AIcon(
+                    child: const FunDsIcon(
                       key: Key('calendar-close'),
                       funDsIconography: FunDsIconography.actionIcCrossNude,
                       size: 24,

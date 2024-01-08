@@ -1,4 +1,6 @@
-export 'atoms/atoms.dart';
+export 'avatar/avatar.dart';
+export 'avatar/group_avatar.dart';
+export 'icon/icon.dart';
 export 'button/button.dart';
 export 'button/group_button.dart';
 export 'button/radio_button.dart';

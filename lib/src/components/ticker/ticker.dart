@@ -62,7 +62,7 @@ class Ticker extends StatelessWidget {
       child: Row(
         children: [
           iconWidget ??
-              AIcon(
+              FunDsIcon(
                 funDsIconography: funDsIconography ?? defaultIcon,
                 size: 24.w,
                 color: borderColor,

@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class AIcon extends StatelessWidget {
+class FunDsIcon extends StatelessWidget {
   final String funDsIconography;
   final double size;
   final Color? color;
 
-  const AIcon({
+  const FunDsIcon({
     Key? key,
     required this.funDsIconography,
     required this.size,
