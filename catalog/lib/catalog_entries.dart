@@ -4,6 +4,7 @@ import 'package:catalog/catalog/foundation/icon_catalog.dart';
 import 'package:catalog/catalog/button/button_catalog.dart';
 import 'package:catalog/catalog/button/group_button_catalog.dart';
 import 'package:catalog/catalog/button/radio_button_catalog.dart';
+import 'package:catalog/catalog/calendar/calendar_catalog.dart';
 import 'package:catalog/catalog/example/example_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
@@ -57,6 +58,11 @@ final entries = [
   Entry(
     name: 'Button/Radio Button',
     builder: (context) => const RadioButtonCatalog(),
+  ),
+
+  Entry(
+    name: 'Calendar/Calendar',
+    builder: (context) => const CalendarCatalog(),
   ),
 
   // Example
