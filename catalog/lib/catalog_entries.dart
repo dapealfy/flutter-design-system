@@ -1,5 +1,6 @@
 import 'package:catalog/catalog/avatar/avatar_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
+import 'package:catalog/catalog/control/slider_catalog.dart';
 import 'package:catalog/catalog/foundation/icon_catalog.dart';
 import 'package:catalog/catalog/button/button_catalog.dart';
 import 'package:catalog/catalog/button/group_button_catalog.dart';
@@ -69,6 +70,11 @@ final entries = [
   Entry(
     name: 'Calendar/Calendar',
     builder: (context) => const CalendarCatalog(),
+  ),
+
+  Entry(
+    name: 'Control/Slider',
+    builder: (context) => const SliderCatalog(),
   ),
 
   Entry(

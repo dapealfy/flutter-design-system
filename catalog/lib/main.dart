@@ -16,46 +16,49 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AuthPage(
-      child: Storybook(
-        initialStory: 'Home',
-        stories: buildStory(entries),
-        wrapperBuilder: (context, child) {
-          // Bulder is needed to initialize ScreenUtil
-          // Otherwise it will get wrong MediaQuery
-          return Builder(
-            builder: (context) {
-              ScreenUtil.init(
-                context,
-                minTextAdapt: true,
-                designSize: const Size(360, 640),
-                splitScreenMode: false,
-              );
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Storybook(
+          initialStory: 'Home',
+          stories: buildStory(entries),
+          wrapperBuilder: (context, child) {
+            // Bulder is needed to initialize ScreenUtil
+            // Otherwise it will get wrong MediaQuery
+            return Builder(
+              builder: (context) {
+                ScreenUtil.init(
+                  context,
+                  minTextAdapt: true,
+                  designSize: const Size(360, 640),
+                  splitScreenMode: false,
+                );
 
-              return MaterialApp(
-                theme: ThemeData.light(),
-                darkTheme: ThemeData.dark(),
-                debugShowCheckedModeBanner: false,
-                home: Scaffold(
-                  body: Center(
-                    child: child,
+                return MaterialApp(
+                  theme: ThemeData.light(),
+                  darkTheme: ThemeData.dark(),
+                  themeMode: ThemeMode.light,
+                  debugShowCheckedModeBanner: false,
+                  home: Scaffold(
+                    body: Center(
+                      child: child,
+                    ),
                   ),
-                ),
-              );
-            },
-          );
-        },
-        plugins: [
-          ThemeModePlugin(initialTheme: ThemeMode.light),
-          kIsWeb
-              ? DeviceFramePlugin(
-                  initialData: (
-                    isFrameVisible: true,
-                    device: Devices.android.samsungGalaxyS20,
-                    orientation: Orientation.portrait,
-                  ),
-                )
-              : DeviceFramePlugin(),
-        ],
+                );
+              },
+            );
+          },
+          plugins: [
+            kIsWeb
+                ? DeviceFramePlugin(
+                    initialData: (
+                      isFrameVisible: true,
+                      device: Devices.android.samsungGalaxyS20,
+                      orientation: Orientation.portrait,
+                    ),
+                  )
+                : DeviceFramePlugin(),
+          ],
+        ),
       ),
     );
   }
