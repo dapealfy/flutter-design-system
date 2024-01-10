@@ -6,13 +6,11 @@ class CatalogPage extends StatefulWidget {
     super.key,
     required this.title,
     this.description,
-    this.disableScrollview = false,
     required this.child,
   });
 
   final String title;
   final String? description;
-  final bool disableScrollview;
   final Widget child;
 
   @override
@@ -36,42 +34,50 @@ class _CatalogPageState extends State<CatalogPage> {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
-            if (widget.description != null)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(
-                      widget.description!,
-                      maxLines: _isSeeMoreDesc ? null : 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          _isSeeMoreDesc = !_isSeeMoreDesc;
-                        });
-                      },
-                      child: Text(
-                        _isSeeMoreDesc ? 'See Less' : 'See More',
-                        style: FunDsTypography.body12.copyWith(
-                          color: FunDsColors.colorBlue600,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 8),
             Expanded(
-              child: widget.disableScrollview
-                  ? widget.child
-                  : SingleChildScrollView(child: widget.child),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (widget.description != null)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
+                              widget.description!,
+                              maxLines: _isSeeMoreDesc ? null : 3,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  _isSeeMoreDesc = !_isSeeMoreDesc;
+                                });
+                              },
+                              child: Text(
+                                _isSeeMoreDesc ? 'See Less' : 'See More',
+                                style: FunDsTypography.body12.copyWith(
+                                  color: FunDsColors.colorBlue600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    const SizedBox(height: 32),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: widget.child,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
