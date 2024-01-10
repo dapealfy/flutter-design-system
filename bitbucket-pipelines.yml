@@ -16,7 +16,7 @@ definitions:
         script:
           - cd catalog
           - flutter pub get
-          - flutter build web --release
+          - flutter build web --release --web-renderer canvaskit
         artifacts:
           - catalog/build/web/**
 
