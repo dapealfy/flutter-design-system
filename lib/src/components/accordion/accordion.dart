@@ -20,8 +20,8 @@ class Accordion extends StatefulWidget {
     super.key,
     required this.title,
     required this.description,
-    required this.isLoading,
-    required this.isExpanded,
+    this.isLoading = false,
+    this.isExpanded = false,
   });
 
   @override
@@ -34,8 +34,7 @@ class _AccordionState extends State<Accordion>
 
   late AnimationController _animationController;
   late Animation<double> _iconTurns;
-
-  AccordionState state = AccordionState.collapse;
+  late AccordionState state;
 
   @override
   void initState() {
@@ -45,13 +44,14 @@ class _AccordionState extends State<Accordion>
     _iconTurns = _animationController.drive(Tween<double>(begin: 0.0, end: 0.5)
         .chain(CurveTween(curve: Curves.easeIn)));
 
-    setState(() {
-      if (widget.isLoading) {
-        state = AccordionState.skeleton;
-      } else if (widget.isExpanded) {
-        state = AccordionState.expand;
-      }
-    });
+    if (widget.isLoading) {
+      state = AccordionState.skeleton;
+    } else if (widget.isExpanded) {
+      state = AccordionState.expand;
+    } else {
+      state = AccordionState.collapse;
+    }
+    setState(() {});
   }
 
   @override
@@ -76,6 +76,7 @@ class _AccordionState extends State<Accordion>
       onExpansionChanged: _onExpansionChanged,
       iconColor: FunDsColors.colorNeutral600,
       initiallyExpanded: state == AccordionState.expand,
+      children: [ListTile(title: Text('adadad'))],
       trailing: RotationTransition(
         turns: _iconTurns,
         child: Icon(
@@ -99,9 +100,7 @@ class _AccordionState extends State<Accordion>
         if (!mounted) {
           return;
         }
-        setState(() {
-          // Rebuild without widget.children.
-        });
+        setState(() {});
       });
     }
   }
