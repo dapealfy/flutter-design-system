@@ -52,7 +52,7 @@ final entries = [
     builder: (context) => const GroupAvatarCatalog(),
   ),
 
-  Entry(name: 'Accordion', builder: (context) => const AccordionCatalog()),
+  Entry(name: 'Accordion/Accordion', builder: (context) => const AccordionCatalog()),
 
   Entry(
     name: 'Input Field/Text Field',
