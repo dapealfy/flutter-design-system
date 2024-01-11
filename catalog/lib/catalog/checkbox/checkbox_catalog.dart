@@ -15,7 +15,6 @@ class _CheckboxCatalogState extends State<CheckboxCatalog> {
 
   @override
   Widget build(BuildContext context) {
-
     final variant = context.knobs.options<FunDsCheckboxVariant>(
       label: 'FunDsCheckboxVariant',
       description: 'Pick one variant',
@@ -29,38 +28,57 @@ class _CheckboxCatalogState extends State<CheckboxCatalog> {
       ],
     );
 
+    final rightCheckbox = context.knobs.boolean(
+      label: 'Right Checkbox',
+      description: 'change value to use right checkbox',
+      initial: false,
+    );
+
+    final tristate = context.knobs.boolean(
+      label: 'Tristate (-)',
+      description: 'change value to use - value when checkbox',
+      initial: false,
+    );
+
     return CatalogPage(
       title: 'Checkbox',
       description: 'Widget name: FunDsCheckbox',
       child: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FunDsCheckbox(
               key: const Key('cb_primary'),
               variant: variant,
               defaultValue: true,
-              onChanged: (value){},
+              rightCheckbox: rightCheckbox,
+              tristate: tristate,
+              onChanged: (value) {},
             ),
             FunDsCheckbox(
               key: const Key('cb_primary_label'),
               variant: variant,
-              label: 'Label',
+              title: 'Label',
               defaultValue: true,
-              onChanged: (value){},
+              rightCheckbox: rightCheckbox,
+              tristate: tristate,
+              onChanged: (value) {},
             ),
             FunDsCheckbox(
               key: const Key('cb_primary_label_desc'),
               variant: variant,
-              label: 'Label',
-              desc: 'Desc',
+              title: 'Label',
+              subtitle:
+                  'Desc auhdaw khdak akjshduawhd kajsn djahndkjahnwdjna sjndkadnajkndawuhdkaj  ashdua hdakjhdka shdkahw dkahduiagh ksgagd jak',
               defaultValue: true,
-              onChanged: (value){},
+              rightCheckbox: rightCheckbox,
+              tristate: tristate,
+              onChanged: (value) {},
             ),
           ],
         ),
       ),
     );
   }
-
 }
