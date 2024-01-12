@@ -96,7 +96,7 @@ class Badge extends StatelessWidget {
 
     if (count != null) {
       return Text(
-        count > maxCount ? '$maxCount+' : '$count',
+        count > maxCount ? '$maxCount' : '$count',
         textAlign: TextAlign.center,
         style: textStyle,
       );

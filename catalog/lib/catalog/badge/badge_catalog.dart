@@ -166,12 +166,6 @@ class BadgeCatalog extends StatelessWidget {
                 funds.Badge.circled(
                   badgeStatus: funds.BadgeStatus.alert,
                   inverted: false,
-                  count: 99,
-                ),
-                const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.alert,
-                  inverted: false,
                   count: 100,
                 ),
               ],

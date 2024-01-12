@@ -331,7 +331,7 @@ void main() {
     );
 
     testWidgets(
-      'Badge Circled with count 100 will show 99+ Alert show correctly',
+      'Badge Circled with count 100 will show 99 Alert show correctly',
           (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
@@ -344,7 +344,7 @@ void main() {
         );
 
         expect(find.byType(funds.Badge), findsOneWidget);
-        expect(find.text('99+'), findsOneWidget);
+        expect(find.text('99'), findsOneWidget);
 
         // Find the Container widget using a predicate.
         final Finder containerFinder = find.byWidgetPredicate(
