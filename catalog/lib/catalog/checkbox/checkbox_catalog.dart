@@ -44,7 +44,7 @@ class _CheckboxCatalogState extends State<CheckboxCatalog> {
       title: 'Checkbox',
       description: 'Widget name: FunDsCheckbox',
       child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
