@@ -12,3 +12,4 @@ export 'input_field/text_area.dart';
 export 'calendar/calendar.dart';
 export 'ticker/ticker.dart';
 export 'control/slider.dart';
+export 'checkbox/checkbox.dart';
