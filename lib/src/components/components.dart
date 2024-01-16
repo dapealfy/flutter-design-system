@@ -1,5 +1,6 @@
 export 'avatar/avatar.dart';
 export 'avatar/group_avatar.dart';
+export 'badge/badge.dart';
 export 'icon/icon.dart';
 export 'button/button.dart';
 export 'button/group_button.dart';
@@ -12,4 +13,5 @@ export 'input_field/text_area.dart';
 export 'calendar/calendar.dart';
 export 'ticker/ticker.dart';
 export 'control/slider.dart';
+export 'checkbox/checkbox.dart';
 export 'loader/loader.dart';
