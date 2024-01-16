@@ -12,6 +12,7 @@ import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
 import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
+import 'package:catalog/catalog/loader/loader_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
 import 'package:catalog/core/home_catalog.dart';
 
@@ -80,6 +81,11 @@ final entries = [
   Entry(
     name: 'Bottom Sheet & Dialog/Bottom Sheet',
     builder: (context) => const BottomSheetCatalog(),
+  ),
+
+  Entry(
+    name: 'Loader/Spinner Loader',
+    builder: (context) => const LoaderCatalog(),
   ),
 
   // Example
