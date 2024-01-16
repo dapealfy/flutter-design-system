@@ -1,4 +1,5 @@
 import 'package:catalog/accordion/accordion.dart';
+import 'package:catalog/catalog/accordion/group_accordion_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
@@ -52,8 +53,12 @@ final entries = [
     builder: (context) => const GroupAvatarCatalog(),
   ),
 
-  Entry(name: 'Accordion/Accordion', builder: (context) => const AccordionCatalog()),
-
+  Entry(
+      name: 'Accordion/Accordion',
+      builder: (context) => const AccordionCatalog()),
+  Entry(
+      name: 'Accordion/Group Accordion',
+      builder: (context) => const GroupAccordionCatalog()),
   Entry(
     name: 'Input Field/Text Field',
     builder: (context) => const TextFieldCatalog(),

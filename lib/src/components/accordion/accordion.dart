@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum AccordionState { skeleton, collapse, expand }
-
 /// collapsible tile with fancy loading state
 class Accordion extends StatefulWidget {
   /// set title, max 2 lines
@@ -12,9 +10,11 @@ class Accordion extends StatefulWidget {
 
   /// Show loading state / skeleton
   final bool isLoading;
-
-  /// Ignored if [Accordion.isLoading] is true
   final bool isExpanded;
+
+  final Function(bool)? onExpansionChanged;
+
+  final ExpansionTileController? controller;
 
   const Accordion({
     super.key,
@@ -22,6 +22,8 @@ class Accordion extends StatefulWidget {
     required this.description,
     this.isLoading = false,
     this.isExpanded = false,
+    this.onExpansionChanged,
+    this.controller,
   });
 
   @override
@@ -29,12 +31,11 @@ class Accordion extends StatefulWidget {
 }
 
 class _AccordionState extends State<Accordion>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver  {
   final _expandDuration = const Duration(milliseconds: 200);
 
   late AnimationController _animationController;
   late Animation<double> _iconTurns;
-  late AccordionState state;
 
   final Animatable<double> _easeInTween = CurveTween(curve: Curves.easeIn);
   final Animatable<double> _halfTween = Tween<double>(begin: 0.0, end: 0.5);
@@ -42,19 +43,23 @@ class _AccordionState extends State<Accordion>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    debugPrint("[LOG] _AccordionState : ${widget.key} ");
     _animationController =
         AnimationController(duration: _expandDuration, vsync: this);
     _iconTurns = _animationController.drive(_halfTween.chain(_easeInTween));
 
-    if (widget.isLoading) {
-      state = AccordionState.skeleton;
-    } else if (widget.isExpanded) {
-      state = AccordionState.expand;
+    if (widget.isExpanded) {
       _animationController.value = 1;
-    } else {
-      state = AccordionState.collapse;
     }
     setState(() {});
+  }
+
+  @override
+  void didUpdateWidget(covariant Accordion oldWidget) {
+    // TODO: implement didUpdateWidget
+    debugPrint("[LOG DidUpdate] [BEFORE] _AccordionState : ${widget.key}, isExpanded: ${widget.isExpanded} ");
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -84,17 +89,31 @@ class _AccordionState extends State<Accordion>
         iconColor: FunDsColors.colorNeutral600,
         expandedAlignment: Alignment.topLeft,
         shape: const Border(),
+        controller: widget.controller,
         collapsedShape: const Border(),
-        initiallyExpanded: state == AccordionState.expand,
+        initiallyExpanded: widget.isExpanded,
         children: [
-          Text(
-            widget.description,
-            textAlign: TextAlign.start,
-            style: FunDsTypography.body12.copyWith(
-                color: FunDsColors.colorNeutral600,
-                fontWeight: FontWeight.w400),
-          ),
-          SizedBox(height: 16.h)
+          InkWell(
+            onTap: () {
+              if (widget.controller?.isExpanded == true) {
+                widget.controller?.collapse();
+              } else {
+                widget.controller?.expand();
+              }
+            },
+            child: Column(
+              children: [
+                Text(
+                  widget.description,
+                  textAlign: TextAlign.start,
+                  style: FunDsTypography.body12.copyWith(
+                      color: FunDsColors.colorNeutral600,
+                      fontWeight: FontWeight.w400),
+                ),
+                SizedBox(height: 16.h)
+              ],
+            ),
+          )
         ],
         trailing: RotationTransition(
           turns: _iconTurns,
@@ -108,6 +127,7 @@ class _AccordionState extends State<Accordion>
   }
 
   void _onExpansionChanged(bool isExpanded) {
+    widget.onExpansionChanged?.call(isExpanded);
     if (isExpanded) {
       _animationController.forward();
     } else {
@@ -115,8 +135,8 @@ class _AccordionState extends State<Accordion>
         if (!mounted) {
           return;
         }
-        setState(() {});
       });
     }
+    setState(() {});
   }
 }
