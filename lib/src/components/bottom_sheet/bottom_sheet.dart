@@ -144,8 +144,11 @@ class FunDsBottomSheet extends StatelessWidget {
               desc,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
-              style: FunDsTypography.body14
-                  .copyWith(color: FunDsColors.colorNeutral600),
+              textAlign: TextAlign.center,
+              style: FunDsTypography.body14.copyWith(
+                  color: FunDsColors.colorNeutral600,
+                  height: 1.5,
+                  fontWeight: FontWeight.w500),
             ),
           ],
         ),
@@ -154,36 +157,47 @@ class FunDsBottomSheet extends StatelessWidget {
       return Column(
         children: [
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(bottom: 8.h),
-                child: Text(
-                  title,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: FunDsTypography.heading20
-                      .copyWith(color: FunDsColors.colorNeutral900),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    title,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    textAlign: TextAlign.left,
+                    style: FunDsTypography.heading20
+                        .copyWith(color: FunDsColors.colorNeutral900),
+                  ),
                 ),
               ),
-              Text(
-                desc,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: FunDsTypography.body14
-                    .copyWith(color: FunDsColors.colorNeutral600),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  desc,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.left,
+                  style: FunDsTypography.body14.copyWith(
+                      color: FunDsColors.colorNeutral600,
+                      fontWeight: FontWeight.w500,
+                      height: 1.5),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 12.h),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.r),
-                  child:image.isEmpty
-                      ? const SizedBox()
-                      : image.contains('.svg')
-                      ? SvgPicture.asset(image)
-                      : Uri.parse(image).isAbsolute
-                          ? Image.network(image)
-                          : Image.asset(image),
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.r),
+                    child: image.isEmpty
+                        ? const SizedBox()
+                        : image.contains('.svg')
+                            ? SvgPicture.asset(image)
+                            : Uri.parse(image).isAbsolute
+                                ? Image.network(image)
+                                : Image.asset(image),
+                  ),
                 ),
               ),
             ],
@@ -194,37 +208,48 @@ class FunDsBottomSheet extends StatelessWidget {
       return Column(
         children: [
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(bottom: 8.h),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.r),
-                  child:image.isEmpty
-                      ? const SizedBox()
-                      : image.contains('.svg')
-                      ? SvgPicture.asset(image)
-                      : Uri.parse(image).isAbsolute
-                          ? Image.network(image)
-                          : Image.asset(image),
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.r),
+                    child: image.isEmpty
+                        ? const SizedBox()
+                        : image.contains('.svg')
+                            ? SvgPicture.asset(image)
+                            : Uri.parse(image).isAbsolute
+                                ? Image.network(image)
+                                : Image.asset(image),
+                  ),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.h),
-                child: Text(
-                  title,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: FunDsTypography.heading20
-                      .copyWith(color: FunDsColors.colorNeutral900),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    title,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    textAlign: TextAlign.left,
+                    style: FunDsTypography.heading20
+                        .copyWith(color: FunDsColors.colorNeutral900),
+                  ),
                 ),
               ),
-              Text(
-                desc,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: FunDsTypography.body14
-                    .copyWith(color: FunDsColors.colorNeutral600),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  desc,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.left,
+                  style: FunDsTypography.body14.copyWith(
+                      color: FunDsColors.colorNeutral600,
+                      fontWeight: FontWeight.w500,
+                      height: 1.5),
+                ),
               ),
             ],
           ),
