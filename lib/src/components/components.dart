@@ -2,6 +2,8 @@ export 'avatar/avatar.dart';
 export 'avatar/group_avatar.dart';
 export 'badge/badge.dart';
 export 'accordion/accordion.dart';
+export 'accordion/custom_accordion.dart';
+export 'accordion/custom_accordion2.dart';
 export 'accordion/accordion_group.dart';
 export 'icon/icon.dart';
 export 'button/button.dart';

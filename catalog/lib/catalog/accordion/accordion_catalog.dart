@@ -12,7 +12,7 @@ class AccordionCatalog extends StatefulWidget {
 
 class _AccordionCatalogState extends State<AccordionCatalog> {
 
-  bool _isExpandedA = true;
+  bool _isExpandedA = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,17 +56,26 @@ class _AccordionCatalogState extends State<AccordionCatalog> {
             .copyWith(color: FunDsColors.colorNeutral900),
       ),
       SizedBox(height: 4.h),
-      Accordion(
-        title: title,
-        description: description,
-        isExpanded: _isExpandedA,
-      ),
+      // CustomAccordion2(
+      //   title: title,
+      //   description: description,
+      //   isLoading: false,
+      //   isExpanded: _isExpandedA,
+      // ),
+      // AnimatedContainer(
+      //   duration: Duration(milliseconds: 200),
+      //   height: _isExpandedA ? 150 : 50,
+      //   color: Colors.red,
+      // ),
+      // Abcd(height: 8.0),
       const SizedBox(height: 40),
-      ElevatedButton(onPressed: () {
-        setState(() {
-          _isExpandedA = !_isExpandedA;
-        });
-      }, child: const Text('addaddad'))
+      ElevatedButton(
+          onPressed: () {
+            setState(() {
+              _isExpandedA = !_isExpandedA;
+            });
+          },
+          child: const Text('addaddad'))
     ];
   }
 }
@@ -141,3 +150,51 @@ class _AccordionCatalogState extends State<AccordionCatalog> {
 //     ];
 //   }
 // }
+
+class Abcd extends StatefulWidget {
+  final double height;
+
+  const Abcd({super.key, required this.height});
+
+  @override
+  State<Abcd> createState() => _AbcdState();
+}
+
+class _AbcdState extends State<Abcd> {
+  bool _first = true;
+
+  @override
+  Widget build(BuildContext context) {
+    // return AnimatedContainer(
+    //   height: widget.height,
+    //   duration: const Duration(milliseconds: 200), color: Colors.red,);
+
+    return Column(
+      children: [
+        AnimatedCrossFade(
+          firstChild: Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(20),
+            child: Text('adada'),
+            color: Colors.red,
+          ),
+          secondChild: Container(
+            width: double.infinity,
+            height: 0.0,
+            color: Colors.red,
+            padding: EdgeInsets.all(20),
+          ),
+          crossFadeState:
+              _first ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          duration: const Duration(milliseconds: 200),
+        ),
+        ElevatedButton(
+            onPressed: () {
+              _first = !_first;
+              setState(() {});
+            },
+            child: Text('adadadada'))
+      ],
+    );
+  }
+}
