@@ -329,7 +329,7 @@ class _TextFieldState extends State<TextField> {
                 if (widget.leftIcon != null)
                   Padding(
                     key: const Key('leftIcon'),
-                    padding: EdgeInsets.only(left: 8.w),
+                    padding: EdgeInsets.only(left: 10.w),
                     child: DisabledColorFilter(
                       apply: applyDisabledColorFilter,
                       child: widget.leftIcon!,
@@ -339,7 +339,7 @@ class _TextFieldState extends State<TextField> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 6.h,
-                      horizontal: 8.w,
+                      horizontal: 10.w,
                     ),
                     child: m.TextField(
                       key: const Key('textField'),
@@ -370,7 +370,7 @@ class _TextFieldState extends State<TextField> {
                 if (widget.suffix1 != null)
                   Padding(
                     key: const Key('suffix1'),
-                    padding: EdgeInsets.only(right: 8.w),
+                    padding: EdgeInsets.only(right: 10.w),
                     child: DisabledColorFilter(
                       apply: applyDisabledColorFilter,
                       child: widget.suffix1!,
@@ -379,7 +379,7 @@ class _TextFieldState extends State<TextField> {
                 if (widget.rightIcon1 != null)
                   Padding(
                     key: const Key('rightIcon1'),
-                    padding: EdgeInsets.only(right: 8.w),
+                    padding: EdgeInsets.only(right: 10.w),
                     child: DisabledColorFilter(
                       apply: applyDisabledColorFilter,
                       child: widget.rightIcon1!,
@@ -388,7 +388,7 @@ class _TextFieldState extends State<TextField> {
                 if (widget.rightIcon2 != null)
                   Padding(
                     key: const Key('rightIcon2'),
-                    padding: EdgeInsets.only(right: 8.w),
+                    padding: EdgeInsets.only(right: 10.w),
                     child: DisabledColorFilter(
                       apply: applyDisabledColorFilter,
                       child: widget.rightIcon2!,
@@ -405,7 +405,7 @@ class _TextFieldState extends State<TextField> {
                     child: Padding(
                       key: const Key('clearIcon'),
                       padding: EdgeInsets.only(
-                        right: 8.w,
+                        right: 10.w,
                       ),
                       child: Icon(
                         Icons.cancel,
