@@ -120,13 +120,7 @@ class FunDsBottomSheet extends StatelessWidget {
                 width: 130.w,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
-                  child: image.isEmpty
-                      ? const SizedBox()
-                      : image.contains('.svg')
-                          ? SvgPicture.asset(image)
-                          : Uri.parse(image).isAbsolute
-                              ? Image.network(image)
-                              : Image.asset(image),
+                  child: getImageWidget()
                 ),
               ),
             ),
@@ -190,13 +184,7 @@ class FunDsBottomSheet extends StatelessWidget {
                 child: Center(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.r),
-                    child: image.isEmpty
-                        ? const SizedBox()
-                        : image.contains('.svg')
-                            ? SvgPicture.asset(image)
-                            : Uri.parse(image).isAbsolute
-                                ? Image.network(image)
-                                : Image.asset(image),
+                    child: getImageWidget()
                   ),
                 ),
               ),
@@ -214,13 +202,7 @@ class FunDsBottomSheet extends StatelessWidget {
                 child: Center(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.r),
-                    child: image.isEmpty
-                        ? const SizedBox()
-                        : image.contains('.svg')
-                            ? SvgPicture.asset(image)
-                            : Uri.parse(image).isAbsolute
-                                ? Image.network(image)
-                                : Image.asset(image),
+                    child: getImageWidget()
                   ),
                 ),
               ),
@@ -255,6 +237,36 @@ class FunDsBottomSheet extends StatelessWidget {
           ),
         ],
       );
+    }
+  }
+
+  Widget getImageWidget() {
+    if (image.isEmpty) {
+      return const SizedBox();
+    } else if (image.contains('.svg')) {
+      return SvgPicture.asset(image);
+    } else if (Uri.parse(image).isAbsolute) {
+      return Image.network(
+        image,
+        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                    : null,
+              ),
+            ),
+          );
+        },
+        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+          return const SizedBox.shrink();
+        },
+      );
+    } else {
+      return Image.asset(image);
     }
   }
 }
