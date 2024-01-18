@@ -8,17 +8,21 @@ class GroupAccordionCatalog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const accordions = [
-      Accordion(key: Key('1'), title: 'title 1', description: 'description'),
+      Accordion(title: 'title 1', description: 'description'),
       Accordion(
-        key: Key('2'),
         title: 'title 2',
-        description: 'adadad',
-        isExpanded: true,
+        description: 'description',
+        isInitiallyExpanded: true, // ignored
       ),
-      Accordion(key: Key('3'), title: 'title 3', description: 'description'),
+      Accordion(
+          title: 'Can be initially opened',
+          description: 'using [initiallyOpenedAt] property'),
     ];
     return const CatalogPage(
         title: 'Accordion Group',
-        child: AccordionGroup(accordions: accordions));
+        child: AccordionGroup(
+          accordions: accordions,
+          initiallyOpenedAt: 2,
+        ));
   }
 }
