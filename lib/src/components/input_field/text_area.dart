@@ -268,8 +268,10 @@ class _TextAreaState extends State<TextArea> {
             children: [
               Container(
                 margin: EdgeInsets.symmetric(
-                  vertical: 8.h,
-                  horizontal: 12.w,
+                  horizontal:
+                      (widget.textAreaSize == TextAreaSize.small) ? 10.w : 16.w,
+                  vertical:
+                      (widget.textAreaSize == TextAreaSize.small) ? 8.h : 12.h,
                 ),
                 child: m.TextField(
                   key: const Key('textField'),
