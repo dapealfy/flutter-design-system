@@ -47,40 +47,44 @@ class FunDsRadioButton<T> extends StatelessWidget {
       return null;
     }
 
-    return RadioListTile<T>(
-      value: value,
-      groupValue: selectedValue,
-      activeColor: FunDsColors.colorPrimary,
-      contentPadding: const EdgeInsets.all(0),
-      overlayColor: MaterialStateProperty.resolveWith(getOverlayColor),
-      fillColor: MaterialStateProperty.resolveWith(getColor),
-      hoverColor: FunDsColors.colorPrimary,
-      visualDensity: const VisualDensity(
-        horizontal: VisualDensity.minimumDensity,
-        vertical: VisualDensity.minimumDensity,
-      ),
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      splashRadius: 12.r,
-      onChanged: disabled ?? false
-          ? null
-          : ((value) {
-              onChanged?.call(value);
-            }),
-      title: Padding(
-        padding: EdgeInsets.symmetric(vertical: 4.r),
-        child: Text(
-          label ?? '',
-          key: const Key('label'),
-          style: FunDsTypography.body14,
+    return ListTileTheme(
+      horizontalTitleGap: 8.w,
+      minLeadingWidth: 8.w,
+      child: RadioListTile<T>(
+        value: value,
+        groupValue: selectedValue,
+        activeColor: FunDsColors.colorPrimary,
+        contentPadding: const EdgeInsets.all(0),
+        overlayColor: MaterialStateProperty.resolveWith(getOverlayColor),
+        fillColor: MaterialStateProperty.resolveWith(getColor),
+        hoverColor: FunDsColors.colorPrimary,
+        visualDensity: const VisualDensity(
+          horizontal: VisualDensity.minimumDensity,
+          vertical: VisualDensity.minimumDensity,
         ),
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        splashRadius: 12.r,
+        onChanged: disabled ?? false
+            ? null
+            : ((value) {
+                onChanged?.call(value);
+              }),
+        title: Padding(
+          padding: EdgeInsets.symmetric(vertical: 4.r),
+          child: Text(
+            label ?? '',
+            key: const Key('label'),
+            style: FunDsTypography.body14,
+          ),
+        ),
+        subtitle: helper == null
+            ? null
+            : Text(
+                helper ?? '',
+                key: const Key('helper'),
+                style: FunDsTypography.body14,
+              ),
       ),
-      subtitle: helper == null
-          ? null
-          : Text(
-              helper ?? '',
-              key: const Key('helper'),
-              style: FunDsTypography.body14,
-            ),
     );
   }
 }
