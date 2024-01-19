@@ -59,7 +59,7 @@ class _CheckboxCatalogState extends State<CheckboxCatalog> {
             FunDsCheckbox(
               key: const Key('cb_primary_label'),
               variant: variant,
-              title: 'Label',
+              title: 'Label Label Label Label Label Labelssi Label Label Label',
               defaultValue: true,
               rightCheckbox: rightCheckbox,
               tristate: tristate,
