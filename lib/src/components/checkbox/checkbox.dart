@@ -55,18 +55,25 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
               },
         title: widget.title == null
             ? null
-            : Text(
-                widget.title ?? '',
-                style: FunDsTypography.body14.copyWith(
-                  color: widget.variant == FunDsCheckboxVariant.disabled
-                      ? FunDsColors.colorNeutral500
-                      : FunDsColors.colorNeutral900,
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.h),
+                child: Text(
+                  widget.title ?? '',
+                  style: FunDsTypography.body14.copyWith(
+                    color: widget.variant == FunDsCheckboxVariant.disabled
+                        ? FunDsColors.colorNeutral500
+                        : FunDsColors.colorNeutral900,
+                  ),
                 ),
               ),
         subtitle: widget.subtitle == null
             ? null
             : Padding(
-                padding: EdgeInsets.only(top: 8.h),
+                padding: EdgeInsets.only(
+                  top: 8.h,
+                  left: 8.h,
+                  right: 8.h,
+                ),
                 child: Text(
                   widget.subtitle ?? '',
                   style: FunDsTypography.body14.copyWith(
