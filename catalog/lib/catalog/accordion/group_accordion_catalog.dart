@@ -2,8 +2,15 @@ import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_design_system/funds.dart';
 
-class GroupAccordionCatalog extends StatelessWidget {
+class GroupAccordionCatalog extends StatefulWidget {
   const GroupAccordionCatalog({super.key});
+
+  @override
+  State<GroupAccordionCatalog> createState() => _GroupAccordionCatalogState();
+}
+
+class _GroupAccordionCatalogState extends State<GroupAccordionCatalog> {
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +25,29 @@ class GroupAccordionCatalog extends StatelessWidget {
           title: 'Can be initially opened',
           description: 'using [initiallyOpenedAt] property'),
     ];
-    return const CatalogPage(
-        title: 'Accordion Group',
-        child: AccordionGroup(
-          accordions: accordions,
-          initiallyOpenedAt: 2,
-        ));
+    return CatalogPage(
+      title: 'Accordion Group',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AccordionGroup(
+            accordions: accordions,
+            initiallyOpenedAt: 2,
+            isLoading: _isLoading,
+          ),
+          const SizedBox(height: 20),
+          FunDsButton(
+            type: FunDsButtonType.small,
+            variant: FunDsButtonVariant.primary,
+            text: 'Toggle isLoading : $_isLoading',
+            onPressed: () {
+              setState(() {
+                _isLoading = !_isLoading;
+              });
+            },
+          )
+        ],
+      ),
+    );
   }
 }

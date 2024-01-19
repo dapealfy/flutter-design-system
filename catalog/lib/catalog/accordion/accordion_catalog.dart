@@ -11,6 +11,7 @@ class AccordionCatalog extends StatefulWidget {
 }
 
 class _AccordionCatalogState extends State<AccordionCatalog> {
+  bool _isLoading = true;
   final _veryLongDescription =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       'Nunc nec erat ex. Mauris ullamcorper lectus sed est '
@@ -65,8 +66,22 @@ class _AccordionCatalogState extends State<AccordionCatalog> {
       Accordion(
         title: title,
         description: description,
+        isLoading: isLoading ? _isLoading : false,
         isInitiallyExpanded: isExpanded,
       ),
+      SizedBox(height: 8.h),
+      Visibility(
+          visible: isLoading,
+          child: FunDsButton(
+            type: FunDsButtonType.small,
+            variant: FunDsButtonVariant.primary,
+            text: 'Toggle isLoading : $_isLoading',
+            onPressed: () {
+              setState(() {
+                _isLoading = !_isLoading;
+              });
+            },
+          )),
       const SizedBox(height: 40),
     ];
   }

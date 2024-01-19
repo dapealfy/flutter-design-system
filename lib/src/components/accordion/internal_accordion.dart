@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
+import 'package:flutter_design_system/src/utils/shimmer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+const _duration = Duration(milliseconds: 300);
+const _loadingFadeDuration = Duration(milliseconds: 200);
+const _curves = Curves.fastOutSlowIn;
 
 class InternalAccordion extends ImplicitlyAnimatedWidget {
   final String title;
   final String description;
   final bool isExpanded;
+  final bool isLoading;
   final EdgeInsets? padding;
   final Function()? onTap;
 
@@ -14,11 +20,10 @@ class InternalAccordion extends ImplicitlyAnimatedWidget {
     required this.title,
     required this.description,
     this.isExpanded = false,
+    this.isLoading = false,
     this.padding,
     this.onTap,
-  }) : super(
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.fastOutSlowIn);
+  }) : super(duration: _duration, curve: _curves);
 
   @override
   AnimatedWidgetBaseState<InternalAccordion> createState() =>
@@ -27,7 +32,7 @@ class InternalAccordion extends ImplicitlyAnimatedWidget {
 
 class _InternalAccordionState
     extends AnimatedWidgetBaseState<InternalAccordion> {
-  final Animatable<double> _easeInTween = CurveTween(curve: Curves.easeIn);
+  final Animatable<double> _easeInTween = CurveTween(curve: _curves);
 
   Tween<double>? _heightFactor;
   Tween<double>? _turns;
@@ -56,6 +61,17 @@ class _InternalAccordionState
   Widget build(BuildContext context) {
     final padding = widget.padding ?? EdgeInsets.symmetric(vertical: 12.h);
 
+    return AnimatedCrossFade(
+      firstChild: _buildSkeleton(),
+      secondChild: _accordion(padding),
+      crossFadeState: widget.isLoading
+          ? CrossFadeState.showFirst
+          : CrossFadeState.showSecond,
+      duration: _loadingFadeDuration,
+    );
+  }
+
+  _accordion(EdgeInsets padding) {
     return Material(
       color: FunDsColors.colorWhite,
       child: InkWell(
@@ -69,11 +85,11 @@ class _InternalAccordionState
               child: Row(children: [
                 Expanded(
                     child: Text(
-                  widget.title,
+                      widget.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: FunDsTypography.heading14
-                      .copyWith(color: FunDsColors.colorNeutral900),
+                  style: FunDsTypography.heading14.copyWith(
+                      color: FunDsColors.colorNeutral900, height: 1.21),
                 )),
                 RotationTransition(
                   turns: _iconTurnsAnimation,
@@ -107,6 +123,42 @@ class _InternalAccordionState
           ],
         ),
       ),
+    );
+  }
+
+  _buildSkeleton() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Shimmer(
+          isLoading: widget.isLoading,
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 12.h),
+            child: Row(children: [
+              Expanded(
+                  child: Container(
+                margin: EdgeInsets.only(right: 32.w),
+                height: 12.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6.r),
+                  color: FunDsColors.colorWhite,
+                ),
+              )),
+              Container(
+                height: 17.1.h,
+                width: 20.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6.r),
+                  color: FunDsColors.colorWhite,
+                ),
+              )
+            ]),
+          ),
+        ),
+        Divider(height: 1.h, color: FunDsColors.colorNeutral200)
+      ],
     );
   }
 }

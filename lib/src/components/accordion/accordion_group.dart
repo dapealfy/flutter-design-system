@@ -10,9 +10,14 @@ import 'internal_accordion.dart';
 class AccordionGroup extends StatefulWidget {
   final int initiallyOpenedAt;
   final List<Accordion> accordions;
+  final bool isLoading;
 
-  const AccordionGroup(
-      {super.key, required this.accordions, this.initiallyOpenedAt = -1});
+  const AccordionGroup({
+    super.key,
+    required this.accordions,
+    this.initiallyOpenedAt = -1,
+    this.isLoading = false,
+  });
 
   @override
   State<AccordionGroup> createState() => _AccordionGroupState();
@@ -45,8 +50,8 @@ class _AccordionGroupState extends State<AccordionGroup> {
           key: widget.accordions[index].key,
           title: widget.accordions[index].title,
           description: widget.accordions[index].description,
-          // isLoading: widget.accordions[index].isLoading, todo(ainul)
           isExpanded: expandedAccordion[index],
+          isLoading: widget.isLoading,
           onTap: () {
             _handleAccordionExpansionChanged(index);
           },

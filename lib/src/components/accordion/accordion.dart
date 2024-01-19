@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_system/funds.dart';
+import 'package:flutter_design_system/src/utils/shimmer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'internal_accordion.dart';
 
@@ -44,6 +47,7 @@ class _AccordionState extends State<Accordion>
       title: widget.title,
       description: widget.description,
       isExpanded: _isExpanded,
+      isLoading: widget.isLoading,
       onTap: () {
         setState(() {
           _isExpanded = !_isExpanded;
