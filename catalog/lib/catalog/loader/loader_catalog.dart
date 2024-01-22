@@ -58,8 +58,6 @@ class _LoaderCatalogState extends State<LoaderCatalog> {
                 variant: variant,
               ),
             ),
-            SizedBox(height: 48.h),
-            const Text('Lottie Dot Loader'),
           ],
         ),
       ),
