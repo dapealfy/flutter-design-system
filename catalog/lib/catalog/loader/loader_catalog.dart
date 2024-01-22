@@ -51,6 +51,7 @@ class _LoaderCatalogState extends State<LoaderCatalog> {
             const Text('Lottie Spin Loader'),
             Center(
               child: FunDsLoader(
+                key: const Key('funds_loader'),
                 height: 100.h,
                 width: 100.w,
                 desc: text,

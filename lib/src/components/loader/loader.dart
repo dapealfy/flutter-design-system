@@ -24,6 +24,7 @@ class FunDsLoader extends StatelessWidget {
     switch (position) {
       case FunDsLoaderPosition.top:
         return Column(
+          key: key,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _getLottie(),
@@ -38,6 +39,7 @@ class FunDsLoader extends StatelessWidget {
         );
       case FunDsLoaderPosition.bottom:
         return Column(
+          key: key,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (desc != null)
@@ -52,6 +54,7 @@ class FunDsLoader extends StatelessWidget {
         );
       case FunDsLoaderPosition.left:
         return Row(
+          key: key,
           children: [
             _getLottie(),
             if (desc != null)
@@ -66,6 +69,7 @@ class FunDsLoader extends StatelessWidget {
         );
       case FunDsLoaderPosition.right:
         return Row(
+          key: key,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (desc != null)
