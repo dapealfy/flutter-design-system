@@ -1,3 +1,5 @@
+import 'package:catalog/catalog/accordion/accordion_catalog.dart';
+import 'package:catalog/catalog/accordion/group_accordion_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
@@ -5,11 +7,11 @@ import 'package:catalog/catalog/checkbox/checkbox_catalog.dart';
 import 'package:catalog/catalog/badge/badge_catalog.dart';
 import 'package:catalog/catalog/control/toggle_catalog.dart';
 import 'package:catalog/catalog/foundation/icon_catalog.dart';
+import 'package:catalog/catalog/bottom_sheet/bottom_sheet_catalog.dart';
 import 'package:catalog/catalog/button/button_catalog.dart';
 import 'package:catalog/catalog/button/group_button_catalog.dart';
 import 'package:catalog/catalog/button/radio_button_catalog.dart';
 import 'package:catalog/catalog/calendar/calendar_catalog.dart';
-import 'package:catalog/catalog/bottom_sheet/bottom_sheet_catalog.dart';
 import 'package:catalog/catalog/example/example_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
@@ -49,6 +51,12 @@ final entries = [
     builder: (context) => const GroupAvatarCatalog(),
   ),
 
+  Entry(
+      name: 'Accordion/Accordion',
+      builder: (context) => const AccordionCatalog()),
+  Entry(
+      name: 'Accordion/Group Accordion',
+      builder: (context) => const GroupAccordionCatalog()),
   Entry(
     name: 'Input Field/Text Field',
     builder: (context) => const TextFieldCatalog(),
