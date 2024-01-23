@@ -1,5 +1,8 @@
 ---
-image: ghcr.io/cirruslabs/flutter:3.13.9
+image:
+  name: asia.gcr.io/amartha-dev/amartha/bitbucket-android-flutter-genymotion:1.13
+  username: _json_key
+  password: "$GCR_DEV_JSON_KEY"
 
 definitions:
   steps:
