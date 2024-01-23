@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SingleAvatarCatalog extends StatelessWidget {
   const SingleAvatarCatalog({super.key});
+
 /*
   /// Create Avatar with text.
   const Avatar.text({
@@ -75,6 +76,7 @@ class SingleAvatarCatalog extends StatelessWidget {
           physics: const ClampingScrollPhysics(),
           children: [
             _buildTextAvatar(),
+            _buildIconAvatar(),
             _buildImageAvatar(),
           ],
         ),
@@ -97,7 +99,7 @@ class SingleAvatarCatalog extends StatelessWidget {
     List<Widget> listTextAvatarRectangleWidget =
         AvatarSizeExtension.getAllAvatarSize().map((size) {
       return Avatar.text(
-        avatarText: 'Amartha',
+        avatarText: 'Amartha Microfinance',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
@@ -132,11 +134,11 @@ class SingleAvatarCatalog extends StatelessWidget {
     );
   }
 
-  _buildImageAvatar() {
-    List<Widget> listImageAvatarRoundWidget =
+  _buildIconAvatar() {
+    List<Widget> listFailedImageNetworkAvatarRoundWidget =
         AvatarSizeExtension.getAllAvatarSize().map((size) {
-      return Avatar.asset(
-        imagePath: 'packages/flutter_design_system/assets/images/user_1.jpeg',
+      return Avatar.network(
+        imageUrl: 'http://error',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
@@ -144,10 +146,49 @@ class SingleAvatarCatalog extends StatelessWidget {
       );
     }).toList();
 
-    List<Widget> listImageNetworkAvatarRoundWidget =
-        AvatarSizeExtension.getAllAvatarSize().map((size) {
+    List<Widget> listFailedImageNetworkAvatarRoundRectangle =
+    AvatarSizeExtension.getAllAvatarSize().map((size) {
       return Avatar.network(
-        imageUrl: 'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
+        imageUrl: 'http://error',
+        size: size,
+        backgroundColor: FunDsColors.colorPrimary100,
+        foregroundColor: FunDsColors.colorPrimary500,
+        shape: AvatarShape.rectangle,
+      );
+    }).toList();
+
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(8, 16, 0, 0),
+          child: Text('Icon Avatar', style: FunDsTypography.heading16),
+        ),
+        SizedBox(
+          height: 100.h,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: listFailedImageNetworkAvatarRoundWidget,
+          ),
+        ),
+        SizedBox(
+          height: 100,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: listFailedImageNetworkAvatarRoundRectangle,
+          ),
+        ),
+      ],
+    );
+  }
+
+  _buildImageAvatar() {
+    List<Widget> listImageAvatarRoundWidget =
+        AvatarSizeExtension.getAllAvatarSize().map((size) {
+      return Avatar.asset(
+        imagePath: 'packages/flutter_design_system/assets/images/user_1.jpeg',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
@@ -176,17 +217,10 @@ class SingleAvatarCatalog extends StatelessWidget {
           child: Text('Image Avatar', style: FunDsTypography.heading16),
         ),
         SizedBox(
-          height: 100,
+          height: 100.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: listImageAvatarRoundWidget,
-          ),
-        ),
-        SizedBox(
-          height: 100,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: listImageNetworkAvatarRoundWidget,
           ),
         ),
         SizedBox(

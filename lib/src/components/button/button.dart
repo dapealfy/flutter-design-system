@@ -54,7 +54,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 style: BorderStyle.solid,
               )
             : null,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(_getButtonRadius()),
       ),
       child: Padding(
         padding: const EdgeInsets.all(1),
@@ -91,7 +91,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 width: 1,
                 color: Colors.white.withOpacity(0.12),
               ),
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(_getButtonRadius()),
             ),
           ),
           child: ElevatedButton(
@@ -108,13 +108,13 @@ class _FunDsButtonState extends State<FunDsButton> {
                       FunDsColors.colorPrimary500.withOpacity(0.8),
                     ),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.r),
+                      borderRadius: BorderRadius.circular(_getButtonRadius()),
                     )),
                   )
                 : ButtonStyle(
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r)),
+                          borderRadius: BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
             child: Text(
@@ -141,7 +141,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 style: BorderStyle.solid,
               )
             : null,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(_getButtonRadius()),
       ),
       child: Padding(
         padding: const EdgeInsets.all(1),
@@ -164,13 +164,13 @@ class _FunDsButtonState extends State<FunDsButton> {
                   )),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.r)),
+                        borderRadius: BorderRadius.circular(_getButtonRadius())),
                   ),
                 )
               : ButtonStyle(
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.r)),
+                        borderRadius: BorderRadius.circular(_getButtonRadius())),
                   ),
                 ),
           child: Text(
@@ -197,7 +197,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 style: BorderStyle.solid,
               )
             : null,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(_getButtonRadius()),
       ),
       height: _getButtonHeight(),
       child: Padding(
@@ -229,7 +229,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 width: 1,
                 color: Colors.white.withOpacity(0.12),
               ),
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(_getButtonRadius()),
             ),
           ),
           child: OutlinedButton(
@@ -246,13 +246,13 @@ class _FunDsButtonState extends State<FunDsButton> {
                         MaterialStateProperty.all(FunDsColors.colorWhite),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r)),
+                          borderRadius: BorderRadius.circular(_getButtonRadius())),
                     ),
                   )
                 : ButtonStyle(
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r)),
+                          borderRadius: BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
             child: Text(
@@ -280,7 +280,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 style: BorderStyle.solid,
               )
             : null,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(_getButtonRadius()),
       ),
       height: _getButtonHeight(),
       child: OutlinedButton(
@@ -299,7 +299,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 )),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.r)),
+                      borderRadius: BorderRadius.circular(_getButtonRadius())),
                 ),
               )
             : ButtonStyle(
@@ -331,7 +331,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 style: BorderStyle.solid,
               )
             : null,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(_getButtonRadius()),
       ),
       child: Padding(
         padding: const EdgeInsets.all(1),
@@ -368,7 +368,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 width: 1,
                 color: Colors.white.withOpacity(0.12),
               ),
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(_getButtonRadius()),
             ),
           ),
           child: ElevatedButton(
@@ -385,13 +385,13 @@ class _FunDsButtonState extends State<FunDsButton> {
                         MaterialStateProperty.all(FunDsColors.colorRed500),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r)),
+                          borderRadius: BorderRadius.circular(_getButtonRadius())),
                     ),
                   )
                 : ButtonStyle(
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r)),
+                          borderRadius: BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
             child: Text(
@@ -418,7 +418,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 style: BorderStyle.solid,
               )
             : null,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(_getButtonRadius()),
       ),
       child: Padding(
         padding: const EdgeInsets.all(1),
@@ -429,7 +429,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                 width: 1,
                 color: Colors.white.withOpacity(0.12),
               ),
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(_getButtonRadius()),
             ),
           ),
           child: OutlinedButton(
@@ -453,13 +453,13 @@ class _FunDsButtonState extends State<FunDsButton> {
                     )),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r)),
+                          borderRadius: BorderRadius.circular(_getButtonRadius())),
                     ),
                   )
                 : ButtonStyle(
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r)),
+                          borderRadius: BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
             child: Text(
@@ -516,6 +516,16 @@ class _FunDsButtonState extends State<FunDsButton> {
         return 32.h;
       case FunDsButtonType.xSmall:
         return 24.h;
+    }
+  }
+
+  double _getButtonRadius() {
+    switch (widget.type) {
+      case FunDsButtonType.small:
+      case FunDsButtonType.xSmall:
+        return 6.r;
+      default:
+        return 8.r;
     }
   }
 }

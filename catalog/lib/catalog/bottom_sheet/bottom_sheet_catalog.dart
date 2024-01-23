@@ -40,7 +40,7 @@ class BottomSheetCatalog extends StatelessWidget {
                   desc:
                       'Test Description yang panjang sekali sampai tidak tak terbatas dan melampauinya ternyata kurang panjang',
                   image:
-                      'https://www.seiu1000.org/sites/main/files/main-images/camera_lense_0.jpeg',
+                      'assets/images/error_ibu_amanah_partial.png',
                   type: option,
                   groupButton: FunDsGroupButton(
                     variant: FunDsGroupButtonVariant.horizontal,

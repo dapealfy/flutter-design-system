@@ -1,15 +1,15 @@
 /// [AvatarSize] is used to change the size of FunDsAvatar Widget.
 
 enum AvatarSize {
-  xxs,
-  xs,
-  small,
+  xxl,
+  xl,
+  large,
 
   /// Default size is [AvatarSize.medium]
   medium,
-  large,
-  xl,
-  xxl,
+  small,
+  xs,
+  xxs,
 }
 
 extension AvatarSizeExtension on AvatarSize {
