@@ -14,3 +14,4 @@ export 'calendar/calendar.dart';
 export 'ticker/ticker.dart';
 export 'control/slider.dart';
 export 'checkbox/checkbox.dart';
+export 'loader/loader.dart';
