@@ -56,6 +56,8 @@ class _ToggleState extends State<Toggle> {
                   visible: isTitleNotEmpty,
                   child: Text(
                     widget.title ?? '',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: FunDsTypography.heading14
                         .copyWith(color: FunDsColors.colorNeutral900),
                   ),
@@ -64,6 +66,8 @@ class _ToggleState extends State<Toggle> {
                   visible: isTitleNotEmpty && isSubtitleIsNotEmpty,
                   child: Text(
                     widget.subtitle ?? '',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: FunDsTypography.body14
                         .copyWith(color: FunDsColors.colorNeutral600),
                   ),
@@ -77,13 +81,26 @@ class _ToggleState extends State<Toggle> {
   }
 
   _buildToggle() {
+    double width = switch (widget.type) {
+      ToggleType.small => 36.h,
+      ToggleType.medium => 44.h,
+    };
+
+    Color thumbColor =
+        widget.isEnabled ? FunDsColors.colorWhite : FunDsColors.colorNeutral50;
+
+    Color activeColor = widget.isEnabled
+        ? FunDsColors.colorPrimary
+        : FunDsColors.colorNeutral200;
+
     return SizedBox(
-      height: 24.h,
+      width: width,
       child: FittedBox(
+        fit: BoxFit.fill,
         child: CupertinoSwitch(
-          thumbColor: FunDsColors.colorWhite,
+          thumbColor: thumbColor,
           trackColor: FunDsColors.colorNeutral200,
-          activeColor: FunDsColors.colorPrimary,
+          activeColor: activeColor,
           value: widget.isEnabled ? _isActive : widget.isActive,
           onChanged: (value) {
             widget.onChanged?.call(value);

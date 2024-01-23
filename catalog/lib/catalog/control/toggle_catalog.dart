@@ -15,6 +15,9 @@ class ToggleCatalog extends StatefulWidget {
 }
 
 class _ToggleCatalogState extends State<ToggleCatalog> {
+  bool _toggleValueActive = true;
+  bool _toggleValueInActive = false;
+
   @override
   Widget build(BuildContext context) {
     return CatalogPage(
@@ -26,55 +29,84 @@ class _ToggleCatalogState extends State<ToggleCatalog> {
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
+                'Toggle only',
+                style: FunDsTypography.heading20,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Type : Medium',
+                style: FunDsTypography.body12,
+              ),
+              const Row(children: [
+                Toggle(type: ToggleType.medium),
+                Toggle(
+                  type: ToggleType.medium,
+                  isActive: false,
+                ),
+              ]),
+              const SizedBox(height: 16),
+              Text(
+                'Type : Small',
+                style: FunDsTypography.body12,
+              ),
+              const Row(children: [
+                Toggle(type: ToggleType.small),
+                Toggle(
+                    type: ToggleType.small, isActive: false),
+              ]),
+              const SizedBox(height: 16),
+            ]),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
                 'Toggle with text',
                 style: FunDsTypography.heading20,
               ),
               const SizedBox(height: 16),
-              const Toggle(
-                title: 'Active',
-                subtitle: 'set active by default',
+              Toggle(
+                title: 'Active Default',
+                subtitle: 'Value $_toggleValueActive',
+                isActive: _toggleValueActive,
                 type: ToggleType.medium,
+                onChanged: (bool isActive) {
+                  setState(() {
+                    _toggleValueActive = isActive;
+                  });
+                },
               ),
               const SizedBox(height: 16),
-              const Toggle(
-                title: 'In active',
-                subtitle: 'set inactive by default',
+              Toggle(
+                title: 'In active Default',
+                subtitle: 'Value $_toggleValueInActive',
                 isActive: false,
-                type: ToggleType.small,
+                type: ToggleType.medium,
+                onChanged: (bool isActive) {
+                  setState(() {
+                    _toggleValueInActive = isActive;
+                  });
+                },
               ),
               const SizedBox(height: 16),
               const Toggle(
                 title: 'Title only',
                 isActive: false,
-                type: ToggleType.small,
+                type: ToggleType.medium,
               ),
               const SizedBox(height: 16),
               const Toggle(
-                title: 'disabled inactive action',
+                title: 'Disabled',
                 isActive: false,
-                type: ToggleType.small,
+                type: ToggleType.medium,
                 isEnabled: false,
               ),
               const SizedBox(height: 16),
               const Toggle(
-                title: 'disabled active action',
+                title: 'Disabled',
                 isActive: true,
-                type: ToggleType.small,
+                type: ToggleType.medium,
                 isEnabled: false,
               ),
             ]),
             const SizedBox(height: 32),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                'Toggle only',
-                style: FunDsTypography.heading20,
-              ),
-              const SizedBox(height: 16),
-              const Toggle(type: ToggleType.medium),
-              const SizedBox(height: 16),
-              const Toggle(isActive: false, type: ToggleType.small),
-              const SizedBox(height: 16),
-            ])
           ],
         ),
       ),
