@@ -22,8 +22,14 @@ class _GroupAccordionCatalogState extends State<GroupAccordionCatalog> {
         isInitiallyExpanded: true, // ignored
       ),
       Accordion(
-          title: 'Can be initially opened',
-          description: 'using [initiallyOpenedAt] property'),
+          title: 'Can be initially opened\nWith [initiallyOpenedAt] property',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+              'Nunc nec erat ex. Mauris ullamcorper lectus sed est '
+              'consectetur, vitae condimentum elit efficitur. '
+              'Praesent ultricies fringilla felis, et tempor ex '
+              'sagittis sed. Etiam dignissim arcu justo, et iaculis'
+              'nisi dapibus non. Maecenas cursus sapien et libero'
+              'varius viverra. Sed maximus felis id malesuada '),
     ];
     return CatalogPage(
       title: 'Accordion Group',

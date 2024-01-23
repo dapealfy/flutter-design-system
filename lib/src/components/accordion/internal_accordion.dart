@@ -108,12 +108,15 @@ class _InternalAccordionState
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: EdgeInsets.only(bottom: 16.h),
-                    child: Text(
-                      widget.description,
-                      textAlign: TextAlign.start,
-                      style: FunDsTypography.body12.copyWith(
-                          color: FunDsColors.colorNeutral600,
-                          fontWeight: FontWeight.w400),
+                    child: FadeTransition(
+                      child: Text(
+                        widget.description,
+                        textAlign: TextAlign.start,
+                        style: FunDsTypography.body12.copyWith(
+                            color: FunDsColors.colorNeutral600,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      opacity: _heightFactorAnimation,
                     ),
                   ),
                 ),
