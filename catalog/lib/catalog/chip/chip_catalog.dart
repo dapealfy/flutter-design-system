@@ -51,6 +51,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FunDsChip(
+                key: const Key('chip1'),
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,
@@ -58,6 +59,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
               ),
               const SizedBox(height: 20),
               FunDsChip(
+                key: const Key('chip2'),
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,
@@ -69,6 +71,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
               ),
               const SizedBox(height: 20),
               FunDsChip(
+                key: const Key('chip3'),
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,
@@ -80,6 +83,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
               ),
               const SizedBox(height: 20),
               FunDsChip(
+                key: const Key('chip4'),
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,
@@ -95,6 +99,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
               ),
               const SizedBox(height: 20),
               FunDsChip(
+                key: const Key('chip5'),
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,

@@ -32,6 +32,7 @@ class _FunDsChipState extends State<FunDsChip> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: widget.key,
       onTap: widget.onPress != null
           ? () {
               setState(() {
