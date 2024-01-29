@@ -18,3 +18,4 @@ export 'control/slider.dart';
 export 'control/toggle.dart';
 export 'checkbox/checkbox.dart';
 export 'loader/loader.dart';
+export 'chip/chip.dart';

@@ -2,6 +2,7 @@ import 'package:catalog/catalog/accordion/accordion_catalog.dart';
 import 'package:catalog/catalog/accordion/group_accordion_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
+import 'package:catalog/catalog/chip/chip_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
 import 'package:catalog/catalog/checkbox/checkbox_catalog.dart';
 import 'package:catalog/catalog/badge/badge_catalog.dart';
@@ -112,6 +113,11 @@ final entries = [
   Entry(
     name: 'Loader/Spinner Loader',
     builder: (context) => const LoaderCatalog(),
+  ),
+
+  Entry(
+    name: 'Chip/Chip',
+    builder: (context) => const ChipCatalog(),
   ),
 
   // Example
