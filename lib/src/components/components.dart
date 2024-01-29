@@ -20,3 +20,4 @@ export 'input_field/text_area.dart';
 export 'input_field/text_field.dart';
 export 'loader/loader.dart';
 export 'ticker/ticker.dart';
+export 'label/label.dart';
