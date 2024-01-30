@@ -30,14 +30,16 @@ class Label extends StatelessWidget {
     this.size = LabelSize.medium,
     this.color = LabelColor.purple,
     this.type = LabelType.invert,
-    this.startIcon,
-    this.endIcon,
+    this.leadingIcon,
+    this.trailingIcon,
     this.onTap,
   });
 
   final String text;
-  final IconData? startIcon;
-  final IconData? endIcon;
+  /// take icon from [FunDsIconography]
+  final String? leadingIcon;
+  /// take icon from [FunDsIconography]
+  final String? trailingIcon;
   final LabelSize size;
   final LabelColor color;
   final LabelType type;
@@ -55,7 +57,7 @@ class Label extends StatelessWidget {
     }
   }
 
-  Widget _calculateSizes(Color contentColor, Color backgroundColor,
+  Widget _buildLabel(Color contentColor, Color backgroundColor,
       {Color? borderColor}) {
     double fontSize;
     double containerHeight;
@@ -69,10 +71,12 @@ class Label extends StatelessWidget {
         double horizontalPaddingWithIcon = 3.w;
 
         padding = EdgeInsets.only(
-          left:
-              startIcon == null ? horizontalPadding : horizontalPaddingWithIcon,
-          right:
-              endIcon == null ? horizontalPadding : horizontalPaddingWithIcon,
+          left: leadingIcon == null
+              ? horizontalPadding
+              : horizontalPaddingWithIcon,
+          right: trailingIcon == null
+              ? horizontalPadding
+              : horizontalPaddingWithIcon,
         );
         break;
       case LabelSize.medium:
@@ -82,10 +86,12 @@ class Label extends StatelessWidget {
         double horizontalPaddingWithIcon = 4.w;
 
         padding = EdgeInsets.only(
-          left:
-              startIcon == null ? horizontalPadding : horizontalPaddingWithIcon,
-          right:
-              endIcon == null ? horizontalPadding : horizontalPaddingWithIcon,
+          left: leadingIcon == null
+              ? horizontalPadding
+              : horizontalPaddingWithIcon,
+          right: trailingIcon == null
+              ? horizontalPadding
+              : horizontalPaddingWithIcon,
         );
         break;
       case LabelSize.large:
@@ -95,10 +101,12 @@ class Label extends StatelessWidget {
         double horizontalPaddingWithIcon = 5.w;
 
         padding = EdgeInsets.only(
-          left:
-              startIcon == null ? horizontalPadding : horizontalPaddingWithIcon,
-          right:
-              endIcon == null ? horizontalPadding : horizontalPaddingWithIcon,
+          left: leadingIcon == null
+              ? horizontalPadding
+              : horizontalPaddingWithIcon,
+          right: trailingIcon == null
+              ? horizontalPadding
+              : horizontalPaddingWithIcon,
         );
         break;
     }
@@ -125,14 +133,16 @@ class Label extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(right: 4.w),
                   child: Center(
-                    child: Icon(
-                      startIcon,
-                      color: contentColor,
-                      size: 16.r,
-                    ),
+                    child: leadingIcon != null
+                        ? FunDsIcon(
+                            funDsIconography: leadingIcon!,
+                            size: 16.r,
+                            color: contentColor,
+                          )
+                        : const SizedBox(),
                   ),
                 ),
-                visible: startIcon != null,
+                visible: leadingIcon != null,
               ),
               Center(
                 child: Text(
@@ -148,14 +158,16 @@ class Label extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(left: 4.w),
                   child: Center(
-                    child: Icon(
-                      endIcon,
-                      color: contentColor,
-                      size: 16.r,
-                    ),
+                    child: trailingIcon != null
+                        ? FunDsIcon(
+                            funDsIconography: trailingIcon!,
+                            size: 16.r,
+                            color: contentColor,
+                          )
+                        : const SizedBox(),
                   ),
                 ),
-                visible: endIcon != null,
+                visible: trailingIcon != null,
               ),
             ],
           ),
@@ -201,7 +213,7 @@ class Label extends StatelessWidget {
         break;
     }
 
-    return _calculateSizes(contentColor, backgroundColor);
+    return _buildLabel(contentColor, backgroundColor);
   }
 
   Widget _buildLabelOutline() {
@@ -247,7 +259,7 @@ class Label extends StatelessWidget {
         break;
     }
 
-    return _calculateSizes(contentColor, backgroundColor,
+    return _buildLabel(contentColor, backgroundColor,
         borderColor: borderColor ?? contentColor);
   }
 
@@ -290,7 +302,7 @@ class Label extends StatelessWidget {
         break;
     }
 
-    return _calculateSizes(contentColor, backgroundColor,
+    return _buildLabel(contentColor, backgroundColor,
         borderColor: backgroundColor);
   }
 }
