@@ -3,11 +3,11 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FunDsChip extends StatefulWidget {
-  final Widget? leading;
-  final Widget? trailing;
+  final FunDsIcon? leading; //size will always replace to 20
+  final FunDsIcon? trailing; //size will always replace to 20
   final FunDsChipType type;
   final String text;
-  final Widget? label;
+  final Label? label;// label size will always replace to FunDsChipType
   final bool enable;
   final Function(bool)? onPress;
 
@@ -72,7 +72,7 @@ class _FunDsChipState extends State<FunDsChip> {
                 visible: widget.leading != null,
                 child: Padding(
                   padding: EdgeInsets.only(right: _chipPadding()),
-                  child: widget.leading,
+                  child: widget.leading?.copyWith(size: 20.r),
                 ),
               ),
               Text(
@@ -92,14 +92,18 @@ class _FunDsChipState extends State<FunDsChip> {
                 visible: widget.label != null,
                 child: Padding(
                   padding: EdgeInsets.only(left: _chipPadding()),
-                  child: widget.label,
+                  child: widget.label?.copyWith(
+                    size: widget.type == FunDsChipType.large
+                        ? LabelSize.medium
+                        : LabelSize.small,
+                  ),
                 ),
               ),
               Visibility(
                 visible: widget.trailing != null,
                 child: Padding(
                   padding: EdgeInsets.only(left: _chipPadding()),
-                  child: widget.trailing,
+                  child: widget.trailing?.copyWith(size: 20.r),
                 ),
               ),
             ],
@@ -109,8 +113,8 @@ class _FunDsChipState extends State<FunDsChip> {
     );
   }
 
-  double _chipPadding(){
-    if(widget.type == FunDsChipType.large){
+  double _chipPadding() {
+    if (widget.type == FunDsChipType.large) {
       return 8.h;
     }
     return 4.h;

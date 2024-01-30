@@ -22,11 +22,17 @@ void main() {
               funDsIconography: FunDsIconography.basicIcChevronDown,
               size: 20,
             ),
+            label: const Label(
+              'Label',
+              type: LabelType.outline,
+              color: LabelColor.red,
+            ),
             onPress: (isActive){},
           ),
         ),
       );
       expect(find.text('Chips Label'), findsOneWidget);
+      expect(find.text('Label'), findsOneWidget);
       expect(find.byKey(const Key('chip1')), findsAny);
     },
   );

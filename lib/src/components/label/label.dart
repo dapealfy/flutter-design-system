@@ -36,14 +36,29 @@ class Label extends StatelessWidget {
   });
 
   final String text;
+
   /// take icon from [FunDsIconography]
   final String? leadingIcon;
+
   /// take icon from [FunDsIconography]
   final String? trailingIcon;
   final LabelSize size;
   final LabelColor color;
   final LabelType type;
   final VoidCallback? onTap;
+
+  Label copyWith({LabelSize? size}) {
+    return Label(
+      text,
+      key: key,
+      size: size ?? this.size,
+      leadingIcon: leadingIcon,
+      trailingIcon: trailingIcon,
+      color: color,
+      type: type,
+      onTap: onTap,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -125,15 +140,18 @@ class Label extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {
-              onTap?.call();
-            },
+            onTap: onTap != null
+                ? () {
+                    onTap?.call();
+                  }
+                : null,
             customBorder: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.r)),
             ),
             child: Padding(
               padding: padding,
               child: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Visibility(
                     child: Padding(

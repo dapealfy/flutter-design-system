@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 class ChipCatalog extends StatefulWidget {
-
   const ChipCatalog({super.key});
 
   @override
@@ -13,7 +12,6 @@ class ChipCatalog extends StatefulWidget {
 }
 
 class _ChipCatalogState extends State<ChipCatalog> {
-
   @override
   Widget build(BuildContext context) {
     final toogleKnob = context.knobs.boolean(
@@ -24,6 +22,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
 
     final size = context.knobs.options<FunDsChipType>(
       label: 'FunDsChip Size',
+      description: 'Change chipSize by this knobs',
       initial: FunDsChipType.large,
       options: [
         const Option(
@@ -37,6 +36,26 @@ class _ChipCatalogState extends State<ChipCatalog> {
         const Option(
           label: 'Large',
           value: FunDsChipType.large,
+        ),
+      ],
+    );
+
+    final labelType = context.knobs.options<LabelType>(
+      label: 'Label Type',
+      description: 'Change Label Type by this knobs',
+      initial: LabelType.filled,
+      options: [
+        const Option(
+          label: 'Filled',
+          value: LabelType.filled,
+        ),
+        const Option(
+          label: 'Invert',
+          value: LabelType.invert,
+        ),
+        const Option(
+          label: 'Outline',
+          value: LabelType.outline,
         ),
       ],
     );
@@ -55,7 +74,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,
-                onPress: (isActive){},
+                onPress: (isActive) {},
               ),
               const SizedBox(height: 20),
               FunDsChip(
@@ -67,7 +86,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
                   funDsIconography: FunDsIconography.basicIcSortFilter,
                   size: 20.r,
                 ),
-                onPress: (isActive){},
+                onPress: (isActive) {},
               ),
               const SizedBox(height: 20),
               FunDsChip(
@@ -79,7 +98,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
                   funDsIconography: FunDsIconography.basicIcChevronDown,
                   size: 20.r,
                 ),
-                onPress: (isActive){},
+                onPress: (isActive) {},
               ),
               const SizedBox(height: 20),
               FunDsChip(
@@ -95,7 +114,7 @@ class _ChipCatalogState extends State<ChipCatalog> {
                   funDsIconography: FunDsIconography.basicIcChevronDown,
                   size: 20.r,
                 ),
-                onPress: (isActive){},
+                onPress: (isActive) {},
               ),
               const SizedBox(height: 20),
               FunDsChip(
@@ -111,12 +130,13 @@ class _ChipCatalogState extends State<ChipCatalog> {
                   funDsIconography: FunDsIconography.basicIcChevronDown,
                   size: 20.r,
                 ),
-                label: Container(
-                  color: Colors.red,
-                  child: const Text('ini nanti label'),
+                label: Label(
+                  'Label',
+                  type: labelType,
+                  color: LabelColor.red,
                 ),
-                onPress: (isActive){},
-              )
+                onPress: (isActive) {},
+              ),
             ],
           ),
         ),

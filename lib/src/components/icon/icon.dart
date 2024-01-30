@@ -13,6 +13,15 @@ class FunDsIcon extends StatelessWidget {
     this.color,
   }) : super(key: key);
 
+  FunDsIcon copyWith({double? size}) {
+    return FunDsIcon(
+      key: key,
+      funDsIconography: funDsIconography,
+      size: size ?? this.size,
+      color: color,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
