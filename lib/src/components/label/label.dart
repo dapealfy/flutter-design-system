@@ -112,7 +112,6 @@ class Label extends StatelessWidget {
     }
 
     return Container(
-        padding: padding,
         height: containerHeight,
         decoration: BoxDecoration(
           color: backgroundColor,
@@ -123,53 +122,62 @@ class Label extends StatelessWidget {
           ),
           borderRadius: BorderRadius.all(Radius.circular(4.r)),
         ),
-        child: InkWell(
-          onTap: () {
-            onTap?.call();
-          },
-          child: Row(
-            children: [
-              Visibility(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 4.w),
-                  child: Center(
-                    child: leadingIcon != null
-                        ? FunDsIcon(
-                            funDsIconography: leadingIcon!,
-                            size: 16.r,
-                            color: contentColor,
-                          )
-                        : const SizedBox(),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () {
+              onTap?.call();
+            },
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.r)),
+            ),
+            child: Padding(
+              padding: padding,
+              child: Row(
+                children: [
+                  Visibility(
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 4.w),
+                      child: Center(
+                        child: leadingIcon != null
+                            ? FunDsIcon(
+                                funDsIconography: leadingIcon!,
+                                size: 16.r,
+                                color: contentColor,
+                              )
+                            : const SizedBox(),
+                      ),
+                    ),
+                    visible: leadingIcon != null,
                   ),
-                ),
-                visible: leadingIcon != null,
-              ),
-              Center(
-                child: Text(
-                  text,
-                  maxLines: 1,
-                  style: FunDsTypography.defB.copyWith(
-                    color: contentColor,
-                    fontSize: fontSize,
+                  Center(
+                    child: Text(
+                      text,
+                      maxLines: 1,
+                      style: FunDsTypography.defB.copyWith(
+                        color: contentColor,
+                        fontSize: fontSize,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Visibility(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 4.w),
-                  child: Center(
-                    child: trailingIcon != null
-                        ? FunDsIcon(
-                            funDsIconography: trailingIcon!,
-                            size: 16.r,
-                            color: contentColor,
-                          )
-                        : const SizedBox(),
+                  Visibility(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 4.w),
+                      child: Center(
+                        child: trailingIcon != null
+                            ? FunDsIcon(
+                                funDsIconography: trailingIcon!,
+                                size: 16.r,
+                                color: contentColor,
+                              )
+                            : const SizedBox(),
+                      ),
+                    ),
+                    visible: trailingIcon != null,
                   ),
-                ),
-                visible: trailingIcon != null,
+                ],
               ),
-            ],
+            ),
           ),
         ));
   }
