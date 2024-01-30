@@ -238,11 +238,10 @@ class Avatar extends StatelessWidget {
                           : null,
                     ),
                   ),
-                  placeholder: (context, url) =>
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CircularProgressIndicator(),
-                      ),
+                  placeholder: (context, url) => const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CircularProgressIndicator(),
+                  ),
                   errorWidget: (context, url, error) => Container(
                     decoration: BoxDecoration(
                       color: FunDsColors.colorNeutral200,
