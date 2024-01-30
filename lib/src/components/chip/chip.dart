@@ -62,7 +62,6 @@ class _FunDsChipState extends State<FunDsChip> {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: widget.type == FunDsChipType.large ? 16.w : 12.w,
-            vertical: widget.type == FunDsChipType.large ? 12.w : 8.w,
           ),
           child: Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
@@ -115,9 +114,9 @@ class _FunDsChipState extends State<FunDsChip> {
 
   double _chipPadding() {
     if (widget.type == FunDsChipType.large) {
-      return 8.h;
+      return 8.w;
     }
-    return 4.h;
+    return 4.w;
   }
 
   double _chipHeight() {
