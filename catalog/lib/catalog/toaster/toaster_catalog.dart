@@ -34,9 +34,10 @@ class ToasterCatalog extends StatelessWidget {
               final toaster = Toaster(
                 message: 'Put short description here!',
                 label: 'Oke',
+                leftIcon: leftIcon,
               );
               // Find the ScaffoldMessenger in the widget tree
-              // and use it to show a SnackBar.
+              // and use it to show a Toaster.
               ScaffoldMessenger.of(context).showSnackBar(toaster);
             },
             child: const Text('Show Toaster Normal'),
@@ -51,7 +52,7 @@ class ToasterCatalog extends StatelessWidget {
                 leftIcon: leftIcon,
               );
               // Find the ScaffoldMessenger in the widget tree
-              // and use it to show a SnackBar.
+              // and use it to show a Toaster.
               ScaffoldMessenger.of(context).showSnackBar(toaster);
             },
             child: const Text('Show Toaster Error'),

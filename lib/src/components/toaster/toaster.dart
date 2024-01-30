@@ -6,33 +6,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 enum ToasterType { normal, error }
 
 class Toaster extends SnackBar {
-  /// The message to be displayed.
-  String message;
-
-  /// The optional label for the [SnackBarAction].
-  String? label;
-
-  /// The type of toaster to be displayed.
-  ToasterType type;
-
-  /// The optional icon to be displayed on the left of the message.
-  Widget? leftIcon;
-
+  /// Creates a [SnackBar] with some [content] and an [action].
   Toaster({
-    super.key,
-    required this.message,
-    this.label,
-    this.type = ToasterType.normal,
-    this.leftIcon,
+    Key? key,
+
+    /// The message to be displayed.
+    required String message,
+
+    /// The optional label for the [SnackBarAction].
+    String? label,
+
+    /// The type of toaster to be displayed.
+    ToasterType type = ToasterType.normal,
+
+    /// The optional icon to be displayed on the left of the message.
+    Widget? leftIcon,
   }) : super(
+          key: key,
           content: Row(
             children: [
-              (leftIcon != null)
-                  ? Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: leftIcon,
-                    )
-                  : const SizedBox.shrink(),
+              if (leftIcon != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: leftIcon,
+                ),
               Text(
                 message,
                 style: FunDsTypography.body14.copyWith(
