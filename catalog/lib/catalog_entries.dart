@@ -20,6 +20,7 @@ import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
+import 'package:catalog/catalog/toaster/toaster_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
 import 'package:catalog/core/home_catalog.dart';
 
@@ -124,6 +125,11 @@ final entries = [
   Entry(
     name: 'Label/Label',
     builder: (context) => const LabelCatalog(),
+  ),
+
+  Entry(
+    name: 'Toaster/Toaster',
+    builder: (context) => const ToasterCatalog(),
   ),
 
   Entry(

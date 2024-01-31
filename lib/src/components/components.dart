@@ -22,3 +22,4 @@ export 'loader/loader.dart';
 export 'ticker/ticker.dart';
 export 'label/label.dart';
 export 'chip/chip.dart';
+export 'toaster/toaster.dart';
