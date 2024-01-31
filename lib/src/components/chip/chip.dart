@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FunDsChip extends StatefulWidget {
+class FunDsChip extends StatelessWidget {
   final FunDsIcon? leading; //size will always replace to 20
   final FunDsIcon? trailing; //size will always replace to 20
   final FunDsChipType type;
   final String text;
-  final Label? label;// label size will always replace to FunDsChipType
+  final Label? label; // label size will always replace to FunDsChipType
+  final bool isActive;
   final bool enable;
-  final Function(bool)? onPress;
+  final VoidCallback? onPress;
 
   const FunDsChip({
     super.key,
@@ -18,32 +19,24 @@ class FunDsChip extends StatefulWidget {
     this.leading,
     this.trailing,
     this.label,
+    this.isActive = false,
     this.enable = true,
     this.onPress,
   });
 
   @override
-  State<FunDsChip> createState() => _FunDsChipState();
-}
-
-class _FunDsChipState extends State<FunDsChip> {
-  bool isActive = false;
-
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      key: widget.key,
-      onTap: widget.onPress != null
+      key: key,
+      onTap: onPress != null
           ? () {
-              setState(() {
-                isActive = !isActive;
-              });
+              onPress!();
             }
           : null,
       child: Container(
         height: _chipHeight(),
         decoration: ShapeDecoration(
-            color: widget.enable
+            color: enable
                 ? isActive
                     ? FunDsColors.colorPrimary100
                     : FunDsColors.colorWhite
@@ -51,7 +44,7 @@ class _FunDsChipState extends State<FunDsChip> {
             shape: RoundedRectangleBorder(
               side: BorderSide(
                 width: 1.w,
-                color: widget.enable
+                color: enable
                     ? isActive
                         ? FunDsColors.colorPrimary
                         : FunDsColors.colorNeutral400
@@ -61,26 +54,26 @@ class _FunDsChipState extends State<FunDsChip> {
             )),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: widget.type == FunDsChipType.large ? 16.w : 12.w,
+            horizontal: type == FunDsChipType.large ? 16.w : 12.w,
           ),
           child: Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
             runAlignment: WrapAlignment.center,
             children: [
               Visibility(
-                visible: widget.leading != null,
+                visible: leading != null,
                 child: Padding(
                   padding: EdgeInsets.only(right: _chipPadding()),
-                  child: widget.leading?.copyWith(size: 20.r),
+                  child: leading?.copyWith(size: 20.r),
                 ),
               ),
               Text(
-                widget.text,
-                style: (widget.type == FunDsChipType.large
+                text,
+                style: (type == FunDsChipType.large
                         ? FunDsTypography.body16
                         : FunDsTypography.body14)
                     .copyWith(
-                  color: widget.enable
+                  color: enable
                       ? isActive
                           ? FunDsColors.colorPrimary
                           : FunDsColors.colorNeutral600
@@ -88,21 +81,21 @@ class _FunDsChipState extends State<FunDsChip> {
                 ),
               ),
               Visibility(
-                visible: widget.label != null,
+                visible: label != null,
                 child: Padding(
                   padding: EdgeInsets.only(left: _chipPadding()),
-                  child: widget.label?.copyWith(
-                    size: widget.type == FunDsChipType.large
+                  child: label?.copyWith(
+                    size: type == FunDsChipType.large
                         ? LabelSize.medium
                         : LabelSize.small,
                   ),
                 ),
               ),
               Visibility(
-                visible: widget.trailing != null,
+                visible: trailing != null,
                 child: Padding(
                   padding: EdgeInsets.only(left: _chipPadding()),
-                  child: widget.trailing?.copyWith(size: 20.r),
+                  child: trailing?.copyWith(size: 20.r),
                 ),
               ),
             ],
@@ -113,14 +106,14 @@ class _FunDsChipState extends State<FunDsChip> {
   }
 
   double _chipPadding() {
-    if (widget.type == FunDsChipType.large) {
+    if (type == FunDsChipType.large) {
       return 8.w;
     }
     return 4.w;
   }
 
   double _chipHeight() {
-    switch (widget.type) {
+    switch (type) {
       case FunDsChipType.small:
         return 32.h;
       case FunDsChipType.medium:

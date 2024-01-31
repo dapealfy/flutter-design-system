@@ -12,6 +12,8 @@ class ChipCatalog extends StatefulWidget {
 }
 
 class _ChipCatalogState extends State<ChipCatalog> {
+  var listChipValue = [false, false, false, false, false];
+
   @override
   Widget build(BuildContext context) {
     final toogleKnob = context.knobs.boolean(
@@ -74,7 +76,12 @@ class _ChipCatalogState extends State<ChipCatalog> {
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,
-                onPress: (isActive) {},
+                isActive: listChipValue[0],
+                onPress: () {
+                  setState(() {
+                    listChipValue[0] = !listChipValue[0];
+                  });
+                },
               ),
               const SizedBox(height: 20),
               FunDsChip(
@@ -82,11 +89,16 @@ class _ChipCatalogState extends State<ChipCatalog> {
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,
+                isActive: listChipValue[1],
                 leading: FunDsIcon(
                   funDsIconography: FunDsIconography.basicIcSortFilter,
                   size: 20.r,
                 ),
-                onPress: (isActive) {},
+                onPress: () {
+                  setState(() {
+                    listChipValue[1] = !listChipValue[1];
+                  });
+                },
               ),
               const SizedBox(height: 20),
               FunDsChip(
@@ -94,17 +106,23 @@ class _ChipCatalogState extends State<ChipCatalog> {
                 text: 'Chips Label',
                 type: size,
                 enable: toogleKnob,
+                isActive: listChipValue[2],
                 trailing: FunDsIcon(
                   funDsIconography: FunDsIconography.basicIcChevronDown,
                   size: 20.r,
                 ),
-                onPress: (isActive) {},
+                onPress: () {
+                  setState(() {
+                    listChipValue[2] = !listChipValue[2];
+                  });
+                },
               ),
               const SizedBox(height: 20),
               FunDsChip(
                 key: const Key('chip4'),
                 text: 'Chips Label',
                 type: size,
+                isActive: listChipValue[3],
                 enable: toogleKnob,
                 leading: FunDsIcon(
                   funDsIconography: FunDsIconography.basicIcSortFilter,
@@ -114,13 +132,18 @@ class _ChipCatalogState extends State<ChipCatalog> {
                   funDsIconography: FunDsIconography.basicIcChevronDown,
                   size: 20.r,
                 ),
-                onPress: (isActive) {},
+                onPress: () {
+                  setState(() {
+                    listChipValue[3] = !listChipValue[3];
+                  });
+                },
               ),
               const SizedBox(height: 20),
               FunDsChip(
                 key: const Key('chip5'),
                 text: 'Chips Label',
                 type: size,
+                isActive: listChipValue[4],
                 enable: toogleKnob,
                 leading: FunDsIcon(
                   funDsIconography: FunDsIconography.basicIcSortFilter,
@@ -135,7 +158,11 @@ class _ChipCatalogState extends State<ChipCatalog> {
                   type: labelType,
                   color: LabelColor.red,
                 ),
-                onPress: (isActive) {},
+                onPress: () {
+                  setState(() {
+                    listChipValue[4] = !listChipValue[4];
+                  });
+                },
               ),
             ],
           ),

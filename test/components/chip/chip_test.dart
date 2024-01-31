@@ -7,6 +7,7 @@ void main() {
   testWidgets(
     'FunDsChip basic property show correctly',
         (WidgetTester tester) async {
+      var isActive = false;
       await tester.pumpWidget(
         buildTestableWidget(
           child: FunDsChip(
@@ -27,13 +28,17 @@ void main() {
               type: LabelType.outline,
               color: LabelColor.red,
             ),
-            onPress: (isActive){},
+            onPress: (){
+              isActive =! isActive;
+            },
           ),
         ),
       );
       expect(find.text('Chips Label'), findsOneWidget);
       expect(find.text('Label'), findsOneWidget);
       expect(find.byKey(const Key('chip1')), findsAny);
+      await tester.tap(find.text('Chips Label'));
+      expect(isActive, true);
     },
   );
 }
