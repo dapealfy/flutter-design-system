@@ -378,7 +378,7 @@ class _CalendarState extends State<Calendar> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 0),
+                padding: const EdgeInsets.only(bottom: 24),
                 child: FunDsGroupButton(
                   variant: FunDsGroupButtonVariant.horizontal,
                   listButton: [
