@@ -39,49 +39,56 @@ class FunDsCustomBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 8.h),
-              child: Center(
-                child: Container(
-                  width: 30.w,
-                  height: 4.h,
-                  decoration: ShapeDecoration(
-                    color: FunDsColors.colorNeutral200,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(1160.r),
+    return Container(
+      color: FunDsColors.colorWhite,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      child: Wrap(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Center(
+                  child: Container(
+                    width: 30.w,
+                    height: 4.h,
+                    decoration: ShapeDecoration(
+                      color: FunDsColors.colorNeutral200,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(1160.r),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 12.h, left: 12.w),
-              child: IconButton(
-                onPressed: () => Navigator.of(context).pop(),
-                icon: Icon(
-                  Icons.close,
-                  size: 20.h,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: FunDsIcon(
+                    funDsIconography: FunDsIconography.actionIcCrossNude,
+                    size: 20.w,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 12.h,
-                horizontal: 20.w,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: 500.h),
+                  child: child,
+                ),
               ),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: 500.h),
-                child: child,
-              ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
