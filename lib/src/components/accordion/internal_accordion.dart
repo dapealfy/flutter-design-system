@@ -74,7 +74,7 @@ class _InternalAccordionState
   _accordion(EdgeInsets padding) {
     return Material(
       color: FunDsColors.colorWhite,
-      child: InkWell(
+      child: GestureDetector(
         onTap: widget.onTap,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +85,7 @@ class _InternalAccordionState
               child: Row(children: [
                 Expanded(
                     child: Text(
-                      widget.title,
+                  widget.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: FunDsTypography.heading14.copyWith(
@@ -93,9 +93,9 @@ class _InternalAccordionState
                 )),
                 RotationTransition(
                   turns: _iconTurnsAnimation,
-                  child: Icon(
-                    Icons.expand_less,
-                    size: 20.r,
+                  child: FunDsIcon(
+                    funDsIconography: FunDsIconography.basicIcChevronUp,
+                    size: 20.w,
                   ),
                 )
               ]),
