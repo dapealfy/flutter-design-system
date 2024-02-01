@@ -288,7 +288,7 @@ class _CalendarState extends State<Calendar> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -353,7 +353,7 @@ class _CalendarState extends State<Calendar> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
           child: Row(
             children: [
               Expanded(
@@ -383,7 +383,6 @@ class _CalendarState extends State<Calendar> {
             ],
           ),
         ),
-        SizedBox(height: 12.h)
       ],
     );
   }
