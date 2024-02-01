@@ -37,8 +37,8 @@ class FunDsBottomSheet extends StatelessWidget {
       backgroundColor: FunDsColors.colorWhite,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12.r),
-          topRight: Radius.circular(12.r),
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
         ),
       ),
       builder: (BuildContext context) {
@@ -57,9 +57,15 @@ class FunDsBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: FunDsColors.colorWhite,
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
+      ),
+      decoration: BoxDecoration(
+        color: FunDsColors.colorWhite,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
+        ),
       ),
       child: Wrap(
         key: key,
@@ -90,7 +96,7 @@ class FunDsBottomSheet extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 12),
                   child: FunDsIcon(
                     funDsIconography: FunDsIconography.actionIcCrossNude,
-                    size: 20.w,
+                    size: 24.w,
                   ),
                 ),
               ),
@@ -134,14 +140,15 @@ class FunDsBottomSheet extends StatelessWidget {
                 title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
+                textAlign: TextAlign.left,
                 style: FunDsTypography.heading20
-                    .copyWith(color: FunDsColors.colorNeutral900),
+                    .copyWith(color: FunDsColors.colorNeutral900, height: 0),
               ),
             ),
             Text(
               desc,
               overflow: TextOverflow.ellipsis,
-              maxLines: 2,
+              maxLines: 3,
               textAlign: TextAlign.center,
               style: FunDsTypography.body14.copyWith(
                   color: FunDsColors.colorNeutral600,
@@ -165,8 +172,8 @@ class FunDsBottomSheet extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.left,
-                    style: FunDsTypography.heading20
-                        .copyWith(color: FunDsColors.colorNeutral900),
+                    style: FunDsTypography.heading20.copyWith(
+                        color: FunDsColors.colorNeutral900, height: 0),
                   ),
                 ),
               ),
@@ -175,7 +182,7 @@ class FunDsBottomSheet extends StatelessWidget {
                 child: Text(
                   desc,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines: 3,
                   textAlign: TextAlign.left,
                   style: FunDsTypography.body14.copyWith(
                       color: FunDsColors.colorNeutral600,
@@ -217,8 +224,8 @@ class FunDsBottomSheet extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.left,
-                    style: FunDsTypography.heading20
-                        .copyWith(color: FunDsColors.colorNeutral900),
+                    style: FunDsTypography.heading20.copyWith(
+                        color: FunDsColors.colorNeutral900, height: 0),
                   ),
                 ),
               ),
@@ -227,7 +234,7 @@ class FunDsBottomSheet extends StatelessWidget {
                 child: Text(
                   desc,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines: 3,
                   textAlign: TextAlign.left,
                   style: FunDsTypography.body14.copyWith(
                       color: FunDsColors.colorNeutral600,
