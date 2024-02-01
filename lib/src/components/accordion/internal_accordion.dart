@@ -94,7 +94,7 @@ class _InternalAccordionState
                 RotationTransition(
                   turns: _iconTurnsAnimation,
                   child: Icon(
-                    Icons.expand_more,
+                    Icons.expand_less,
                     size: 20.r,
                   ),
                 )
