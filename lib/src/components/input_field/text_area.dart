@@ -266,38 +266,35 @@ class _TextAreaState extends State<TextArea> {
           ),
           child: Stack(
             children: [
-              Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal:
-                      (widget.textAreaSize == TextAreaSize.small) ? 10.w : 16.w,
-                  vertical:
-                      (widget.textAreaSize == TextAreaSize.small) ? 8.h : 12.h,
-                ),
-                child: m.TextField(
-                  key: const Key('textField'),
-                  onChanged: _handleOnChange,
-                  focusNode: _effectiveFocusNode,
-                  enabled: widget.enabled,
-                  controller: _effectiveController,
-                  keyboardType: widget.keyboardType,
-                  textInputAction: widget.textInputAction,
-                  onSubmitted: widget.onSubmitted,
-                  inputFormatters: [
-                    if (widget.maxLength != null)
-                      LengthLimitingTextInputFormatter(widget.maxLength),
-                    ...widget.inputFormatters ?? [],
-                  ],
-                  style: FunDsTypography.body12,
-                  maxLines:
-                      widget.maxLines ?? (widget.textAreaSize?.maxLines ?? 4),
-                  decoration: InputDecoration(
-                    isDense: true,
-                    contentPadding: EdgeInsets.zero,
-                    border: InputBorder.none,
-                    hintText: widget.hintText,
-                    hintStyle: FunDsTypography.body12
-                        .copyWith(color: FunDsColors.colorNeutral500),
+              m.TextField(
+                key: const Key('textField'),
+                onChanged: _handleOnChange,
+                focusNode: _effectiveFocusNode,
+                enabled: widget.enabled,
+                controller: _effectiveController,
+                keyboardType: widget.keyboardType,
+                textInputAction: widget.textInputAction,
+                onSubmitted: widget.onSubmitted,
+                inputFormatters: [
+                  if (widget.maxLength != null)
+                    LengthLimitingTextInputFormatter(widget.maxLength),
+                  ...widget.inputFormatters ?? [],
+                ],
+                style: FunDsTypography.body12,
+                maxLines:
+                    widget.maxLines ?? (widget.textAreaSize?.maxLines ?? 4),
+                decoration: InputDecoration(
+                  isDense: true,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal:
+                        (widget.textAreaSize == TextAreaSize.small) ? 10 : 16,
+                    vertical:
+                        (widget.textAreaSize == TextAreaSize.small) ? 6 : 12,
                   ),
+                  border: InputBorder.none,
+                  hintText: widget.hintText,
+                  hintStyle: FunDsTypography.body12
+                      .copyWith(color: FunDsColors.colorNeutral500),
                 ),
               ),
               Positioned(

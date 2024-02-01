@@ -336,34 +336,32 @@ class _TextFieldState extends State<TextField> {
                     ),
                   ),
                 Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 6.h,
-                      horizontal: 10.w,
-                    ),
-                    child: m.TextField(
-                      key: const Key('textField'),
-                      obscureText: widget.obscureText,
-                      onChanged: _handleOnChange,
-                      focusNode: _effectiveFocusNode,
-                      enabled: widget.enabled,
-                      controller: _effectiveController,
-                      keyboardType: widget.keyboardType,
-                      textInputAction: widget.textInputAction,
-                      onSubmitted: widget.onSubmitted,
-                      inputFormatters: [
-                        if (widget.maxLength != null)
-                          LengthLimitingTextInputFormatter(widget.maxLength),
-                        ...widget.inputFormatters ?? [],
-                      ],
-                      style: FunDsTypography.body12,
-                      decoration: InputDecoration(
-                        isDense: true,
-                        border: InputBorder.none,
-                        hintText: widget.hintText,
-                        hintStyle: FunDsTypography.body12
-                            .copyWith(color: FunDsColors.colorNeutral500),
+                  child: m.TextField(
+                    key: const Key('textField'),
+                    obscureText: widget.obscureText,
+                    onChanged: _handleOnChange,
+                    focusNode: _effectiveFocusNode,
+                    enabled: widget.enabled,
+                    controller: _effectiveController,
+                    keyboardType: widget.keyboardType,
+                    textInputAction: widget.textInputAction,
+                    onSubmitted: widget.onSubmitted,
+                    inputFormatters: [
+                      if (widget.maxLength != null)
+                        LengthLimitingTextInputFormatter(widget.maxLength),
+                      ...widget.inputFormatters ?? [],
+                    ],
+                    style: FunDsTypography.body12,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 6,
+                        horizontal: 10,
                       ),
+                      isDense: true,
+                      border: InputBorder.none,
+                      hintText: widget.hintText,
+                      hintStyle: FunDsTypography.body12
+                          .copyWith(color: FunDsColors.colorNeutral500),
                     ),
                   ),
                 ),
