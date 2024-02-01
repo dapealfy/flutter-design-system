@@ -58,27 +58,26 @@ class Calendar extends StatefulWidget {
       elevation: 1.0,
       barrierColor: FunDsColors.colorOverlay.withOpacity(0.8),
       isScrollControlled: true,
-      backgroundColor: Colors.white,
+      backgroundColor: FunDsColors.colorWhite,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(16.r),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
         ),
       ),
       builder: (context) {
-        return SafeArea(
-          child: Calendar(
-            titleText: titleText,
-            initialDate: initialDate,
-            minDate: minDate,
-            maxDate: maxDate,
-            validation: validation,
-            onCancel: () {
-              Navigator.of(context).pop(null);
-            },
-            onSave: (date) {
-              Navigator.of(context).pop(date);
-            },
-          ),
+        return Calendar(
+          titleText: titleText,
+          initialDate: initialDate,
+          minDate: minDate,
+          maxDate: maxDate,
+          validation: validation,
+          onCancel: () {
+            Navigator.of(context).pop(null);
+          },
+          onSave: (date) {
+            Navigator.of(context).pop(date);
+          },
         );
       },
     );
@@ -272,119 +271,143 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            width: 48.w,
-            height: 6.h,
-            margin: EdgeInsets.symmetric(vertical: 6.h),
-            decoration: BoxDecoration(
-              color: FunDsColors.colorNeutral200,
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-          ),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      decoration: BoxDecoration(
+        color: FunDsColors.colorWhite,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-          child: Column(
+      ),
+      child: Wrap(
+        children: [
+          Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      widget.onCancel();
-                    },
-                    child: const FunDsIcon(
-                      key: Key('calendar-close'),
-                      funDsIconography: FunDsIconography.actionIcCrossNude,
-                      size: 24,
+              Padding(
+                padding: EdgeInsets.only(top: 8.h),
+                child: Center(
+                  child: Container(
+                    width: 30.w,
+                    height: 4.h,
+                    decoration: ShapeDecoration(
+                      color: FunDsColors.colorNeutral200,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(1160.r),
+                      ),
                     ),
                   ),
-                  SizedBox(width: 16.w),
-                  DefaultTextStyle(
-                    style: FunDsTypography.heading20.copyWith(
-                      color: FunDsColors.colorNeutral900,
-                    ),
-                    child: Text(
-                      widget.titleText ?? 'Pilih Tanggal',
-                      key: const Key('calendar-title'),
-                    ),
-                  ),
-                ],
+                ),
               ),
-              SizedBox(height: 20.h),
-              SizedBox(
-                height: Calendar.itemExtent * 5,
-                child: Row(
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Expanded(
-                      child: _buildMonthPicker(),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            widget.onCancel();
+                          },
+                          child: FunDsIcon(
+                            key: const Key('calendar-close'),
+                            funDsIconography:
+                                FunDsIconography.actionIcCrossNude,
+                            size: 24.w,
+                          ),
+                        ),
+                        SizedBox(width: 16.w),
+                        DefaultTextStyle(
+                          style: FunDsTypography.heading20.copyWith(
+                            color: FunDsColors.colorNeutral900,
+                          ),
+                          child: Text(
+                            widget.titleText ?? 'Pilih Tanggal',
+                            key: const Key('calendar-title'),
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      child: _buildDayPicker(),
+                    SizedBox(height: 20.h),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Container(
+                        height: Calendar.itemExtent * 5,
+                        padding: EdgeInsets.only(
+                          bottom:
+                              (errorText == null) ? 0 : 16,
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: _buildMonthPicker(),
+                            ),
+                            Expanded(
+                              child: _buildDayPicker(),
+                            ),
+                            Expanded(
+                              child: _buildYearPicker(),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    Expanded(
-                      child: _buildYearPicker(),
+                    AnimatedCrossFade(
+                      duration: const Duration(milliseconds: 300),
+                      crossFadeState: errorText == null
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
+                      firstChild: const SizedBox(),
+                      secondChild: Ticker(
+                        key: const Key('calendar-error'),
+                        child: Text(
+                          errorText ?? '',
+                        ),
+                        type: TickerType.danger,
+                        funDsIconography: FunDsIconography.infoIcWarning,
+                      ),
                     ),
                   ],
                 ),
               ),
-              AnimatedCrossFade(
-                duration: const Duration(milliseconds: 300),
-                crossFadeState: errorText == null
-                    ? CrossFadeState.showFirst
-                    : CrossFadeState.showSecond,
-                firstChild: const SizedBox(),
-                secondChild: Ticker(
-                  key: const Key('calendar-error'),
-                  child: Text(
-                    errorText ?? '',
-                  ),
-                  type: TickerType.danger,
-                  funDsIconography: FunDsIconography.infoIcWarning,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 0),
+                child: FunDsGroupButton(
+                  variant: FunDsGroupButtonVariant.horizontal,
+                  listButton: [
+                    FunDsButton(
+                      key: const Key('calendar-cancel'),
+                      text: 'Batal',
+                      type: FunDsButtonType.medium,
+                      variant: FunDsButtonVariant.secondary,
+                      onPressed: () {
+                        widget.onCancel();
+                      },
+                    ),
+                    FunDsButton(
+                      key: const Key('calendar-save'),
+                      text: 'Simpan',
+                      type: FunDsButtonType.medium,
+                      variant: FunDsButtonVariant.primary,
+                      enabled: errorText == null,
+                      onPressed: () {
+                        widget.onSave(selectedDate);
+                      },
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-          child: Row(
-            children: [
-              Expanded(
-                child: FunDsButton(
-                  key: const Key('calendar-cancel'),
-                  text: 'Batal',
-                  type: FunDsButtonType.medium,
-                  variant: FunDsButtonVariant.secondary,
-                  onPressed: () {
-                    widget.onCancel();
-                  },
-                ),
-              ),
-              SizedBox(width: 12.w),
-              Expanded(
-                child: FunDsButton(
-                  key: const Key('calendar-save'),
-                  text: 'Simpan',
-                  type: FunDsButtonType.medium,
-                  variant: FunDsButtonVariant.primary,
-                  enabled: errorText == null,
-                  onPressed: () {
-                    widget.onSave(selectedDate);
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 12.h)
-      ],
+        ],
+      ),
     );
   }
 }

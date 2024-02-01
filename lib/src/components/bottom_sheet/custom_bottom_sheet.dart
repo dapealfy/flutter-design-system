@@ -24,8 +24,8 @@ class FunDsCustomBottomSheet extends StatelessWidget {
           FunDsColors.colorNeutral900.withOpacity(barrierOpacity ?? 0.8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12.r),
-          topRight: Radius.circular(12.r),
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
         ),
       ),
       builder: (BuildContext context) {
@@ -39,49 +39,67 @@ class FunDsCustomBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      decoration: BoxDecoration(
+        color: FunDsColors.colorWhite,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
+        ),
+      ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: 0.85.sh,
+        ),
+        child: Wrap(
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: 8.h),
-              child: Center(
-                child: Container(
-                  width: 30.w,
-                  height: 4.h,
-                  decoration: ShapeDecoration(
-                    color: FunDsColors.colorNeutral200,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(1160.r),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Center(
+                    child: Container(
+                      width: 30.w,
+                      height: 4.h,
+                      decoration: ShapeDecoration(
+                        color: FunDsColors.colorNeutral200,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(1160.r),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 12.h, left: 12.w),
-              child: IconButton(
-                onPressed: () => Navigator.of(context).pop(),
-                icon: Icon(
-                  Icons.close,
-                  size: 20.h,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: FunDsIcon(
+                      funDsIconography: FunDsIconography.actionIcCrossNude,
+                      size: 24.w,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 12.h,
-                horizontal: 20.w,
-              ),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: 500.h),
-                child: child,
-              ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                  ),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(maxHeight: 500.h),
+                    child: child,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 }
