@@ -309,7 +309,7 @@ class _TextFieldState extends State<TextField> {
         Container(
           key: const Key('border'),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r),
+            borderRadius: BorderRadius.circular(12.r),
             border: DoubleBorder(
               outerBorder: Border.all(
                 color: outerBorderColor ?? Colors.transparent,
@@ -317,7 +317,7 @@ class _TextFieldState extends State<TextField> {
               ),
               innerBorder: Border.all(
                 color: innerBorderColor,
-                width: 2,
+                width: 1,
               ),
             ),
             color: containerColor,
@@ -346,6 +346,7 @@ class _TextFieldState extends State<TextField> {
                     keyboardType: widget.keyboardType,
                     textInputAction: widget.textInputAction,
                     onSubmitted: widget.onSubmitted,
+                    textAlignVertical: TextAlignVertical.center,
                     inputFormatters: [
                       if (widget.maxLength != null)
                         LengthLimitingTextInputFormatter(widget.maxLength),

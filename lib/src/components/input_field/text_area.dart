@@ -259,7 +259,7 @@ class _TextAreaState extends State<TextArea> {
               ),
               innerBorder: Border.all(
                 color: innerBorderColor,
-                width: 2,
+                width: 1,
               ),
             ),
             color: containerColor,
