@@ -37,8 +37,8 @@ class FunDsBottomSheet extends StatelessWidget {
       backgroundColor: FunDsColors.colorWhite,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12.r),
-          topRight: Radius.circular(12.r),
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
         ),
       ),
       builder: (BuildContext context) {
@@ -56,55 +56,66 @@ class FunDsBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      key: key,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 8.h),
-              child: Center(
-                child: Container(
-                  width: 30.w,
-                  height: 4.h,
-                  decoration: ShapeDecoration(
-                    color: FunDsColors.colorNeutral200,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(1160.r),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      decoration: BoxDecoration(
+        color: FunDsColors.colorWhite,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
+        ),
+      ),
+      child: Wrap(
+        key: key,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 8.h),
+                child: Center(
+                  child: Container(
+                    width: 30.w,
+                    height: 4.h,
+                    decoration: ShapeDecoration(
+                      color: FunDsColors.colorNeutral200,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(1160.r),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 12.h, left: 12.w),
-              child: IconButton(
-                onPressed: () => Navigator.of(context).pop(),
-                icon: Icon(
-                  Icons.close,
-                  size: 20.h,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: FunDsIcon(
+                    funDsIconography: FunDsIconography.actionIcCrossNude,
+                    size: 24.w,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 20.h,
-                horizontal: 12.w,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                ),
+                child: getBody(context),
               ),
-              child: getBody(context),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 20.w,
-                right: 20.w,
-                top: 12.h,
-              ),
-              child: buttons,
-            )
-          ],
-        ),
-      ],
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 12,
+                ),
+                child: buttons,
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -115,29 +126,29 @@ class FunDsBottomSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(bottom: 8.h),
+              padding: const EdgeInsets.only(bottom: 8),
               child: SizedBox(
                 width: 130.w,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.r),
-                  child: getImageWidget()
-                ),
+                    borderRadius: BorderRadius.circular(8.r),
+                    child: getImageWidget()),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: Text(
                 title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
+                textAlign: TextAlign.left,
                 style: FunDsTypography.heading20
-                    .copyWith(color: FunDsColors.colorNeutral900),
+                    .copyWith(color: FunDsColors.colorNeutral900, height: 0),
               ),
             ),
             Text(
               desc,
               overflow: TextOverflow.ellipsis,
-              maxLines: 2,
+              maxLines: 3,
               textAlign: TextAlign.center,
               style: FunDsTypography.body14.copyWith(
                   color: FunDsColors.colorNeutral600,
@@ -153,7 +164,7 @@ class FunDsBottomSheet extends StatelessWidget {
           Column(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(bottom: 8.h),
+                padding: const EdgeInsets.only(bottom: 8),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -161,8 +172,8 @@ class FunDsBottomSheet extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.left,
-                    style: FunDsTypography.heading20
-                        .copyWith(color: FunDsColors.colorNeutral900),
+                    style: FunDsTypography.heading20.copyWith(
+                        color: FunDsColors.colorNeutral900, height: 0),
                   ),
                 ),
               ),
@@ -171,7 +182,7 @@ class FunDsBottomSheet extends StatelessWidget {
                 child: Text(
                   desc,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines: 3,
                   textAlign: TextAlign.left,
                   style: FunDsTypography.body14.copyWith(
                       color: FunDsColors.colorNeutral600,
@@ -180,12 +191,11 @@ class FunDsBottomSheet extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 12.h),
+                padding: const EdgeInsets.only(top: 12),
                 child: Center(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.r),
-                    child: getImageWidget()
-                  ),
+                      borderRadius: BorderRadius.circular(8.r),
+                      child: getImageWidget()),
                 ),
               ),
             ],
@@ -198,16 +208,15 @@ class FunDsBottomSheet extends StatelessWidget {
           Column(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(bottom: 8.h),
+                padding: const EdgeInsets.only(bottom: 8),
                 child: Center(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.r),
-                    child: getImageWidget()
-                  ),
+                      borderRadius: BorderRadius.circular(8.r),
+                      child: getImageWidget()),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.h),
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -215,8 +224,8 @@ class FunDsBottomSheet extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.left,
-                    style: FunDsTypography.heading20
-                        .copyWith(color: FunDsColors.colorNeutral900),
+                    style: FunDsTypography.heading20.copyWith(
+                        color: FunDsColors.colorNeutral900, height: 0),
                   ),
                 ),
               ),
@@ -225,7 +234,7 @@ class FunDsBottomSheet extends StatelessWidget {
                 child: Text(
                   desc,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines: 3,
                   textAlign: TextAlign.left,
                   style: FunDsTypography.body14.copyWith(
                       color: FunDsColors.colorNeutral600,
@@ -248,20 +257,23 @@ class FunDsBottomSheet extends StatelessWidget {
     } else if (Uri.parse(image).isAbsolute) {
       return Image.network(
         image,
-        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+        loadingBuilder: (BuildContext context, Widget child,
+            ImageChunkEvent? loadingProgress) {
           if (loadingProgress == null) return child;
           return Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: CircularProgressIndicator(
                 value: loadingProgress.expectedTotalBytes != null
-                    ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!
                     : null,
               ),
             ),
           );
         },
-        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+        errorBuilder:
+            (BuildContext context, Object exception, StackTrace? stackTrace) {
           return const SizedBox.shrink();
         },
       );

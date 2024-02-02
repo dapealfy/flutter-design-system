@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:catalog/catalog_entries.dart';
 import 'package:catalog/core/auth_page.dart';
 import 'package:catalog/core/story_builder.dart';
@@ -37,6 +39,13 @@ class MyApp extends StatelessWidget {
                   theme: ThemeData.light(),
                   darkTheme: ThemeData.dark(),
                   themeMode: ThemeMode.light,
+                  scrollBehavior: const MaterialScrollBehavior().copyWith(
+                    dragDevices: {
+                      PointerDeviceKind.touch,
+                      PointerDeviceKind.mouse,
+                      PointerDeviceKind.trackpad,
+                    },
+                  ),
                   debugShowCheckedModeBanner: false,
                   home: Scaffold(
                     body: Center(

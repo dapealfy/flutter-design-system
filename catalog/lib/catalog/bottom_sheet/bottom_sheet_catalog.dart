@@ -38,7 +38,8 @@ class BottomSheetCatalog extends StatelessWidget {
                   context: context,
                   title: 'Test Title ',
                   desc:
-                      'Test Description yang panjang sekali sampai tidak tak terbatas dan melampauinya ternyata kurang panjang',
+                      '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, quis aliquam nisl nisl eget urna. ''',
                   image:
                       'assets/images/error_ibu_amanah_partial.png',
                   type: option,

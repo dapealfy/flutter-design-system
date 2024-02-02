@@ -19,6 +19,7 @@ import 'package:catalog/catalog/foundation/typography_catalog.dart';
 import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
+import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
 import 'package:catalog/catalog/toaster/toaster_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
@@ -105,6 +106,11 @@ final entries = [
   Entry(
     name: 'Bottom Sheet & Dialog/Bottom Sheet',
     builder: (context) => const BottomSheetCatalog(),
+  ),
+
+  Entry(
+    name: 'Page Control/Page Control',
+    builder: (context) => const PageControlCatalog(),
   ),
 
   Entry(
