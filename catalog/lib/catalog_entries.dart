@@ -9,6 +9,7 @@ import 'package:catalog/catalog/button/group_button_catalog.dart';
 import 'package:catalog/catalog/button/radio_button_catalog.dart';
 import 'package:catalog/catalog/calendar/calendar_catalog.dart';
 import 'package:catalog/catalog/checkbox/checkbox_catalog.dart';
+import 'package:catalog/catalog/chip/chip_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
 import 'package:catalog/catalog/control/toggle_catalog.dart';
 import 'package:catalog/catalog/example/example_catalog.dart';
@@ -135,6 +136,11 @@ final entries = [
   Entry(
     name: 'Toaster/Toaster',
     builder: (context) => const ToasterCatalog(),
+  ),
+
+  Entry(
+    name: 'Chip/Chip',
+    builder: (context) => const ChipCatalog(),
   ),
 
   // Example

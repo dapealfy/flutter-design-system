@@ -22,4 +22,5 @@ export 'label/label.dart';
 export 'loader/loader.dart';
 export 'page_control/page_control.dart';
 export 'ticker/ticker.dart';
+export 'chip/chip.dart';
 export 'toaster/toaster.dart';
