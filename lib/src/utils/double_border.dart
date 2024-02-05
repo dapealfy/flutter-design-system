@@ -83,26 +83,28 @@ class DoubleBorder extends BoxBorder with EquatableMixin {
     );
 
     // Paint outer border
-    double innerBorderWidth = [
-      innerBorder.bottom.width,
-      innerBorder.top.width,
-      innerBorder.left.width,
-      innerBorder.right.width
+    double outerBorderWidth = [
+      outerBorder.bottom.width,
+      outerBorder.top.width,
+      outerBorder.left.width,
+      outerBorder.right.width
     ].max;
 
-    final inflateSize = innerBorderWidth + outerGap;
-    final outerRect = rect.inflate(inflateSize);
+    if (outerBorderWidth > 0) {
+      final inflateSize = outerGap + outerBorderWidth;
+      final outerRect = rect.inflate(inflateSize);
 
-    outerBorder.paint(
-      canvas,
-      outerRect,
-      textDirection: textDirection,
-      shape: shape,
-      borderRadius: borderRadius
-          ?.add(
-            BorderRadius.circular(inflateSize),
-          )
-          .resolve(textDirection),
-    );
+      outerBorder.paint(
+        canvas,
+        outerRect,
+        textDirection: textDirection,
+        shape: shape,
+        borderRadius: borderRadius
+            ?.add(
+              BorderRadius.circular(inflateSize),
+            )
+            .resolve(textDirection),
+      );
+    }
   }
 }

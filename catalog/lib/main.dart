@@ -32,115 +32,113 @@ class _MyAppState extends State<MyApp> {
     return AuthPage(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: Stack(
-            children: [
-              Storybook(
-                initialStory: 'Home',
-                stories: buildStory(entries),
-                showPanel: _showPanel,
-                wrapperBuilder: (context, child) {
-                  // Bulder is needed to initialize ScreenUtil
-                  // Otherwise it will get wrong MediaQuery
-                  return Builder(
-                    builder: (context) {
-                      ScreenUtil.init(
-                        context,
-                        minTextAdapt: true,
-                        designSize: const Size(360, 640),
-                        splitScreenMode: false,
-                      );
+        home: Stack(
+          children: [
+            Storybook(
+              initialStory: 'Home',
+              stories: buildStory(entries),
+              showPanel: _showPanel,
+              wrapperBuilder: (context, child) {
+                // Bulder is needed to initialize ScreenUtil
+                // Otherwise it will get wrong MediaQuery
+                return Builder(
+                  builder: (context) {
+                    ScreenUtil.init(
+                      context,
+                      minTextAdapt: true,
+                      designSize: const Size(360, 640),
+                      splitScreenMode: false,
+                    );
 
-                      return MaterialApp(
-                        theme: ThemeData.light(),
-                        darkTheme: ThemeData.dark(),
-                        themeMode: ThemeMode.light,
-                        scrollBehavior: const MaterialScrollBehavior().copyWith(
-                          dragDevices: {
-                            PointerDeviceKind.touch,
-                            PointerDeviceKind.mouse,
-                            PointerDeviceKind.trackpad,
-                          },
+                    return MaterialApp(
+                      theme: ThemeData.light(),
+                      darkTheme: ThemeData.dark(),
+                      themeMode: ThemeMode.light,
+                      scrollBehavior: const MaterialScrollBehavior().copyWith(
+                        dragDevices: {
+                          PointerDeviceKind.touch,
+                          PointerDeviceKind.mouse,
+                          PointerDeviceKind.trackpad,
+                        },
+                      ),
+                      debugShowCheckedModeBanner: false,
+                      home: Scaffold(
+                        body: Center(
+                          child: child,
                         ),
-                        debugShowCheckedModeBanner: false,
-                        home: Scaffold(
-                          body: Center(
-                            child: child,
-                          ),
+                      ),
+                    );
+                  },
+                );
+              },
+              plugins: [
+                kIsWeb
+                    ? DeviceFramePlugin(
+                        initialData: (
+                          isFrameVisible: true,
+                          device: Devices.android.samsungGalaxyS20,
+                          orientation: Orientation.portrait,
                         ),
-                      );
-                    },
-                  );
-                },
-                plugins: [
-                  kIsWeb
-                      ? DeviceFramePlugin(
-                          initialData: (
-                            isFrameVisible: true,
-                            device: Devices.android.samsungGalaxyS20,
-                            orientation: Orientation.portrait,
-                          ),
+                      )
+                    : DeviceFramePlugin(),
+              ],
+            ),
+            Positioned(
+              left: screenSize.width - _x,
+              top: screenSize.height - _y,
+              child: Draggable(
+                feedback: FloatingActionButton(
+                  shape: const CircleBorder(),
+                  backgroundColor: FunDsColors.colorNeutral200,
+                  onPressed: () {
+                    setState(() {
+                      _showPanel = !_showPanel;
+                    });
+                  },
+                  child: (_showPanel)
+                      ? const FunDsIcon(
+                          funDsIconography: FunDsIconography.actionIcEyeOpen,
+                          size: 24,
                         )
-                      : DeviceFramePlugin(),
-                ],
-              ),
-              Positioned(
-                left: screenSize.width - _x,
-                top: screenSize.height - _y,
-                child: Draggable(
-                  feedback: FloatingActionButton(
-                    shape: const CircleBorder(),
-                    backgroundColor: FunDsColors.colorNeutral200,
-                    onPressed: () {
-                      setState(() {
-                        _showPanel = !_showPanel;
-                      });
-                    },
-                    child: (_showPanel)
-                        ? const FunDsIcon(
-                            funDsIconography: FunDsIconography.actionIcEyeOpen,
-                            size: 24,
-                          )
-                        : const FunDsIcon(
-                            funDsIconography: FunDsIconography.actionIcEyeClose,
-                            size: 24,
-                          ),
-                  ),
-                  childWhenDragging: const SizedBox.shrink(),
-                  onDragUpdate: (details) {
+                      : const FunDsIcon(
+                          funDsIconography: FunDsIconography.actionIcEyeClose,
+                          size: 24,
+                        ),
+                ),
+                childWhenDragging: const SizedBox.shrink(),
+                onDragUpdate: (details) {
+                  setState(() {
+                    _x = screenSize.width - details.globalPosition.dx;
+                    _y = screenSize.height - details.globalPosition.dy;
+                  });
+                },
+                onDragEnd: (details) {
+                  setState(() {
+                    _x = screenSize.width - details.offset.dx;
+                    _y = screenSize.height - details.offset.dy;
+                  });
+                },
+                child: FloatingActionButton(
+                  shape: const CircleBorder(),
+                  backgroundColor: FunDsColors.colorNeutral200,
+                  onPressed: () {
                     setState(() {
-                      _x = screenSize.width - details.globalPosition.dx;
-                      _y = screenSize.height - details.globalPosition.dy;
+                      _showPanel = !_showPanel;
                     });
                   },
-                  onDragEnd: (details) {
-                    setState(() {
-                      _x = screenSize.width - details.offset.dx;
-                      _y = screenSize.height - details.offset.dy;
-                    });
-                  },
-                  child: FloatingActionButton(
-                    shape: const CircleBorder(),
-                    backgroundColor: FunDsColors.colorNeutral200,
-                    onPressed: () {
-                      setState(() {
-                        _showPanel = !_showPanel;
-                      });
-                    },
-                    child: (_showPanel)
-                        ? const FunDsIcon(
-                            funDsIconography: FunDsIconography.actionIcEyeOpen,
-                            size: 24,
-                          )
-                        : const FunDsIcon(
-                            funDsIconography: FunDsIconography.actionIcEyeClose,
-                            size: 24,
-                          ),
-                  ),
+                  child: (_showPanel)
+                      ? const FunDsIcon(
+                          funDsIconography: FunDsIconography.actionIcEyeOpen,
+                          size: 24,
+                        )
+                      : const FunDsIcon(
+                          funDsIconography: FunDsIconography.actionIcEyeClose,
+                          size: 24,
+                        ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
