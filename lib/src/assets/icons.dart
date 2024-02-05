@@ -67,6 +67,8 @@ class FunDsIconography {
       'packages/flutter_design_system/assets/icons/basic/ic_sort_default.svg';
   static const String basicIcSortDescending =
       'packages/flutter_design_system/assets/icons/basic/ic_sort_descending.svg';
+  static const String basicIcSortFilter =
+      'packages/flutter_design_system/assets/icons/basic/ic_sort_filter.svg';
   static const String basicIcTriangleDown =
       'packages/flutter_design_system/assets/icons/basic/ic_triangle_down.svg';
   static const String basicIcTriangleLeft =
@@ -217,6 +219,8 @@ class FunDsIconography {
       'packages/flutter_design_system/assets/icons/transaction/ic_wallet.svg';
   static const String transactionIcWithdraw =
       'packages/flutter_design_system/assets/icons/transaction/ic_withdraw.svg';
+  static const String icAvatar =
+      'packages/flutter_design_system/assets/icons/icon_avatar.svg';
 
   static List<String> getAllIcons() {
     return [
@@ -253,6 +257,7 @@ class FunDsIconography {
       basicIcSortAscending,
       basicIcSortDefault,
       basicIcSortDescending,
+      basicIcSortFilter,
       basicIcTriangleDown,
       basicIcTriangleLeft,
       basicIcTriangleRight,
@@ -328,6 +333,7 @@ class FunDsIconography {
       transactionIcRefreshMoney2,
       transactionIcWallet,
       transactionIcWithdraw,
+      icAvatar
     ];
   }
 }

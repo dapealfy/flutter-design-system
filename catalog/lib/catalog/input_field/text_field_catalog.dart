@@ -1,13 +1,15 @@
 import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/funds.dart';
+import 'package:flutter_design_system/funds.dart' hide TextField;
+import 'package:flutter_design_system/funds.dart' as funds;
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 const _desc = '''
 
-Widget Name: FunDsTextField
+Widget Name: TextField
 
 Check the knobs for available options. They are located on the right side of the web interface, and under the gear icon on mobile
 ''';
@@ -45,7 +47,7 @@ class TextFieldCatalog extends StatelessWidget {
             style: FunDsTypography.body14,
           ),
           SizedBox(width: 4.w),
-          AIcon(
+          FunDsIcon(
             funDsIconography: FunDsIconography.basicIcChevronDown,
             size: 16.spMin,
           )
@@ -94,7 +96,7 @@ class TextFieldCatalog extends StatelessWidget {
             style: FunDsTypography.body14,
           ),
           SizedBox(width: 4.w),
-          AIcon(
+          FunDsIcon(
             funDsIconography: FunDsIconography.basicIcChevronDown,
             size: 16.spMin,
           )
@@ -128,7 +130,7 @@ class TextFieldCatalog extends StatelessWidget {
         const Option(label: 'null', value: null),
         Option(
           label: 'Custom',
-          value: AIcon(
+          value: FunDsIcon(
             funDsIconography: FunDsIconography.actionIcCloud,
             size: 16.spMin,
           ),
@@ -143,7 +145,7 @@ class TextFieldCatalog extends StatelessWidget {
         const Option(label: 'null', value: null),
         Option(
           label: 'Custom',
-          value: AIcon(
+          value: FunDsIcon(
             funDsIconography: FunDsIconography.actionIcEyeOpen,
             size: 16.spMin,
           ),
@@ -158,7 +160,7 @@ class TextFieldCatalog extends StatelessWidget {
         const Option(label: 'null', value: null),
         Option(
           label: 'Custom',
-          value: AIcon(
+          value: FunDsIcon(
             funDsIconography: FunDsIconography.actionIcFilter,
             size: 16.spMin,
           ),
@@ -198,7 +200,7 @@ class TextFieldCatalog extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: FunDsTextField(
+            child: funds.TextField(
               labelText: labelText,
               descriptionText: descriptionText.isEmpty ? null : descriptionText,
               hintText: hintText,

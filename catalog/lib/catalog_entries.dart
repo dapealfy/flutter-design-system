@@ -1,10 +1,26 @@
-import 'package:catalog/catalog/atoms/a_icon_catalog.dart';
+import 'package:catalog/catalog/accordion/accordion_catalog.dart';
+import 'package:catalog/catalog/accordion/group_accordion_catalog.dart';
+import 'package:catalog/catalog/avatar/avatar_catalog.dart';
+import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
+import 'package:catalog/catalog/badge/badge_catalog.dart';
+import 'package:catalog/catalog/bottom_sheet/bottom_sheet_catalog.dart';
 import 'package:catalog/catalog/button/button_catalog.dart';
 import 'package:catalog/catalog/button/group_button_catalog.dart';
-import 'package:catalog/catalog/example/example_catalog.dart';
+import 'package:catalog/catalog/button/radio_button_catalog.dart';
+import 'package:catalog/catalog/calendar/calendar_catalog.dart';
+import 'package:catalog/catalog/checkbox/checkbox_catalog.dart';
+import 'package:catalog/catalog/chip/chip_catalog.dart';
+import 'package:catalog/catalog/control/slider_catalog.dart';
+import 'package:catalog/catalog/control/toggle_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
+import 'package:catalog/catalog/foundation/icon_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
+import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
+import 'package:catalog/catalog/label/label_catalog.dart';
+import 'package:catalog/catalog/page_control/page_control_catalog.dart';
+import 'package:catalog/catalog/loader/loader_catalog.dart';
+import 'package:catalog/catalog/toaster/toaster_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
 import 'package:catalog/core/home_catalog.dart';
 
@@ -28,24 +44,102 @@ final entries = [
     builder: (context) => const AIconCatalog(),
   ),
 
+  // Components
   Entry(
-    name: 'Input Field/Text Field',
+    name: 'Component/Avatar/Single Avatar',
+    builder: (context) => const SingleAvatarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Avatar/Group Avatar',
+    builder: (context) => const GroupAvatarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Accordion/Accordion',
+    builder: (context) => const AccordionCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Accordion/Group Accordion',
+    builder: (context) => const GroupAccordionCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Input Field/Text Field',
     builder: (context) => const TextFieldCatalog(),
   ),
 
   Entry(
-    name: 'Button/Button',
+    name: 'Component/Input Field/Text Area',
+    builder: (context) => const TextAreaCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Button/Button',
     builder: (context) => const ButtonCatalog(),
   ),
   Entry(
-    name: 'Button/Group Button',
+    name: 'Component/Button/Group Button',
     builder: (context) => const GroupButtonCatalog(),
   ),
-
-  // Example
   Entry(
-    name: 'Example/Example',
-    description: 'See the example here',
-    builder: (context) => const ExampleCatalog(),
+    name: 'Component/Button/Radio Button',
+    builder: (context) => const RadioButtonCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Calendar/Calendar',
+    builder: (context) => const CalendarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Control/Slider',
+    builder: (context) => const SliderCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Control/Toggle',
+    builder: (context) => const ToggleCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Bottom Sheet & Dialog/Bottom Sheet',
+    builder: (context) => const BottomSheetCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Page Control/Page Control',
+    builder: (context) => const PageControlCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Badge/Badge',
+    builder: (context) => const BadgeCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/CheckBox/Checkbox',
+    builder: (context) => const CheckboxCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Loader/Spinner Loader',
+    builder: (context) => const LoaderCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Label/Label',
+    builder: (context) => const LabelCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Toaster/Toaster',
+    builder: (context) => const ToasterCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Chip/Chip',
+    builder: (context) => const ChipCatalog(),
   ),
 ];

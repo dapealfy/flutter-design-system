@@ -32,6 +32,9 @@
 /build/
 pubspec.lock
 
+# don't check in golden failure output
+**/failures/*.png
+
 coverage/
 
 # Web related

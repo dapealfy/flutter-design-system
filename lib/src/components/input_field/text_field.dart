@@ -1,10 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide TextField;
+import 'package:flutter/material.dart' as m;
 import 'package:flutter/services.dart';
 import 'package:flutter_design_system/funds.dart';
+import 'package:flutter_design_system/src/utils/disable_color_filter.dart';
+import 'package:flutter_design_system/src/utils/double_border.dart';
 import 'package:flutter_design_system/src/utils/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FunDsTextField extends StatefulWidget {
+class TextField extends StatefulWidget {
   /// Will be displayed above the text field
   final String? labelText;
 
@@ -79,6 +82,9 @@ class FunDsTextField extends StatefulWidget {
   /// Will limit the length of the text field
   final int? maxLength;
 
+  /// Will change the keyboard type
+  final TextInputType? keyboardType;
+
   /// Wwill format the text of the text field
   final List<TextInputFormatter>? inputFormatters;
 
@@ -93,7 +99,7 @@ class FunDsTextField extends StatefulWidget {
   /// [rightIcon1], [rightIcon2]
   final bool useColorFilterForDisabled;
 
-  const FunDsTextField({
+  const TextField({
     Key? key,
     this.labelText,
     this.label,
@@ -118,6 +124,7 @@ class FunDsTextField extends StatefulWidget {
     this.onChangedDebounced,
     this.debounceDuration,
     this.maxLength,
+    this.keyboardType,
     this.inputFormatters,
     this.textInputAction,
     this.onSubmitted,
@@ -125,10 +132,10 @@ class FunDsTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<FunDsTextField> createState() => _FunDsTextFieldState();
+  State<TextField> createState() => _TextFieldState();
 }
 
-class _FunDsTextFieldState extends State<FunDsTextField> {
+class _TextFieldState extends State<TextField> {
   FocusNode? _focusNode;
   FunDsTextController? _controller;
 
@@ -237,7 +244,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(width: 12.w),
-          _DisabledColorFilter(
+          DisabledColorFilter(
             apply: applyDisabledColorFilter,
             child: Center(
               child: widget.prefix!,
@@ -265,7 +272,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
             color: innerBorderColor,
           ),
           SizedBox(width: 12.w),
-          _DisabledColorFilter(
+          DisabledColorFilter(
             apply: applyDisabledColorFilter,
             child: Center(
               child: widget.suffix2!,
@@ -300,116 +307,114 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
           ),
         SizedBox(height: 4.h),
         Container(
-          key: const Key('outerBorder'),
+          key: const Key('border'),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r),
-            border: Border.all(
-              color: outerBorderColor ?? Colors.transparent,
-            ),
-          ),
-          child: Container(
-            key: const Key('innerBorder'),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.r),
-              border: Border.all(
-                color: innerBorderColor,
+            borderRadius: BorderRadius.circular(12.r),
+            border: DoubleBorder(
+              outerBorder: Border.all(
+                color: outerBorderColor ?? Colors.transparent,
+                width: 2,
               ),
-              color: containerColor,
+              innerBorder: Border.all(
+                color: innerBorderColor,
+                width: 1,
+              ),
             ),
-            child: IntrinsicHeight(
-              child: Row(
-                children: [
-                  prefixWidget ?? const SizedBox(),
-                  if (widget.leftIcon != null)
-                    Padding(
-                      key: const Key('leftIcon'),
-                      padding: EdgeInsets.only(left: 8.w),
-                      child: _DisabledColorFilter(
-                        apply: applyDisabledColorFilter,
-                        child: widget.leftIcon!,
-                      ),
+            color: containerColor,
+          ),
+          child: IntrinsicHeight(
+            child: Row(
+              children: [
+                prefixWidget ?? const SizedBox(),
+                if (widget.leftIcon != null)
+                  Padding(
+                    key: const Key('leftIcon'),
+                    padding: EdgeInsets.only(left: 10.w),
+                    child: DisabledColorFilter(
+                      apply: applyDisabledColorFilter,
+                      child: widget.leftIcon!,
                     ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 6.h,
-                        horizontal: 8.w,
+                  ),
+                Expanded(
+                  child: m.TextField(
+                    key: const Key('textField'),
+                    obscureText: widget.obscureText,
+                    onChanged: _handleOnChange,
+                    focusNode: _effectiveFocusNode,
+                    enabled: widget.enabled,
+                    controller: _effectiveController,
+                    keyboardType: widget.keyboardType,
+                    textInputAction: widget.textInputAction,
+                    onSubmitted: widget.onSubmitted,
+                    textAlignVertical: TextAlignVertical.center,
+                    inputFormatters: [
+                      if (widget.maxLength != null)
+                        LengthLimitingTextInputFormatter(widget.maxLength),
+                      ...widget.inputFormatters ?? [],
+                    ],
+                    style: FunDsTypography.body12,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 6,
+                        horizontal: 10,
                       ),
-                      child: TextField(
-                        key: const Key('textField'),
-                        obscureText: widget.obscureText,
-                        onChanged: _handleOnChange,
-                        focusNode: _focusNode,
-                        enabled: widget.enabled,
-                        controller: _effectiveController,
-                        textInputAction: widget.textInputAction,
-                        onSubmitted: widget.onSubmitted,
-                        inputFormatters: [
-                          if (widget.maxLength != null)
-                            LengthLimitingTextInputFormatter(widget.maxLength),
-                          ...widget.inputFormatters ?? [],
-                        ],
-                        style: FunDsTypography.body12,
-                        decoration: InputDecoration(
-                          isDense: true,
-                          border: InputBorder.none,
-                          hintText: widget.hintText,
-                          hintStyle: FunDsTypography.body12
-                              .copyWith(color: FunDsColors.colorNeutral500),
-                        ),
+                      isDense: true,
+                      border: InputBorder.none,
+                      hintText: widget.hintText,
+                      hintStyle: FunDsTypography.body12
+                          .copyWith(color: FunDsColors.colorNeutral500),
+                    ),
+                  ),
+                ),
+                if (widget.suffix1 != null)
+                  Padding(
+                    key: const Key('suffix1'),
+                    padding: EdgeInsets.only(right: 10.w),
+                    child: DisabledColorFilter(
+                      apply: applyDisabledColorFilter,
+                      child: widget.suffix1!,
+                    ),
+                  ),
+                if (widget.rightIcon1 != null)
+                  Padding(
+                    key: const Key('rightIcon1'),
+                    padding: EdgeInsets.only(right: 10.w),
+                    child: DisabledColorFilter(
+                      apply: applyDisabledColorFilter,
+                      child: widget.rightIcon1!,
+                    ),
+                  ),
+                if (widget.rightIcon2 != null)
+                  Padding(
+                    key: const Key('rightIcon2'),
+                    padding: EdgeInsets.only(right: 10.w),
+                    child: DisabledColorFilter(
+                      apply: applyDisabledColorFilter,
+                      child: widget.rightIcon2!,
+                    ),
+                  ),
+                if (_isFilled &&
+                    widget.showClear &&
+                    widget.enabled &&
+                    widget.rightIcon2 == null)
+                  GestureDetector(
+                    onTap: () {
+                      _clear();
+                    },
+                    child: Padding(
+                      key: const Key('clearIcon'),
+                      padding: EdgeInsets.only(
+                        right: 10.w,
+                      ),
+                      child: Icon(
+                        Icons.cancel,
+                        size: 16.w,
+                        color: FunDsColors.colorNeutral600,
                       ),
                     ),
                   ),
-                  if (widget.suffix1 != null)
-                    Padding(
-                      key: const Key('suffix1'),
-                      padding: EdgeInsets.only(right: 8.w),
-                      child: _DisabledColorFilter(
-                        apply: applyDisabledColorFilter,
-                        child: widget.suffix1!,
-                      ),
-                    ),
-                  if (widget.rightIcon1 != null)
-                    Padding(
-                      key: const Key('rightIcon1'),
-                      padding: EdgeInsets.only(right: 8.w),
-                      child: _DisabledColorFilter(
-                        apply: applyDisabledColorFilter,
-                        child: widget.rightIcon1!,
-                      ),
-                    ),
-                  if (widget.rightIcon2 != null)
-                    Padding(
-                      key: const Key('rightIcon2'),
-                      padding: EdgeInsets.only(right: 8.w),
-                      child: _DisabledColorFilter(
-                        apply: applyDisabledColorFilter,
-                        child: widget.rightIcon2!,
-                      ),
-                    ),
-                  if (_isFilled &&
-                      widget.showClear &&
-                      widget.enabled &&
-                      widget.rightIcon2 == null)
-                    GestureDetector(
-                      onTap: () {
-                        _clear();
-                      },
-                      child: Padding(
-                        key: const Key('clearIcon'),
-                        padding: EdgeInsets.only(
-                          right: 8.w,
-                        ),
-                        child: Icon(
-                          Icons.cancel,
-                          size: 16.w,
-                          color: FunDsColors.colorNeutral600,
-                        ),
-                      ),
-                    ),
-                  suffix2Widget ?? const SizedBox(),
-                ],
-              ),
+                suffix2Widget ?? const SizedBox(),
+              ],
             ),
           ),
         ),
@@ -424,30 +429,6 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
                 ),
           ),
       ],
-    );
-  }
-}
-
-class _DisabledColorFilter extends StatelessWidget {
-  const _DisabledColorFilter({
-    Key? key,
-    required this.apply,
-    required this.child,
-  }) : super(key: key);
-
-  final bool apply;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    if (!apply) return child;
-
-    return ColorFiltered(
-      colorFilter: const ColorFilter.mode(
-        FunDsColors.colorNeutral500,
-        BlendMode.srcIn,
-      ),
-      child: child,
     );
   }
 }
