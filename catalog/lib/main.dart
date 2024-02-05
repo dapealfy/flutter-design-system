@@ -88,50 +88,56 @@ class _MyAppState extends State<MyApp> {
                 left: screenSize.width - _x,
                 top: screenSize.height - _y,
                 child: Draggable(
-                    feedback: FloatingActionButton(
-                      onPressed: () {
-                        setState(() {
-                          _showPanel = !_showPanel;
-                        });
-                      },
-                      child: (_showPanel)
-                          ? const FunDsIcon(
-                              funDsIconography:
-                                  FunDsIconography.actionIcEyeOpen,
-                              size: 24,
-                            )
-                          : const FunDsIcon(
-                              funDsIconography:
-                                  FunDsIconography.actionIcEyeClose,
-                              size: 24,
-                            ),
-                    ),
-                    child: FloatingActionButton(
-                      shape: const CircleBorder(),
-                      backgroundColor: FunDsColors.colorNeutral200,
-                      onPressed: () {
-                        setState(() {
-                          _showPanel = !_showPanel;
-                        });
-                      },
-                      child: (_showPanel)
-                          ? const FunDsIcon(
-                              funDsIconography:
-                                  FunDsIconography.actionIcEyeOpen,
-                              size: 24,
-                            )
-                          : const FunDsIcon(
-                              funDsIconography:
-                                  FunDsIconography.actionIcEyeClose,
-                              size: 24,
-                            ),
-                    ),
-                    onDraggableCanceled: (Velocity velocity, Offset offset) {
+                  feedback: FloatingActionButton(
+                    shape: const CircleBorder(),
+                    backgroundColor: FunDsColors.colorNeutral200,
+                    onPressed: () {
                       setState(() {
-                        _x = screenSize.width - offset.dx;
-                        _y = screenSize.height -  offset.dy;
+                        _showPanel = !_showPanel;
                       });
-                    }),
+                    },
+                    child: (_showPanel)
+                        ? const FunDsIcon(
+                            funDsIconography: FunDsIconography.actionIcEyeOpen,
+                            size: 24,
+                          )
+                        : const FunDsIcon(
+                            funDsIconography: FunDsIconography.actionIcEyeClose,
+                            size: 24,
+                          ),
+                  ),
+                  childWhenDragging: const SizedBox.shrink(),
+                  onDragUpdate: (details) {
+                    setState(() {
+                      _x = screenSize.width - details.globalPosition.dx;
+                      _y = screenSize.height - details.globalPosition.dy;
+                    });
+                  },
+                  onDragEnd: (details) {
+                    setState(() {
+                      _x = screenSize.width - details.offset.dx;
+                      _y = screenSize.height - details.offset.dy;
+                    });
+                  },
+                  child: FloatingActionButton(
+                    shape: const CircleBorder(),
+                    backgroundColor: FunDsColors.colorNeutral200,
+                    onPressed: () {
+                      setState(() {
+                        _showPanel = !_showPanel;
+                      });
+                    },
+                    child: (_showPanel)
+                        ? const FunDsIcon(
+                            funDsIconography: FunDsIconography.actionIcEyeOpen,
+                            size: 24,
+                          )
+                        : const FunDsIcon(
+                            funDsIconography: FunDsIconography.actionIcEyeClose,
+                            size: 24,
+                          ),
+                  ),
+                ),
               ),
             ],
           ),
