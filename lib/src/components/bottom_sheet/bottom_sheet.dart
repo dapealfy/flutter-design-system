@@ -109,6 +109,7 @@ class FunDsBottomSheet extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(
                   top: 12,
+                  bottom: 24,
                 ),
                 child: buttons,
               )
