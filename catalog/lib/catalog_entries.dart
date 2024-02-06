@@ -12,6 +12,7 @@ import 'package:catalog/catalog/checkbox/checkbox_catalog.dart';
 import 'package:catalog/catalog/chip/chip_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
 import 'package:catalog/catalog/control/toggle_catalog.dart';
+import 'package:catalog/catalog/counter/counter_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/icon_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
@@ -101,6 +102,11 @@ final entries = [
   Entry(
     name: 'Component/Control/Toggle',
     builder: (context) => const ToggleCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Counter/Counter',
+    builder: (context) => const CounterCatalog(),
   ),
 
   Entry(
