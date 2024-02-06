@@ -156,8 +156,9 @@ class _CounterState extends State<Counter> {
                         10.r,
                       ),
                     ),
+                    padding: EdgeInsets.zero,
                     fixedSize: Size(
-                      20.w,
+                      20.r,
                       20.r,
                     ),
                     disabledBackgroundColor: FunDsColors.colorNeutral400,
@@ -193,8 +194,9 @@ class _CounterState extends State<Counter> {
                         10.r,
                       ),
                     ),
+                    padding: EdgeInsets.zero,
                     fixedSize: Size(
-                      20.w,
+                      20.r,
                       20.r,
                     ),
                     disabledBackgroundColor: FunDsColors.colorNeutral400,
