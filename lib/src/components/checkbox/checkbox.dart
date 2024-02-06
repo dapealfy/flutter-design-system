@@ -49,7 +49,18 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
             ? null
             : () {
                 setState(() {
-                  isChecked = !(isChecked ?? false);
+                  if(widget.tristate){
+                    switch(isChecked){
+                      case null:
+                        isChecked = false;
+                      case true:
+                        isChecked = null;
+                      case false:
+                        isChecked = true;
+                    }
+                  }else{
+                    isChecked = !(isChecked ?? false);
+                  }
                   widget.onChanged(isChecked);
                 });
               },
