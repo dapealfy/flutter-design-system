@@ -56,7 +56,6 @@ void main() {
       expect(find.text('Test Tristate Title'), findsOneWidget);
       expect(find.text('Test Tristate Subtitle'), findsOneWidget);
       await tester.tap(find.text('Test Tristate Title'));
-      await tester.pump(const Duration(seconds: 1));
       expect(selectedValue, null);
     },
   );
