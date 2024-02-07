@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
-import 'package:storybook_flutter/storybook_flutter.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
+import 'package:storybook_flutter/storybook_flutter.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({

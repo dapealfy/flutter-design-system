@@ -112,16 +112,21 @@ class _FunDsButtonState extends State<FunDsButton> {
                     )),
                   )
                 : ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(FunDsColors.colorNeutral200),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(_getButtonRadius())),
+                          borderRadius:
+                              BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
             child: Text(
               widget.text,
               textAlign: TextAlign.center,
               style: _getTextStyle(
-                FunDsColors.colorWhite,
+                widget.enabled
+                    ? FunDsColors.colorWhite
+                    : FunDsColors.colorNeutral500,
               ),
             ),
           ),
@@ -164,13 +169,15 @@ class _FunDsButtonState extends State<FunDsButton> {
                   )),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(_getButtonRadius())),
+                        borderRadius:
+                            BorderRadius.circular(_getButtonRadius())),
                   ),
                 )
               : ButtonStyle(
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(_getButtonRadius())),
+                        borderRadius:
+                            BorderRadius.circular(_getButtonRadius())),
                   ),
                 ),
           child: Text(
@@ -246,13 +253,15 @@ class _FunDsButtonState extends State<FunDsButton> {
                         MaterialStateProperty.all(FunDsColors.colorWhite),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(_getButtonRadius())),
+                          borderRadius:
+                              BorderRadius.circular(_getButtonRadius())),
                     ),
                   )
                 : ButtonStyle(
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(_getButtonRadius())),
+                          borderRadius:
+                              BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
             child: Text(
@@ -385,20 +394,24 @@ class _FunDsButtonState extends State<FunDsButton> {
                         MaterialStateProperty.all(FunDsColors.colorRed500),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(_getButtonRadius())),
+                          borderRadius:
+                              BorderRadius.circular(_getButtonRadius())),
                     ),
                   )
                 : ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(FunDsColors.colorNeutral200),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(_getButtonRadius())),
+                          borderRadius:
+                              BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
             child: Text(
               widget.text,
               textAlign: TextAlign.center,
               style: _getTextStyle(
-                FunDsColors.colorWhite,
+                widget.enabled ? FunDsColors.colorWhite : FunDsColors.colorNeutral500,
               ),
             ),
           ),
@@ -453,13 +466,15 @@ class _FunDsButtonState extends State<FunDsButton> {
                     )),
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(_getButtonRadius())),
+                          borderRadius:
+                              BorderRadius.circular(_getButtonRadius())),
                     ),
                   )
                 : ButtonStyle(
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(_getButtonRadius())),
+                          borderRadius:
+                              BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
             child: Text(

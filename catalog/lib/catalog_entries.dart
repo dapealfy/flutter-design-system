@@ -10,6 +10,7 @@ import 'package:catalog/catalog/button/radio_button_catalog.dart';
 import 'package:catalog/catalog/calendar/calendar_catalog.dart';
 import 'package:catalog/catalog/checkbox/checkbox_catalog.dart';
 import 'package:catalog/catalog/chip/chip_catalog.dart';
+import 'package:catalog/catalog/coachmark/coachmark_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
 import 'package:catalog/catalog/control/toggle_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
@@ -18,8 +19,8 @@ import 'package:catalog/catalog/foundation/typography_catalog.dart';
 import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
-import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
+import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
 import 'package:catalog/catalog/toaster/toaster_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
@@ -92,6 +93,11 @@ final entries = [
   Entry(
     name: 'Component/Calendar/Calendar',
     builder: (context) => const CalendarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/CoachMark/CoachMark',
+    builder: (context) => const CoachMarkCatalog(),
   ),
 
   Entry(

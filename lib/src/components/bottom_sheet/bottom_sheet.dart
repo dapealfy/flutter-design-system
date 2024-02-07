@@ -37,8 +37,8 @@ class FunDsBottomSheet extends StatelessWidget {
       backgroundColor: FunDsColors.colorWhite,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24.r),
-          topRight: Radius.circular(24.r),
+          topLeft: Radius.circular(20.r),
+          topRight: Radius.circular(20.r),
         ),
       ),
       builder: (BuildContext context) {
@@ -226,7 +226,9 @@ class FunDsBottomSheet extends StatelessWidget {
                     maxLines: 1,
                     textAlign: TextAlign.left,
                     style: FunDsTypography.heading20.copyWith(
-                        color: FunDsColors.colorNeutral900, height: 0),
+                      color: FunDsColors.colorNeutral900,
+                      height: 0,
+                    ),
                   ),
                 ),
               ),
