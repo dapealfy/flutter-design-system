@@ -36,12 +36,15 @@ class FunDsProgressBar extends StatelessWidget {
     return SizedBox(
     key: key,
       width: 320.w,
-      child: LinearProgressIndicator(
-        value: value/100,
-        backgroundColor: bgColor,
-        minHeight: _getHeight(),
-        valueColor: AlwaysStoppedAnimation<Color>(_getColor()),
-        borderRadius: BorderRadius.all(Radius.circular(_getHeight() / 2)),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 8.h),
+        child: LinearProgressIndicator(
+          value: value/100,
+          backgroundColor: bgColor,
+          minHeight: _getHeight(),
+          valueColor: AlwaysStoppedAnimation<Color>(_getColor()),
+          borderRadius: BorderRadius.all(Radius.circular(_getHeight() / 2)),
+        ),
       ),
     );
   }
