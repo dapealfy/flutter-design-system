@@ -37,11 +37,9 @@ class BottomSheetCatalog extends StatelessWidget {
                 FunDsBottomSheet.showBottomSheet(
                   context: context,
                   title: 'Test Title ',
-                  desc:
-                      '''
+                  desc: '''
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, quis aliquam nisl nisl eget urna. ''',
-                  image:
-                      'assets/images/error_ibu_amanah_partial.png',
+                  image: 'assets/images/error_ibu_amanah_partial.png',
                   type: option,
                   groupButton: FunDsGroupButton(
                     variant: FunDsGroupButtonVariant.horizontal,

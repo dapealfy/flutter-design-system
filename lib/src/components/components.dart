@@ -12,6 +12,7 @@ export 'button/group_button.dart';
 export 'button/radio_button.dart';
 export 'calendar/calendar.dart';
 export 'checkbox/checkbox.dart';
+export 'coachmark/coachmark.dart';
 export 'control/slider.dart';
 export 'control/toggle.dart';
 export 'icon/icon.dart';

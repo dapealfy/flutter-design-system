@@ -15,9 +15,9 @@ class FunDsGroupButton extends StatelessWidget {
     this.childCombo,
   }) : super(key: key);
 
-  double getAspectRation(){
-    if(listButton.isNotEmpty){
-      switch(listButton.first.type){
+  double getAspectRation() {
+    if (listButton.isNotEmpty) {
+      switch (listButton.first.type) {
         case FunDsButtonType.xLarge:
           return 2.8;
         case FunDsButtonType.large:
@@ -65,6 +65,7 @@ class FunDsGroupButton extends StatelessWidget {
               shrinkWrap: true,
               crossAxisSpacing: 12.w,
               mainAxisSpacing: 12.h,
+              padding: EdgeInsets.zero,
               childAspectRatio: getAspectRation(),
               children: list,
             ),

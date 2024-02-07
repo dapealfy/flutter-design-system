@@ -86,4 +86,12 @@ class FunDsColors {
   static const Color colorRed600 = Color(0xFFAC2B26);
   static const Color colorRed700 = Color(0xFF81201D);
   static const Color colorRed800 = Color(0xFF4C0C0A);
+
+  /// It ONLY used for text (title, text link, text on button, description, caption, etc)
+  static const Color colorTextDefault = colorNeutral900;
+  static const Color colorTextInverse = colorWhite;
+  static const Color colorTextCaption = colorNeutral600;
+  static const Color colorTextDisable = colorNeutral500;
+  static const Color colorTextPlaceholder = colorNeutral400;
+  static const Color colorTextLink = colorPrimary;
 }
