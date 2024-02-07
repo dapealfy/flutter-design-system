@@ -46,7 +46,7 @@ class Avatar extends StatelessWidget {
         super(key: key);
 
   /// Create Avatar with image from network.
-  const Avatar.network({
+  factory Avatar.network({
     Key? key,
     required String imageUrl,
     String? name,
@@ -55,19 +55,21 @@ class Avatar extends StatelessWidget {
     AvatarSize size = AvatarSize.medium,
     AvatarShape shape = AvatarShape.round,
     BoxBorder? border,
-  }) : this(
-          key: key,
-          imageUrl: imageUrl,
-          name: name,
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
-          size: size,
-          shape: shape,
-          border: border,
-        );
+  }) {
+    return Avatar(
+      key: key,
+      imageUrl: imageUrl,
+      name: name,
+      backgroundColor: backgroundColor,
+      foregroundColor: foregroundColor,
+      size: size,
+      shape: shape,
+      border: border,
+    );
+  }
 
   /// Create Avatar with image from asset.
-  const Avatar.asset({
+  factory Avatar.asset({
     Key? key,
     required String imagePath,
     String? name,
@@ -76,36 +78,16 @@ class Avatar extends StatelessWidget {
     AvatarSize size = AvatarSize.medium,
     AvatarShape shape = AvatarShape.round,
     BoxBorder? border,
-  }) : this(
-          key: key,
-          imagePath: imagePath,
-          name: name,
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
-          size: size,
-          shape: shape,
-          border: border,
-        );
-
-  Avatar copyWith({
-    String? name,
-    Color? backgroundColor,
-    Color? foregroundColor,
-    String? imagePath,
-    String? imageUrl,
-    AvatarSize? size,
-    AvatarShape? shape,
-    BoxBorder? border,
   }) {
     return Avatar(
-      name: name ?? this.name,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
-      foregroundColor: foregroundColor ?? this.foregroundColor,
-      imagePath: imagePath ?? this.imagePath,
-      imageUrl: imageUrl ?? this.imageUrl,
-      size: size ?? this.size,
-      shape: shape ?? this.shape,
-      border: border ?? this.border,
+      key: key,
+      imagePath: imagePath,
+      name: name,
+      backgroundColor: backgroundColor,
+      foregroundColor: foregroundColor,
+      size: size,
+      shape: shape,
+      border: border,
     );
   }
 
@@ -121,6 +103,23 @@ class Avatar extends StatelessWidget {
     }
 
     return avatarText;
+  }
+
+  double getCircularProgressStrokeWidth() {
+    switch (size) {
+      case AvatarSize.xxs:
+      case AvatarSize.xs:
+        return 1;
+      case AvatarSize.small:
+      case AvatarSize.medium:
+        return 2;
+      case AvatarSize.large:
+      case AvatarSize.xl:
+      case AvatarSize.xxl:
+        return 3;
+      default:
+        return 3;
+    }
   }
 
   double get _borderRadius {
@@ -214,9 +213,11 @@ class Avatar extends StatelessWidget {
                       : null,
                 ),
               ),
-              placeholder: (context, url) => const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: CircularProgressIndicator(),
+              placeholder: (context, url) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CircularProgressIndicator(
+                  strokeWidth: getCircularProgressStrokeWidth(),
+                ),
               ),
               errorWidget: (context, url, error) => Container(
                 decoration: BoxDecoration(
