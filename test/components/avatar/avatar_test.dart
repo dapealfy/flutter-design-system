@@ -145,8 +145,9 @@ void main() {
             (tester) async {
           await tester.pumpWidget(
             buildTestableWidget(
-              child: const Avatar.text(
-                  avatarText: 'Amartha Microfinance',
+              child: const Avatar.network(
+                  imageUrl: '',
+                  name: 'Amartha Microfinance',
                   backgroundColor: FunDsColors.colorPrimary100,
                   foregroundColor: FunDsColors.colorPrimary500,
                   size: AvatarSize.xxl,
@@ -183,8 +184,9 @@ void main() {
         'Round Avatar with text Amartha will be A',
             (tester) async {
           await tester.pumpWidget(buildTestableWidget(
-              child: const Avatar.text(
-                  avatarText: 'A',
+              child: const Avatar.network(
+                  imageUrl: '',
+                  name: 'A',
                   backgroundColor: FunDsColors.colorPrimary100,
                   foregroundColor: FunDsColors.colorPrimary500,
                   size: AvatarSize.xxl,
@@ -193,7 +195,7 @@ void main() {
           expect(find.byType(Avatar), findsOneWidget);
           expect(
             tester.widget(find.byType(Avatar)),
-            isA<Avatar>().having((t) => t.avatarText, 'avatarText', 'A'),
+            isA<Avatar>().having((t) => t.name, 'avatarText', 'A'),
           );
           expect(
             tester.widget(find.byType(Avatar)),

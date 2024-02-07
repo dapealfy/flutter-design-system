@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class Avatar extends StatelessWidget {
   /// The text to display as the avatar.
-  final String? avatarText;
+  final String? name;
 
   /// The image from asset to display as the avatar.
   final String? imagePath;
@@ -29,7 +29,7 @@ class Avatar extends StatelessWidget {
   /// Create FunDsAvatar of all types i.e. round,rectangle with different sizes.
   const Avatar({
     Key? key,
-    this.avatarText,
+    this.name,
     this.backgroundColor,
     this.foregroundColor,
     this.imagePath,
@@ -38,36 +38,18 @@ class Avatar extends StatelessWidget {
     this.shape = AvatarShape.round,
     this.border,
   })  : assert(
-          (avatarText != null && imagePath == null && imageUrl == null) ||
-              (avatarText == null && imagePath != null && imageUrl == null) ||
-              (avatarText == null && imagePath == null && imageUrl != null),
-          'You can only pass one of the avatarText, imagePath, imageUrl',
+          (imagePath != null && imageUrl == null) ||
+              (imagePath == null && imageUrl != null ||
+                  (imagePath == null && imageUrl == null)),
+          'You can only pass either imagePath or imageUrl',
         ),
         super(key: key);
-
-  /// Create Avatar with text.
-  const Avatar.text({
-    Key? key,
-    required String avatarText,
-    Color? backgroundColor,
-    Color? foregroundColor,
-    AvatarSize size = AvatarSize.medium,
-    AvatarShape shape = AvatarShape.round,
-    BoxBorder? border,
-  }) : this(
-          key: key,
-          avatarText: avatarText,
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
-          size: size,
-          shape: shape,
-          border: border,
-        );
 
   /// Create Avatar with image from network.
   const Avatar.network({
     Key? key,
     required String imageUrl,
+    String? name,
     Color? backgroundColor,
     Color? foregroundColor,
     AvatarSize size = AvatarSize.medium,
@@ -76,6 +58,7 @@ class Avatar extends StatelessWidget {
   }) : this(
           key: key,
           imageUrl: imageUrl,
+          name: name,
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
           size: size,
@@ -87,6 +70,7 @@ class Avatar extends StatelessWidget {
   const Avatar.asset({
     Key? key,
     required String imagePath,
+    String? name,
     Color? backgroundColor,
     Color? foregroundColor,
     AvatarSize size = AvatarSize.medium,
@@ -95,6 +79,7 @@ class Avatar extends StatelessWidget {
   }) : this(
           key: key,
           imagePath: imagePath,
+          name: name,
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
           size: size,
@@ -103,7 +88,7 @@ class Avatar extends StatelessWidget {
         );
 
   Avatar copyWith({
-    String? avatarText,
+    String? name,
     Color? backgroundColor,
     Color? foregroundColor,
     String? imagePath,
@@ -113,7 +98,7 @@ class Avatar extends StatelessWidget {
     BoxBorder? border,
   }) {
     return Avatar(
-      avatarText: avatarText ?? this.avatarText,
+      name: name ?? this.name,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       foregroundColor: foregroundColor ?? this.foregroundColor,
       imagePath: imagePath ?? this.imagePath,
@@ -130,11 +115,11 @@ class Avatar extends StatelessWidget {
 
     // Get the first two characters of each part (or the first character if only one part)
     String avatarText = '';
-    if (nameParts.isNotEmpty) {
-      for (int i = 0; i < nameParts.length && i < 2; i++) {
-        avatarText += nameParts[i][0];
-      }
+    if (text.isEmpty) return avatarText;
+    for (String part in nameParts.take(2)) {
+      avatarText += part[0];
     }
+
     return avatarText;
   }
 
@@ -198,7 +183,7 @@ class Avatar extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: backgroundColor,
-        image: imagePath != null
+        image: (imagePath != null && imagePath!.isNotEmpty)
             ? DecorationImage(
                 image: AssetImage(imagePath!),
                 fit: BoxFit.cover,
@@ -210,56 +195,54 @@ class Avatar extends StatelessWidget {
             ? BorderRadius.circular(_borderRadius)
             : null,
       ),
-      child: avatarText != null
-
-          /// Text Avatar
-          ? Center(
-              child: Text(
-                _getInitialsUserName(avatarText ?? ''),
-                style: textStyle,
+      child: (imageUrl != null && imageUrl!.isNotEmpty)
+          ? CachedNetworkImage(
+              imageUrl: imageUrl!,
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  color: backgroundColor,
+                  image: imageUrl != null
+                      ? DecorationImage(
+                          image: CachedNetworkImageProvider(imageUrl!),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
+                  shape: _avatarBoxShape,
+                  border: border,
+                  borderRadius: shape == AvatarShape.rectangle
+                      ? BorderRadius.circular(_borderRadius)
+                      : null,
+                ),
+              ),
+              placeholder: (context, url) => const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CircularProgressIndicator(),
+              ),
+              errorWidget: (context, url, error) => Container(
+                decoration: BoxDecoration(
+                  color: FunDsColors.colorNeutral200,
+                  shape: _avatarBoxShape,
+                  border: border,
+                  borderRadius: shape == AvatarShape.rectangle
+                      ? BorderRadius.circular(_borderRadius)
+                      : null,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: SvgPicture.asset(
+                    FunDsIconography.icAvatar,
+                  ),
+                ),
               ),
             )
-          : (imageUrl != null)
-              ? CachedNetworkImage(
-                  imageUrl: imageUrl!,
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      color: backgroundColor,
-                      image: imageUrl != null
-                          ? DecorationImage(
-                              image: CachedNetworkImageProvider(imageUrl!),
-                              fit: BoxFit.cover,
-                            )
-                          : null,
-                      shape: _avatarBoxShape,
-                      border: border,
-                      borderRadius: shape == AvatarShape.rectangle
-                          ? BorderRadius.circular(_borderRadius)
-                          : null,
-                    ),
-                  ),
-                  placeholder: (context, url) => const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: CircularProgressIndicator(),
-                  ),
-                  errorWidget: (context, url, error) => Container(
-                    decoration: BoxDecoration(
-                      color: FunDsColors.colorNeutral200,
-                      shape: _avatarBoxShape,
-                      border: border,
-                      borderRadius: shape == AvatarShape.rectangle
-                          ? BorderRadius.circular(_borderRadius)
-                          : null,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: SvgPicture.asset(
-                        FunDsIconography.icAvatar,
-                      ),
-                    ),
+          : (imagePath == null || (imagePath?.isEmpty == true))
+              ? Center(
+                  child: Text(
+                    _getInitialsUserName(name ?? ''),
+                    style: textStyle,
                   ),
                 )
-              : const SizedBox.shrink(),
+              : null,
     );
   }
 }
