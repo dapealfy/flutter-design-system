@@ -6,7 +6,6 @@ export 'avatar/avatar_size.dart';
 export 'avatar/group_avatar.dart';
 export 'badge/badge.dart';
 export 'bottom_sheet/bottom_sheet.dart';
-export 'bottom_sheet/custom_bottom_sheet.dart';
 export 'button/button.dart';
 export 'button/group_button.dart';
 export 'button/radio_button.dart';
