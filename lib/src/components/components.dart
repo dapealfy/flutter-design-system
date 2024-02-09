@@ -25,3 +25,4 @@ export 'page_control/page_control.dart';
 export 'ticker/ticker.dart';
 export 'chip/chip.dart';
 export 'toaster/toaster.dart';
+export 'counter/counter.dart';
