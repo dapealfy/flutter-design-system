@@ -26,3 +26,4 @@ export 'ticker/ticker.dart';
 export 'chip/chip.dart';
 export 'toaster/toaster.dart';
 export 'counter/counter.dart';
+export 'progress_bar/progress_bar.dart';

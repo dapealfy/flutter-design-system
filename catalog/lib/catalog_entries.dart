@@ -22,6 +22,7 @@ import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
 import 'package:catalog/catalog/page_control/page_control_catalog.dart';
+import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
 import 'package:catalog/catalog/toaster/toaster_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
 import 'package:catalog/core/home_catalog.dart';
@@ -153,5 +154,10 @@ final entries = [
   Entry(
     name: 'Component/Chip/Chip',
     builder: (context) => const ChipCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/ProgressBar/ProgressBar',
+    builder: (context) => const ProgressBarCatalog(),
   ),
 ];
