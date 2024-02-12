@@ -147,6 +147,7 @@ class _FunOverlayState extends State<FunOverlay>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    final overlay = Overlay.of(context);
 
     return OverlayPortal(
       controller: _portalController,
@@ -154,7 +155,10 @@ class _FunOverlayState extends State<FunOverlay>
         final renderBox =
             _childKey.currentContext?.findRenderObject() as RenderBox;
 
-        final childOffset = renderBox.localToGlobal(Offset.zero);
+        final childOffset = renderBox.localToGlobal(
+          Offset.zero,
+          ancestor: overlay.context.findRenderObject(),
+        );
         final childSize = renderBox.size;
         final childCenter =
             childOffset.translate(childSize.width / 2, childSize.height / 2);
@@ -188,13 +192,15 @@ class _FunOverlayState extends State<FunOverlay>
             ? widget.overlaySpace + widget.focusPadding.top
             : widget.overlaySpace + widget.focusPadding.bottom;
 
+        final overlayYPos = isTop
+            ? childOffset.dy -
+                overlaySpace -
+                (_renderedOverlaySize?.height ?? 0)
+            : childOffset.dy + childSize.height + overlaySpace;
+
         final tooltipOffset = Offset(
           overlayXPos,
-          isTop
-              ? childOffset.dy -
-                  overlaySpace -
-                  (_renderedOverlaySize?.height ?? 0)
-              : childOffset.dy + childSize.height + overlaySpace,
+          overlayYPos,
         );
 
         // Arrow positioning
