@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_design_system/src/utils/disable_color_filter.dart';
 import 'package:flutter_design_system/src/utils/double_border.dart';
-import 'package:flutter_design_system/src/utils/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum TextAreaSize {
