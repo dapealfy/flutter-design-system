@@ -6,13 +6,15 @@ class FunDsProgressBar extends StatelessWidget {
   final FunDsProgressBarSize size;
   final FunDsProgressBarColor color;
   final double value; // value 1-100
+  final Color bgColor;
 
-  const FunDsProgressBar(
-      {super.key,
-      required this.size,
-      required this.color,
-      required this.value,
-      required});
+  const FunDsProgressBar({
+    super.key,
+    required this.size,
+    required this.color,
+    required this.value,
+    this.bgColor = FunDsColors.colorNeutral200,
+  });
 
   static Widget alternate({
     Key? key,
@@ -24,22 +26,19 @@ class FunDsProgressBar extends StatelessWidget {
       size: size,
       color: color,
       value: value,
-    )._progressBar(FunDsColors.colorWhite);
+      bgColor: FunDsColors.colorWhite,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return _progressBar(FunDsColors.colorNeutral200);
-  }
-
-  Widget _progressBar(Color bgColor) {
     return SizedBox(
-    key: key,
+      key: key,
       width: 320.w,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
         child: LinearProgressIndicator(
-          value: value/100,
+          value: value / 100,
           backgroundColor: bgColor,
           minHeight: _getHeight(),
           valueColor: AlwaysStoppedAnimation<Color>(_getColor()),
