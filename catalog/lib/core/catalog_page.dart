@@ -27,6 +27,7 @@ class _CatalogPageState extends State<CatalogPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       appBar: kIsWeb
           ? null
           : AppBar(
@@ -41,6 +42,7 @@ class _CatalogPageState extends State<CatalogPage> {
               ),
               elevation: 0,
               backgroundColor: Colors.white,
+              surfaceTintColor: Colors.white,
             ),
       body: SafeArea(
         child: Column(

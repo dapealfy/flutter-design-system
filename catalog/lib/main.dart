@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:catalog/catalog_entries.dart';
 import 'package:catalog/core/auth_page.dart';
 import 'package:catalog/core/story_builder.dart';
+import 'package:catalog/core/storybook/fun_ds_storybook.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         home: Stack(
           children: [
-            Storybook(
+            FunDsStorybook(
               initialStory: 'Home',
               stories: buildStory(entries),
               showPanel: _showPanel,
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                       debugShowCheckedModeBanner: false,
                       home: Scaffold(
+                        resizeToAvoidBottomInset: false,
                         body: Center(
                           child: child,
                         ),
