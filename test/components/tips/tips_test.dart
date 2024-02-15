@@ -11,7 +11,7 @@ void main() {
       buildTestableWidget(
         child: Builder(
           builder: (BuildContext context) {
-            return Tips.tipsOverlay(
+            return Tips.overlayTarget(
               context,
               controller: controller,
               title: 'Title',

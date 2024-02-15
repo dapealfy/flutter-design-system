@@ -9,7 +9,7 @@ How to use:
 
 final FunOverlayController _controller = FunOverlayController();
 
-Tips.tipsOverlay(
+Tips.overlayTarget(
   context,
   controller: _controller,
   title: 'Akses bantuan lebih mudah 👌🏻',
@@ -82,7 +82,7 @@ class _TipsCatalogState extends State<TipsCatalog> {
           ),
           Row(
             children: [
-              Tips.tipsOverlay(
+              Tips.overlayTarget(
                 context,
                 controller: _controller1,
                 title: 'Akses bantuan lebih mudah 👌🏻',
@@ -101,7 +101,7 @@ class _TipsCatalogState extends State<TipsCatalog> {
                 ),
               ),
               const Spacer(),
-              Tips.tipsOverlay(
+              Tips.overlayTarget(
                 context,
                 controller: _controller2,
                 title: 'Halaman Tanggung Renteng',
@@ -122,7 +122,7 @@ class _TipsCatalogState extends State<TipsCatalog> {
             ],
           ),
           const SizedBox(height: 200),
-          Tips.tipsOverlay(
+          Tips.overlayTarget(
             context,
             controller: _controller3,
             title: 'Musang',
@@ -157,7 +157,7 @@ class _TipsCatalogState extends State<TipsCatalog> {
           const SizedBox(
             height: 700,
           ),
-          Tips.tipsOverlay(
+          Tips.overlayTarget(
             context,
             title: 'Very Long Title That Long Long Very Long Title Long Title',
             description:

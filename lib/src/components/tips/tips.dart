@@ -69,7 +69,7 @@ class Tips extends StatelessWidget {
     );
   }
 
-  static Widget tipsOverlay(
+  static Widget overlayTarget(
     BuildContext context, {
     required FunOverlayController controller,
     required String title,
