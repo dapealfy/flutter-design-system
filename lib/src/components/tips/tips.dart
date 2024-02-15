@@ -78,15 +78,15 @@ class Tips extends StatelessWidget {
     required Widget child,
   }) {
     return FunOverlay(
-      child: child,
       controller: controller,
-      overlayWidth: MediaQuery.of(context).size.width,
       showArrow: true,
       arrowSize: Size(12.w, 6.h),
       arrowColor: FunDsColors.colorNeutral900,
-      overlaySpace: 16.h,
       focusPadding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 8.w),
       focusRadius: 8.r,
+      overlayPosition: OverlayPosition.preferBottom,
+      overlayWidth: MediaQuery.of(context).size.width,
+      overlaySpace: 16.h,
       overlayWidget: Tips(
         title: title,
         description: description,
@@ -95,6 +95,7 @@ class Tips extends StatelessWidget {
               controller.hide();
             },
       ),
+      child: child,
     );
   }
 }

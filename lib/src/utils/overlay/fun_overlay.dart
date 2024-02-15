@@ -4,9 +4,20 @@ import 'package:flutter_design_system/src/utils/overlay/arrow_painter.dart';
 import 'package:flutter_design_system/src/utils/overlay/rrect_clipper.dart';
 
 enum OverlayPosition {
+  /// Show on top of the child
   top,
+
+  /// Show on bottom of the child
   bottom,
+
+  // Auto detect based on available space
   auto,
+
+  // Prefer show on top of the child, but can go bottom if not enough space
+  preferTop,
+
+  // Prefer show on bottom of the child, but can go top if not enough space
+  preferBottom,
 }
 
 class FunOverlay extends StatefulWidget {
@@ -77,9 +88,9 @@ class _FunOverlayState extends State<FunOverlay>
   final OverlayPortalController _portalController = OverlayPortalController();
 
   Size? _renderedOverlaySize;
-  bool _showLoading = false;
+  bool _showingInProgress = false;
+  bool _isLoading = false;
   bool _isShown = false;
-  bool _showInProgress = false;
 
   @override
   void initState() {
@@ -95,36 +106,32 @@ class _FunOverlayState extends State<FunOverlay>
 
   @override
   void onShow() async {
-    if (_showInProgress) return;
+    if (_showingInProgress) return;
 
-    _showInProgress = true;
+    _showingInProgress = true;
 
     setState(() {
       _isShown = true;
-      _showLoading = true;
+      _isLoading = true;
     });
 
     _portalController.show();
 
     try {
+      // Scroll child to center of scroallable area
       await Scrollable.ensureVisible(
         _childKey.currentContext!,
         duration: const Duration(milliseconds: 500),
         alignment: 0.5,
       );
-
-      setState(() {
-        _showLoading = false;
-      });
     } catch (e) {
-      setState(() {
-        _showLoading = false;
-      });
-
       _portalController.hide();
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+      _showingInProgress = false;
     }
-
-    _showInProgress = false;
   }
 
   @override
@@ -152,67 +159,7 @@ class _FunOverlayState extends State<FunOverlay>
     return OverlayPortal(
       controller: _portalController,
       overlayChildBuilder: (context) {
-        final renderBox =
-            _childKey.currentContext?.findRenderObject() as RenderBox;
-
-        final childOffset = renderBox.localToGlobal(
-          Offset.zero,
-          ancestor: overlay.context.findRenderObject(),
-        );
-        final childSize = renderBox.size;
-        final childCenter =
-            childOffset.translate(childSize.width / 2, childSize.height / 2);
-
-        final isTop = widget.overlayPosition == OverlayPosition.top ||
-            (widget.overlayPosition == OverlayPosition.auto &&
-                childCenter.dy > screenSize.height / 2);
-
-        // Get overlay size
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          final overlayRenderBox =
-              _overlayKey.currentContext?.findRenderObject() as RenderBox;
-
-          if (overlayRenderBox.size == _renderedOverlaySize) return;
-
-          setState(() {
-            _renderedOverlaySize = overlayRenderBox.size;
-          });
-        });
-
-        var overlayXPos = childCenter.dx - widget.overlayWidth / 2;
-
-        // Make sure not to overflow screen
-        if (overlayXPos < 0) {
-          overlayXPos = 0;
-        } else if (overlayXPos + widget.overlayWidth > screenSize.width) {
-          overlayXPos = screenSize.width - widget.overlayWidth;
-        }
-
-        final overlaySpace = isTop
-            ? widget.overlaySpace + widget.focusPadding.top
-            : widget.overlaySpace + widget.focusPadding.bottom;
-
-        final overlayYPos = isTop
-            ? childOffset.dy -
-                overlaySpace -
-                (_renderedOverlaySize?.height ?? 0)
-            : childOffset.dy + childSize.height + overlaySpace;
-
-        final tooltipOffset = Offset(
-          overlayXPos,
-          overlayYPos,
-        );
-
-        // Arrow positioning
-        // Wait until tooltip size is available
-        final arrowOffset = Offset(
-          childCenter.dx - widget.arrowSize.width / 2,
-          isTop
-              ? tooltipOffset.dy + (_renderedOverlaySize?.height ?? 0)
-              : tooltipOffset.dy - widget.arrowSize.height,
-        );
-
-        if (_showLoading) {
+        if (_isLoading) {
           return Container(
             decoration: const BoxDecoration(
               color: FunDsColors.colorOverlay,
@@ -228,18 +175,98 @@ class _FunOverlayState extends State<FunOverlay>
             ),
           );
         }
+
+        // Get overlay size on next frame
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          final overlayRenderBox =
+              _overlayKey.currentContext?.findRenderObject() as RenderBox?;
+
+          if (overlayRenderBox?.size == _renderedOverlaySize) return;
+
+          setState(() {
+            _renderedOverlaySize = overlayRenderBox?.size;
+          });
+        });
+
+        // Get child size info
+        final childRenderBox =
+            _childKey.currentContext?.findRenderObject() as RenderBox;
+        final childOffset = childRenderBox.localToGlobal(
+          Offset.zero,
+          ancestor: overlay.context.findRenderObject(),
+        );
+        final childSize = childRenderBox.size;
+        final childCenter =
+            childOffset.translate(childSize.width / 2, childSize.height / 2);
+
+        // Define overlay position, can use [_renderedOverlaySize] to get the
+        // overlay size.
+        var isTop = widget.overlayPosition == OverlayPosition.top;
+
+        if (widget.overlayPosition == OverlayPosition.auto) {
+          isTop = childCenter.dy > screenSize.height / 2;
+        }
+
+        if (widget.overlayPosition == OverlayPosition.preferTop) {
+          final space = widget.overlaySpace + widget.focusPadding.top;
+          isTop =
+              childOffset.dy - space - (_renderedOverlaySize?.height ?? 0) > 0;
+        }
+
+        if (widget.overlayPosition == OverlayPosition.preferBottom) {
+          // Set isTop when overlay exceed screen height
+          final space = widget.overlaySpace + widget.focusPadding.bottom;
+          isTop = childOffset.dy +
+                  childSize.height +
+                  space +
+                  (_renderedOverlaySize?.height ?? 0) >
+              screenSize.height;
+        }
+
+        final overlaySpace = isTop
+            ? widget.overlaySpace + widget.focusPadding.top
+            : widget.overlaySpace + widget.focusPadding.bottom;
+
+        // Make sure x pos not to overflow the screen
+        var overlayXPos = childCenter.dx - (widget.overlayWidth / 2);
+        if (overlayXPos < 0) {
+          overlayXPos = 0;
+        } else if (overlayXPos + widget.overlayWidth > screenSize.width) {
+          overlayXPos = screenSize.width - widget.overlayWidth;
+        }
+
+        final overlayYPos = isTop
+            ? childOffset.dy -
+                (_renderedOverlaySize?.height ?? 0) -
+                overlaySpace
+            : childOffset.dy + childSize.height + overlaySpace;
+
+        final overlayOffset = Offset(
+          overlayXPos,
+          overlayYPos,
+        );
+
+        // Arrow positioning
+        final arrowOffset = Offset(
+          childCenter.dx - widget.arrowSize.width / 2,
+          isTop
+              ? overlayOffset.dy + (_renderedOverlaySize?.height ?? 0)
+              : overlayOffset.dy - widget.arrowSize.height,
+        );
+
+        final targetClipArea = Rect.fromLTRB(
+          childOffset.dx - widget.focusPadding.left,
+          childOffset.dy - widget.focusPadding.top,
+          (childOffset.dx + childSize.width) + widget.focusPadding.right,
+          (childOffset.dy + childSize.height) + widget.focusPadding.bottom,
+        );
+
         return GestureDetector(
           onTap: () => widget.onOverlayTap?.call(),
           child: ClipPath(
             clipper: RRectClipper(
               radius: BorderRadius.circular(widget.focusRadius),
-              area: Rect.fromLTRB(
-                childOffset.dx - widget.focusPadding.left,
-                childOffset.dy - widget.focusPadding.top,
-                (childOffset.dx + childSize.width) + widget.focusPadding.right,
-                (childOffset.dy + childSize.height) +
-                    widget.focusPadding.bottom,
-              ),
+              area: targetClipArea,
             ),
             child: Container(
               decoration: const BoxDecoration(
@@ -265,8 +292,8 @@ class _FunOverlayState extends State<FunOverlay>
 
                   // Overlay Content
                   Positioned(
-                    top: tooltipOffset.dy,
-                    left: tooltipOffset.dx,
+                    top: overlayOffset.dy,
+                    left: overlayOffset.dx,
                     child: SizedBox(
                       key: _overlayKey,
                       width: widget.overlayWidth,

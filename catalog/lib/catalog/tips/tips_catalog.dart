@@ -169,9 +169,4 @@ class _TipsCatalogState extends State<TipsCatalog> {
       ),
     );
   }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }
