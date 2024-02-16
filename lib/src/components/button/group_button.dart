@@ -5,19 +5,53 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FunDsGroupButton extends StatelessWidget {
   final FunDsGroupButtonVariant variant;
-  final List<FunDsButton> listButton;
+  final List<FunDsButton>? listButton;
+  final FunDsButton? funDsButton;
   final Widget? childCombo;
+  final int? childComboFlex;
+  final int? funDsButtonFlex;
 
   const FunDsGroupButton({
     Key? key,
     required this.variant,
-    required this.listButton,
+    this.listButton,
+    this.funDsButton,
     this.childCombo,
-  }) : super(key: key);
+    this.childComboFlex = 1,
+    this.funDsButtonFlex = 1,
+  })  : assert(
+          (childCombo == null && funDsButton == null) ||
+              (childCombo != null &&
+                  funDsButton != null &&
+                  variant == FunDsGroupButtonVariant.combo),
+          'childCombo and funDsButton must be used together in combo variant',
+        ),
+        assert(
+          (funDsButton == null || listButton == null),
+          'funDsButton and listButton cannot be used together',
+        ),
+        super(key: key);
+
+  factory FunDsGroupButton.combo({
+    Key? key,
+    required FunDsButton funDsButton,
+    required Widget childCombo,
+    int? childComboFlex,
+    int? funDsButtonFlex,
+  }) {
+    return FunDsGroupButton(
+      key: key,
+      variant: FunDsGroupButtonVariant.combo,
+      funDsButton: funDsButton,
+      childCombo: childCombo,
+      childComboFlex: childComboFlex,
+      funDsButtonFlex: funDsButtonFlex,
+    );
+  }
 
   double getAspectRation() {
-    if (listButton.isNotEmpty) {
-      switch (listButton.first.type) {
+    if (listButton?.isNotEmpty == true) {
+      switch (listButton?.first.type) {
         case FunDsButtonType.xLarge:
           return 2.8;
         case FunDsButtonType.large:
@@ -28,6 +62,8 @@ class FunDsGroupButton extends StatelessWidget {
           return 5;
         case FunDsButtonType.xSmall:
           return 5.5;
+        default:
+          return 4;
       }
     }
     return 4;
@@ -39,21 +75,22 @@ class FunDsGroupButton extends StatelessWidget {
       case FunDsGroupButtonVariant.vertical:
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: listButton.map((value) {
-            return Column(
-              children: [
-                SizedBox(width: double.infinity, child: value),
-                SizedBox(height: 12.h)
-              ],
-            );
-          }).toList(),
+          children: listButton?.map((value) {
+                return Column(
+                  children: [
+                    SizedBox(width: double.infinity, child: value),
+                    SizedBox(height: 12.h)
+                  ],
+                );
+              }).toList() ??
+              [],
         );
       case FunDsGroupButtonVariant.horizontal:
         List<FunDsButton> list = [];
-        list.addAll(listButton);
+        list.addAll(listButton ?? []);
         Widget? lastList;
-        if (listButton.length % 2 != 0) {
-          lastList = listButton.last;
+        if (listButton?.length != null && listButton!.length % 2 != 0) {
+          lastList = listButton?.last;
           list.removeLast();
         }
         return Column(
@@ -89,18 +126,16 @@ class FunDsGroupButton extends StatelessWidget {
         return Row(
           children: [
             Flexible(
-              flex: 1,
+              flex: childComboFlex ?? 1,
               child: childCombo != null
                   ? SizedBox(width: double.infinity, child: childCombo!)
                   : const SizedBox(width: double.infinity),
             ),
             SizedBox(width: 12.w),
             Flexible(
-              flex: 1,
-              child: listButton.isNotEmpty
-                  ? SizedBox(width: double.infinity, child: listButton.first)
-                  : const SizedBox(width: double.infinity),
-            )
+              flex: funDsButtonFlex ?? 1,
+              child: SizedBox(width: double.infinity, child: funDsButton),
+            ),
           ],
         );
     }
