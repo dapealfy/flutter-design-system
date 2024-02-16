@@ -66,14 +66,14 @@ class _CoachMarkCatalogState extends State<CoachMarkCatalog> {
                       CoachMark.dismiss(context);
                     },
                   ),
-                  child: const ListTile(
-                    title: Text('Edwin Wahyudi'),
-                    subtitle: Text('Our most awesome Product Manager'),
+                  child: ListTile(
+                    title: const Text('Edwin Wahyudi'),
+                    subtitle: const Text('Our most awesome Product Manager'),
                     leading:
                         Avatar.asset(imagePath: 'assets/images/user_1.jpeg'),
                     visualDensity: VisualDensity.comfortable,
                     dense: false,
-                    trailing: Icon(
+                    trailing: const Icon(
                       Icons.recycling,
                       color: FunDsColors.colorGreen600,
                     ),
