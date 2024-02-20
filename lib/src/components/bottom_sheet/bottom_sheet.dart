@@ -77,13 +77,8 @@ class FunDsBottomSheet extends StatelessWidget {
         ),
       ),
       builder: (BuildContext context) {
-        return FunDsBottomSheet(
+        return _FunDsCustomBottomSheet(
           key: key,
-          title: null,
-          desc: null,
-          image: null,
-          type: null,
-          buttons: null,
           child: child,
         );
       },
@@ -92,70 +87,6 @@ class FunDsBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (child != null) {
-      return Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-        ),
-        decoration: BoxDecoration(
-          color: FunDsColors.colorWhite,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24.r),
-            topRight: Radius.circular(24.r),
-          ),
-        ),
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: 0.85.sh,
-          ),
-          child: Wrap(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Center(
-                      child: Container(
-                        width: 30.w,
-                        height: 4.h,
-                        decoration: ShapeDecoration(
-                          color: FunDsColors.colorNeutral200,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(1160.r),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: FunDsIcon(
-                        funDsIconography: FunDsIconography.actionIcCrossNude,
-                        size: 24.w,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 16,
-                    ),
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: 500.h),
-                      child: child,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      );
-    }
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
@@ -383,5 +314,80 @@ class FunDsBottomSheet extends StatelessWidget {
     } else {
       return Image.asset(image!);
     }
+  }
+}
+
+class _FunDsCustomBottomSheet extends StatelessWidget {
+  final Widget child;
+
+  const _FunDsCustomBottomSheet({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
+      decoration: BoxDecoration(
+        color: FunDsColors.colorWhite,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
+        ),
+      ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: 0.85.sh,
+        ),
+        child: Wrap(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Center(
+                    child: Container(
+                      width: 30.w,
+                      height: 4.h,
+                      decoration: ShapeDecoration(
+                        color: FunDsColors.colorNeutral200,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(1160.r),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: FunDsIcon(
+                      funDsIconography: FunDsIconography.actionIcCrossNude,
+                      size: 24.w,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                  ),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(maxHeight: 500.h),
+                    child: child,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
