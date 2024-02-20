@@ -28,3 +28,4 @@ export 'progress_bar/progress_bar.dart';
 export 'ticker/ticker.dart';
 export 'tips/tips.dart';
 export 'toaster/toaster.dart';
+export 'header/header.dart';

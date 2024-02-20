@@ -17,6 +17,7 @@ import 'package:catalog/catalog/counter/counter_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/icon_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
+import 'package:catalog/catalog/header/header_catalog.dart';
 import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
@@ -165,5 +166,10 @@ final entries = [
   Entry(
     name: 'Component/ProgressBar/ProgressBar',
     builder: (context) => const ProgressBarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Header/Header',
+    builder: (context) => const HeaderCatalog(),
   ),
 ];
