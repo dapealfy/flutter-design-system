@@ -81,17 +81,11 @@ pipelines:
       - step: *analyze-test
       - step: *prepare-build
       - parallel:
-          steps :
-            - step:
-                name: Build catalog web
-                script:
-                  - *build-catalog
-                  - *deploy-catalog-main
-            - step:
-                name: Build catalog apk
-                script:
-                  - *build-apk-catalog
-                  - *distribute-apk
+        - step: *build-catalog
+        - step: *build-apk-catalog
+      - parallel:
+        - step: *deploy-catalog-main
+        - step: *distribute-apk
   custom:
     build-dev:
       - step: *prepare-build
