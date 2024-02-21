@@ -70,7 +70,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl ege
               type: FunDsButtonType.large,
               variant: FunDsButtonVariant.primary,
               onPressed: () {
-                FunDsCustomBottomSheet.showBottomSheet(
+                FunDsBottomSheet.showCustomBottomSheet(
                     context: context,
                     child: ListView.separated(
                       physics: const AlwaysScrollableScrollPhysics(),
