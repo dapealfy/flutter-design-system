@@ -30,7 +30,7 @@ definitions:
           - flutter-pub-cache
         script:
           - cd catalog
-          - flutter build web --release --web-renderer canvaskitflutter build web --release
+          - flutter build web --release --web-renderer canvaskit
         artifacts:
           - catalog/build/web/**
 
