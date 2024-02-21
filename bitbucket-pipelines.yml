@@ -70,7 +70,7 @@ definitions:
           - curl -sL https://firebase.tools | bash
           - echo $FIREBASE_SERVICE_ACCOUNT | base64 -d > /tmp/firebase-service-account.json
           - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
-          - firebase appdistribution:distribute app-release.apk --app 1:272130137531:android:5f8cfa98dacbfb63ee389e --groups "flutter-design-system"
+          - firebase appdistribution:distribute app-release.apk --app 1:272130137531:android:5839788c41f2e388ee389e --groups "flutter-design-system"
 
 clone:
   depth: full
