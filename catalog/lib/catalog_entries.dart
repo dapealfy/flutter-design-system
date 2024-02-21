@@ -22,6 +22,7 @@ import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
+import 'package:catalog/catalog/modal/modal_catalog.dart';
 import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
 import 'package:catalog/catalog/tips/tips_catalog.dart';
@@ -146,6 +147,11 @@ final entries = [
   Entry(
     name: 'Component/Label/Label',
     builder: (context) => const LabelCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Modal/Modal',
+    builder: (context) => const ModalCatalog(),
   ),
 
   Entry(
