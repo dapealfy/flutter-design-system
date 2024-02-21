@@ -29,6 +29,7 @@ definitions:
         caches:
           - flutter-pub-cache
         script:
+          - cd catalog
           - flutter build web --release --web-renderer canvaskitflutter build web --release
         artifacts:
           - catalog/build/web/**
@@ -39,6 +40,7 @@ definitions:
         caches:
           - flutter-pub-cache
         script:
+          - cd catalog
           - flutter build apk --release
         artifacts:
           - catalog/build/app/outputs/flutter-apk/app-release.apk
