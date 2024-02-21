@@ -80,8 +80,18 @@ pipelines:
     master:
       - step: *analyze-test
       - step: *prepare-build
-      - step: *build-catalog
-      - step: *deploy-catalog-main
+      - parallel:
+          steps :
+            - step:
+                name: Build catalog web
+                script:
+                  - *build-catalog
+                  - *deploy-catalog-main
+            - step:
+                name: Build catalog apk
+                script:
+                  - *build-apk-catalog
+                  - *distribute-apk
   custom:
     build-dev:
       - step: *prepare-build
