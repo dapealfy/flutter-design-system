@@ -5,6 +5,8 @@ image:
   password: "$GCR_DEV_JSON_KEY"
 
 definitions:
+  caches:
+    flutter-pub-cache: $PUB_CACHE
   steps:
     - step: &analyze-test
         name: Run tests
@@ -17,8 +19,6 @@ definitions:
     - step: &prepare-build
         name: Prepare build
         caches:
-          - gradle
-          - gradle-wrapper
           - flutter-pub-cache
         script:
           - cd catalog
@@ -27,8 +27,6 @@ definitions:
     - step: &build-catalog
         name: Build catalog
         caches:
-          - gradle
-          - gradle-wrapper
           - flutter-pub-cache
         script:
           - flutter build web --release --web-renderer canvaskitflutter build web --release
@@ -39,8 +37,6 @@ definitions:
     - step: &build-apk-catalog
         name: Build APK catalog
         caches:
-          - gradle
-          - gradle-wrapper
           - flutter-pub-cache
         script:
           - flutter build apk --release
