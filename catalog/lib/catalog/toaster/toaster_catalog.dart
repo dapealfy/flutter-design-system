@@ -32,8 +32,16 @@ class ToasterCatalog extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               final toaster = Toaster(
+                context: context,
                 message: 'Put short description here!',
-                label: 'Oke',
+                label: 'Action',
+                onAction: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('ACTION CLICKED'),
+                    ),
+                  );
+                },
                 leftIcon: leftIcon,
               );
               // Find the ScaffoldMessenger in the widget tree
@@ -46,9 +54,17 @@ class ToasterCatalog extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               final toaster = Toaster(
+                context: context,
                 type: ToasterType.error,
                 message: 'Put short description here!',
-                label: 'Oke',
+                label: 'Action',
+                onAction: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('ACTION CLICKED'),
+                    ),
+                  );
+                },
                 leftIcon: leftIcon,
               );
               // Find the ScaffoldMessenger in the widget tree
