@@ -94,6 +94,9 @@ class TextField extends StatefulWidget {
   /// Will be called when the keyboard action button is pressed
   final ValueChanged<String>? onSubmitted;
 
+  /// Will be called when the keyboard action button is pressed
+  final TextFieldSize? size;
+
   /// Will use color filter when in disabled state
   /// Apply color filter to [prefix], [leftIcon], [suffix1], [suffix2],
   /// [rightIcon1], [rightIcon2]
@@ -128,6 +131,7 @@ class TextField extends StatefulWidget {
     this.inputFormatters,
     this.textInputAction,
     this.onSubmitted,
+    this.size,
     this.useColorFilterForDisabled = true,
   }) : super(key: key);
 
@@ -289,7 +293,10 @@ class _TextFieldState extends State<TextField> {
       children: [
         if (widget.labelText != null || widget.label != null)
           DefaultTextStyle(
-            style: FunDsTypography.body12B.copyWith(color: labelColor),
+            style: (widget.size == TextFieldSize.medium
+                    ? FunDsTypography.body14B
+                    : FunDsTypography.body12B)
+                .copyWith(color: labelColor),
             child: widget.label ??
                 Text(
                   widget.labelText ?? '',
@@ -298,18 +305,25 @@ class _TextFieldState extends State<TextField> {
           ),
         if (widget.descriptionText != null || widget.description != null)
           DefaultTextStyle(
-            style: FunDsTypography.body12.copyWith(color: descriptionColor),
+            style: (widget.size == TextFieldSize.medium
+                    ? FunDsTypography.body14
+                    : FunDsTypography.body12)
+                .copyWith(color: descriptionColor),
             child: widget.description ??
                 Text(
                   widget.descriptionText ?? '',
                   key: const Key('description'),
                 ),
           ),
-        SizedBox(height: 4.h),
+        SizedBox(
+          height: widget.size == TextFieldSize.small ? 4.h : 8.h,
+        ),
         Container(
           key: const Key('border'),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(
+              12.r,
+            ),
             border: DoubleBorder(
               outerBorder: Border.all(
                 color: outerBorderColor ?? Colors.transparent,
@@ -329,7 +343,9 @@ class _TextFieldState extends State<TextField> {
                 if (widget.leftIcon != null)
                   Padding(
                     key: const Key('leftIcon'),
-                    padding: EdgeInsets.only(left: 10.w),
+                    padding: EdgeInsets.only(
+                      left: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                    ),
                     child: DisabledColorFilter(
                       apply: applyDisabledColorFilter,
                       child: widget.leftIcon!,
@@ -352,24 +368,32 @@ class _TextFieldState extends State<TextField> {
                         LengthLimitingTextInputFormatter(widget.maxLength),
                       ...widget.inputFormatters ?? [],
                     ],
-                    style: FunDsTypography.body12,
+                    style: widget.size == TextFieldSize.small
+                        ? FunDsTypography.body12
+                        : FunDsTypography.body14,
                     decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                        vertical: 6,
-                        horizontal: 10,
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical:
+                            widget.size == TextFieldSize.small ? 6.h : 8.h,
+                        horizontal:
+                            widget.size == TextFieldSize.small ? 10.w : 12.w,
                       ),
                       isDense: true,
                       border: InputBorder.none,
                       hintText: widget.hintText,
-                      hintStyle: FunDsTypography.body12
-                          .copyWith(color: FunDsColors.colorNeutral500),
+                      hintStyle: widget.size == TextFieldSize.small
+                          ? FunDsTypography.body12
+                          : FunDsTypography.body14
+                              .copyWith(color: FunDsColors.colorNeutral500),
                     ),
                   ),
                 ),
                 if (widget.suffix1 != null)
                   Padding(
                     key: const Key('suffix1'),
-                    padding: EdgeInsets.only(right: 10.w),
+                    padding: EdgeInsets.only(
+                      right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                    ),
                     child: DisabledColorFilter(
                       apply: applyDisabledColorFilter,
                       child: widget.suffix1!,
@@ -378,7 +402,9 @@ class _TextFieldState extends State<TextField> {
                 if (widget.rightIcon1 != null)
                   Padding(
                     key: const Key('rightIcon1'),
-                    padding: EdgeInsets.only(right: 10.w),
+                    padding: EdgeInsets.only(
+                      right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                    ),
                     child: DisabledColorFilter(
                       apply: applyDisabledColorFilter,
                       child: widget.rightIcon1!,
@@ -387,7 +413,9 @@ class _TextFieldState extends State<TextField> {
                 if (widget.rightIcon2 != null)
                   Padding(
                     key: const Key('rightIcon2'),
-                    padding: EdgeInsets.only(right: 10.w),
+                    padding: EdgeInsets.only(
+                      right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                    ),
                     child: DisabledColorFilter(
                       apply: applyDisabledColorFilter,
                       child: widget.rightIcon2!,
@@ -404,11 +432,11 @@ class _TextFieldState extends State<TextField> {
                     child: Padding(
                       key: const Key('clearIcon'),
                       padding: EdgeInsets.only(
-                        right: 10.w,
+                        right: widget.size == TextFieldSize.small ? 10.w : 12.w,
                       ),
                       child: Icon(
                         Icons.cancel,
-                        size: 16.w,
+                        size: widget.size == TextFieldSize.small ? 16.r : 18.r,
                         color: FunDsColors.colorNeutral600,
                       ),
                     ),
@@ -418,10 +446,15 @@ class _TextFieldState extends State<TextField> {
             ),
           ),
         ),
-        SizedBox(height: 4.h),
+        SizedBox(
+          height: widget.size == TextFieldSize.small ? 4.h : 8.h,
+        ),
         if (widget.helperText != null || widget.helper != null)
           DefaultTextStyle(
-            style: FunDsTypography.body12.copyWith(color: descriptionColor),
+            style: (widget.size == TextFieldSize.small
+                    ? FunDsTypography.body12
+                    : FunDsTypography.body14)
+                .copyWith(color: descriptionColor),
             child: widget.helper ??
                 Text(
                   widget.helperText ?? '',
@@ -431,4 +464,9 @@ class _TextFieldState extends State<TextField> {
       ],
     );
   }
+}
+
+enum TextFieldSize {
+  small,
+  medium,
 }
