@@ -50,7 +50,7 @@ class FunDsChip extends StatelessWidget {
                         : FunDsColors.colorNeutral400
                     : FunDsColors.colorNeutral200,
               ),
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: _borderRadius(),
             )),
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -120,6 +120,17 @@ class FunDsChip extends StatelessWidget {
         return 40.h;
       case FunDsChipType.large:
         return 48.h;
+    }
+  }
+
+  BorderRadius _borderRadius() {
+    switch (type) {
+      case FunDsChipType.small:
+        return BorderRadius.circular(6.r);
+      case FunDsChipType.medium:
+        return BorderRadius.circular(8.r);
+      case FunDsChipType.large:
+        return BorderRadius.circular(12.r);
     }
   }
 }

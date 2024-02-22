@@ -49,7 +49,14 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
             ? null
             : () {
                 setState(() {
-                  isChecked = !(isChecked ?? false);
+                  switch (isChecked) {
+                    case false:
+                      isChecked = true;
+                    case true:
+                      isChecked = widget.tristate ? null : false;
+                    case null:
+                      isChecked = false;
+                  }
                   widget.onChanged(isChecked);
                 });
               },
@@ -70,7 +77,6 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
             ? null
             : Padding(
                 padding: EdgeInsets.only(
-                  top: 8.h,
                   left: 8.h,
                   right: 8.h,
                 ),

@@ -10,16 +10,22 @@ import 'package:catalog/catalog/button/radio_button_catalog.dart';
 import 'package:catalog/catalog/calendar/calendar_catalog.dart';
 import 'package:catalog/catalog/checkbox/checkbox_catalog.dart';
 import 'package:catalog/catalog/chip/chip_catalog.dart';
+import 'package:catalog/catalog/coachmark/coachmark_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
 import 'package:catalog/catalog/control/toggle_catalog.dart';
+import 'package:catalog/catalog/counter/counter_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/icon_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
+import 'package:catalog/catalog/header/header_catalog.dart';
 import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
-import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
+import 'package:catalog/catalog/modal/modal_catalog.dart';
+import 'package:catalog/catalog/page_control/page_control_catalog.dart';
+import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
+import 'package:catalog/catalog/tips/tips_catalog.dart';
 import 'package:catalog/catalog/toaster/toaster_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
 import 'package:catalog/core/home_catalog.dart';
@@ -94,6 +100,11 @@ final entries = [
   ),
 
   Entry(
+    name: 'Component/CoachMark/CoachMark',
+    builder: (context) => const CoachMarkCatalog(),
+  ),
+
+  Entry(
     name: 'Component/Control/Slider',
     builder: (context) => const SliderCatalog(),
   ),
@@ -101,6 +112,11 @@ final entries = [
   Entry(
     name: 'Component/Control/Toggle',
     builder: (context) => const ToggleCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Counter/Counter',
+    builder: (context) => const CounterCatalog(),
   ),
 
   Entry(
@@ -134,12 +150,32 @@ final entries = [
   ),
 
   Entry(
+    name: 'Component/Modal/Modal',
+    builder: (context) => const ModalCatalog(),
+  ),
+
+  Entry(
     name: 'Component/Toaster/Toaster',
     builder: (context) => const ToasterCatalog(),
   ),
 
   Entry(
+    name: 'Component/Tips/Tips',
+    builder: (context) => const TipsCatalog(),
+  ),
+
+  Entry(
     name: 'Component/Chip/Chip',
     builder: (context) => const ChipCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/ProgressBar/ProgressBar',
+    builder: (context) => const ProgressBarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Header/Header',
+    builder: (context) => const HeaderCatalog(),
   ),
 ];

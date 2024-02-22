@@ -80,8 +80,25 @@ class GroupAvatarCatalog extends StatelessWidget {
         GroupAvatar(
           itemCount: listName.length,
           itemBuilder: (context, index) {
-            return Avatar(
-              avatarText: listName[index],
+            /// Simulate If index 2 don't have image then use text avatar
+            if (index == 2) {
+              return Avatar.network(
+                imageUrl: '',
+                name: listName[index],
+                size: AvatarSize.xxl,
+                backgroundColor: FunDsColors.colorPrimary100,
+                foregroundColor: FunDsColors.colorPrimary500,
+                shape: AvatarShape.round,
+                border: Border.all(
+                  color: FunDsColors.colorWhite,
+                  width: 2,
+                ),
+              );
+            }
+
+            return Avatar.network(
+              imageUrl: 'https://i.pravatar.cc/150?img=${index + 1}',
+              name: listName[index],
               size: AvatarSize.xxl,
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,

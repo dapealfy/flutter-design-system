@@ -30,18 +30,18 @@ class Label extends StatelessWidget {
     this.size = LabelSize.medium,
     this.color = LabelColor.purple,
     this.type = LabelType.invert,
-    this.leadingIcon,
-    this.trailingIcon,
+    this.prefixIcon,
+    this.suffixIcon,
     this.onTap,
   });
 
   final String text;
 
   /// take icon from [FunDsIconography]
-  final String? leadingIcon;
+  final String? prefixIcon;
 
   /// take icon from [FunDsIconography]
-  final String? trailingIcon;
+  final String? suffixIcon;
   final LabelSize size;
   final LabelColor color;
   final LabelType type;
@@ -52,8 +52,8 @@ class Label extends StatelessWidget {
       text,
       key: key,
       size: size ?? this.size,
-      leadingIcon: leadingIcon,
-      trailingIcon: trailingIcon,
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
       color: color,
       type: type,
       onTap: onTap,
@@ -86,10 +86,10 @@ class Label extends StatelessWidget {
         double horizontalPaddingWithIcon = 3.w;
 
         padding = EdgeInsets.only(
-          left: leadingIcon == null
+          left: prefixIcon == null
               ? horizontalPadding
               : horizontalPaddingWithIcon,
-          right: trailingIcon == null
+          right: suffixIcon == null
               ? horizontalPadding
               : horizontalPaddingWithIcon,
         );
@@ -101,10 +101,10 @@ class Label extends StatelessWidget {
         double horizontalPaddingWithIcon = 4.w;
 
         padding = EdgeInsets.only(
-          left: leadingIcon == null
+          left: prefixIcon == null
               ? horizontalPadding
               : horizontalPaddingWithIcon,
-          right: trailingIcon == null
+          right: suffixIcon == null
               ? horizontalPadding
               : horizontalPaddingWithIcon,
         );
@@ -116,10 +116,10 @@ class Label extends StatelessWidget {
         double horizontalPaddingWithIcon = 5.w;
 
         padding = EdgeInsets.only(
-          left: leadingIcon == null
+          left: prefixIcon == null
               ? horizontalPadding
               : horizontalPaddingWithIcon,
-          right: trailingIcon == null
+          right: suffixIcon == null
               ? horizontalPadding
               : horizontalPaddingWithIcon,
         );
@@ -157,16 +157,16 @@ class Label extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(right: 4.w),
                       child: Center(
-                        child: leadingIcon != null
+                        child: prefixIcon != null
                             ? FunDsIcon(
-                                funDsIconography: leadingIcon!,
+                                funDsIconography: prefixIcon!,
                                 size: 16.r,
                                 color: contentColor,
                               )
                             : const SizedBox(),
                       ),
                     ),
-                    visible: leadingIcon != null,
+                    visible: prefixIcon != null,
                   ),
                   Center(
                     child: Text(
@@ -182,16 +182,16 @@ class Label extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(left: 4.w),
                       child: Center(
-                        child: trailingIcon != null
+                        child: suffixIcon != null
                             ? FunDsIcon(
-                                funDsIconography: trailingIcon!,
+                                funDsIconography: suffixIcon!,
                                 size: 16.r,
                                 color: contentColor,
                               )
                             : const SizedBox(),
                       ),
                     ),
-                    visible: trailingIcon != null,
+                    visible: suffixIcon != null,
                   ),
                 ],
               ),

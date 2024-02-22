@@ -40,7 +40,7 @@ void main() {
               itemCount: listName.length,
               itemBuilder: (context, index) {
                 return Avatar(
-                  avatarText: listName[index],
+                  name: listName[index],
                   size: AvatarSize.xxl,
                   backgroundColor: FunDsColors.colorPrimary100,
                   foregroundColor: FunDsColors.colorPrimary500,

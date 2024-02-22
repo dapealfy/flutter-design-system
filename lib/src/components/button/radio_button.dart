@@ -9,6 +9,7 @@ class FunDsRadioButton<T> extends StatelessWidget {
   final String? helper;
   final bool? disabled;
   final Function(T?)? onChanged;
+
   const FunDsRadioButton({
     Key? key,
     required this.value,
@@ -47,9 +48,10 @@ class FunDsRadioButton<T> extends StatelessWidget {
       return null;
     }
 
-    return ListTileTheme(
+    return ListTileTheme.merge(
       horizontalTitleGap: 8.w,
       minLeadingWidth: 8.w,
+      titleAlignment: ListTileTitleAlignment.top,
       child: RadioListTile<T>(
         value: value,
         groupValue: selectedValue,
@@ -71,20 +73,19 @@ class FunDsRadioButton<T> extends StatelessWidget {
             : ((value) {
                 onChanged?.call(value);
               }),
-        title: Padding(
-          padding: EdgeInsets.symmetric(vertical: 4.r),
-          child: Text(
-            label ?? '',
-            key: const Key('label'),
-            style: FunDsTypography.body14,
-          ),
+        title: Text(
+          label ?? '',
+          key: const Key('label'),
+          style: FunDsTypography.body14,
         ),
         subtitle: helper == null
             ? null
             : Text(
                 helper ?? '',
                 key: const Key('helper'),
-                style: FunDsTypography.body14,
+                style: FunDsTypography.body14.copyWith(
+                  color: FunDsColors.colorTextCaption,
+                ),
               ),
       ),
     );

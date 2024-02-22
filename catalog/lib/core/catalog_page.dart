@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
-import 'package:storybook_flutter/storybook_flutter.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
+import 'package:storybook_flutter/storybook_flutter.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({
@@ -27,6 +27,7 @@ class _CatalogPageState extends State<CatalogPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       appBar: kIsWeb
           ? null
           : AppBar(
@@ -41,6 +42,7 @@ class _CatalogPageState extends State<CatalogPage> {
               ),
               elevation: 0,
               backgroundColor: Colors.white,
+              surfaceTintColor: Colors.white,
             ),
       body: SafeArea(
         child: Column(

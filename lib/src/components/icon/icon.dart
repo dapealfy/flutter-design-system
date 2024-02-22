@@ -13,7 +13,7 @@ class FunDsIcon extends StatelessWidget {
     this.color,
   }) : super(key: key);
 
-  FunDsIcon copyWith({double? size}) {
+  FunDsIcon copyWith({double? size, Color? color}) {
     return FunDsIcon(
       key: key,
       funDsIconography: funDsIconography,

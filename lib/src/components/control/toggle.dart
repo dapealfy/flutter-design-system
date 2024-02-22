@@ -46,33 +46,39 @@ class _ToggleState extends State<Toggle> {
         _buildToggle(),
         Visibility(
           visible: showCondition,
-          child: Padding(
-            padding: EdgeInsets.only(left: 8.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Visibility(
-                  visible: isTitleNotEmpty,
-                  child: Text(
-                    widget.title ?? '',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: FunDsTypography.heading14
-                        .copyWith(color: FunDsColors.colorNeutral900),
+          child: GestureDetector(
+            onTap: () {
+              setState(() => _isActive = !_isActive);
+              widget.onChanged?.call(_isActive);
+            },
+            child: Padding(
+              padding: EdgeInsets.only(left: 8.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Visibility(
+                    visible: isTitleNotEmpty,
+                    child: Text(
+                      widget.title ?? '',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: FunDsTypography.heading14
+                          .copyWith(color: FunDsColors.colorNeutral900),
+                    ),
                   ),
-                ),
-                Visibility(
-                  visible: isTitleNotEmpty && isSubtitleIsNotEmpty,
-                  child: Text(
-                    widget.subtitle ?? '',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: FunDsTypography.body14
-                        .copyWith(color: FunDsColors.colorNeutral600),
-                  ),
-                )
-              ],
+                  Visibility(
+                    visible: isTitleNotEmpty && isSubtitleIsNotEmpty,
+                    child: Text(
+                      widget.subtitle ?? '',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: FunDsTypography.body14
+                          .copyWith(color: FunDsColors.colorNeutral600),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -103,10 +109,8 @@ class _ToggleState extends State<Toggle> {
           activeColor: activeColor,
           value: widget.isEnabled ? _isActive : widget.isActive,
           onChanged: (value) {
-            widget.onChanged?.call(value);
-            setState(() {
-              _isActive = value;
-            });
+            setState(() => _isActive = value);
+            widget.onChanged?.call(_isActive);
           },
         ),
       ),

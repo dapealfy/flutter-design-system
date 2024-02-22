@@ -5,6 +5,8 @@ image:
   password: "$GCR_DEV_JSON_KEY"
 
 definitions:
+  caches:
+    flutter-pub-cache: $PUB_CACHE
   steps:
     - step: &analyze-test
         name: Run tests
@@ -14,14 +16,34 @@ definitions:
           - flutter analyze
           - flutter test
 
-    - step: &build-catalog
-        name: Build catalog
+    - step: &prepare-build
+        name: Prepare build
+        caches:
+          - flutter-pub-cache
         script:
           - cd catalog
           - flutter pub get
+
+    - step: &build-catalog
+        name: Build catalog
+        caches:
+          - flutter-pub-cache
+        script:
+          - cd catalog
           - flutter build web --release --web-renderer canvaskit
         artifacts:
           - catalog/build/web/**
+
+
+    - step: &build-apk-catalog
+        name: Build APK catalog
+        caches:
+          - flutter-pub-cache
+        script:
+          - cd catalog
+          - flutter build apk --release
+        artifacts:
+          - catalog/build/app/outputs/flutter-apk/app-release.apk
 
     - step: &deploy-catalog-main
         name: Deploy catalog main
@@ -41,6 +63,15 @@ definitions:
           - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
           - ./scripts/deploy_hosting_preview.sh
 
+    - step: &distribute-apk
+        name: Distribute apk to firebase
+        script:
+          - cd catalog/build/app/outputs/flutter-apk/
+          - curl -sL https://firebase.tools | bash
+          - echo $FIREBASE_SERVICE_ACCOUNT | base64 -d > /tmp/firebase-service-account.json
+          - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
+          - firebase appdistribution:distribute app-release.apk --app 1:272130137531:android:5839788c41f2e388ee389e --groups "flutter-design-system"
+
 clone:
   depth: full
 
@@ -48,8 +79,18 @@ pipelines:
   branches:
     master:
       - step: *analyze-test
-      - step: *build-catalog
-      - step: *deploy-catalog-main
+      - step: *prepare-build
+      - parallel:
+        - step: *build-catalog
+        - step: *build-apk-catalog
+      - parallel:
+        - step: *deploy-catalog-main
+        - step: *distribute-apk
+  custom:
+    build-dev:
+      - step: *prepare-build
+      - step: *build-apk-catalog
+      - step: *distribute-apk
   pull-requests:
     '{feature/*,bugfix/*}':
       - step: *analyze-test

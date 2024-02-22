@@ -54,7 +54,9 @@ class GroupButtonCatalog extends StatelessWidget {
           FunDsGroupButton(
             key: const Key('Combo Group Button'),
             variant: FunDsGroupButtonVariant.combo,
-            listButton: listButton,
+            funDsButton: listButton[0],
+            funDsButtonFlex: 1,
+            childComboFlex: 1,
             childCombo: const Text(
               'Ini Bisa diisi Widget Apapaun',
               textAlign: TextAlign.center,

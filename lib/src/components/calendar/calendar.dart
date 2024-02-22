@@ -61,8 +61,8 @@ class Calendar extends StatefulWidget {
       backgroundColor: FunDsColors.colorWhite,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24.r),
-          topRight: Radius.circular(24.r),
+          topLeft: Radius.circular(20.r),
+          topRight: Radius.circular(20.r),
         ),
       ),
       builder: (context) {
@@ -341,8 +341,7 @@ class _CalendarState extends State<Calendar> {
                       child: Container(
                         height: Calendar.itemExtent * 5,
                         padding: EdgeInsets.only(
-                          bottom:
-                              (errorText == null) ? 0 : 16,
+                          bottom: (errorText == null) ? 0 : 16,
                         ),
                         child: Row(
                           children: [
