@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart' hide TextField;
 import 'package:flutter/material.dart' as m;
+import 'package:flutter/material.dart' hide TextField;
 import 'package:flutter/services.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_design_system/src/utils/disable_color_filter.dart';
 import 'package:flutter_design_system/src/utils/double_border.dart';
-import 'package:flutter_design_system/src/utils/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum TextAreaSize {
@@ -87,7 +86,7 @@ class TextArea extends StatefulWidget {
   /// Will set the [maxLines] value
   ///
   /// If [maxLines] is not null, this will be ignored
-  final TextAreaSize? textAreaSize;
+  final TextAreaSize textAreaSize;
 
   /// Will be used to control the focus of the text field
   final FocusNode? focusNode;
@@ -130,6 +129,7 @@ class TextArea extends StatefulWidget {
 class _TextAreaState extends State<TextArea> {
   FocusNode? _focusNode;
   FunDsTextController? _controller;
+  ScrollController? _scrollController;
 
   FunDsTextController get _effectiveController =>
       widget.controller ?? _controller!;
@@ -153,6 +153,7 @@ class _TextAreaState extends State<TextArea> {
       _controller = FunDsTextController();
     }
 
+    _scrollController = ScrollController();
     _counter = _effectiveController.text.length;
     _effectiveFocusNode.addListener(_focusListener);
     _effectiveController.addListener(_textListener);
@@ -195,6 +196,7 @@ class _TextAreaState extends State<TextArea> {
     _focusNode?.dispose();
     _controller?.dispose();
     _debouncer?.cancel();
+    _scrollController?.dispose();
     super.dispose();
   }
 
@@ -266,35 +268,39 @@ class _TextAreaState extends State<TextArea> {
           ),
           child: Stack(
             children: [
-              m.TextField(
-                key: const Key('textField'),
-                onChanged: _handleOnChange,
-                focusNode: _effectiveFocusNode,
-                enabled: widget.enabled,
-                controller: _effectiveController,
-                keyboardType: widget.keyboardType,
-                textInputAction: widget.textInputAction,
-                onSubmitted: widget.onSubmitted,
-                inputFormatters: [
-                  if (widget.maxLength != null)
-                    LengthLimitingTextInputFormatter(widget.maxLength),
-                  ...widget.inputFormatters ?? [],
-                ],
-                style: FunDsTypography.body12,
-                maxLines:
-                    widget.maxLines ?? (widget.textAreaSize?.maxLines ?? 4),
-                decoration: InputDecoration(
-                  isDense: true,
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal:
-                        (widget.textAreaSize == TextAreaSize.small) ? 10 : 16,
-                    vertical:
-                        (widget.textAreaSize == TextAreaSize.small) ? 6 : 12,
+              m.RawScrollbar(
+                thumbColor: FunDsColors.colorNeutral500,
+                radius: const Radius.circular(8),
+                controller: _scrollController,
+                child: m.TextField(
+                  key: const Key('textField'),
+                  onChanged: _handleOnChange,
+                  focusNode: _effectiveFocusNode,
+                  enabled: widget.enabled,
+                  controller: _effectiveController,
+                  keyboardType: widget.keyboardType,
+                  textInputAction: widget.textInputAction,
+                  onSubmitted: widget.onSubmitted,
+                  inputFormatters: [
+                    if (widget.maxLength != null)
+                      LengthLimitingTextInputFormatter(widget.maxLength),
+                    ...widget.inputFormatters ?? [],
+                  ],
+                  style: _textStyle(),
+                  maxLines: widget.maxLines ?? widget.textAreaSize.maxLines,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal:
+                          (widget.textAreaSize == TextAreaSize.small) ? 10 : 16,
+                      vertical:
+                          (widget.textAreaSize == TextAreaSize.small) ? 6 : 12,
+                    ),
+                    border: InputBorder.none,
+                    hintText: widget.hintText,
+                    hintStyle: _textStyle()
+                        .copyWith(color: FunDsColors.colorNeutral500),
                   ),
-                  border: InputBorder.none,
-                  hintText: widget.hintText,
-                  hintStyle: FunDsTypography.body12
-                      .copyWith(color: FunDsColors.colorNeutral500),
                 ),
               ),
               Positioned(
@@ -351,5 +357,14 @@ class _TextAreaState extends State<TextArea> {
         ),
       ],
     );
+  }
+
+  TextStyle _textStyle() {
+    switch (widget.textAreaSize) {
+      case TextAreaSize.small:
+        return FunDsTypography.body14;
+      case TextAreaSize.large:
+        return FunDsTypography.body16;
+    }
   }
 }

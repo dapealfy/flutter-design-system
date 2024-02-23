@@ -26,6 +26,7 @@ class FunDsLoader extends StatelessWidget {
         return Column(
           key: key,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             _getLottie(),
             if (desc != null)
@@ -41,6 +42,7 @@ class FunDsLoader extends StatelessWidget {
         return Column(
           key: key,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             if (desc != null)
               Text(
@@ -70,7 +72,6 @@ class FunDsLoader extends StatelessWidget {
       case FunDsLoaderPosition.right:
         return Row(
           key: key,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (desc != null)
               Flexible(

@@ -100,57 +100,70 @@ class _AuthPageState extends State<AuthPage> {
       home: Scaffold(
         body: SafeArea(
           child: Center(
-            child: Padding(
+            child: Container(
+              width: 500,
               padding: const EdgeInsets.all(16),
-              child: ConstrainedBox(
-                constraints: BoxConstraints.loose(const Size(500, 200)),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          labelText: 'Password',
-                          errorText: wrongPassword ? 'Invalid' : null,
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              showPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                showPassword = !showPassword;
-                              });
-                            },
-                          ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Image.asset(
+                      'assets/images/funds_logo.png',
+                      width: 200,
+                    ),
+                  ),
+                  const SizedBox(height: 54),
+                  Text(
+                    'v 0.4',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          color: Colors.black54,
                         ),
-                        obscureText: !showPassword,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        controller: passwordController,
-                        onSubmitted: (value) {
-                          checkPassword(value);
-                        },
-                        onChanged: (value) {
-                          if (wrongPassword) {
-                            setState(() {
-                              wrongPassword = false;
-                            });
-                          }
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 24),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      labelText: 'Password',
+                      errorText: wrongPassword ? 'Invalid' : null,
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          showPassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            showPassword = !showPassword;
+                          });
                         },
                       ),
                     ),
-                    const SizedBox(width: 16),
-                    FloatingActionButton.extended(
-                      onPressed: () {
-                        checkPassword(passwordController.text);
-                      },
-                      icon: const Icon(Icons.lock_open),
-                      label: const Text('Enter'),
-                    ),
-                  ],
-                ),
+                    obscureText: !showPassword,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    controller: passwordController,
+                    onSubmitted: (value) {
+                      checkPassword(value);
+                    },
+                    onChanged: (value) {
+                      if (wrongPassword) {
+                        setState(() {
+                          wrongPassword = false;
+                        });
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  FloatingActionButton.extended(
+                    onPressed: () {
+                      checkPassword(passwordController.text);
+                    },
+                    icon: const Icon(Icons.lock_open),
+                    label: const Text('Enter'),
+                  ),
+                ],
               ),
             ),
           ),
