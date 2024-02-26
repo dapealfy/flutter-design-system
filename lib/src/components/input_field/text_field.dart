@@ -130,7 +130,7 @@ class TextField extends StatefulWidget {
     this.inputFormatters,
     this.textInputAction,
     this.onSubmitted,
-    this.size,
+    this.size = TextFieldSize.small,
     this.useColorFilterForDisabled = true,
   }) : super(key: key);
 
@@ -435,7 +435,7 @@ class _TextFieldState extends State<TextField> {
                       ),
                       child: Icon(
                         Icons.cancel,
-                        size: widget.size == TextFieldSize.small ? 16.r : 18.r,
+                        size: widget.size == TextFieldSize.small ? 16.w : 18.w,
                         color: FunDsColors.colorNeutral600,
                       ),
                     ),
