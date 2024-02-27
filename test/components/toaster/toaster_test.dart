@@ -13,6 +13,7 @@ void main() {
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               Toaster(
+                context: context,
                 message: 'Test Message',
                 label: 'Test Label',
                 type: ToasterType.normal,
@@ -47,6 +48,7 @@ void main() {
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
               Toaster(
+                context: context,
                 message: 'Test Message',
                 label: 'Test Label',
                 type: ToasterType.error,

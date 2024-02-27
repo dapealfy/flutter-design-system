@@ -64,6 +64,8 @@ class FunDsRadioButton<T> extends StatelessWidget {
           horizontal: VisualDensity.minimumDensity,
           vertical: VisualDensity.minimumDensity,
         ),
+        isThreeLine: helper != null,
+        dense: true,
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         splashRadius: 12.r,
         onChanged: disabled ?? false
