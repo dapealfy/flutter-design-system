@@ -197,7 +197,14 @@ class TextFieldCatalog extends StatelessWidget {
       title: 'Text Field',
       description: _desc,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            'Small',
+            style: FunDsTypography.body16B.copyWith(
+              color: FunDsColors.colorPrimary,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: funds.TextField(
@@ -207,6 +214,49 @@ class TextFieldCatalog extends StatelessWidget {
               helperText: helperText.isEmpty ? null : helperText,
               prefix: prefix,
               leftIcon: leftIcon,
+              size: TextFieldSize.small,
+              suffix1: suffix1,
+              suffix2: suffix2,
+              rightIcon1: rightIcon1,
+              rightIcon2: rightIcon2,
+              showClear: showClear,
+              isError: isError,
+              enabled: enabled,
+              obscureText: obscureText,
+              maxLength: maxLength.isEmpty ? null : int.tryParse(maxLength),
+              onSubmitted: (value) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Submitted: $value'),
+                  ),
+                );
+              },
+              onChanged: (value) {
+                debugPrintThrottled('Changed: $value');
+              },
+              onChangedDebounced: (value) {
+                // Debounced version for onChanged
+                debugPrint('Changed Debounced: $value');
+              },
+              debounceDuration: const Duration(milliseconds: 500),
+            ),
+          ),
+          Text(
+            'Medium',
+            style: FunDsTypography.body16B.copyWith(
+              color: FunDsColors.colorPrimary,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: funds.TextField(
+              labelText: labelText,
+              descriptionText: descriptionText.isEmpty ? null : descriptionText,
+              hintText: hintText,
+              helperText: helperText.isEmpty ? null : helperText,
+              prefix: prefix,
+              leftIcon: leftIcon,
+              size: TextFieldSize.medium,
               suffix1: suffix1,
               suffix2: suffix2,
               rightIcon1: rightIcon1,
