@@ -34,6 +34,12 @@ class FunDsTypography {
   );
 
   //Heading
+  static TextStyle get heading48 => defB.copyWith(fontSize: 48.sp);
+
+  static TextStyle get heading36 => defB.copyWith(fontSize: 36.sp);
+
+  static TextStyle get heading30 => defB.copyWith(fontSize: 30.sp);
+
   static TextStyle get heading24 => defB.copyWith(fontSize: 24.sp);
 
   static TextStyle get heading20 => defB.copyWith(fontSize: 20.sp);
