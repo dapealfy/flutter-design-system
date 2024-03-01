@@ -32,6 +32,38 @@ class ProgressBarCatalog extends StatelessWidget {
         const Option(label: 'Red', value: FunDsProgressBarColor.red),
       ],
     );
+    final prefix = context.knobs.options<Widget?>(
+      label: 'Prefix',
+      initial: null,
+      options: [
+        const Option(
+          label: 'null',
+          value: null,
+        ),
+        const Option(
+          label: '0%',
+          value: Text(
+            '0%',
+          ),
+        ),
+      ],
+    );
+    final suffix = context.knobs.options<Widget?>(
+      label: 'Suffix',
+      initial: null,
+      options: [
+        const Option(
+          label: 'null',
+          value: null,
+        ),
+        const Option(
+          label: '100%',
+          value: Text(
+            '100%',
+          ),
+        ),
+      ],
+    );
 
     final value = context.knobs.slider(
       label: 'Progress Value',
@@ -54,15 +86,18 @@ class ProgressBarCatalog extends StatelessWidget {
               size: size,
               color: color,
               value: value,
+              prefix: prefix,
+              suffix: suffix,
             ),
           ),
           SizedBox(height: 20.h),
+          const Text('ProgressBar Alternate'),
+          SizedBox(height: 4.h),
           Container(
             color: FunDsColors.colorNeutral200,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('ProgressBar Alternate'),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FunDsProgressBar.alternate(
@@ -70,6 +105,8 @@ class ProgressBarCatalog extends StatelessWidget {
                     size: size,
                     color: color,
                     value: value,
+                    prefix: prefix,
+                    suffix: suffix,
                   ),
                 ),
               ],

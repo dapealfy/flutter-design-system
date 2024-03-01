@@ -7,12 +7,16 @@ class FunDsProgressBar extends StatelessWidget {
   final FunDsProgressBarColor color;
   final double value; // value 1-100
   final Color bgColor;
+  final Widget? suffix;
+  final Widget? prefix;
 
   const FunDsProgressBar({
     super.key,
     required this.size,
     required this.color,
     required this.value,
+    this.suffix,
+    this.prefix,
     this.bgColor = FunDsColors.colorNeutral200,
   });
 
@@ -21,11 +25,15 @@ class FunDsProgressBar extends StatelessWidget {
     required FunDsProgressBarSize size,
     required FunDsProgressBarColor color,
     required double value,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FunDsProgressBar(
       size: size,
       color: color,
       value: value,
+      prefix: prefix,
+      suffix: suffix,
       bgColor: FunDsColors.colorWhite,
     );
   }
@@ -37,12 +45,40 @@ class FunDsProgressBar extends StatelessWidget {
       width: 320.w,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 8.h),
-        child: LinearProgressIndicator(
-          value: value / 100,
-          backgroundColor: bgColor,
-          minHeight: _getHeight(),
-          valueColor: AlwaysStoppedAnimation<Color>(_getColor()),
-          borderRadius: BorderRadius.all(Radius.circular(_getHeight() / 2)),
+        child: Row(
+          children: [
+            if (prefix != null)
+              Padding(
+                padding: EdgeInsets.only(
+                  right: 8.w,
+                ),
+                child: prefix!,
+              ),
+            Flexible(
+              child: LinearProgressIndicator(
+                value: value / 100,
+                backgroundColor: bgColor,
+                minHeight: _getHeight(),
+                valueColor: AlwaysStoppedAnimation<Color>(_getColor()),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(_getHeight() / 2)),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: suffix != null || value == 100 ? 8.w : 0,
+              ),
+              child: value == 100
+                  ? Icon(
+                      Icons.check_circle,
+                      size: 16.r,
+                      color: _getColor(),
+                    )
+                  : suffix != null
+                      ? suffix!
+                      : const SizedBox(),
+            ),
+          ],
         ),
       ),
     );

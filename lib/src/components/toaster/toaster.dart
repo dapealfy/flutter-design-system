@@ -9,6 +9,7 @@ class Toaster extends SnackBar {
   /// Creates a [SnackBar] with some [content] and an [action].
   Toaster({
     Key? key,
+    required BuildContext context,
 
     /// The message to be displayed.
     required String message,
@@ -19,11 +20,16 @@ class Toaster extends SnackBar {
     /// The type of toaster to be displayed.
     ToasterType type = ToasterType.normal,
 
+    /// The action to be displayed.
+    void Function()? onAction,
+
     /// The optional icon to be displayed on the left of the message.
     Widget? leftIcon,
   }) : super(
           key: key,
           content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               if (leftIcon != null)
                 Padding(
@@ -36,16 +42,62 @@ class Toaster extends SnackBar {
                   fontWeight: FontWeight.w500,
                 ),
               ),
+              const Spacer(),
+              if (label != null)
+                Padding(
+                  padding: EdgeInsets.only(
+                    right: 16.w,
+                  ),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      visualDensity: VisualDensity.compact,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      minimumSize: Size(
+                        16.r,
+                        16.r,
+                      ),
+                      padding: EdgeInsets.zero,
+                    ),
+                    onPressed: () {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).hideCurrentSnackBar(
+                          reason: SnackBarClosedReason.dismiss);
+                    },
+                    child: Text(
+                      label,
+                      style: FunDsTypography.body14B.copyWith(
+                        color: FunDsColors.colorWhite,
+                      ),
+                    ),
+                  ),
+                ),
+              IconButton(
+                style: IconButton.styleFrom(
+                  visualDensity: VisualDensity.compact,
+                  iconSize: 16.r,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  minimumSize: Size(
+                    16.r,
+                    16.r,
+                  ),
+                  padding: EdgeInsets.zero,
+                ),
+                onPressed: () {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).hideCurrentSnackBar(reason: SnackBarClosedReason.dismiss);
+                },
+                icon: Icon(
+                  Icons.close,
+                  size: 16.r,
+                  color: Colors.white,
+                ),
+              )
             ],
           ),
-          action: (label != null)
-              ? SnackBarAction(
-                  label: label,
-                  textColor: FunDsColors.colorWhite,
-                  onPressed: () {},
-                )
-              : null,
           padding: EdgeInsets.symmetric(
+            vertical: 12.h,
             horizontal: 16.w,
           ),
           backgroundColor: (type == ToasterType.normal)
