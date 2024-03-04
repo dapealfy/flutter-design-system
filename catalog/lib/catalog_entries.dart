@@ -35,6 +35,7 @@ import 'package:catalog/catalog/progress_circle/progress_circle_catalog.dart';
 import 'package:catalog/catalog/progress_indicator/progress_indicator_catalog.dart';
 import 'package:catalog/catalog/scrollbar/scrollbar_catalog.dart';
 import 'package:catalog/catalog/select/select_catalog.dart';
+import 'package:catalog/catalog/switcher/switcher_catalog.dart';
 import 'package:catalog/catalog/tab/tab_catalog.dart';
 import 'package:catalog/catalog/ticker/ticker_catalog.dart';
 import 'package:catalog/catalog/tips/tips_catalog.dart';
@@ -238,6 +239,11 @@ final entries = [
   Entry(
     name: 'Component/Header/Header',
     builder: (context) => const HeaderCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Switcher/Switcher',
+    builder: (context) => const SwitcherCatalog(),
   ),
 
   Entry(
