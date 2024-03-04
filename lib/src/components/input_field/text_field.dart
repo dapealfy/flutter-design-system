@@ -96,6 +96,15 @@ class TextField extends StatefulWidget {
   /// Will be called when the keyboard action button is pressed
   final TextFieldSize? size;
 
+  /// Will make the text field read only
+  final bool readOnly;
+
+  /// Will change the text overflow for read only text field
+  final TextOverflow? readOnlyTextOverflow;
+
+  /// Will be called when the text field is tapped
+  final VoidCallback? onTap;
+
   /// Will use color filter when in disabled state
   /// Apply color filter to [prefix], [leftIcon], [suffix1], [suffix2],
   /// [rightIcon1], [rightIcon2]
@@ -131,6 +140,9 @@ class TextField extends StatefulWidget {
     this.textInputAction,
     this.onSubmitted,
     this.size = TextFieldSize.small,
+    this.readOnly = false,
+    this.readOnlyTextOverflow,
+    this.onTap,
     this.useColorFilterForDisabled = true,
   }) : super(key: key);
 
@@ -211,6 +223,86 @@ class _TextFieldState extends State<TextField> {
     _controller?.dispose();
     _debouncer?.cancel();
     super.dispose();
+  }
+
+  Widget _buildEditableField() {
+    return m.TextField(
+      key: const Key('textField'),
+      obscureText: widget.obscureText,
+      onChanged: _handleOnChange,
+      focusNode: _effectiveFocusNode,
+      enabled: widget.enabled,
+      controller: _effectiveController,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      onSubmitted: widget.onSubmitted,
+      textAlignVertical: TextAlignVertical.center,
+      readOnly: widget.readOnly,
+      inputFormatters: [
+        if (widget.maxLength != null)
+          LengthLimitingTextInputFormatter(widget.maxLength),
+        ...widget.inputFormatters ?? [],
+      ],
+      style: widget.size == TextFieldSize.small
+          ? FunDsTypography.body12
+          : FunDsTypography.body14,
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(
+          vertical: widget.size == TextFieldSize.small ? 6.h : 8.h,
+          horizontal: widget.size == TextFieldSize.small ? 10.w : 12.w,
+        ),
+        isDense: true,
+        border: InputBorder.none,
+        hintText: widget.hintText,
+        hintStyle: widget.size == TextFieldSize.small
+            ? FunDsTypography.body12
+            : FunDsTypography.body14
+                .copyWith(color: FunDsColors.colorNeutral500),
+      ),
+    );
+  }
+
+  Widget _buildReadOnlyTextField() {
+    return Focus(
+      focusNode: _effectiveFocusNode,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 6,
+          horizontal: 10,
+        ),
+        child: ValueListenableBuilder(
+          valueListenable: _effectiveController,
+          builder: (context, value, child) {
+            if (value.text.isEmpty) {
+              // Show hint
+              return Text(
+                widget.hintText ?? '',
+                style: widget.size == TextFieldSize.small
+                    ? FunDsTypography.body12
+                    : FunDsTypography.body14
+                        .copyWith(color: FunDsColors.colorNeutral500),
+                overflow: widget.readOnlyTextOverflow,
+                maxLines: 1,
+              );
+            }
+            return Text(
+              value.text,
+              maxLines: 1,
+              overflow: widget.readOnlyTextOverflow,
+              style: widget.size == TextFieldSize.small
+                  ? FunDsTypography.body12
+                  : FunDsTypography.body14,
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField() {
+    return widget.readOnly && widget.readOnlyTextOverflow != null
+        ? _buildReadOnlyTextField()
+        : _buildEditableField();
   }
 
   @override
@@ -317,131 +409,108 @@ class _TextFieldState extends State<TextField> {
         SizedBox(
           height: widget.size == TextFieldSize.small ? 4.h : 8.h,
         ),
-        Container(
-          key: const Key('border'),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(
-              12.r,
-            ),
-            border: DoubleBorder(
-              outerBorder: Border.all(
-                color: outerBorderColor ?? Colors.transparent,
-                width: 2,
+        GestureDetector(
+          onTap: () {
+            if (widget.readOnly) {
+              _effectiveFocusNode.requestFocus();
+            }
+
+            widget.onTap?.call();
+          },
+          child: Container(
+            key: const Key('border'),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                12.r,
               ),
-              innerBorder: Border.all(
-                color: innerBorderColor,
-                width: 1,
-              ),
-            ),
-            color: containerColor,
-          ),
-          child: IntrinsicHeight(
-            child: Row(
-              children: [
-                prefixWidget ?? const SizedBox(),
-                if (widget.leftIcon != null)
-                  Padding(
-                    key: const Key('leftIcon'),
-                    padding: EdgeInsets.only(
-                      left: widget.size == TextFieldSize.small ? 10.w : 12.w,
-                    ),
-                    child: DisabledColorFilter(
-                      apply: applyDisabledColorFilter,
-                      child: widget.leftIcon!,
-                    ),
-                  ),
-                Expanded(
-                  child: m.TextField(
-                    key: const Key('textField'),
-                    obscureText: widget.obscureText,
-                    onChanged: _handleOnChange,
-                    focusNode: _effectiveFocusNode,
-                    enabled: widget.enabled,
-                    controller: _effectiveController,
-                    keyboardType: widget.keyboardType,
-                    textInputAction: widget.textInputAction,
-                    onSubmitted: widget.onSubmitted,
-                    textAlignVertical: TextAlignVertical.center,
-                    inputFormatters: [
-                      if (widget.maxLength != null)
-                        LengthLimitingTextInputFormatter(widget.maxLength),
-                      ...widget.inputFormatters ?? [],
-                    ],
-                    style: widget.size == TextFieldSize.small
-                        ? FunDsTypography.body12
-                        : FunDsTypography.body14,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical:
-                            widget.size == TextFieldSize.small ? 6.h : 8.h,
-                        horizontal:
-                            widget.size == TextFieldSize.small ? 10.w : 12.w,
-                      ),
-                      isDense: true,
-                      border: InputBorder.none,
-                      hintText: widget.hintText,
-                      hintStyle: widget.size == TextFieldSize.small
-                          ? FunDsTypography.body12
-                          : FunDsTypography.body14
-                              .copyWith(color: FunDsColors.colorNeutral500),
-                    ),
-                  ),
+              border: DoubleBorder(
+                outerBorder: Border.all(
+                  color: outerBorderColor ?? Colors.transparent,
+                  width: 2,
                 ),
-                if (widget.suffix1 != null)
-                  Padding(
-                    key: const Key('suffix1'),
-                    padding: EdgeInsets.only(
-                      right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                innerBorder: Border.all(
+                  color: innerBorderColor,
+                  width: 1,
+                ),
+              ),
+              color: containerColor,
+            ),
+            child: IntrinsicHeight(
+              child: Row(
+                children: [
+                  prefixWidget ?? const SizedBox(),
+                  if (widget.leftIcon != null)
+                    Padding(
+                      key: const Key('leftIcon'),
+                      padding: EdgeInsets.only(
+                        left: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                      ),
+                      child: DisabledColorFilter(
+                        apply: applyDisabledColorFilter,
+                        child: widget.leftIcon!,
+                      ),
                     ),
-                    child: DisabledColorFilter(
-                      apply: applyDisabledColorFilter,
-                      child: widget.suffix1!,
-                    ),
+                  Expanded(
+                    child: _buildTextField(),
                   ),
-                if (widget.rightIcon1 != null)
-                  Padding(
-                    key: const Key('rightIcon1'),
-                    padding: EdgeInsets.only(
-                      right: widget.size == TextFieldSize.small ? 10.w : 12.w,
-                    ),
-                    child: DisabledColorFilter(
-                      apply: applyDisabledColorFilter,
-                      child: widget.rightIcon1!,
-                    ),
-                  ),
-                if (widget.rightIcon2 != null)
-                  Padding(
-                    key: const Key('rightIcon2'),
-                    padding: EdgeInsets.only(
-                      right: widget.size == TextFieldSize.small ? 10.w : 12.w,
-                    ),
-                    child: DisabledColorFilter(
-                      apply: applyDisabledColorFilter,
-                      child: widget.rightIcon2!,
-                    ),
-                  ),
-                if (_isFilled &&
-                    widget.showClear &&
-                    widget.enabled &&
-                    widget.rightIcon2 == null)
-                  GestureDetector(
-                    onTap: () {
-                      _clear();
-                    },
-                    child: Padding(
-                      key: const Key('clearIcon'),
+                  if (widget.suffix1 != null)
+                    Padding(
+                      key: const Key('suffix1'),
                       padding: EdgeInsets.only(
                         right: widget.size == TextFieldSize.small ? 10.w : 12.w,
                       ),
-                      child: Icon(
-                        Icons.cancel,
-                        size: widget.size == TextFieldSize.small ? 16.w : 18.w,
-                        color: FunDsColors.colorNeutral600,
+                      child: DisabledColorFilter(
+                        apply: applyDisabledColorFilter,
+                        child: widget.suffix1!,
                       ),
                     ),
-                  ),
-                suffix2Widget ?? const SizedBox(),
-              ],
+                  if (widget.rightIcon1 != null)
+                    Padding(
+                      key: const Key('rightIcon1'),
+                      padding: EdgeInsets.only(
+                        right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                      ),
+                      child: DisabledColorFilter(
+                        apply: applyDisabledColorFilter,
+                        child: widget.rightIcon1!,
+                      ),
+                    ),
+                  if (widget.rightIcon2 != null)
+                    Padding(
+                      key: const Key('rightIcon2'),
+                      padding: EdgeInsets.only(
+                        right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                      ),
+                      child: DisabledColorFilter(
+                        apply: applyDisabledColorFilter,
+                        child: widget.rightIcon2!,
+                      ),
+                    ),
+                  if (_isFilled &&
+                      widget.showClear &&
+                      widget.enabled &&
+                      widget.rightIcon2 == null)
+                    GestureDetector(
+                      onTap: () {
+                        _clear();
+                      },
+                      child: Padding(
+                        key: const Key('clearIcon'),
+                        padding: EdgeInsets.only(
+                          right:
+                              widget.size == TextFieldSize.small ? 10.w : 12.w,
+                        ),
+                        child: Icon(
+                          Icons.cancel,
+                          size:
+                              widget.size == TextFieldSize.small ? 16.w : 18.w,
+                          color: FunDsColors.colorNeutral600,
+                        ),
+                      ),
+                    ),
+                  suffix2Widget ?? const SizedBox(),
+                ],
+              ),
             ),
           ),
         ),
@@ -453,7 +522,10 @@ class _TextFieldState extends State<TextField> {
             style: (widget.size == TextFieldSize.small
                     ? FunDsTypography.body12
                     : FunDsTypography.body14)
-                .copyWith(color: descriptionColor),
+                .copyWith(
+                    color: widget.isError
+                        ? FunDsColors.colorRed500
+                        : descriptionColor),
             child: widget.helper ??
                 Text(
                   widget.helperText ?? '',
