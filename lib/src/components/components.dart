@@ -3,6 +3,7 @@ export 'accordion/accordion_group.dart';
 export 'avatar/avatar.dart';
 export 'avatar/avatar_shape.dart';
 export 'avatar/avatar_size.dart';
+export 'alert/alert.dart';
 export 'avatar/group_avatar.dart';
 export 'badge/badge.dart';
 export 'bottom_sheet/bottom_sheet.dart';

@@ -1,5 +1,6 @@
 import 'package:catalog/catalog/accordion/accordion_catalog.dart';
 import 'package:catalog/catalog/accordion/group_accordion_catalog.dart';
+import 'package:catalog/catalog/alert/alert_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
 import 'package:catalog/catalog/badge/badge_catalog.dart';
@@ -52,6 +53,11 @@ final entries = [
   ),
 
   // Components
+  Entry(
+    name: 'Component/Alert/Alert',
+    builder: (context) => const AlertCatalog(),
+  ),
+
   Entry(
     name: 'Component/Avatar/Single Avatar',
     builder: (context) => const SingleAvatarCatalog(),
