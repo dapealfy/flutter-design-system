@@ -23,7 +23,7 @@ class FunDsBottomSheet extends StatelessWidget {
     this.child,
   }) : super(key: key);
 
-  static void showBottomSheet({
+  static Future<T?> showBottomSheet<T>({
     Key? key,
     required BuildContext context,
     required String title,
@@ -33,7 +33,7 @@ class FunDsBottomSheet extends StatelessWidget {
     required FunDsGroupButton groupButton,
     double? barrierOpacity,
   }) {
-    showModalBottomSheet<void>(
+    return showModalBottomSheet<T>(
       context: context,
       isScrollControlled: true,
       barrierColor:
@@ -58,13 +58,13 @@ class FunDsBottomSheet extends StatelessWidget {
     );
   }
 
-  static void showCustomBottomSheet({
+  static Future<T?> showCustomBottomSheet<T>({
     Key? key,
     required BuildContext context,
     required Widget child,
     double? barrierOpacity,
   }) {
-    showModalBottomSheet<void>(
+    return showModalBottomSheet<T>(
       context: context,
       isScrollControlled: true,
       backgroundColor: FunDsColors.colorWhite,
