@@ -7,14 +7,22 @@ class Switcher extends StatefulWidget {
     super.key,
     this.controller,
     required this.tabs,
-    this.isScrollable = false,
+    this.onTap,
   });
 
+  /// This widget's selection and animation state.
+  ///
+  /// If [TabController] is not provided, then the value of [DefaultTabController.of]
+  /// will be used.
   final TabController? controller;
 
+  /// List of [SwitcherTab].
+  ///
+  /// maximum provided tabs is 3, more than that preferable to use [FunDsTabs]
   final List<SwitcherTab> tabs;
 
-  final bool isScrollable;
+  /// An optional callback that's called when the [TabBar] is tapped.
+  final ValueChanged<int>? onTap;
 
   @override
   State<Switcher> createState() => _SwitcherState();
@@ -49,10 +57,13 @@ class _SwitcherState extends State<Switcher> {
           padding: EdgeInsets.zero,
           controller: _controller,
           tabs: _tabs ?? widget.tabs,
-          isScrollable: widget.isScrollable,
+          isScrollable: false,
           indicatorSize: TabBarIndicatorSize.label,
           indicatorColor: Colors.transparent,
           dividerHeight: 0.0,
+          onTap: (int index) {
+            widget.onTap?.call(index);
+          },
         ),
       ),
     );
@@ -70,6 +81,7 @@ class _SwitcherState extends State<Switcher> {
                   icon: value.icon,
                   text: value.text,
                   isSelected: _selectedIndex == index,
+                  index: index,
                 ));
           })
           .values
@@ -78,11 +90,6 @@ class _SwitcherState extends State<Switcher> {
       _controller.addListener(() {
         setState(() {
           _selectedIndex = _controller.index;
-          // _tabs?[_controller.previousIndex] =
-          //     _tabs![_controller.previousIndex].copyWith(isSelected: false);
-          //
-          // _tabs?[_controller.index] =
-          //     _tabs![_controller.previousIndex].copyWith(isSelected: true);
         });
       });
     } catch (e) {
@@ -113,6 +120,7 @@ class SwitcherTab extends StatelessWidget {
 const _duration = Duration(milliseconds: 300);
 const _curves = Curves.fastOutSlowIn;
 
+// https://api.flutter.dev/flutter/widgets/DecoratedBoxTransition-class.html
 class _SwitcherTab extends ImplicitlyAnimatedWidget {
   const _SwitcherTab({
     required this.text,
@@ -189,29 +197,60 @@ class _SwitcherTabState extends AnimatedWidgetBaseState<_SwitcherTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Tab(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 2),
-        height: 34.0,
-        decoration: decorationTween.evaluate(_selectedAnimation),
+    EdgeInsets margin;
+    if (widget.index == 0) {
+      margin = const EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 2);
+    } else if (widget.index == 2) {
+      margin = const EdgeInsets.only(top: 4, bottom: 4, left: 2, right: 4);
+    } else {
+      margin = const EdgeInsets.all(4);
+    }
+
+    return Container(
+      margin: margin,
+      child: IntrinsicHeight(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Visibility(
-              child: Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: FunDsIcon(
-                    funDsIconography: widget.icon ?? '',
-                    size: 16,
-                  )),
-              visible: widget.icon != null,
+              child: const VerticalDivider(
+                width: 1,
+                color: FunDsColors.colorNeutral200,
+              ),
+              visible: widget.index == 1 && !widget.isSelected,
             ),
-            Text(
-              widget.text,
-              style: FunDsTypography.body12
-                  .copyWith(color: FunDsColors.colorNeutral900),
-            )
+            Expanded(
+              child: Container(
+                height: 34.0,
+                decoration: decorationTween.evaluate(_selectedAnimation),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Visibility(
+                      child: Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: FunDsIcon(
+                            funDsIconography: widget.icon ?? '',
+                            size: 16,
+                          )),
+                      visible: widget.icon != null,
+                    ),
+                    Text(
+                      widget.text,
+                      style: FunDsTypography.body12
+                          .copyWith(color: FunDsColors.colorNeutral900),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Visibility(
+              child: const VerticalDivider(
+                width: 1,
+                color: FunDsColors.colorNeutral200,
+              ),
+              visible: widget.index == 1 && !widget.isSelected,
+            ),
           ],
         ),
       ),
