@@ -50,7 +50,7 @@ void main() {
       expect(find.text('Title'), findsOneWidget);
       expect(find.text('Simpan'), findsOneWidget);
       expect(find.text('Batal'), findsOneWidget);
-      expect(find.text(errorText), findsNothing);
+      expect(find.calendarError(), findsNothing);
 
       // Verify initial date
       expect(find.text(initialDate.year.toString()), findsOneWidget);
@@ -64,7 +64,7 @@ void main() {
       expect(find.text((initialDate.year - 1).toString()), findsOneWidget);
 
       // Error shown
-      expect(find.text(errorText), findsOneWidget);
+      expect(find.calendarError(), findsOne);
 
       // Scroll back to current year
       await tester.drag(
@@ -72,7 +72,7 @@ void main() {
         Offset(0, -Calendar.itemExtent),
       );
       await tester.pumpAndSettle();
-      expect(find.text(errorText), findsNothing);
+      expect(find.calendarError(), findsNothing);
 
       // Close
       await tester.tap(find.calendarCancel());
@@ -119,4 +119,5 @@ extension FunDsCaledarFinder on CommonFinders {
   Finder calendarYearList() => find.byKey(const Key('calendar-year'));
   Finder calendarSave() => find.byKey(const Key('calendar-save'));
   Finder calendarCancel() => find.byKey(const Key('calendar-cancel'));
+  Finder calendarError() => find.byKey(const Key('calendar-error'));
 }

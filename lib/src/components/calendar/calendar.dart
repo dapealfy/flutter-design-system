@@ -364,13 +364,15 @@ class _CalendarState extends State<Calendar> {
                           ? CrossFadeState.showFirst
                           : CrossFadeState.showSecond,
                       firstChild: const SizedBox(),
-                      secondChild: Ticker(
-                        key: const Key('calendar-error'),
-                        child: Text(
-                          errorText ?? '',
+                      secondChild: Offstage(
+                        child: Ticker(
+                          key: const Key('calendar-error'),
+                          description: errorText ?? '',
+                          icon: FunDsIconography.infoIcWarning,
+                          variant: TickerVariant.danger,
+                          type: TickerType.outline,
                         ),
-                        type: TickerType.danger,
-                        funDsIconography: FunDsIconography.infoIcWarning,
+                        offstage: errorText == null,
                       ),
                     ),
                   ],
