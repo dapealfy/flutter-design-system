@@ -77,14 +77,14 @@ class FunDsSwitcher extends StatefulWidget {
 }
 
 class _FunDsSwitcherState extends State<FunDsSwitcher> {
-  late TabController _controller;
+  TabController? _controller;
   List<_FunDsSwitcherTab>? _tabs;
   int _selectedIndex = 0;
 
   @override
   void dispose() {
     super.dispose();
-    _controller.dispose();
+    _controller?.dispose();
   }
 
   @override
@@ -129,6 +129,7 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
             return MapEntry(
                 index,
                 _FunDsSwitcherTab(
+                  key: value.key,
                   icon: value.icon,
                   text: value.text,
                   selectedIndex: _selectedIndex,
@@ -139,9 +140,9 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
           .values
           .toList();
 
-      _controller.addListener(() {
+      _controller!.addListener(() {
         setState(() {
-          _selectedIndex = _controller.index;
+          _selectedIndex = _controller!.index;
         });
       });
     } catch (e) {
@@ -179,6 +180,7 @@ const _curves = Curves.linear;
 /// https://api.flutter.dev/flutter/widgets/DecoratedBoxTransition-class.html
 class _FunDsSwitcherTab extends ImplicitlyAnimatedWidget {
   const _FunDsSwitcherTab({
+    super.key,
     required this.text,
     this.icon,
     this.selectedIndex = 0,
@@ -192,15 +194,6 @@ class _FunDsSwitcherTab extends ImplicitlyAnimatedWidget {
   final int selectedIndex;
   final int index;
   final int maxIndex;
-
-  _FunDsSwitcherTab copyWith({required int selectedIndex}) {
-    return _FunDsSwitcherTab(
-      icon: icon,
-      text: text,
-      index: index,
-      selectedIndex: selectedIndex,
-    );
-  }
 
   @override
   AnimatedWidgetBaseState<_FunDsSwitcherTab> createState() =>
