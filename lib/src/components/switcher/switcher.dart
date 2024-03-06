@@ -2,8 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Switcher extends StatefulWidget {
-  const Switcher({
+/// Switcher is used to make tabs of screen.
+/// same as [FunDsTabs] but with some limitation.
+///
+/// Usage with [TabController] :
+/// ```dart
+/// FunDsSwitcher(
+///   tabs: [
+///     FunDsSwitcherTab(text: 'Tab 1'),
+///     FunDsSwitcherTab(text: 'Tab 2'),
+///     FunDsSwitcherTab(text: 'Tab 3'),
+///   ],
+///   controller: TabController,
+/// );
+/// ```
+/// <br/>
+/// Usage with [DefaultTabController]
+/// ```dart
+/// final tabs = [
+///   FunDsSwitcherTab(text: 'Tab 0',),
+///   FunDsSwitcherTab(text: 'Tab 1',),
+///   FunDsSwitcherTab(text: 'Tab ',)
+/// ];
+///
+/// DefaultTabController(
+///   length: tabs.length,
+///   child: Scaffold(
+///     body: Padding(
+///       padding: const EdgeInsets.all(32.0),
+///       child: Column(children: [
+///         FunDsSwitcher(tabs: tabs),
+///         Expanded(
+///           child: TabBarView(
+///             children: tabs.map((FunDsSwitcherTab tab) {
+///               final String label = tab.text.toLowerCase();
+///               return Center(
+///                 child: Text(
+///                   'This is the $label tab',
+///                   style: const TextStyle(fontSize: 36),
+///                 ),
+///               );
+///             }).toList(),
+///           ),
+///         )
+///       ]),
+///     ),
+///   ),
+/// );
+/// ```
+class FunDsSwitcher extends StatefulWidget {
+  const FunDsSwitcher({
     super.key,
     this.controller,
     required this.tabs,
@@ -16,21 +64,21 @@ class Switcher extends StatefulWidget {
   /// will be used.
   final TabController? controller;
 
-  /// List of [SwitcherTab].
+  /// List of [FunDsSwitcherTab].
   ///
   /// maximum provided tabs is 3, more than that preferable to use [FunDsTabs]
-  final List<SwitcherTab> tabs;
+  final List<FunDsSwitcherTab> tabs;
 
   /// An optional callback that's called when the [TabBar] is tapped.
   final ValueChanged<int>? onTap;
 
   @override
-  State<Switcher> createState() => _SwitcherState();
+  State<FunDsSwitcher> createState() => _FunDsSwitcherState();
 }
 
-class _SwitcherState extends State<Switcher> {
+class _FunDsSwitcherState extends State<FunDsSwitcher> {
   late TabController _controller;
-  List<_SwitcherTab>? _tabs;
+  List<_FunDsSwitcherTab>? _tabs;
   int _selectedIndex = 0;
 
   @override
@@ -49,27 +97,30 @@ class _SwitcherState extends State<Switcher> {
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(10.r),
           border: Border.all(width: 1, color: FunDsColors.colorNeutral200)),
-      child: ClipRect(
-        clipBehavior: Clip.hardEdge,
-        child: TabBar(
-          labelPadding: EdgeInsets.zero,
-          indicatorPadding: EdgeInsets.zero,
-          padding: EdgeInsets.zero,
-          controller: _controller,
-          tabs: _tabs ?? widget.tabs,
-          isScrollable: false,
-          indicatorSize: TabBarIndicatorSize.label,
-          indicatorColor: Colors.transparent,
-          dividerHeight: 0.0,
-          onTap: (int index) {
-            widget.onTap?.call(index);
-          },
-        ),
+      child: TabBar(
+        labelPadding: EdgeInsets.zero,
+        indicatorPadding: EdgeInsets.zero,
+        padding: EdgeInsets.zero,
+        controller: _controller,
+        tabs: _tabs ?? widget.tabs,
+        isScrollable: false,
+        indicatorSize: TabBarIndicatorSize.label,
+        indicatorColor: Colors.transparent,
+        splashBorderRadius: BorderRadius.circular(10.r),
+        dividerHeight: 0.0,
+        onTap: (int index) {
+          widget.onTap?.call(index);
+        },
       ),
     );
   }
 
   _initController(BuildContext context) {
+    if (widget.tabs.length > 3) {
+      throw FlutterError('The tabs of this component is not '
+          'designed to handle more than 3 tabs');
+    }
+
     try {
       _controller = widget.controller ?? DefaultTabController.maybeOf(context)!;
       _tabs = widget.tabs
@@ -77,13 +128,14 @@ class _SwitcherState extends State<Switcher> {
           .map((index, value) {
             return MapEntry(
                 index,
-                _SwitcherTab(
+                _FunDsSwitcherTab(
                   icon: value.icon,
                   text: value.text,
-                  isSelected: _selectedIndex == index,
+                  selectedIndex: _selectedIndex,
                   index: index,
+                  maxIndex: widget.tabs.length - 1,
                 ));
-          })
+      })
           .values
           .toList();
 
@@ -96,61 +148,70 @@ class _SwitcherState extends State<Switcher> {
       // taken from TabBar source code
       throw FlutterError(
         'No TabController for ${widget.runtimeType}.\n'
-        'When creating a ${widget.runtimeType}, you must either provide an explicit '
-        'TabController using the "controller" property, or you must ensure that there '
-        'is a DefaultTabController above the ${widget.runtimeType}.\n'
-        'In this case, there was neither an explicit controller nor a default controller.',
+        'When creating a ${widget.runtimeType}, you must either provide '
+        'an explicit TabController using the "controller" property, or you '
+        'must ensure that there is a DefaultTabController above '
+        'the ${widget.runtimeType}.\n In this case, there was neither an '
+        'explicit controller nor a default controller.',
       );
     }
   }
 }
 
-class SwitcherTab extends StatelessWidget {
-  const SwitcherTab({super.key, this.icon, required this.text});
+/// The single Tab of [FunDsSwitcher]
+class FunDsSwitcherTab extends StatelessWidget {
+  const FunDsSwitcherTab({super.key, this.icon, required this.text});
 
   final String? icon;
   final String text;
 
   @override
   Widget build(BuildContext context) {
-    return _SwitcherTab(icon: icon, text: text);
+    return _FunDsSwitcherTab(icon: icon, text: text);
   }
 }
 
-const _duration = Duration(milliseconds: 300);
-const _curves = Curves.fastOutSlowIn;
+const _duration = Duration(milliseconds: 200);
+const _curves = Curves.linear;
 
-// https://api.flutter.dev/flutter/widgets/DecoratedBoxTransition-class.html
-class _SwitcherTab extends ImplicitlyAnimatedWidget {
-  const _SwitcherTab({
+/// custom implementation of DecoratedBoxTransition
+/// by listening the value of [_FunDsSwitcherTab.selectedIndex] property.
+/// https://api.flutter.dev/flutter/widgets/DecoratedBoxTransition-class.html
+class _FunDsSwitcherTab extends ImplicitlyAnimatedWidget {
+  const _FunDsSwitcherTab({
     required this.text,
     this.icon,
-    this.isSelected = false,
+    this.selectedIndex = 0,
     this.index = 0,
+    this.maxIndex = 0,
   })  : assert(index >= 0),
         super(duration: _duration, curve: _curves);
 
   final String text;
   final String? icon;
-  final bool isSelected;
+  final int selectedIndex;
   final int index;
+  final int maxIndex;
 
-  _SwitcherTab copyWith({required bool isSelected}) {
-    return _SwitcherTab(
-      isSelected: isSelected,
+  _FunDsSwitcherTab copyWith({required int selectedIndex}) {
+    return _FunDsSwitcherTab(
       icon: icon,
       text: text,
       index: index,
+      selectedIndex: selectedIndex,
     );
   }
 
   @override
-  AnimatedWidgetBaseState<_SwitcherTab> createState() => _SwitcherTabState();
+  AnimatedWidgetBaseState<_FunDsSwitcherTab> createState() =>
+      _SwitcherTabState();
 }
 
-class _SwitcherTabState extends AnimatedWidgetBaseState<_SwitcherTab> {
+class _SwitcherTabState extends AnimatedWidgetBaseState<_FunDsSwitcherTab> {
   Tween<double>? _isSelected;
   late Animation<double> _selectedAnimation;
+
+  bool get isSelected => widget.selectedIndex == widget.index;
 
   @override
   void didUpdateTweens() {
@@ -162,7 +223,7 @@ class _SwitcherTabState extends AnimatedWidgetBaseState<_SwitcherTab> {
   void forEachTween(TweenVisitor<dynamic> visitor) {
     _isSelected = visitor(
       _isSelected,
-      widget.isSelected ? 1.0 : 0.0,
+      isSelected ? 1.0 : 0.0,
       ((value) => Tween<double>(begin: value as double)),
     ) as Tween<double>?;
   }
@@ -211,12 +272,17 @@ class _SwitcherTabState extends AnimatedWidgetBaseState<_SwitcherTab> {
       child: IntrinsicHeight(
         child: Row(
           children: [
-            Visibility(
-              child: const VerticalDivider(
-                width: 1,
-                color: FunDsColors.colorNeutral200,
-              ),
-              visible: widget.index == 1 && !widget.isSelected,
+            // show left divider when :
+            // - there's 3 tabs present,
+            // - this tab index is 1 / middle
+            // - selected Index is 2 / last
+            VerticalDivider(
+              width: 1,
+              color: widget.maxIndex == 2 &&
+                      widget.selectedIndex == 2 &&
+                      widget.index == 1
+                  ? FunDsColors.colorNeutral200
+                  : Colors.transparent,
             ),
             Expanded(
               child: Container(
@@ -244,13 +310,18 @@ class _SwitcherTabState extends AnimatedWidgetBaseState<_SwitcherTab> {
                 ),
               ),
             ),
-            Visibility(
-              child: const VerticalDivider(
-                width: 1,
-                color: FunDsColors.colorNeutral200,
-              ),
-              visible: widget.index == 1 && !widget.isSelected,
-            ),
+            // show right divider when :
+            // - there's 3 tabs present,
+            // - this tab index is 1 / middle
+            // - selected Index is 0 / first
+            VerticalDivider(
+              width: 1,
+              color: widget.maxIndex == 2 &&
+                      widget.index == 1 &&
+                      widget.selectedIndex != 2
+                  ? FunDsColors.colorNeutral200
+                  : Colors.transparent,
+            )
           ],
         ),
       ),

@@ -24,7 +24,7 @@ class _SwitcherCatalogState extends State<SwitcherCatalog>
 
   late TabController controller;
   late TabController smallController;
-  late List<SwitcherTab> tabs;
+  late List<FunDsSwitcherTab> tabs;
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _SwitcherCatalogState extends State<SwitcherCatalog>
 
     tabs = List.generate(_defaultLength, (index) {
       String icon = _icons[Random().nextInt(_icons.length)];
-      return SwitcherTab(icon: icon, text: 'Tab $index');
+      return FunDsSwitcherTab(icon: icon, text: 'Tab $index');
     });
   }
 
@@ -55,14 +55,14 @@ class _SwitcherCatalogState extends State<SwitcherCatalog>
                   _showIcon = !_showIcon;
                   tabs = List.generate(_defaultLength, (index) {
                     String icon = _icons[Random().nextInt(_icons.length)];
-                    return SwitcherTab(
+                    return FunDsSwitcherTab(
                         icon: _showIcon ? icon : null, text: 'Tab $index');
                   });
                 });
               },
             ),
             const SizedBox(height: 24),
-            Switcher(
+            FunDsSwitcher(
               tabs: tabs,
               controller: controller,
             ),
@@ -71,21 +71,15 @@ class _SwitcherCatalogState extends State<SwitcherCatalog>
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: controller,
-                children: const [
-                  Center(
-                    child: Text("Tab 1 nih"),
-                  ),
-                  Center(
-                    child: Text("Tab 2 sekarang"),
-                  ),
-                  Center(
-                    child: Text("Tab 3 yee"),
-                  ),
-                ],
+                children: tabs.sublist(0).map((FunDsSwitcherTab tab) {
+                  return Center(
+                    child: Text(tab.text, style: const TextStyle(fontSize: 24)),
+                  );
+                }).toList(),
               ),
             ),
             const SizedBox(height: 24),
-            Switcher(
+            FunDsSwitcher(
               tabs: tabs.sublist(1),
               controller: smallController,
             ),
@@ -94,14 +88,11 @@ class _SwitcherCatalogState extends State<SwitcherCatalog>
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: smallController,
-                children: const [
-                  Center(
-                    child: Text("Tab 1 nih"),
-                  ),
-                  Center(
-                    child: Text("Tab 2 sekarang"),
-                  ),
-                ],
+                children: tabs.sublist(0).map((FunDsSwitcherTab tab) {
+                  return Center(
+                    child: Text(tab.text, style: const TextStyle(fontSize: 24)),
+                  );
+                }).toList(),
               ),
             ),
           ],
