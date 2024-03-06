@@ -1,5 +1,6 @@
 import 'package:catalog/catalog/accordion/accordion_catalog.dart';
 import 'package:catalog/catalog/accordion/group_accordion_catalog.dart';
+import 'package:catalog/catalog/alert/alert_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
 import 'package:catalog/catalog/badge/badge_catalog.dart';
@@ -22,10 +23,12 @@ import 'package:catalog/catalog/header/header_catalog.dart';
 import 'package:catalog/catalog/input_field/text_area_catalog.dart';
 import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
+import 'package:catalog/catalog/list/list_tile_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
 import 'package:catalog/catalog/modal/modal_catalog.dart';
 import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
+import 'package:catalog/catalog/select/select_catalog.dart';
 import 'package:catalog/catalog/tips/tips_catalog.dart';
 import 'package:catalog/catalog/toaster/toaster_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
@@ -52,6 +55,11 @@ final entries = [
   ),
 
   // Components
+  Entry(
+    name: 'Component/Alert/Alert',
+    builder: (context) => const AlertCatalog(),
+  ),
+
   Entry(
     name: 'Component/Avatar/Single Avatar',
     builder: (context) => const SingleAvatarCatalog(),
@@ -149,6 +157,10 @@ final entries = [
     name: 'Component/Label/Label',
     builder: (context) => const LabelCatalog(),
   ),
+  Entry(
+    name: 'Component/List/List Tile',
+    builder: (context) => const ListTileCatalog(),
+  ),
 
   Entry(
     name: 'Component/Modal/Modal',
@@ -173,6 +185,11 @@ final entries = [
   Entry(
     name: 'Component/ProgressBar/ProgressBar',
     builder: (context) => const ProgressBarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Select/Select',
+    builder: (context) => const SelectCatalog(),
   ),
 
   Entry(

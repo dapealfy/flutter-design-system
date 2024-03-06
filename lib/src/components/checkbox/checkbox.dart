@@ -38,10 +38,9 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
   @override
   Widget build(BuildContext context) {
     if (widget.subtitle == null && widget.title == null) {
-      return _getCheckBox(key: widget.key);
+      return _getCheckBox();
     } else {
       return ListTile(
-        key: widget.key,
         contentPadding: EdgeInsets.zero,
         horizontalTitleGap: 0,
         isThreeLine: widget.subtitle != null,
@@ -95,9 +94,8 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
     }
   }
 
-  Widget _getCheckBox({Key? key}) {
+  Widget _getCheckBox() {
     return Container(
-      key: key,
       width: 20.h,
       height: 20.h,
       decoration: BoxDecoration(
