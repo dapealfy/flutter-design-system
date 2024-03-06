@@ -32,3 +32,4 @@ export 'ticker/ticker.dart';
 export 'tips/tips.dart';
 export 'toaster/toaster.dart';
 export 'list/list_tile.dart';
+export 'divider/divider.dart';
