@@ -16,8 +16,7 @@ class FunDsDivider extends StatelessWidget {
       key: key,
       children: [
         Label(
-          // label cant handle multiple line
-          text.substring(0, text.length < 50 ? text.length : 50),
+          text,
           prefixIcon: labelPrefixIcon,
           suffixIcon: labelSuffixIcon,
           size: LabelSize.small,
