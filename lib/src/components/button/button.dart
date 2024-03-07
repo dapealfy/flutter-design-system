@@ -8,6 +8,7 @@ class FunDsButton extends StatefulWidget {
   final FunDsButtonVariant variant;
   final FunDsButtonType type;
   final String text;
+  final Widget? leftIcon;
 
   const FunDsButton({
     Key? key,
@@ -16,6 +17,7 @@ class FunDsButton extends StatefulWidget {
     required this.type,
     required this.variant,
     required this.text,
+    this.leftIcon,
   }) : super(key: key);
 
   @override
@@ -120,9 +122,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                               BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
-            child: Text(
-              widget.text,
-              textAlign: TextAlign.center,
+            child: _buildButtonChild(
               style: _getTextStyle(
                 widget.enabled
                     ? FunDsColors.colorWhite
@@ -180,9 +180,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                             BorderRadius.circular(_getButtonRadius())),
                   ),
                 ),
-          child: Text(
-            widget.text,
-            textAlign: TextAlign.center,
+          child: _buildButtonChild(
             style: _getTextStyle(
               widget.enabled
                   ? FunDsColors.colorPrimary500
@@ -264,9 +262,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                               BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
-            child: Text(
-              widget.text,
-              textAlign: TextAlign.center,
+            child: _buildButtonChild(
               style: _getTextStyle(
                 widget.enabled
                     ? FunDsColors.colorNeutral900
@@ -316,9 +312,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                   color: Colors.transparent,
                 )),
               ),
-        child: Text(
-          widget.text,
-          textAlign: TextAlign.center,
+        child: _buildButtonChild(
           style: _getTextStyle(
             widget.enabled
                 ? FunDsColors.colorPrimary
@@ -407,11 +401,11 @@ class _FunDsButtonState extends State<FunDsButton> {
                               BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
-            child: Text(
-              widget.text,
-              textAlign: TextAlign.center,
+            child: _buildButtonChild(
               style: _getTextStyle(
-                widget.enabled ? FunDsColors.colorWhite : FunDsColors.colorNeutral500,
+                widget.enabled
+                    ? FunDsColors.colorWhite
+                    : FunDsColors.colorNeutral500,
               ),
             ),
           ),
@@ -477,9 +471,7 @@ class _FunDsButtonState extends State<FunDsButton> {
                               BorderRadius.circular(_getButtonRadius())),
                     ),
                   ),
-            child: Text(
-              widget.text,
-              textAlign: TextAlign.center,
+            child: _buildButtonChild(
               style: _getTextStyle(
                 widget.enabled
                     ? _isFocused
@@ -491,6 +483,29 @@ class _FunDsButtonState extends State<FunDsButton> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildButtonChild({
+    required TextStyle style,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (widget.leftIcon != null) ...[
+          widget.leftIcon!,
+          SizedBox(
+            width: 4.w,
+          )
+        ],
+        Flexible(
+          child: Text(
+            widget.text,
+            textAlign: TextAlign.center,
+            style: style,
+          ),
+        ),
+      ],
     );
   }
 

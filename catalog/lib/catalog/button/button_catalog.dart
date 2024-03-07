@@ -31,6 +31,26 @@ class ButtonCatalog extends StatelessWidget {
       initial: true,
     );
 
+    final buttonText = context.knobs.text(
+      label: 'Button Text',
+      initial: '',
+    );
+
+    final leftIcon = context.knobs.options<Widget?>(
+      label: 'Left Icon',
+      initial: null,
+      options: [
+        const Option(label: 'none', value: null),
+        const Option(
+          label: 'Icon',
+          value: FunDsIcon(
+            funDsIconography: FunDsIconography.actionIcRefresh,
+            size: 24,
+          ),
+        ),
+      ],
+    );
+
     return CatalogPage(
       title: 'Button',
       description: 'Widget name: FunDsButton',
@@ -60,7 +80,8 @@ class ButtonCatalog extends StatelessWidget {
                             type: typeButton,
                             enabled: toogleKnob,
                             variant: variant,
-                            text: 'Button ${typeButton.name}',
+                            leftIcon: leftIcon,
+                            text: 'Button ${typeButton.name}$buttonText',
                           ),
                         );
                       }).toList(),

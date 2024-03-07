@@ -24,6 +24,7 @@ export 'input_field/text_area.dart';
 export 'input_field/text_field.dart';
 export 'label/label.dart';
 export 'loader/loader.dart';
+export 'local_load/local_load.dart';
 export 'modal/modal.dart';
 export 'page_control/page_control.dart';
 export 'progress_bar/progress_bar.dart';

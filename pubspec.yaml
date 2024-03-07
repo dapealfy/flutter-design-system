@@ -71,6 +71,7 @@ flutter:
     - assets/icons/info/
     - assets/icons/navigation/
     - assets/icons/transaction/
+    - assets/icons/operate/
     - assets/icons/
     - assets/images/
     - assets/lottie/
