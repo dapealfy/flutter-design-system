@@ -4,6 +4,7 @@ import 'package:catalog/catalog/alert/alert_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
 import 'package:catalog/catalog/badge/badge_catalog.dart';
+import 'package:catalog/catalog/banner/banner_catalog.dart';
 import 'package:catalog/catalog/bottom_sheet/bottom_sheet_catalog.dart';
 import 'package:catalog/catalog/button/button_catalog.dart';
 import 'package:catalog/catalog/button/group_button_catalog.dart';
@@ -94,6 +95,11 @@ final entries = [
   Entry(
     name: 'Component/Button/Button',
     builder: (context) => const ButtonCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Banner/Banner',
+    builder: (context) => const BannerCatalog(),
   ),
   Entry(
     name: 'Component/Button/Group Button',
