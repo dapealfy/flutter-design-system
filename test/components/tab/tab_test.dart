@@ -111,7 +111,7 @@ main() {
         ),
       ));
 
-      expect(tester.takeException(), isA<TypeError>());
+      expect(tester.takeException(), isA<FlutterError>());
     });
 
     testWidgets(

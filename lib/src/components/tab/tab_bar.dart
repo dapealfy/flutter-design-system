@@ -83,7 +83,7 @@ class FunDsTabBar extends StatefulWidget {
 
 class _FunDsTabBarState extends State<FunDsTabBar> {
   TabController? _controller;
-  late List<InternalTab> tabs;
+  List<InternalTab> tabs = [];
 
   @override
   void dispose() {
@@ -92,8 +92,68 @@ class _FunDsTabBarState extends State<FunDsTabBar> {
   }
 
   @override
+  void didUpdateWidget(oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller) {
+      _initController();
+    } else if (oldWidget.tabs != widget.tabs) {
+      _generateTabs();
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _initController();
+  }
+
+  _updateTabSelection() {
+    setState(() {
+      final currentIndex = _controller!.index;
+      final prevIndex = _controller!.previousIndex;
+
+      tabs[currentIndex] = tabs[currentIndex].copyWith(isSelected: true);
+      tabs[prevIndex] = tabs[prevIndex].copyWith(isSelected: false);
+    });
+  }
+
+  _generateTabs() {
+    tabs = widget.tabs
+        .asMap()
+        .map((index, e) {
+      return MapEntry(
+        index,
+        InternalTab(
+          key: e.key,
+          text: e.text,
+          icon: e.icon,
+          badgeNumber: e.badgeNumber,
+          colorIcon: e.colorIcon,
+          isSelected: _controller?.index == index,
+          isDefaultPaddingApplied: widget.applyDefaultPadding,
+        ),
+      );
+    }).values.toList();
+  }
+
+  void _initController() {
+    final TabController? newController =
+        widget.controller ?? DefaultTabController.maybeOf(context);
+
+    if (_controller != newController) {
+      // Remove old controller listener
+      _controller?.removeListener(_updateTabSelection);
+
+      _controller = newController;
+      _generateTabs();
+
+      // add new listener
+      _controller?.addListener(_updateTabSelection);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    initController(context);
     final tabAlignment =
         widget.isScrollable ? TabAlignment.start : TabAlignment.fill;
 
@@ -108,39 +168,5 @@ class _FunDsTabBarState extends State<FunDsTabBar> {
         widget.onTap?.call(index);
       },
     );
-  }
-
-  initController(BuildContext context) {
-    _controller = widget.controller ?? DefaultTabController.maybeOf(context)!;
-
-    tabs = widget.tabs
-        .asMap()
-        .map((index, e) {
-          return MapEntry(
-            index,
-            InternalTab(
-              key: e.key,
-              text: e.text,
-              badgeNumber: e.badgeNumber,
-              colorIcon: e.colorIcon,
-              isSelected: _controller?.index == index,
-              isDefaultPaddingApplied: widget.applyDefaultPadding,
-            ),
-          );
-        })
-        .values
-        .toList();
-
-    _controller?.addListener(() {
-      if (_controller == null) return;
-
-      setState(() {
-        final currentIndex = _controller!.index;
-        final prevIndex = _controller!.previousIndex;
-
-        tabs[currentIndex] = tabs[currentIndex].copyWith(isSelected: true);
-        tabs[prevIndex] = tabs[prevIndex].copyWith(isSelected: false);
-      });
-    });
   }
 }
