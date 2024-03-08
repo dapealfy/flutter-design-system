@@ -5,63 +5,65 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../utils/test_utils.dart';
 
 main() {
-  testWidgets('Make sure FunDsSwitcher functional is working properly',
-      (tester) async {
-    const tabLength = 3;
-    final tabController =
-        TabController(length: tabLength, vsync: const TestVSync());
+  group('Test Switcher Functionals', () {
+    testWidgets('Make sure FunDsSwitcher functional is working properly',
+            (tester) async {
+          const tabLength = 3;
+          final tabController =
+          TabController(length: tabLength, vsync: const TestVSync());
 
-    await tester.pumpWidget(
-      buildTestableWidget(
-        child: Column(
-          children: [
-            FunDsSwitcher(
-              key: const Key('switcher'),
-              tabs: List.generate(tabLength, (index) {
-                return FunDsSwitcherTab(
-                    key: Key('tab-$index'), text: 'Tab $index');
-              }),
-              controller: tabController,
-            ),
-            SizedBox(
-              height: 400,
-              width: 400,
-              child: TabBarView(
-                controller: tabController,
-                children: List.generate(tabLength, (index) {
-                  return Text(
-                    'text-$index',
-                    key: Key('content-$index'),
-                  );
-                }),
+          await tester.pumpWidget(
+            buildTestableWidget(
+              child: Column(
+                children: [
+                  FunDsSwitcher(
+                    key: const Key('switcher'),
+                    tabs: List.generate(tabLength, (index) {
+                      return FunDsSwitcherTab(
+                          key: Key('tab-$index'), text: 'Tab $index');
+                    }),
+                    controller: tabController,
+                  ),
+                  SizedBox(
+                    height: 400,
+                    width: 400,
+                    child: TabBarView(
+                      controller: tabController,
+                      children: List.generate(tabLength, (index) {
+                        return Text(
+                          'text-$index',
+                          key: Key('content-$index'),
+                        );
+                      }),
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      ),
-    );
+            ),
+          );
 
-    // expect it to render properly
-    expect(find.findSwitcher(), findsOne);
-    expect(find.text('text-0'), findsOne);
-    expect(find.text('text-1'), findsNothing);
-    expect(find.findSwitcherTab(0), findsOne);
-    expect(find.findSwitcherTab(1), findsOne);
-    expect(find.findSwitcherTab(2), findsOne);
-    expect(tabController.index == 0, isTrue);
+          // expect it to render properly
+          expect(find.findSwitcher(), findsOne);
+          expect(find.text('text-0'), findsOne);
+          expect(find.text('text-1'), findsNothing);
+          expect(find.findSwitcherTab(0), findsOne);
+          expect(find.findSwitcherTab(1), findsOne);
+          expect(find.findSwitcherTab(2), findsOne);
+          expect(tabController.index == 0, isTrue);
 
-    // expect functional working properly
-    await tester.tap(find.findSwitcherTab(1));
-    await tester.pumpAndSettle();
-    expect(find.text('text-0'), findsNothing);
-    expect(find.text('text-1'), findsOne);
-    expect(tabController.index == 1, isTrue);
-  });
+          // expect functional working properly
+          await tester.tap(find.findSwitcherTab(1));
+          await tester.pumpAndSettle();
+          expect(find.text('text-0'), findsNothing);
+          expect(find.text('text-1'), findsOne);
+          expect(tabController.index == 1, isTrue);
+        });
 
-  testWidgets('Make sure FunDsSwitcherTab', (widgetTester) async {
-    await widgetTester.pumpWidget(
-        buildTestableWidget(child: const FunDsSwitcherTab(text: 'text-1')));
-    expect(find.text('text-1'), findsOne);
+    testWidgets('Make sure FunDsSwitcherTab', (widgetTester) async {
+      await widgetTester.pumpWidget(
+          buildTestableWidget(child: const FunDsSwitcherTab(text: 'text-1')));
+      expect(find.text('text-1'), findsOne);
+    });
   });
 
   group('Test Switcher exceptions', () {
@@ -96,19 +98,14 @@ main() {
         'Make sure Switcher throw error when no tabController was provided',
         (tester) async {
       await tester.pumpWidget(
-        buildTestableWidget(
-          child: FunDsSwitcher(
-            tabs: List.generate(3, (index) {
-              return FunDsSwitcherTab(text: 'Tab $index');
-            }),
-          ),
+        FunDsSwitcher(
+          tabs: List.generate(3, (index) {
+            return FunDsSwitcherTab(text: 'Tab $index');
+          }),
         ),
       );
 
-      expect(
-        tester.takeException(),
-        isA<FlutterError>(),
-      );
+      expect(tester.takeException(), isA<FlutterError>());
     });
   });
 }

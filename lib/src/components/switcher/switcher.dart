@@ -79,7 +79,6 @@ class FunDsSwitcher extends StatefulWidget {
 class _FunDsSwitcherState extends State<FunDsSwitcher> {
   TabController? _controller;
   List<_FunDsSwitcherTab>? _tabs;
-  int _selectedIndex = 0;
 
   @override
   void dispose() {
@@ -88,9 +87,70 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    _initController(context);
+  void didUpdateWidget(oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller) {
+      _initController();
+    } else if (oldWidget.tabs != widget.tabs) {
+      _generateTabs();
+    }
+  }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _initController();
+  }
+
+  _initController() {
+    if (widget.tabs.length > 3) {
+      throw FlutterError('The tabs of this component is not '
+          'designed to handle more than 3 tabs');
+    }
+
+    final TabController? newController =
+        widget.controller ?? DefaultTabController.maybeOf(context);
+
+    if (_controller != newController) {
+      // Remove old controller listener
+      _controller?.removeListener(_updateTabSelection);
+      _controller = newController;
+      _generateTabs();
+      // add new listener
+      _controller?.addListener(_updateTabSelection);
+    }
+  }
+
+  _updateTabSelection() {
+    setState(() {
+      final currentIndex = _controller!.index;
+      final prevIndex = _controller!.previousIndex;
+      _tabs![currentIndex] = _tabs![currentIndex].copyWith(currentIndex);
+      _tabs![prevIndex] = _tabs![prevIndex].copyWith(currentIndex);
+    });
+  }
+
+  _generateTabs() {
+    _tabs = widget.tabs
+        .asMap()
+        .map((index, value) {
+          return MapEntry(
+              index,
+              _FunDsSwitcherTab(
+                key: value.key,
+                icon: value.icon,
+                text: value.text,
+                selectedIndex: _controller?.index ?? 0,
+                index: index,
+                maxIndex: widget.tabs.length - 1,
+              ));
+        })
+        .values
+        .toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: FunDsColors.colorNeutral50,
@@ -113,49 +173,6 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
         },
       ),
     );
-  }
-
-  _initController(BuildContext context) {
-    if (widget.tabs.length > 3) {
-      throw FlutterError('The tabs of this component is not '
-          'designed to handle more than 3 tabs');
-    }
-
-    try {
-      _controller = widget.controller ?? DefaultTabController.maybeOf(context)!;
-      _tabs = widget.tabs
-          .asMap()
-          .map((index, value) {
-            return MapEntry(
-                index,
-                _FunDsSwitcherTab(
-                  key: value.key,
-                  icon: value.icon,
-                  text: value.text,
-                  selectedIndex: _selectedIndex,
-                  index: index,
-                  maxIndex: widget.tabs.length - 1,
-                ));
-      })
-          .values
-          .toList();
-
-      _controller!.addListener(() {
-        setState(() {
-          _selectedIndex = _controller!.index;
-        });
-      });
-    } catch (e) {
-      // taken from TabBar source code
-      throw FlutterError(
-        'No TabController for ${widget.runtimeType}.\n'
-        'When creating a ${widget.runtimeType}, you must either provide '
-        'an explicit TabController using the "controller" property, or you '
-        'must ensure that there is a DefaultTabController above '
-        'the ${widget.runtimeType}.\n In this case, there was neither an '
-        'explicit controller nor a default controller.',
-      );
-    }
   }
 }
 
@@ -194,6 +211,16 @@ class _FunDsSwitcherTab extends ImplicitlyAnimatedWidget {
   final int selectedIndex;
   final int index;
   final int maxIndex;
+
+  _FunDsSwitcherTab copyWith(int selectedIndex) {
+    return _FunDsSwitcherTab(
+      text: text,
+      icon: icon,
+      selectedIndex: selectedIndex,
+      index: index,
+      maxIndex: maxIndex,
+    );
+  }
 
   @override
   AnimatedWidgetBaseState<_FunDsSwitcherTab> createState() =>
