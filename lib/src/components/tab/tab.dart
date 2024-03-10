@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design_system/funds.dart' as funds;
 import 'package:flutter_design_system/funds.dart';
-import 'package:flutter_design_system/src/components/tab/internal_tab.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// A Material Design [TabBar] tab.
 ///
@@ -14,7 +15,6 @@ class FunDsTab extends StatelessWidget {
     this.icon,
     this.text,
     this.badgeNumber,
-    this.colorIcon,
   }) : assert((text == null && icon != null) ||
             (text != null && icon == null) ||
             (text != null && icon != null));
@@ -30,18 +30,60 @@ class FunDsTab extends StatelessWidget {
   /// To show badgeNumber besides text.
   final int? badgeNumber;
 
-  /// To set custom colorIcon,
-  /// by default will the same as text
-  final Color? colorIcon;
-
   @override
   Widget build(BuildContext context) {
-    return InternalTab(
-      key: key,
-      text: text,
-      icon: icon,
-      badgeNumber: badgeNumber,
-      colorIcon: colorIcon,
+    final iconTheme = context.dependOnInheritedWidgetOfExactType<IconTheme>();
+    Widget suffixIcon;
+
+    if (icon != null) {
+      suffixIcon = funds.FunDsIcon(
+        key: const Key('funDsTabIcon'),
+        funDsIconography: icon!,
+        color: iconTheme?.data.color,
+        size: 20,
+      );
+    } else {
+      suffixIcon = const SizedBox();
+    }
+
+    return Tab(
+      height: 52.0,
+      child: SizedBox(
+        width: 109.w,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              suffixIcon,
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4.w),
+                  child: Text(
+                    text ?? '',
+                    maxLines: 1,
+                    style: FunDsTypography.body14
+                        .copyWith(color: iconTheme?.data.color // label color
+                            ),
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: badgeNumber != null,
+                child: funds.Badge.circled(
+                  key: const Key('funDsTabBadgeNumber'),
+                  count: badgeNumber ?? 0,
+                  badgeStatus: funds.BadgeStatus.light,
+                  inverted: true,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

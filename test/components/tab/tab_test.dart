@@ -13,22 +13,18 @@ main() {
       var index = controller.index;
 
       await tester.pumpWidget(buildTestableWidget(
-          child: Column(
-        children: [
-          FunDsTabBar(
-            controller: controller,
-            key: const Key('FunDsTabBar'),
-            tabs: List.generate(
-                3,
-                (index) => FunDsTab(
-                      key: Key('FundsTab_$index'),
-                      text: 'content_$index',
-                    )),
-            onTap: (newIndex) {
-              index = newIndex;
-            },
-          )
-        ],
+          child: FunDsTabBar(
+        controller: controller,
+        key: const Key('FunDsTabBar'),
+        tabs: List.generate(
+            3,
+            (index) => FunDsTab(
+                  key: Key('FundsTab_$index'),
+                  text: 'content_$index',
+                )),
+        onTap: (newIndex) {
+          index = newIndex;
+        },
       )));
 
       expect(controller.index, 0);
@@ -39,6 +35,7 @@ main() {
       }
 
       await tester.tap(find.findTab(1));
+      await tester.pumpAndSettle();
       expect(controller.index, 1);
       expect(index == controller.index, isTrue);
     });

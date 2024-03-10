@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 const _description = 'Tabs typically consist of a set of clickable elements '
     '(often text or icons) that represent each section of content. When a tab is '
@@ -33,6 +34,8 @@ class _TabCatalogState extends State<TabCatalog> with TickerProviderStateMixin {
   late List<FunDsTab> longTabs;
 
   bool _showIcon = true;
+  bool _showLongTabName = false;
+  bool _showBadges = true;
 
   @override
   void initState() {
@@ -44,24 +47,28 @@ class _TabCatalogState extends State<TabCatalog> with TickerProviderStateMixin {
       return FunDsTab(text: 'tab ${index + 1}');
     });
 
-    _generateTabs(_showIcon);
+    _generateTabs();
   }
 
-  _generateTabs(bool isEnableIcon) {
+  _generateTabs() {
     mediumTabs = List.generate(mediumController.length, (index) {
-      final number = Random().nextInt(99);
+      final number = _showBadges ? Random().nextInt(99) : null;
       return FunDsTab(
-        text: 'tab ${index + 1}',
-        icon: isEnableIcon ? _icons[Random().nextInt(_icons.length)] : null,
+        text: _showLongTabName
+            ? 'Lorem ipsum dolor sit amet, consectetur'
+            : 'tab ${index + 1}',
+        icon: _showIcon ? _icons[Random().nextInt(_icons.length)] : null,
         badgeNumber: number,
       );
     });
 
     longTabs = List.generate(6, (index) {
-      final number = Random().nextInt(99);
+      final number = _showBadges ? Random().nextInt(99) : null;
       return FunDsTab(
-        text: 'tab ${index + 1}',
-        icon: isEnableIcon ? _icons[Random().nextInt(_icons.length)] : null,
+        text: _showLongTabName
+            ? 'Lorem ipsum dolor sit amet, consectetur'
+            : 'tab ${index + 1}',
+        icon: _showIcon ? _icons[Random().nextInt(_icons.length)] : null,
         badgeNumber: number,
       );
     });
@@ -81,15 +88,44 @@ class _TabCatalogState extends State<TabCatalog> with TickerProviderStateMixin {
       title: 'Tabs',
       description: _description,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Row(
+            children: [
+              FunDsButton(
+                type: FunDsButtonType.small,
+                variant: FunDsButtonVariant.primary,
+                text: 'Enable Icon : $_showIcon',
+                onPressed: () {
+                  setState(() {
+                    _showIcon = !_showIcon;
+                    _generateTabs();
+                  });
+                },
+              ),
+              const SizedBox(width: 16),
+              FunDsButton(
+                type: FunDsButtonType.small,
+                variant: FunDsButtonVariant.primary,
+                text: 'Enable Badges : $_showBadges',
+                onPressed: () {
+                  setState(() {
+                    _showBadges = !_showBadges;
+                    _generateTabs();
+                  });
+                },
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
           FunDsButton(
             type: FunDsButtonType.small,
             variant: FunDsButtonVariant.primary,
-            text: 'Enable Icon : $_showIcon',
+            text: 'Enable Long Tab Name : $_showLongTabName',
             onPressed: () {
               setState(() {
-                _showIcon = !_showIcon;
-                _generateTabs(_showIcon);
+                _showLongTabName = !_showLongTabName;
+                _generateTabs();
               });
             },
           ),
@@ -100,37 +136,40 @@ class _TabCatalogState extends State<TabCatalog> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Default Tabs',
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+                  'Master component',
                   style: FunDsTypography.heading16,
                 ),
                 FunDsTabBar(
-                    isScrollable: false,
-                    controller: controller,
-                    applyDefaultPadding: false,
-                    tabs: tabs),
+                    isScrollable: false, controller: controller, tabs: tabs),
               ],
-            ),
-          ),
-          const SizedBox(height: 32),
-          FunDsHeader(
-            title: 'tabs with header and controller',
-            useDarkBg: false,
-            tabBar: FunDsTabBar(
-              isScrollable: true,
-              controller: mediumController,
-              tabs: mediumTabs,
             ),
           ),
           const SizedBox(height: 32),
           DefaultTabController(
             initialIndex: 2,
             length: 6,
-            child: FunDsHeader(
-              title: 'tab bar with DefaultTabController',
-              useDarkBg: false,
-              tabBar: FunDsTabBar(isScrollable: true, tabs: longTabs,),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: FunDsTabBar(
+                isScrollable: true,
+                tabs: longTabs,
+              ),
+            ),
+          ),
+          const SizedBox(height: 32),
+          const FunDsHeader(
+            title: 'tabs with header',
+            rightIcon1: FunDsIcon(
+              funDsIconography: FunDsIconography.actionIcSetting,
+              size: 20,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: FunDsTabBar(
+              isScrollable: true,
+              controller: mediumController,
+              tabs: mediumTabs,
             ),
           ),
         ],
