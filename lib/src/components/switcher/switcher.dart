@@ -77,60 +77,16 @@ class FunDsSwitcher extends StatefulWidget {
 }
 
 class _FunDsSwitcherState extends State<FunDsSwitcher> {
-  TabController? _controller;
-  List<_FunDsSwitcherTab>? _tabs;
+  late List<_FunDsSwitcherTab> _tabs;
 
   @override
-  void dispose() {
-    super.dispose();
-    _controller?.dispose();
-  }
-
-  @override
-  void didUpdateWidget(oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.controller != widget.controller) {
-      _initController();
-    } else if (oldWidget.tabs != widget.tabs) {
-      _generateTabs();
-    }
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _initController();
-  }
-
-  _initController() {
+  void initState() {
+    super.initState();
     if (widget.tabs.length > 3) {
       throw FlutterError('The tabs of this component is not '
           'designed to handle more than 3 tabs');
     }
 
-    final TabController? newController =
-        widget.controller ?? DefaultTabController.maybeOf(context);
-
-    if (_controller != newController) {
-      // Remove old controller listener
-      _controller?.removeListener(_updateTabSelection);
-      _controller = newController;
-      _generateTabs();
-      // add new listener
-      _controller?.addListener(_updateTabSelection);
-    }
-  }
-
-  _updateTabSelection() {
-    setState(() {
-      final currentIndex = _controller!.index;
-      final prevIndex = _controller!.previousIndex;
-      _tabs![currentIndex] = _tabs![currentIndex].copyWith(currentIndex);
-      _tabs![prevIndex] = _tabs![prevIndex].copyWith(currentIndex);
-    });
-  }
-
-  _generateTabs() {
     _tabs = widget.tabs
         .asMap()
         .map((index, value) {
@@ -140,7 +96,7 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
                 key: value.key,
                 icon: value.icon,
                 text: value.text,
-                selectedIndex: _controller?.index ?? 0,
+                selectedIndex: widget.controller?.index ?? 0,
                 index: index,
                 maxIndex: widget.tabs.length - 1,
               ));
@@ -158,19 +114,48 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
           borderRadius: BorderRadius.circular(10.r),
           border: Border.all(width: 1, color: FunDsColors.colorNeutral200)),
       child: TabBar(
+        tabs: _tabs,
+        controller: widget.controller,
+        onTap: (index) {
+          widget.onTap?.call(index);
+          setState(() {
+            if (_tabs.length == 3) {
+              // set middle
+              _tabs[1] = _tabs[1].copyWith(index);
+            }
+          });
+        },
         labelPadding: EdgeInsets.zero,
-        indicatorPadding: EdgeInsets.zero,
+        indicatorPadding:
+            const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
         padding: EdgeInsets.zero,
-        controller: _controller,
-        tabs: _tabs ?? widget.tabs,
         isScrollable: false,
         indicatorSize: TabBarIndicatorSize.label,
-        indicatorColor: Colors.transparent,
+        indicator: BoxDecoration(
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(6.r),
+          boxShadow: const [
+            BoxShadow(
+              offset: Offset(0, 2),
+              blurRadius: 4,
+              spreadRadius: 2,
+              color: Color.fromRGBO(148, 157, 172, 0.32),
+            ),
+            BoxShadow(
+              offset: Offset(0, 1),
+              blurRadius: 2,
+              spreadRadius: 0,
+              color: Color.fromRGBO(164, 172, 185, 0.24),
+            ),
+          ],
+          color: FunDsColors.colorWhite,
+        ),
+        unselectedLabelStyle:
+            FunDsTypography.body12.copyWith(color: FunDsColors.colorNeutral500),
+        labelStyle:
+            FunDsTypography.body12.copyWith(color: FunDsColors.colorNeutral900),
         splashBorderRadius: BorderRadius.circular(10.r),
         dividerHeight: 0.0,
-        onTap: (int index) {
-          widget.onTap?.call(index);
-        },
       ),
     );
   }
@@ -189,13 +174,7 @@ class FunDsSwitcherTab extends StatelessWidget {
   }
 }
 
-const _duration = Duration(milliseconds: 200);
-const _curves = Curves.linear;
-
-/// custom implementation of DecoratedBoxTransition
-/// by listening the value of [_FunDsSwitcherTab.selectedIndex] property.
-/// https://api.flutter.dev/flutter/widgets/DecoratedBoxTransition-class.html
-class _FunDsSwitcherTab extends ImplicitlyAnimatedWidget {
+class _FunDsSwitcherTab extends StatelessWidget {
   const _FunDsSwitcherTab({
     super.key,
     required this.text,
@@ -203,8 +182,7 @@ class _FunDsSwitcherTab extends ImplicitlyAnimatedWidget {
     this.selectedIndex = 0,
     this.index = 0,
     this.maxIndex = 0,
-  })  : assert(index >= 0),
-        super(duration: _duration, curve: _curves);
+  }) : assert(index >= 0);
 
   final String text;
   final String? icon;
@@ -223,72 +201,10 @@ class _FunDsSwitcherTab extends ImplicitlyAnimatedWidget {
   }
 
   @override
-  AnimatedWidgetBaseState<_FunDsSwitcherTab> createState() =>
-      _SwitcherTabState();
-}
-
-class _SwitcherTabState extends AnimatedWidgetBaseState<_FunDsSwitcherTab> {
-  Tween<double>? _isSelected;
-  late Animation<double> _selectedAnimation;
-
-  bool get isSelected => widget.selectedIndex == widget.index;
-
-  @override
-  void didUpdateTweens() {
-    super.didUpdateTweens();
-    _selectedAnimation = animation.drive(_isSelected!);
-  }
-
-  @override
-  void forEachTween(TweenVisitor<dynamic> visitor) {
-    _isSelected = visitor(
-      _isSelected,
-      isSelected ? 1.0 : 0.0,
-      ((value) => Tween<double>(begin: value as double)),
-    ) as Tween<double>?;
-  }
-
-  final DecorationTween decorationTween = DecorationTween(
-    begin: BoxDecoration(
-      shape: BoxShape.rectangle,
-      borderRadius: BorderRadius.circular(6.r),
-      boxShadow: const <BoxShadow>[],
-      color: FunDsColors.colorNeutral50,
-    ),
-    end: BoxDecoration(
-      shape: BoxShape.rectangle,
-      borderRadius: BorderRadius.circular(6.r),
-      boxShadow: const [
-        BoxShadow(
-          offset: Offset(0, 2),
-          blurRadius: 4,
-          spreadRadius: 2,
-          color: Color.fromRGBO(148, 157, 172, 0.32),
-        ),
-        BoxShadow(
-          offset: Offset(0, 1),
-          blurRadius: 2,
-          spreadRadius: 0,
-          color: Color.fromRGBO(164, 172, 185, 0.24),
-        ),
-      ],
-      color: FunDsColors.colorWhite,
-    ),
-  );
-
-  @override
   Widget build(BuildContext context) {
-    EdgeInsets margin;
-    if (widget.index == 0) {
-      margin = const EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 2);
-    } else if (widget.index == 2) {
-      margin = const EdgeInsets.only(top: 4, bottom: 4, left: 2, right: 4);
-    } else {
-      margin = const EdgeInsets.all(4);
-    }
-
+    final iconTheme = context.dependOnInheritedWidgetOfExactType<IconTheme>();
     return Container(
-      margin: margin,
+      margin: const EdgeInsets.all(4),
       child: IntrinsicHeight(
         child: Row(
           children: [
@@ -296,18 +212,19 @@ class _SwitcherTabState extends AnimatedWidgetBaseState<_FunDsSwitcherTab> {
             // - there's 3 tabs present,
             // - this tab index is 1 / middle
             // - selected Index is 2 / last
-            VerticalDivider(
-              width: 1,
-              color: widget.maxIndex == 2 &&
-                      widget.selectedIndex == 2 &&
-                      widget.index == 1
-                  ? FunDsColors.colorNeutral200
-                  : Colors.transparent,
+            //
+            AnimatedOpacity(
+              opacity:
+                  maxIndex == 2 && selectedIndex == 2 && index == 1 ? 1.0 : 0.0,
+              duration: kTabScrollDuration,
+              child: const VerticalDivider(
+                width: 1,
+                color: FunDsColors.colorNeutral200,
+              ),
             ),
             Expanded(
-              child: Container(
+              child: SizedBox(
                 height: 34.0,
-                decoration: decorationTween.evaluate(_selectedAnimation),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -316,16 +233,13 @@ class _SwitcherTabState extends AnimatedWidgetBaseState<_FunDsSwitcherTab> {
                       child: Padding(
                           padding: const EdgeInsets.only(right: 8),
                           child: FunDsIcon(
-                            funDsIconography: widget.icon ?? '',
+                            funDsIconography: icon ?? '',
                             size: 16,
+                            color: iconTheme?.data.color,
                           )),
-                      visible: widget.icon != null,
+                      visible: icon != null,
                     ),
-                    Text(
-                      widget.text,
-                      style: FunDsTypography.body12
-                          .copyWith(color: FunDsColors.colorNeutral900),
-                    ),
+                    Text(text),
                   ],
                 ),
               ),
@@ -334,14 +248,15 @@ class _SwitcherTabState extends AnimatedWidgetBaseState<_FunDsSwitcherTab> {
             // - there's 3 tabs present,
             // - this tab index is 1 / middle
             // - selected Index is 0 / first
-            VerticalDivider(
-              width: 1,
-              color: widget.maxIndex == 2 &&
-                      widget.index == 1 &&
-                      widget.selectedIndex != 2
-                  ? FunDsColors.colorNeutral200
-                  : Colors.transparent,
-            )
+            AnimatedOpacity(
+              opacity:
+                  maxIndex == 2 && index == 1 && selectedIndex != 2 ? 1.0 : 0.0,
+              duration: kTabScrollDuration,
+              child: const VerticalDivider(
+                width: 1,
+                color: FunDsColors.colorNeutral200,
+              ),
+            ),
           ],
         ),
       ),
