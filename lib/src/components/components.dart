@@ -31,6 +31,7 @@ export 'modal/modal.dart';
 export 'page_control/page_control.dart';
 export 'progress_bar/progress_bar.dart';
 export 'select/select.dart';
+export 'skeleton/skeleton.dart';
 export 'switcher/switcher.dart';
 export 'tab/tab_bar.dart';
 export 'tab/tab.dart';
