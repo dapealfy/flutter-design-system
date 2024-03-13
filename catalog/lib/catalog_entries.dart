@@ -32,6 +32,7 @@ import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
 import 'package:catalog/catalog/progress_circle/progress_circle_catalog.dart';
 import 'package:catalog/catalog/select/select_catalog.dart';
+import 'package:catalog/catalog/tab/tab_catalog.dart';
 import 'package:catalog/catalog/ticker/ticker_catalog.dart';
 import 'package:catalog/catalog/tips/tips_catalog.dart';
 import 'package:catalog/catalog/toaster/toaster_catalog.dart';
@@ -220,6 +221,12 @@ final entries = [
     name: 'Component/Header/Header',
     builder: (context) => const HeaderCatalog(),
   ),
+
+  Entry(
+    name: 'Component/Tab/Tab',
+    builder: (context) => const TabCatalog(),
+  ),
+
   Entry(
     name: 'Component/Divider/Divider',
     builder: (context) => const DividerCatalog(),
