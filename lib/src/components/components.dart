@@ -35,3 +35,4 @@ export 'toaster/toaster.dart';
 export 'banner/banner.dart';
 export 'list/list_tile.dart';
 export 'divider/divider.dart';
+export 'progress_circle/progress_circle.dart';

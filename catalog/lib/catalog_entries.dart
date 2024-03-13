@@ -30,6 +30,7 @@ import 'package:catalog/catalog/local_load/local_load_catalog.dart';
 import 'package:catalog/catalog/modal/modal_catalog.dart';
 import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
+import 'package:catalog/catalog/progress_circle/progress_circle_catalog.dart';
 import 'package:catalog/catalog/select/select_catalog.dart';
 import 'package:catalog/catalog/ticker/ticker_catalog.dart';
 import 'package:catalog/catalog/tips/tips_catalog.dart';
@@ -198,6 +199,11 @@ final entries = [
   Entry(
     name: 'Component/ProgressBar/ProgressBar',
     builder: (context) => const ProgressBarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/ProgressCircle/ProgressCircle',
+    builder: (context) => const ProgressCircleCatalog(),
   ),
 
   Entry(
