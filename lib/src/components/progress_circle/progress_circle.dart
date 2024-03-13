@@ -133,16 +133,19 @@ class FunDsProgressCircle extends StatelessWidget {
           color: FunDsColors.colorNeutral900,
         );
       case FunDsProgressCircleSize.medium:
-        return FunDsTypography.heading30.copyWith(
+        return FunDsTypography.heading14.copyWith(
+          fontSize: 30.sp,
           color: FunDsColors.colorNeutral900,
         );
       case FunDsProgressCircleSize.large:
-        return FunDsTypography.heading36.copyWith(
+        return FunDsTypography.heading14.copyWith(
+          fontSize: 36.sp,
           color: FunDsColors.colorNeutral900,
         );
       default:
-        return FunDsTypography.heading48.copyWith(
+        return FunDsTypography.heading14.copyWith(
           color: FunDsColors.colorNeutral900,
+          fontSize: 48.sp,
         );
     }
   }
