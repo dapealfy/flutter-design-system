@@ -3,7 +3,7 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_design_system/src/utils/overlay/arrow_painter.dart';
 import 'package:flutter_design_system/src/utils/overlay/rrect_clipper.dart';
 
-enum OverlayPosition {
+enum FunDsOverlayPosition {
   /// Show on top of the child
   top,
 
@@ -20,14 +20,14 @@ enum OverlayPosition {
   preferBottom,
 }
 
-class FunOverlay extends StatefulWidget {
-  const FunOverlay({
+class FunDsOverlay extends StatefulWidget {
+  const FunDsOverlay({
     super.key,
     required this.child,
     required this.controller,
     required this.overlayWidget,
     required this.overlayWidth,
-    this.overlayPosition = OverlayPosition.auto,
+    this.overlayPosition = FunDsOverlayPosition.auto,
     this.overlaySpace = 16,
     this.showArrow = false,
     this.arrowSize = const Size(12, 6),
@@ -42,7 +42,7 @@ class FunOverlay extends StatefulWidget {
   final Widget child;
 
   /// The controller for the overlay
-  final FunOverlayController controller;
+  final FunDsOverlayController controller;
 
   /// The widget that will be shown as overlay
   final Widget overlayWidget;
@@ -51,7 +51,7 @@ class FunOverlay extends StatefulWidget {
   final double overlayWidth;
 
   /// The position of the overlay
-  final OverlayPosition overlayPosition;
+  final FunDsOverlayPosition overlayPosition;
 
   /// The space between the overlay and the child
   final double overlaySpace;
@@ -78,11 +78,11 @@ class FunOverlay extends StatefulWidget {
   final bool ignoreChildPointer;
 
   @override
-  State<FunOverlay> createState() => _FunOverlayState();
+  State<FunDsOverlay> createState() => _FunDsOverlayState();
 }
 
-class _FunOverlayState extends State<FunOverlay>
-    implements FunOverlayInteractor {
+class _FunDsOverlayState extends State<FunDsOverlay>
+    implements FunDsOverlayInteractor {
   final GlobalKey _childKey = GlobalKey();
   final GlobalKey _overlayKey = GlobalKey();
   final OverlayPortalController _portalController = OverlayPortalController();
@@ -201,19 +201,19 @@ class _FunOverlayState extends State<FunOverlay>
 
         // Define overlay position, can use [_renderedOverlaySize] to get the
         // overlay size.
-        var isTop = widget.overlayPosition == OverlayPosition.top;
+        var isTop = widget.overlayPosition == FunDsOverlayPosition.top;
 
-        if (widget.overlayPosition == OverlayPosition.auto) {
+        if (widget.overlayPosition == FunDsOverlayPosition.auto) {
           isTop = childCenter.dy > screenSize.height / 2;
         }
 
-        if (widget.overlayPosition == OverlayPosition.preferTop) {
+        if (widget.overlayPosition == FunDsOverlayPosition.preferTop) {
           final space = widget.overlaySpace + widget.focusPadding.top;
           isTop =
               childOffset.dy - space - (_renderedOverlaySize?.height ?? 0) > 0;
         }
 
-        if (widget.overlayPosition == OverlayPosition.preferBottom) {
+        if (widget.overlayPosition == FunDsOverlayPosition.preferBottom) {
           // Set isTop when overlay exceed screen height
           final space = widget.overlaySpace + widget.focusPadding.bottom;
           isTop = childOffset.dy +

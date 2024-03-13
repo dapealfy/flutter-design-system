@@ -31,12 +31,12 @@ class CoachMarkCatalog extends StatefulWidget {
 }
 
 class _CoachMarkCatalogState extends State<CoachMarkCatalog> {
-  final FunOverlayController _c1 = FunOverlayController();
-  final FunOverlayController _c2 = FunOverlayController();
-  final FunOverlayController _c3 = FunOverlayController();
-  final FunOverlayController _c4 = FunOverlayController();
+  final FunDsOverlayController _c1 = FunDsOverlayController();
+  final FunDsOverlayController _c2 = FunDsOverlayController();
+  final FunDsOverlayController _c3 = FunDsOverlayController();
+  final FunDsOverlayController _c4 = FunDsOverlayController();
   int _currentCoachmarkId = -1;
-  List<FunOverlayController> _controllerChains = [];
+  List<FunDsOverlayController> _controllerChains = [];
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _CoachMarkCatalogState extends State<CoachMarkCatalog> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            CoachMark.overlayTarget(
+            FunDsCoachMark.overlayTarget(
               context,
               controller: _c1,
               title: 'Make it clear and concise, no more than 2 lines.',
@@ -65,7 +65,8 @@ class _CoachMarkCatalogState extends State<CoachMarkCatalog> {
               child: ListTile(
                 title: const Text('Edwin Wahyudi'),
                 subtitle: const Text('Our most awesome Product Manager'),
-                leading: Avatar.asset(imagePath: 'assets/images/user_1.jpeg'),
+                leading:
+                    FunDsAvatar.asset(imagePath: 'assets/images/user_1.jpeg'),
                 visualDensity: VisualDensity.comfortable,
                 dense: false,
                 trailing: const Icon(
@@ -90,7 +91,7 @@ class _CoachMarkCatalogState extends State<CoachMarkCatalog> {
                     Image.asset(
                       'assets/images/error_ibu_amanah_partial.png',
                     ),
-                    CoachMark.overlayTarget(
+                    FunDsCoachMark.overlayTarget(
                       context,
                       controller: _c2,
                       title: 'Make it clear and concise, no more than 2 lines.',
@@ -117,7 +118,7 @@ class _CoachMarkCatalogState extends State<CoachMarkCatalog> {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    CoachMark.overlayTarget(
+                    FunDsCoachMark.overlayTarget(
                       context,
                       controller: _c3,
                       title: 'Make it clear and concise, no more than 2 lines.',
@@ -164,7 +165,7 @@ class _CoachMarkCatalogState extends State<CoachMarkCatalog> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
-              child: CoachMark.overlayTarget(
+              child: FunDsCoachMark.overlayTarget(
                 context,
                 controller: _c4,
                 title: 'Make it clear and concise, no more than 2 lines.',
@@ -189,7 +190,7 @@ class _CoachMarkCatalogState extends State<CoachMarkCatalog> {
     super.dispose();
   }
 
-  void showTipsChain(List<FunOverlayController> controllers) {
+  void showTipsChain(List<FunDsOverlayController> controllers) {
     _currentCoachmarkId = 0;
     _controllerChains = controllers;
 

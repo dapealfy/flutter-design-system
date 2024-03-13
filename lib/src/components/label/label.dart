@@ -3,11 +3,11 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // master label : Invert, medium, purple
-enum LabelSize { small, medium, large }
+enum FunDsLabelSize { small, medium, large }
 
-enum LabelType { invert, outline, filled }
+enum FunDsLabelType { invert, outline, filled }
 
-enum LabelColor { purple, grey, white, green, blue, red, orange, yellow }
+enum FunDsLabelColor { purple, grey, white, green, blue, red, orange, yellow }
 
 /// Label
 ///
@@ -23,13 +23,13 @@ enum LabelColor { purple, grey, white, green, blue, red, orange, yellow }
 ///   onTap: () { ... },
 ///);
 ///```
-class Label extends StatelessWidget {
-  const Label(
+class FunDsLabel extends StatelessWidget {
+  const FunDsLabel(
     this.text, {
     super.key,
-    this.size = LabelSize.medium,
-    this.color = LabelColor.purple,
-    this.type = LabelType.invert,
+    this.size = FunDsLabelSize.medium,
+    this.color = FunDsLabelColor.purple,
+    this.type = FunDsLabelType.invert,
     this.prefixIcon,
     this.suffixIcon,
     this.onTap,
@@ -42,13 +42,13 @@ class Label extends StatelessWidget {
 
   /// take icon from [FunDsIconography]
   final String? suffixIcon;
-  final LabelSize size;
-  final LabelColor color;
-  final LabelType type;
+  final FunDsLabelSize size;
+  final FunDsLabelColor color;
+  final FunDsLabelType type;
   final VoidCallback? onTap;
 
-  Label copyWith({LabelSize? size}) {
-    return Label(
+  FunDsLabel copyWith({FunDsLabelSize? size}) {
+    return FunDsLabel(
       text,
       key: key,
       size: size ?? this.size,
@@ -63,11 +63,11 @@ class Label extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (type) {
-      case LabelType.invert:
+      case FunDsLabelType.invert:
         return _buildLabelInvert();
-      case LabelType.filled:
+      case FunDsLabelType.filled:
         return _buildLabelFilled();
-      case LabelType.outline:
+      case FunDsLabelType.outline:
         return _buildLabelOutline();
     }
   }
@@ -79,7 +79,7 @@ class Label extends StatelessWidget {
     EdgeInsets padding;
 
     switch (size) {
-      case LabelSize.small:
+      case FunDsLabelSize.small:
         fontSize = 10.sp;
         containerHeight = 20.h;
         double horizontalPadding = 6.w;
@@ -94,7 +94,7 @@ class Label extends StatelessWidget {
               : horizontalPaddingWithIcon,
         );
         break;
-      case LabelSize.medium:
+      case FunDsLabelSize.medium:
         fontSize = 12.sp;
         containerHeight = 22.h;
         double horizontalPadding = 8.w;
@@ -109,7 +109,7 @@ class Label extends StatelessWidget {
               : horizontalPaddingWithIcon,
         );
         break;
-      case LabelSize.large:
+      case FunDsLabelSize.large:
         fontSize = 12.sp;
         containerHeight = 26.h;
         double horizontalPadding = 8.w;
@@ -205,35 +205,35 @@ class Label extends StatelessWidget {
     Color backgroundColor;
 
     switch (color) {
-      case LabelColor.purple:
+      case FunDsLabelColor.purple:
         contentColor = FunDsColors.colorPrimary;
         backgroundColor = FunDsColors.colorPrimary100;
         break;
-      case LabelColor.grey:
+      case FunDsLabelColor.grey:
         contentColor = FunDsColors.colorNeutral600;
         backgroundColor = FunDsColors.colorNeutral200;
         break;
-      case LabelColor.white:
+      case FunDsLabelColor.white:
         contentColor = FunDsColors.colorNeutral900;
         backgroundColor = FunDsColors.colorNeutral50;
         break;
-      case LabelColor.green:
+      case FunDsLabelColor.green:
         contentColor = FunDsColors.colorGreen600;
         backgroundColor = FunDsColors.colorGreen50;
         break;
-      case LabelColor.blue:
+      case FunDsLabelColor.blue:
         contentColor = FunDsColors.colorBlue600;
         backgroundColor = FunDsColors.colorBlue50;
         break;
-      case LabelColor.red:
+      case FunDsLabelColor.red:
         contentColor = FunDsColors.colorRed500;
         backgroundColor = FunDsColors.colorRed50;
         break;
-      case LabelColor.orange:
+      case FunDsLabelColor.orange:
         contentColor = FunDsColors.colorOrange600;
         backgroundColor = FunDsColors.colorOrange50;
         break;
-      case LabelColor.yellow:
+      case FunDsLabelColor.yellow:
         contentColor = FunDsColors.colorYellow600;
         backgroundColor = FunDsColors.colorYellow50;
         break;
@@ -248,37 +248,37 @@ class Label extends StatelessWidget {
     Color? borderColor;
 
     switch (color) {
-      case LabelColor.purple:
+      case FunDsLabelColor.purple:
         contentColor = FunDsColors.colorPrimary;
         backgroundColor = FunDsColors.colorPrimary100;
         break;
-      case LabelColor.grey:
+      case FunDsLabelColor.grey:
         contentColor = FunDsColors.colorNeutral600;
         backgroundColor = FunDsColors.colorNeutral200;
         borderColor = FunDsColors.colorNeutral500;
         break;
-      case LabelColor.white:
+      case FunDsLabelColor.white:
         contentColor = FunDsColors.colorNeutral900;
         backgroundColor = FunDsColors.colorWhite;
         borderColor = FunDsColors.colorNeutral200;
         break;
-      case LabelColor.green:
+      case FunDsLabelColor.green:
         contentColor = FunDsColors.colorGreen600;
         backgroundColor = FunDsColors.colorGreen50;
         break;
-      case LabelColor.blue:
+      case FunDsLabelColor.blue:
         contentColor = FunDsColors.colorBlue600;
         backgroundColor = FunDsColors.colorBlue50;
         break;
-      case LabelColor.red:
+      case FunDsLabelColor.red:
         contentColor = FunDsColors.colorRed500;
         backgroundColor = FunDsColors.colorRed50;
         break;
-      case LabelColor.orange:
+      case FunDsLabelColor.orange:
         contentColor = FunDsColors.colorOrange600;
         backgroundColor = FunDsColors.colorOrange50;
         break;
-      case LabelColor.yellow:
+      case FunDsLabelColor.yellow:
         contentColor = FunDsColors.colorYellow600;
         backgroundColor = FunDsColors.colorYellow50;
         borderColor = FunDsColors.colorYellow500;
@@ -294,35 +294,35 @@ class Label extends StatelessWidget {
     Color backgroundColor;
 
     switch (color) {
-      case LabelColor.purple:
+      case FunDsLabelColor.purple:
         contentColor = FunDsColors.colorWhite;
         backgroundColor = FunDsColors.colorPrimary;
         break;
-      case LabelColor.grey:
+      case FunDsLabelColor.grey:
         contentColor = FunDsColors.colorWhite;
         backgroundColor = FunDsColors.colorNeutral600;
         break;
-      case LabelColor.white:
+      case FunDsLabelColor.white:
         contentColor = FunDsColors.colorNeutral900;
         backgroundColor = FunDsColors.colorWhite;
         break;
-      case LabelColor.green:
+      case FunDsLabelColor.green:
         contentColor = FunDsColors.colorWhite;
         backgroundColor = FunDsColors.colorGreen600;
         break;
-      case LabelColor.blue:
+      case FunDsLabelColor.blue:
         contentColor = FunDsColors.colorWhite;
         backgroundColor = FunDsColors.colorBlue600;
         break;
-      case LabelColor.red:
+      case FunDsLabelColor.red:
         contentColor = FunDsColors.colorWhite;
         backgroundColor = FunDsColors.colorRed500;
         break;
-      case LabelColor.orange:
+      case FunDsLabelColor.orange:
         contentColor = FunDsColors.colorWhite;
         backgroundColor = FunDsColors.colorOrange600;
         break;
-      case LabelColor.yellow:
+      case FunDsLabelColor.yellow:
         contentColor = FunDsColors.colorYellow800;
         backgroundColor = FunDsColors.colorYellow500;
         break;

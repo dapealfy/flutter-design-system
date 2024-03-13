@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'internal_accordion.dart';
 
 /// collapsible tile with fancy loading state
-class Accordion extends StatefulWidget {
+class FunDsAccordion extends StatefulWidget {
   /// set title, max 2 lines
   final String title;
   final String description;
@@ -14,7 +14,7 @@ class Accordion extends StatefulWidget {
 
   final Function(bool)? onExpansionChanged;
 
-  const Accordion({
+  const FunDsAccordion({
     super.key,
     required this.title,
     required this.description,
@@ -24,12 +24,11 @@ class Accordion extends StatefulWidget {
   });
 
   @override
-  State<Accordion> createState() => _AccordionState();
+  State<FunDsAccordion> createState() => _FunDsAccordionState();
 }
 
-class _AccordionState extends State<Accordion>
-    with SingleTickerProviderStateMixin, WidgetsBindingObserver  {
-
+class _FunDsAccordionState extends State<FunDsAccordion>
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   late bool _isExpanded;
 
   @override

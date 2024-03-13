@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum TickerType { outline, nonOutline }
+enum FunDsTickerType { outline, nonOutline }
 
-enum TickerVariant {
+enum FunDsTickerVariant {
   info,
   success,
   warning,
@@ -31,8 +31,8 @@ enum TickerVariant {
 ///  },
 /// );
 /// ```
-class Ticker extends StatelessWidget {
-  const Ticker(
+class FunDsTicker extends StatelessWidget {
+  const FunDsTicker(
       {super.key,
       this.label,
       required this.description,
@@ -43,8 +43,8 @@ class Ticker extends StatelessWidget {
       this.onTextLinkTap,
       this.onCloseTap});
 
-  final TickerVariant variant;
-  final TickerType type;
+  final FunDsTickerVariant variant;
+  final FunDsTickerType type;
   final String? icon;
   final String? label;
   final String description;
@@ -55,29 +55,29 @@ class Ticker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgroundColor = switch (variant) {
-      TickerVariant.danger => FunDsColors.colorRed50,
-      TickerVariant.info => FunDsColors.colorBlue50,
-      TickerVariant.success => FunDsColors.colorGreen50,
-      TickerVariant.warning => FunDsColors.colorOrange50,
+      FunDsTickerVariant.danger => FunDsColors.colorRed50,
+      FunDsTickerVariant.info => FunDsColors.colorBlue50,
+      FunDsTickerVariant.success => FunDsColors.colorGreen50,
+      FunDsTickerVariant.warning => FunDsColors.colorOrange50,
     };
 
     final fontColor = switch (variant) {
-      TickerVariant.danger => FunDsColors.colorRed500,
-      TickerVariant.info => FunDsColors.colorBlue600,
-      TickerVariant.success => FunDsColors.colorGreen500,
-      TickerVariant.warning => FunDsColors.colorOrange600,
+      FunDsTickerVariant.danger => FunDsColors.colorRed500,
+      FunDsTickerVariant.info => FunDsColors.colorBlue600,
+      FunDsTickerVariant.success => FunDsColors.colorGreen500,
+      FunDsTickerVariant.warning => FunDsColors.colorOrange600,
     };
 
     final borderColor = switch (type) {
-      TickerType.nonOutline => backgroundColor,
-      TickerType.outline => fontColor
+      FunDsTickerType.nonOutline => backgroundColor,
+      FunDsTickerType.outline => fontColor
     };
 
     final defaultIcon = switch (variant) {
-      TickerVariant.danger => FunDsIconography.actionIcTrashCan,
-      TickerVariant.info => FunDsIconography.infoIcInformation,
-      TickerVariant.success => FunDsIconography.actionIcCheckCircle,
-      TickerVariant.warning => FunDsIconography.infoIcWarning,
+      FunDsTickerVariant.danger => FunDsIconography.actionIcTrashCan,
+      FunDsTickerVariant.info => FunDsIconography.infoIcInformation,
+      FunDsTickerVariant.success => FunDsIconography.actionIcCheckCircle,
+      FunDsTickerVariant.warning => FunDsIconography.infoIcWarning,
     };
 
     bool isLabelPresent = label != null;

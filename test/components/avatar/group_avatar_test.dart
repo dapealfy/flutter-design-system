@@ -29,22 +29,21 @@ void main() {
       'Tono',
     ];
 
-
     testWidgets(
       'Group Text FunDsAvatar with +1',
       (tester) async {
         await tester.pumpWidget(
           buildTestableWidget(
-            child:  GroupAvatar(
+            child: FunDsGroupAvatar(
               maxLength: 3,
               itemCount: listName.length,
               itemBuilder: (context, index) {
-                return Avatar(
+                return FunDsAvatar(
                   name: listName[index],
-                  size: AvatarSize.xxl,
+                  size: FunDsAvatarSize.xxl,
                   backgroundColor: FunDsColors.colorPrimary100,
                   foregroundColor: FunDsColors.colorPrimary500,
-                  shape: AvatarShape.round,
+                  shape: FunDsAvatarShape.round,
                   border: Border.all(
                     color: FunDsColors.colorWhite,
                     width: 2,
@@ -55,7 +54,7 @@ void main() {
           ),
         );
 
-        expect(find.byType(GroupAvatar), findsOneWidget);
+        expect(find.byType(FunDsGroupAvatar), findsOneWidget);
         expect(find.text('+9'), findsOneWidget);
       },
     );

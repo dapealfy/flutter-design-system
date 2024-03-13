@@ -3,13 +3,13 @@ import 'package:flutter/material.dart' as m;
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum SliderType {
+enum FunDsSliderType {
   slider,
   rangeSlider,
 }
 
-class Slider extends StatelessWidget {
-  const Slider({
+class FunDsSlider extends StatelessWidget {
+  const FunDsSlider({
     Key? key,
     required this.type,
     this.value,
@@ -23,12 +23,12 @@ class Slider extends StatelessWidget {
     this.divisions,
     this.enabled = true,
   })  : assert(
-          (type == SliderType.slider && value != null) ||
-              (type == SliderType.rangeSlider && rangeValue != null),
+          (type == FunDsSliderType.slider && value != null) ||
+              (type == FunDsSliderType.rangeSlider && rangeValue != null),
         ),
         super(key: key);
 
-  factory Slider.slider({
+  factory FunDsSlider.slider({
     Key? key,
     required double value,
     required Function(double value) onChanged,
@@ -38,9 +38,9 @@ class Slider extends StatelessWidget {
     int? divisions,
     bool enabled = true,
   }) {
-    return Slider(
+    return FunDsSlider(
       key: key,
-      type: SliderType.slider,
+      type: FunDsSliderType.slider,
       value: value,
       label: label,
       onChanged: onChanged,
@@ -51,7 +51,7 @@ class Slider extends StatelessWidget {
     );
   }
 
-  factory Slider.rangeSlider({
+  factory FunDsSlider.rangeSlider({
     Key? key,
     required RangeValues value,
     required Function(RangeValues value) onChanged,
@@ -61,9 +61,9 @@ class Slider extends StatelessWidget {
     int? divisions,
     bool enabled = true,
   }) {
-    return Slider(
+    return FunDsSlider(
       key: key,
-      type: SliderType.rangeSlider,
+      type: FunDsSliderType.rangeSlider,
       rangeValue: value,
       rangeLabels: labels,
       onRangeChanged: onChanged,
@@ -75,30 +75,30 @@ class Slider extends StatelessWidget {
   }
 
   /// The type of slider to display.
-  final SliderType type;
+  final FunDsSliderType type;
 
-  /// The currently selected values if type is [SliderType.rangeSlider].
+  /// The currently selected values if type is [FunDsSliderType.rangeSlider].
   final RangeValues? rangeValue;
 
   /// The labels to show for the min and max values.
-  /// if type is [SliderType.rangeSlider].
+  /// if type is [FunDsSliderType.rangeSlider].
   /// And division is not null.
   final RangeLabels? rangeLabels;
 
   /// Called when the user starts selecting a new value for the slider
-  /// if type is [SliderType.rangeSlider].
+  /// if type is [FunDsSliderType.rangeSlider].
   final Function(RangeValues)? onRangeChanged;
 
-  /// The currently selected value if type is [SliderType.slider].
+  /// The currently selected value if type is [FunDsSliderType.slider].
   final double? value;
 
   /// The label to show for the currently selected value.
-  /// if type is [SliderType.slider].
+  /// if type is [FunDsSliderType.slider].
   /// And division is not null.
   final String? label;
 
   /// Called when the user starts selecting a new value for the slider
-  /// if type is [SliderType.slider].
+  /// if type is [FunDsSliderType.slider].
   final Function(double)? onChanged;
 
   /// The minimum value the user can select.
@@ -145,7 +145,7 @@ class Slider extends StatelessWidget {
           ),
         ),
       ),
-      child: type == SliderType.slider
+      child: type == FunDsSliderType.slider
           ? m.Slider(
               key: const Key('sliderKey'),
               value: value!,

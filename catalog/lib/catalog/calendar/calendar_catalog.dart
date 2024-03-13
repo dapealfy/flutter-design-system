@@ -54,7 +54,7 @@ class CalendarCatalog extends StatelessWidget {
             variant: FunDsButtonVariant.primary,
             text: 'Show',
             onPressed: () {
-              Calendar.showSheet(
+              FunDsCalendar.showSheet(
                 context,
                 titleText: titleText,
                 minDate: DateTime(2000, 12, 1),

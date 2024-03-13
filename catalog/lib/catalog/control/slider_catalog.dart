@@ -87,7 +87,7 @@ class _SliderCatalogState extends State<SliderCatalog> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          funds.Slider.slider(
+          funds.FunDsSlider.slider(
             value: sliderValue,
             enabled: enabled,
             min: 0,
@@ -105,7 +105,7 @@ class _SliderCatalogState extends State<SliderCatalog> {
           const SizedBox(height: 8),
           Text('Value: $sliderValue (min: 0, max: 100)'),
           const SizedBox(height: 16),
-          funds.Slider.rangeSlider(
+          funds.FunDsSlider.rangeSlider(
             value: rangeValue,
             enabled: enabled,
             divisions: division.isNotEmpty

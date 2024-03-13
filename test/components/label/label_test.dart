@@ -7,20 +7,20 @@ import '../../utils/test_utils.dart';
 void main() {
   testWidgets(
     'Label basic property shows correctly, '
-        'Label onTap functionality called correctly',
-        (WidgetTester tester) async {
-          String value = '';
+    'Label onTap functionality called correctly',
+    (WidgetTester tester) async {
+      String value = '';
 
       await tester.pumpWidget(
         buildTestableWidget(
-          child: Label(
+          child: FunDsLabel(
             'Label Text',
             key: const Key('label'),
             prefixIcon: FunDsIconography.actionIcCrossNude,
             suffixIcon: FunDsIconography.actionIcCrossNude,
-            size: LabelSize.large,
-            color: LabelColor.purple,
-            type: LabelType.invert,
+            size: FunDsLabelSize.large,
+            color: FunDsLabelColor.purple,
+            type: FunDsLabelType.invert,
             onTap: () {
               value = 'clicked';
             },

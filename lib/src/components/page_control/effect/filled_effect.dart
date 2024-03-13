@@ -3,7 +3,7 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_design_system/src/components/page_control/painter/filled_painter.dart';
 import 'package:flutter_design_system/src/components/page_control/painter/indicator_painter.dart';
 
-class FilledEffect extends BasicIndicatorEffect {
+class FilledEffect extends FunDsBasicIndicatorEffect {
   /// Control the fill behavior when the offset is 0
   /// defaults to [OnZero.fill] which will fill the first dot
   /// if [OnZero.empty] is used, the first dot will be empty

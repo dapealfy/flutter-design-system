@@ -11,7 +11,7 @@ void main() {
       int value = 0;
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.Counter(
+          child: funds.FunDsCounter(
             label: 'Example Counter',
             onChanged: (newValue) {
               value = newValue;
@@ -34,7 +34,7 @@ void main() {
       int value = 0;
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.Counter(
+          child: funds.FunDsCounter(
             label: 'Example Counter',
             onChanged: (newValue) {
               value = newValue;
@@ -56,7 +56,7 @@ void main() {
     (WidgetTester tester) async {
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.Counter(
+          child: funds.FunDsCounter(
             label: 'Example Counter',
             onChanged: (newValue) {},
             initialValue: 10,

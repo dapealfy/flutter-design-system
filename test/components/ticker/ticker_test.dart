@@ -14,12 +14,12 @@ void main() {
         String value = '';
         await tester.pumpWidget(
           buildTestableWidget(
-            child: Ticker(
+            child: FunDsTicker(
                 label: 'Add the title here, no more than 1 line',
                 key: const Key('ticker-v1'),
                 description: 'Description',
-                variant: TickerVariant.success,
-                type: TickerType.outline,
+                variant: FunDsTickerVariant.success,
+                type: FunDsTickerType.outline,
                 textLink: 'Custom Text Link',
                 onCloseTap: () {
                   value = 'clicked';
@@ -48,11 +48,11 @@ void main() {
 
         await tester.pumpWidget(
           buildTestableWidget(
-            child: Ticker(
+            child: FunDsTicker(
               key: const Key('ticker-v2'),
               description: 'Description',
-              variant: TickerVariant.success,
-              type: TickerType.outline,
+              variant: FunDsTickerVariant.success,
+              type: FunDsTickerType.outline,
               textLink: clickableString,
               onTextLinkTap: () {
                 value = 2;
@@ -67,7 +67,8 @@ void main() {
         // onTap test for TextSpan
         Finder richText = find.byType(RichText);
         final Element element = richText.evaluate().single;
-        final RenderParagraph paragraph = element.renderObject as RenderParagraph;
+        final RenderParagraph paragraph =
+            element.renderObject as RenderParagraph;
         paragraph.text.visitChildren((dynamic span) {
           if (span.text != clickableString) return true; // continue iterating.
 

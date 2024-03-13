@@ -17,7 +17,7 @@ void main() {
           child: Builder(
             builder: (BuildContext context) => ElevatedButton(
               onPressed: () {
-                Calendar.showSheet(
+                FunDsCalendar.showSheet(
                   context,
                   titleText: 'Title',
                   minDate: DateTime(2000, 12, 1),
@@ -69,7 +69,7 @@ void main() {
       // Scroll back to current year
       await tester.drag(
         find.calendarYearList(),
-        Offset(0, -Calendar.itemExtent),
+        Offset(0, -FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
       expect(find.calendarError(), findsNothing);
@@ -86,14 +86,14 @@ void main() {
       // Change month to previous
       await tester.drag(
         find.calendarMonthList(),
-        Offset(0, Calendar.itemExtent),
+        Offset(0, FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
 
       // Change day to previous
       await tester.drag(
         find.calendarDayList(),
-        Offset(0, Calendar.itemExtent),
+        Offset(0, FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
 

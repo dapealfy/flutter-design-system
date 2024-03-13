@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 part 'selection_sheet.dart';
 part 'selection_sheet_config.dart';
 
-class Select<T> extends StatefulWidget {
-  const Select({
+class FunDsSelect<T> extends StatefulWidget {
+  const FunDsSelect({
     super.key,
     required this.selected,
     this.itemToString,
@@ -42,7 +42,7 @@ class Select<T> extends StatefulWidget {
   final bool isError;
 
   /// Build select with predefined bottom sheet
-  factory Select.bottomSheet({
+  factory FunDsSelect.bottomSheet({
     required BuildContext context,
     required List<T> selected,
     Key? key,
@@ -55,7 +55,7 @@ class Select<T> extends StatefulWidget {
     bool isError = false,
     required SelectionSheetConfig<T> sheetConfig,
   }) {
-    return Select<T>(
+    return FunDsSelect<T>(
       key: key,
       selected: selected,
       itemToString: itemToString,
@@ -76,10 +76,10 @@ class Select<T> extends StatefulWidget {
   }
 
   @override
-  State<Select<T>> createState() => SelectState<T>();
+  State<FunDsSelect<T>> createState() => FunDsSelectState<T>();
 }
 
-class SelectState<T> extends State<Select<T>> {
+class FunDsSelectState<T> extends State<FunDsSelect<T>> {
   final _controller = funds.FunDsTextController();
 
   bool get isEmpty => widget.selected.isEmpty;
@@ -91,7 +91,7 @@ class SelectState<T> extends State<Select<T>> {
   }
 
   @override
-  void didUpdateWidget(covariant Select<T> oldWidget) {
+  void didUpdateWidget(covariant FunDsSelect<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (oldWidget.selected != widget.selected) {
@@ -113,7 +113,7 @@ class SelectState<T> extends State<Select<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return funds.TextField(
+    return funds.FunDsTextField(
       readOnly: true,
       labelText: widget.labelText,
       descriptionText: widget.descriptionText,

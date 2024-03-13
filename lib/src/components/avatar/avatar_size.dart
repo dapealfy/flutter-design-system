@@ -1,40 +1,40 @@
-/// [AvatarSize] is used to change the size of FunDsAvatar Widget.
+/// [FunDsAvatarSize] is used to change the size of FunDsAvatar Widget.
 
-enum AvatarSize {
+enum FunDsAvatarSize {
   xxl,
   xl,
   large,
 
-  /// Default size is [AvatarSize.medium]
+  /// Default size is [FunDsAvatarSize.medium]
   medium,
   small,
   xs,
   xxs,
 }
 
-extension AvatarSizeExtension on AvatarSize {
+extension FunDsAvatarSizeExtension on FunDsAvatarSize {
   double get value {
     switch (this) {
-      case AvatarSize.xxs:
+      case FunDsAvatarSize.xxs:
         return 20.0;
-      case AvatarSize.xs:
+      case FunDsAvatarSize.xs:
         return 24.0;
-      case AvatarSize.small:
+      case FunDsAvatarSize.small:
         return 32.0;
-      case AvatarSize.medium:
+      case FunDsAvatarSize.medium:
         return 40.0;
-      case AvatarSize.large:
+      case FunDsAvatarSize.large:
         return 48.0;
-      case AvatarSize.xl:
+      case FunDsAvatarSize.xl:
         return 56.0;
-      case AvatarSize.xxl:
+      case FunDsAvatarSize.xxl:
         return 64.0;
       default:
         return 40.0;
     }
   }
 
-  static List<AvatarSize> getAllAvatarSize() {
-    return AvatarSize.values.map((size) => size).toList();
+  static List<FunDsAvatarSize> getAllAvatarSize() {
+    return FunDsAvatarSize.values.map((size) => size).toList();
   }
 }

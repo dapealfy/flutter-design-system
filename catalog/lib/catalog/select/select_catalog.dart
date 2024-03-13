@@ -119,7 +119,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          funds.Select<Model>(
+          funds.FunDsSelect<Model>(
             selected: selected,
             itemToString: (item) => item.title,
             labelText: label,
@@ -151,7 +151,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          funds.Select<Model>.bottomSheet(
+          funds.FunDsSelect<Model>.bottomSheet(
             context: context,
             selected: selected,
             itemToString: (item) => item.title,
@@ -181,7 +181,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
                       'Pilih Makanan Favorit',
                       style: funds.FunDsTypography.heading20,
                     ),
-                    funds.TextField(
+                    funds.FunDsTextField(
                       showClear: true,
                       hintText: 'Search',
                       onChangedDebounced: (value) {
@@ -239,7 +239,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          funds.Select<Model>.bottomSheet(
+          funds.FunDsSelect<Model>.bottomSheet(
             context: context,
             selected: selected,
             itemToString: (item) => item.title,
@@ -278,7 +278,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          funds.Select<NestedModel>.bottomSheet(
+          funds.FunDsSelect<NestedModel>.bottomSheet(
             context: context,
             selected: nestedSelected,
             itemToString: (item) => item.title,
@@ -364,7 +364,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          funds.Select<NestedModel>.bottomSheet(
+          funds.FunDsSelect<NestedModel>.bottomSheet(
             context: context,
             selected: nestedSelected,
             itemToString: (item) => item.title,

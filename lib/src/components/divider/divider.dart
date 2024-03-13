@@ -15,13 +15,13 @@ class FunDsDivider extends StatelessWidget {
     return Row(
       key: key,
       children: [
-        Label(
+        FunDsLabel(
           text,
           prefixIcon: labelPrefixIcon,
           suffixIcon: labelSuffixIcon,
-          size: LabelSize.small,
-          type: LabelType.outline,
-          color: LabelColor.white,
+          size: FunDsLabelSize.small,
+          type: FunDsLabelType.outline,
+          color: FunDsLabelColor.white,
           onTap: onTapLabel,
         ),
         const Flexible(

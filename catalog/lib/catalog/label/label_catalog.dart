@@ -22,16 +22,17 @@ class LabelCatalog extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ..._buildListLabel('Small Label', LabelSize.small, context),
-        ..._buildListLabel('Medium Label', LabelSize.medium, context),
-        ..._buildListLabel('Large Label', LabelSize.large, context),
+        ..._buildListLabel('Small Label', FunDsLabelSize.small, context),
+        ..._buildListLabel('Medium Label', FunDsLabelSize.medium, context),
+        ..._buildListLabel('Large Label', FunDsLabelSize.large, context),
       ],
     );
   }
 
   _buildListLabel(
     String title,
-    LabelSize size, BuildContext context,
+    FunDsLabelSize size,
+    BuildContext context,
   ) {
     return [
       Padding(
@@ -41,72 +42,81 @@ class LabelCatalog extends StatelessWidget {
           style: FunDsTypography.heading24,
         ),
       ),
-      ...List.from(LabelColor.values).map((color) {
+      ...List.from(FunDsLabelColor.values).map((color) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 16.0),
           child: Row(
             children: [
-              Column(crossAxisAlignment: CrossAxisAlignment.start,children: [
-                _buildLabel(context,
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
-                  type: LabelType.invert,
+                  type: FunDsLabelType.invert,
                 ),
-                _buildLabel(context,
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
                   prefixIcon: FunDsIconography.actionIcCrossNude,
                   suffixIcon: FunDsIconography.actionIcCrossNude,
-                  type: LabelType.invert,
+                  type: FunDsLabelType.invert,
                 ),
-                _buildLabel(context,
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
                   prefixIcon: FunDsIconography.actionIcCrossNude,
                   suffixIcon: FunDsIconography.actionIcCrossNude,
-                  type: LabelType.invert,
+                  type: FunDsLabelType.invert,
                 ),
               ]),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                _buildLabel(context,
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
-                  type: LabelType.outline,
+                  type: FunDsLabelType.outline,
                 ),
-                _buildLabel(context,
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
                   prefixIcon: FunDsIconography.actionIcCrossNude,
                   suffixIcon: FunDsIconography.actionIcCrossNude,
-                  type: LabelType.outline,
+                  type: FunDsLabelType.outline,
                 ),
-                _buildLabel(context,
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
                   prefixIcon: FunDsIconography.actionIcCrossNude,
                   suffixIcon: FunDsIconography.actionIcCrossNude,
-                  type: LabelType.outline,
+                  type: FunDsLabelType.outline,
                 ),
               ]),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                _buildLabel(context,
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
-                  type: LabelType.filled,
+                  type: FunDsLabelType.filled,
                 ),
-                _buildLabel(context,
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
                   prefixIcon: FunDsIconography.actionIcCrossNude,
                   suffixIcon: FunDsIconography.actionIcCrossNude,
-                  type: LabelType.filled,
+                  type: FunDsLabelType.filled,
                 ),
-                _buildLabel(context,
+                _buildLabel(
+                  context,
                   size: size,
                   color: color,
                   prefixIcon: FunDsIconography.actionIcCrossNude,
                   suffixIcon: FunDsIconography.actionIcCrossNude,
-                  type: LabelType.filled,
+                  type: FunDsLabelType.filled,
                 ),
               ]),
             ],
@@ -116,16 +126,17 @@ class LabelCatalog extends StatelessWidget {
     ];
   }
 
-  _buildLabel(BuildContext context, {
+  _buildLabel(
+    BuildContext context, {
     String? prefixIcon,
     String? suffixIcon,
-    required LabelSize size,
-    required LabelColor color,
-    required LabelType type,
+    required FunDsLabelSize size,
+    required FunDsLabelColor color,
+    required FunDsLabelType type,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-      child: Label(
+      child: FunDsLabel(
         'Label',
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,

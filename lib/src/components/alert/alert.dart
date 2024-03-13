@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum AlertType { neutral, success, info, warning, danger }
+enum FunDsAlertType { neutral, success, info, warning, danger }
 
 /// Alert
 /// https://www.figma.com/file/VWK8ra7NhxzTW9iY4MQ9KG/FunDS---Component-Library?type=design&node-id=6142-131542&mode=design&t=upImYzjCQGJHTU5L-0
@@ -18,8 +18,8 @@ enum AlertType { neutral, success, info, warning, danger }
 ///   secondaryActionText: 'Secondary',
 /// );
 /// ```
-class Alert extends StatelessWidget {
-  const Alert({
+class FunDsAlert extends StatelessWidget {
+  const FunDsAlert({
     super.key,
     required this.type,
     required this.title,
@@ -32,7 +32,7 @@ class Alert extends StatelessWidget {
     this.onSecondaryActionTap,
   });
 
-  final AlertType type;
+  final FunDsAlertType type;
   final String title;
   final String description;
   final String? icon;
@@ -45,30 +45,30 @@ class Alert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String defaultIcon = switch (type) {
-      AlertType.neutral => '',
-      AlertType.success => FunDsIconography.actionIcCheckCircle,
-      AlertType.info => FunDsIconography.infoIcInformation,
-      AlertType.warning => FunDsIconography.infoIcWarning,
-      AlertType.danger => FunDsIconography.actionIcCrossNude,
+      FunDsAlertType.neutral => '',
+      FunDsAlertType.success => FunDsIconography.actionIcCheckCircle,
+      FunDsAlertType.info => FunDsIconography.infoIcInformation,
+      FunDsAlertType.warning => FunDsIconography.infoIcWarning,
+      FunDsAlertType.danger => FunDsIconography.actionIcCrossNude,
     };
 
     final Color? backgroundColor = switch (type) {
-      AlertType.neutral => FunDsColors.colorWhite,
-      AlertType.success => FunDsColors.colorGreen50,
-      AlertType.info => FunDsColors.colorBlue50,
-      AlertType.warning => FunDsColors.colorOrange50,
-      AlertType.danger => FunDsColors.colorRed50,
+      FunDsAlertType.neutral => FunDsColors.colorWhite,
+      FunDsAlertType.success => FunDsColors.colorGreen50,
+      FunDsAlertType.info => FunDsColors.colorBlue50,
+      FunDsAlertType.warning => FunDsColors.colorOrange50,
+      FunDsAlertType.danger => FunDsColors.colorRed50,
     };
 
     final Color? mainColor = switch (type) {
-      AlertType.neutral => null,
-      AlertType.success => FunDsColors.colorGreen500,
-      AlertType.info => FunDsColors.colorBlue500,
-      AlertType.warning => FunDsColors.colorOrange500,
-      AlertType.danger => FunDsColors.colorRed500,
+      FunDsAlertType.neutral => null,
+      FunDsAlertType.success => FunDsColors.colorGreen500,
+      FunDsAlertType.info => FunDsColors.colorBlue500,
+      FunDsAlertType.warning => FunDsColors.colorOrange500,
+      FunDsAlertType.danger => FunDsColors.colorRed500,
     };
 
-    final descriptionColor = type == AlertType.neutral
+    final descriptionColor = type == FunDsAlertType.neutral
         ? FunDsColors.colorNeutral600
         : FunDsColors.colorNeutral900;
 
@@ -163,19 +163,18 @@ class Alert extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(title,
-                              style: FunDsTypography.heading14.copyWith(
-                                  color: mainColor ??
-                                      FunDsColors.colorNeutral900)),
-                          const SizedBox(height: 2),
-                          Text(
-                            description,
-                            style: FunDsTypography.body12.copyWith(
-                              color: descriptionColor,
-                            ),
-                          ),
-                          ..._showMultipleActions()
-                        ])),
+                      Text(title,
+                          style: FunDsTypography.heading14.copyWith(
+                              color: mainColor ?? FunDsColors.colorNeutral900)),
+                      const SizedBox(height: 2),
+                      Text(
+                        description,
+                        style: FunDsTypography.body12.copyWith(
+                          color: descriptionColor,
+                        ),
+                      ),
+                      ..._showMultipleActions()
+                    ])),
                 Visibility(
                   visible: secondaryActionText == null,
                   child: FunDsButton(

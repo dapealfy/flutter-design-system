@@ -17,7 +17,8 @@ class TickerCatalog extends StatelessWidget {
         description: _description,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
               'Ticker Version 1',
               style: FunDsTypography.heading24,
@@ -27,12 +28,12 @@ class TickerCatalog extends StatelessWidget {
               style: FunDsTypography.heading16,
             ),
             const SizedBox(height: 16),
-            ..._buildTicker(context, TickerType.outline),
+            ..._buildTicker(context, FunDsTickerType.outline),
             Text(
               'Ticker Non-Outline',
               style: FunDsTypography.heading16,
             ),
-            ..._buildTicker(context, TickerType.nonOutline),
+            ..._buildTicker(context, FunDsTickerType.nonOutline),
             const SizedBox(height: 32),
             Text(
               'Ticker Version 2',
@@ -43,21 +44,23 @@ class TickerCatalog extends StatelessWidget {
               style: FunDsTypography.heading16,
             ),
             const SizedBox(height: 16),
-            ..._buildTicker(context, TickerType.outline, isVersion1: false),
+            ..._buildTicker(context, FunDsTickerType.outline,
+                isVersion1: false),
             Text(
               'Ticker Non-Outline',
               style: FunDsTypography.heading16,
             ),
-            ..._buildTicker(context, TickerType.nonOutline, isVersion1: false),
+            ..._buildTicker(context, FunDsTickerType.nonOutline,
+                isVersion1: false),
           ]),
         ));
   }
 
-  List<Widget> _buildTicker(BuildContext context, TickerType type,
+  List<Widget> _buildTicker(BuildContext context, FunDsTickerType type,
       {bool isVersion1 = true}) {
-    return List.from(TickerVariant.values).map((e) {
+    return List.from(FunDsTickerVariant.values).map((e) {
       final Widget widget;
-      widget = Ticker(
+      widget = FunDsTicker(
         label: isVersion1 ? 'Add the title here, no more than 1 line' : null,
         description: 'Ticker description can be put here. Be brief ya! '
             'Can add link in the end too.',

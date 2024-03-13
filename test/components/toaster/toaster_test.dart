@@ -12,11 +12,11 @@ void main() {
         return GestureDetector(
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              Toaster(
+              FunDsToaster(
                 context: context,
                 message: 'Test Message',
                 label: 'Test Label',
-                type: ToasterType.normal,
+                type: FunDsToasterType.normal,
               ),
             );
           },
@@ -47,11 +47,11 @@ void main() {
         return GestureDetector(
           onTap: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              Toaster(
+              FunDsToaster(
                 context: context,
                 message: 'Test Message',
                 label: 'Test Label',
-                type: ToasterType.error,
+                type: FunDsToasterType.error,
               ),
             );
           },

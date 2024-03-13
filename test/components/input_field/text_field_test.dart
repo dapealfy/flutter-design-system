@@ -12,7 +12,7 @@ void main() {
       var userInputDebounced = '';
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.TextField(
+          child: funds.FunDsTextField(
             labelText: 'Test Label',
             descriptionText: 'Test Description',
             hintText: 'Test Hint',
@@ -63,7 +63,7 @@ void main() {
 
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.TextField(
+          child: funds.FunDsTextField(
             label: const Text('Test Label'),
             description: const Text('Test Description'),
             hintText: 'Test Hint',
@@ -100,7 +100,7 @@ void main() {
 
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.TextField(
+          child: funds.FunDsTextField(
             labelText: 'Test Label',
             descriptionText: 'Test Description',
             hintText: 'Test Hint',

@@ -6,7 +6,7 @@ import '../../utils/test_utils.dart';
 void main() {
   testWidgets(
     'FunDsChip basic property show correctly',
-        (WidgetTester tester) async {
+    (WidgetTester tester) async {
       var isActive = false;
       await tester.pumpWidget(
         buildTestableWidget(
@@ -23,13 +23,13 @@ void main() {
               funDsIconography: FunDsIconography.basicIcChevronDown,
               size: 20,
             ),
-            label: const Label(
+            label: const FunDsLabel(
               'Label',
-              type: LabelType.outline,
-              color: LabelColor.red,
+              type: FunDsLabelType.outline,
+              color: FunDsLabelColor.red,
             ),
-            onPress: (){
-              isActive =! isActive;
+            onPress: () {
+              isActive = !isActive;
             },
           ),
         ),

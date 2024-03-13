@@ -12,7 +12,7 @@ void main() {
       var userInputDebounced = '';
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.TextArea(
+          child: funds.FunDsTextArea(
             labelText: 'Test Label',
             descriptionText: 'Test Description',
             hintText: 'Test Hint',
@@ -57,7 +57,7 @@ void main() {
 
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.TextArea(
+          child: funds.FunDsTextArea(
             label: const Text('Test Label'),
             description: const Text('Test Description'),
             hintText: 'Test Hint',
@@ -86,7 +86,7 @@ void main() {
 
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.TextArea(
+          child: funds.FunDsTextArea(
             labelText: 'Test Label',
             descriptionText: 'Test Description',
             hintText: 'Test Hint',
@@ -110,7 +110,7 @@ void main() {
 }
 
 extension FunDsTextAreaFinder on CommonFinders {
-  Finder findFunDsTextField() => find.byType(funds.TextArea);
+  Finder findFunDsTextField() => find.byType(funds.FunDsTextArea);
   Finder findRightIcon1() => find.byKey(const Key('rightIcon1'));
   Finder findRightIcon2() => find.byKey(const Key('rightIcon2'));
   Finder findTextField() => find.byKey(const Key('textField'));

@@ -11,15 +11,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: const funds.Badge(
-              badgeStatus: funds.BadgeStatus.info,
+            child: const funds.FunDsBadge(
+              badgeStatus: funds.FunDsBadgeStatus.info,
               label: 'Badge Info',
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('Badge Info'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -43,15 +43,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: const funds.Badge(
-              badgeStatus: funds.BadgeStatus.light,
+            child: const funds.FunDsBadge(
+              badgeStatus: funds.FunDsBadgeStatus.light,
               label: 'Badge Light',
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('Badge Light'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -76,15 +76,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: const funds.Badge(
-              badgeStatus: funds.BadgeStatus.success,
+            child: const funds.FunDsBadge(
+              badgeStatus: funds.FunDsBadgeStatus.success,
               label: 'Badge Success',
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('Badge Success'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -108,15 +108,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: const funds.Badge(
-              badgeStatus: funds.BadgeStatus.warning,
+            child: const funds.FunDsBadge(
+              badgeStatus: funds.FunDsBadgeStatus.warning,
               label: 'Badge Warning',
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('Badge Warning'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -140,15 +140,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: const funds.Badge(
-              badgeStatus: funds.BadgeStatus.alert,
+            child: const funds.FunDsBadge(
+              badgeStatus: funds.FunDsBadgeStatus.alert,
               label: 'Badge Alert',
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('Badge Alert'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -174,15 +174,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: funds.Badge.circled(
-              badgeStatus: funds.BadgeStatus.info,
+            child: funds.FunDsBadge.circled(
+              badgeStatus: funds.FunDsBadgeStatus.info,
               count: 9,
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('9'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -206,15 +206,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: funds.Badge.circled(
-              badgeStatus: funds.BadgeStatus.light,
+            child: funds.FunDsBadge.circled(
+              badgeStatus: funds.FunDsBadgeStatus.light,
               count: 9,
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('9'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -239,15 +239,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: funds.Badge.circled(
-              badgeStatus: funds.BadgeStatus.success,
+            child: funds.FunDsBadge.circled(
+              badgeStatus: funds.FunDsBadgeStatus.success,
               count: 9,
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('9'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -271,15 +271,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: funds.Badge.circled(
-              badgeStatus: funds.BadgeStatus.warning,
+            child: funds.FunDsBadge.circled(
+              badgeStatus: funds.FunDsBadgeStatus.warning,
               count: 9,
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('9'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -303,15 +303,15 @@ void main() {
       (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: funds.Badge.circled(
-              badgeStatus: funds.BadgeStatus.alert,
+            child: funds.FunDsBadge.circled(
+              badgeStatus: funds.FunDsBadgeStatus.alert,
               count: 9,
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('9'), findsOneWidget);
 
         // Find the Container widget using a predicate.
@@ -332,29 +332,29 @@ void main() {
 
     testWidgets(
       'Badge Circled with count 100 will show 99 Alert show correctly',
-          (widgetTester) async {
+      (widgetTester) async {
         await widgetTester.pumpWidget(
           buildTestableWidget(
-            child: funds.Badge.circled(
-              badgeStatus: funds.BadgeStatus.alert,
+            child: funds.FunDsBadge.circled(
+              badgeStatus: funds.FunDsBadgeStatus.alert,
               count: 100,
               inverted: false,
             ),
           ),
         );
 
-        expect(find.byType(funds.Badge), findsOneWidget);
+        expect(find.byType(funds.FunDsBadge), findsOneWidget);
         expect(find.text('99'), findsOneWidget);
 
         // Find the Container widget using a predicate.
         final Finder containerFinder = find.byWidgetPredicate(
-              (Widget widget) => widget is Container,
+          (Widget widget) => widget is Container,
         );
 
         // Extract the background color from the Container widget.
         final Container container = widgetTester.widget(containerFinder);
         final ShapeDecoration decoration =
-        container.decoration as ShapeDecoration;
+            container.decoration as ShapeDecoration;
         final Color actualBackgroundColor = decoration.color as Color;
 
         // Verify that the background color matches the expected color.

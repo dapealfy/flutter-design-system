@@ -86,26 +86,26 @@ class SingleAvatarCatalog extends StatelessWidget {
 
   _buildTextAvatar() {
     List<Widget> listTextAvatarRoundWidget =
-        AvatarSizeExtension.getAllAvatarSize().map((size) {
-      return Avatar.network(
+        FunDsAvatarSizeExtension.getAllAvatarSize().map((size) {
+      return FunDsAvatar.network(
         imageUrl: '',
         name: 'Amartha Microfinance',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
-        shape: AvatarShape.round,
+        shape: FunDsAvatarShape.round,
       );
     }).toList();
 
     List<Widget> listTextAvatarRectangleWidget =
-        AvatarSizeExtension.getAllAvatarSize().map((size) {
-      return Avatar.network(
+        FunDsAvatarSizeExtension.getAllAvatarSize().map((size) {
+      return FunDsAvatar.network(
         imageUrl: '',
         name: 'Amartha Microfinance',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
-        shape: AvatarShape.rectangle,
+        shape: FunDsAvatarShape.rectangle,
       );
     }).toList();
 
@@ -138,24 +138,24 @@ class SingleAvatarCatalog extends StatelessWidget {
 
   _buildIconAvatar() {
     List<Widget> listFailedImageNetworkAvatarRoundWidget =
-        AvatarSizeExtension.getAllAvatarSize().map((size) {
-      return Avatar.network(
+        FunDsAvatarSizeExtension.getAllAvatarSize().map((size) {
+      return FunDsAvatar.network(
         imageUrl: 'http://error',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
-        shape: AvatarShape.round,
+        shape: FunDsAvatarShape.round,
       );
     }).toList();
 
     List<Widget> listFailedImageNetworkAvatarRoundRectangle =
-        AvatarSizeExtension.getAllAvatarSize().map((size) {
-      return Avatar.network(
+        FunDsAvatarSizeExtension.getAllAvatarSize().map((size) {
+      return FunDsAvatar.network(
         imageUrl: 'http://error',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
-        shape: AvatarShape.rectangle,
+        shape: FunDsAvatarShape.rectangle,
       );
     }).toList();
 
@@ -188,26 +188,26 @@ class SingleAvatarCatalog extends StatelessWidget {
 
   _buildImageAvatar() {
     List<Widget> listImageAvatarRoundWidget =
-        AvatarSizeExtension.getAllAvatarSize().map((size) {
-      return Avatar.asset(
+        FunDsAvatarSizeExtension.getAllAvatarSize().map((size) {
+      return FunDsAvatar.asset(
         imagePath: 'packages/flutter_design_system/assets/images/user_1.jpeg',
         name: 'Amartha Microfinance',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
-        shape: AvatarShape.round,
+        shape: FunDsAvatarShape.round,
       );
     }).toList();
 
     List<Widget> listImageAvatarRectangleWidget =
-        AvatarSizeExtension.getAllAvatarSize().map((size) {
-      return Avatar(
+        FunDsAvatarSizeExtension.getAllAvatarSize().map((size) {
+      return FunDsAvatar(
         imagePath: 'packages/flutter_design_system/assets/images/user_1.jpeg',
         name: 'Amartha Microfinance',
         size: size,
         backgroundColor: FunDsColors.colorPrimary100,
         foregroundColor: FunDsColors.colorPrimary500,
-        shape: AvatarShape.rectangle,
+        shape: FunDsAvatarShape.rectangle,
       );
     }).toList();
 
