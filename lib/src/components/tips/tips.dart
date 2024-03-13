@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Tips extends StatelessWidget {
-  const Tips({
+class FunDsTips extends StatelessWidget {
+  const FunDsTips({
     super.key,
     required this.title,
     required this.description,
@@ -71,23 +71,23 @@ class Tips extends StatelessWidget {
 
   static Widget overlayTarget(
     BuildContext context, {
-    required FunOverlayController controller,
+    required FunDsOverlayController controller,
     required String title,
     required String description,
     VoidCallback? onClose,
     required Widget child,
   }) {
-    return FunOverlay(
+    return FunDsOverlay(
       controller: controller,
       showArrow: true,
       arrowSize: Size(12.w, 6.h),
       arrowColor: FunDsColors.colorNeutral900,
       focusPadding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 8.w),
       focusRadius: 8.r,
-      overlayPosition: OverlayPosition.preferBottom,
+      overlayPosition: FunDsOverlayPosition.preferBottom,
       overlayWidth: MediaQuery.of(context).size.width,
       overlaySpace: 16.h,
-      overlayWidget: Tips(
+      overlayWidget: FunDsTips(
         title: title,
         description: description,
         onCloseTap: onClose ??

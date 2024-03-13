@@ -5,14 +5,14 @@ import 'internal_accordion.dart';
 
 /// Create a group of accordions that can be opened 1 at a time
 ///
-/// this will ignore the [Accordion.isInitiallyExpanded] property in [Accordion],
+/// this will ignore the [FunDsAccordion.isInitiallyExpanded] property in [FunDsAccordion],
 /// instead provided with another property
-class AccordionGroup extends StatefulWidget {
+class FunDsAccordionGroup extends StatefulWidget {
   final int initiallyOpenedAt;
-  final List<Accordion> accordions;
+  final List<FunDsAccordion> accordions;
   final bool isLoading;
 
-  const AccordionGroup({
+  const FunDsAccordionGroup({
     super.key,
     required this.accordions,
     this.initiallyOpenedAt = -1,
@@ -20,24 +20,23 @@ class AccordionGroup extends StatefulWidget {
   });
 
   @override
-  State<AccordionGroup> createState() => _AccordionGroupState();
+  State<FunDsAccordionGroup> createState() => _FunDsAccordionGroupState();
 }
 
-class _AccordionGroupState extends State<AccordionGroup> {
+class _FunDsAccordionGroupState extends State<FunDsAccordionGroup> {
   late int previousOpenedIndex;
   late List<bool> expandedAccordion;
 
   @override
   void initState() {
     previousOpenedIndex = widget.initiallyOpenedAt;
-    expandedAccordion =
-        List.generate(widget.accordions.length, (index) {
-          if (index == previousOpenedIndex) {
-            return true;
-          } else {
-            return false;
-          }
-        });
+    expandedAccordion = List.generate(widget.accordions.length, (index) {
+      if (index == previousOpenedIndex) {
+        return true;
+      } else {
+        return false;
+      }
+    });
     super.initState();
   }
 

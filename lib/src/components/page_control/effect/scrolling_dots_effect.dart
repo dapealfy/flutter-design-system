@@ -5,7 +5,7 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_design_system/src/components/page_control/painter/indicator_painter.dart';
 import 'package:flutter_design_system/src/components/page_control/painter/scrollin_dots_painter.dart';
 
-class ScrollingDotsEffect extends BasicIndicatorEffect {
+class ScrollingDotsEffect extends FunDsBasicIndicatorEffect {
   /// The max number of dots to display at a time
   /// if count is <= [maxVisibleDots] [maxVisibleDots] = count
   /// must be an odd number that's >= 5

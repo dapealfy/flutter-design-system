@@ -17,7 +17,7 @@ void main() {
           child: Builder(
             builder: (BuildContext context) => ElevatedButton(
               onPressed: () {
-                Calendar.showSheet(
+                FunDsCalendar.showSheet(
                   context,
                   titleText: 'Title',
                   minDate: DateTime(2000, 12, 1),
@@ -50,7 +50,7 @@ void main() {
       expect(find.text('Title'), findsOneWidget);
       expect(find.text('Simpan'), findsOneWidget);
       expect(find.text('Batal'), findsOneWidget);
-      expect(find.text(errorText), findsNothing);
+      expect(find.calendarError(), findsNothing);
 
       // Verify initial date
       expect(find.text(initialDate.year.toString()), findsOneWidget);
@@ -64,15 +64,15 @@ void main() {
       expect(find.text((initialDate.year - 1).toString()), findsOneWidget);
 
       // Error shown
-      expect(find.text(errorText), findsOneWidget);
+      expect(find.calendarError(), findsOne);
 
       // Scroll back to current year
       await tester.drag(
         find.calendarYearList(),
-        Offset(0, -Calendar.itemExtent),
+        Offset(0, -FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
-      expect(find.text(errorText), findsNothing);
+      expect(find.calendarError(), findsNothing);
 
       // Close
       await tester.tap(find.calendarCancel());
@@ -86,14 +86,14 @@ void main() {
       // Change month to previous
       await tester.drag(
         find.calendarMonthList(),
-        Offset(0, Calendar.itemExtent),
+        Offset(0, FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
 
       // Change day to previous
       await tester.drag(
         find.calendarDayList(),
-        Offset(0, Calendar.itemExtent),
+        Offset(0, FunDsCalendar.itemExtent),
       );
       await tester.pumpAndSettle();
 
@@ -119,4 +119,5 @@ extension FunDsCaledarFinder on CommonFinders {
   Finder calendarYearList() => find.byKey(const Key('calendar-year'));
   Finder calendarSave() => find.byKey(const Key('calendar-save'));
   Finder calendarCancel() => find.byKey(const Key('calendar-cancel'));
+  Finder calendarError() => find.byKey(const Key('calendar-error'));
 }

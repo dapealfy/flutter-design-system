@@ -1,56 +1,88 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Ticker component
-/// https://www.figma.com/file/VWK8ra7NhxzTW9iY4MQ9KG/FunDS---Component-Library?type=design&node-id=6811-49888&mode=design&t=QYete7CRUJnPg0fx-0
+enum FunDsTickerType { outline, nonOutline }
 
-enum TickerType {
+enum FunDsTickerVariant {
   info,
   success,
   warning,
   danger,
 }
 
-class Ticker extends StatelessWidget {
-  const Ticker({
-    Key? key,
-    required this.child,
-    required this.type,
-    this.iconWidget,
-    this.funDsIconography,
-  }) : super(key: key);
+/// Ticker
+///
+/// Usage :
+/// ```dart
+/// String? label = 'optional';
+/// Ticker(
+///  label: label,
+///  description: 'a brief description here',
+///  variant: TickerVariant.info,
+///  type: TickerType.outline,
+///  textLink: 'Custom Text Link',
+///  onCloseTap: () {
+///    // do something
+///  },
+///  onTextLinkTap: () {
+///    // do something
+///  },
+/// );
+/// ```
+class FunDsTicker extends StatelessWidget {
+  const FunDsTicker(
+      {super.key,
+      this.label,
+      required this.description,
+      required this.variant,
+      required this.type,
+      this.icon,
+      this.textLink,
+      this.onTextLinkTap,
+      this.onCloseTap});
 
-  final TickerType type;
-  final Widget? iconWidget;
-  final String? funDsIconography;
-  final Widget child;
+  final FunDsTickerVariant variant;
+  final FunDsTickerType type;
+  final String? icon;
+  final String? label;
+  final String description;
+  final String? textLink;
+  final VoidCallback? onTextLinkTap;
+  final VoidCallback? onCloseTap;
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = switch (type) {
-      TickerType.danger => FunDsColors.colorRed50,
-      TickerType.info => FunDsColors.colorBlue50,
-      TickerType.success => FunDsColors.colorGreen50,
-      TickerType.warning => FunDsColors.colorOrange50,
+    final backgroundColor = switch (variant) {
+      FunDsTickerVariant.danger => FunDsColors.colorRed50,
+      FunDsTickerVariant.info => FunDsColors.colorBlue50,
+      FunDsTickerVariant.success => FunDsColors.colorGreen50,
+      FunDsTickerVariant.warning => FunDsColors.colorOrange50,
+    };
+
+    final fontColor = switch (variant) {
+      FunDsTickerVariant.danger => FunDsColors.colorRed500,
+      FunDsTickerVariant.info => FunDsColors.colorBlue600,
+      FunDsTickerVariant.success => FunDsColors.colorGreen500,
+      FunDsTickerVariant.warning => FunDsColors.colorOrange600,
     };
 
     final borderColor = switch (type) {
-      TickerType.danger => FunDsColors.colorRed500,
-      TickerType.info => FunDsColors.colorBlue600,
-      TickerType.success => FunDsColors.colorGreen500,
-      TickerType.warning => FunDsColors.colorOrange600,
+      FunDsTickerType.nonOutline => backgroundColor,
+      FunDsTickerType.outline => fontColor
     };
 
-    final defaultIcon = switch (type) {
-      TickerType.danger => FunDsIconography.actionIcTrashCan,
-      TickerType.info => FunDsIconography.infoIcInformation,
-      TickerType.success => FunDsIconography.actionIcCheckCircle,
-      TickerType.warning => FunDsIconography.infoIcWarning,
+    final defaultIcon = switch (variant) {
+      FunDsTickerVariant.danger => FunDsIconography.actionIcTrashCan,
+      FunDsTickerVariant.info => FunDsIconography.infoIcInformation,
+      FunDsTickerVariant.success => FunDsIconography.actionIcCheckCircle,
+      FunDsTickerVariant.warning => FunDsIconography.infoIcWarning,
     };
+
+    bool isLabelPresent = label != null;
 
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
       decoration: BoxDecoration(
         color: backgroundColor,
         border: Border.all(
@@ -59,20 +91,96 @@ class Ticker extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(8.r),
       ),
-      child: Row(
+      clipBehavior: Clip.hardEdge,
+      child: Stack(
         children: [
-          iconWidget ??
-              FunDsIcon(
-                funDsIconography: funDsIconography ?? defaultIcon,
-                size: 24.w,
-                color: borderColor,
+          Positioned(
+              child: Visibility(
+                visible: isLabelPresent,
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(50.r),
+                    onTap: () {
+                      onCloseTap?.call();
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 12.h, horizontal: 12.w),
+                      child: FunDsIcon(
+                        funDsIconography: FunDsIconography.actionIcCrossNude,
+                        size: 16.w,
+                        color: FunDsColors.colorNeutral900,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-          SizedBox(width: 8.w),
-          Expanded(
-            child: DefaultTextStyle(
-              style: FunDsTypography.body12.copyWith(color: borderColor),
-              child: child,
-            ),
+              right: 0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 12.w, right: 8.w),
+                child: FunDsIcon(
+                  funDsIconography: icon ?? defaultIcon,
+                  size: 24.w,
+                  color: fontColor,
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.h),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Visibility(
+                            child: SizedBox(
+                              height: 23.h,
+                              child: Text(
+                                label ?? '',
+                                style: FunDsTypography.heading14.copyWith(
+                                  color: FunDsColors.colorNeutral900,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            visible: isLabelPresent),
+                        RichText(
+                          text: TextSpan(
+                              style: FunDsTypography.body12.copyWith(
+                                  color: FunDsColors.colorNeutral900,
+                                  height: 1.4),
+                              children: [
+                                TextSpan(
+                                    text: description + ' ',
+                                    style: TextStyle(
+                                        color: isLabelPresent
+                                            ? FunDsColors.colorNeutral900
+                                            : fontColor)),
+                                TextSpan(
+                                  text: textLink,
+                                  style: FunDsTypography.body12B.copyWith(
+                                      color: FunDsColors.colorPrimary500),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      onTextLinkTap?.call();
+                                    },
+                                )
+                              ]),
+                        )
+                      ]),
+                ),
+              ),
+              Visibility(
+                child: SizedBox(
+                  width: 40.w,
+                ),
+                visible: isLabelPresent,
+              )
+            ],
           ),
         ],
       ),

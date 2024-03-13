@@ -8,10 +8,10 @@ void main() {
   group(
     'Given 1 target coachmark',
     () {
-      late FunOverlayController controller;
+      late FunDsOverlayController controller;
 
       setUp(() {
-        controller = FunOverlayController();
+        controller = FunDsOverlayController();
       });
 
       testWidgets(
@@ -101,7 +101,7 @@ void main() {
 ///   * Text
 Future<void> _buildOneCoachmark(
   WidgetTester tester,
-  FunOverlayController controller,
+  FunDsOverlayController controller,
 ) async {
   await tester.pumpWidget(
     buildTestableWidget(
@@ -109,7 +109,7 @@ Future<void> _buildOneCoachmark(
         return Column(
           children: [
             const Text('text 1'),
-            CoachMark.overlayTarget(
+            FunDsCoachMark.overlayTarget(
               context,
               controller: controller,
               title: 'title',

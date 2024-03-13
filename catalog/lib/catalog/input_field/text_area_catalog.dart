@@ -76,17 +76,17 @@ class TextAreaCatalog extends StatelessWidget {
       initial: '250',
     );
 
-    final textAreaSize = context.knobs.options<funds.TextAreaSize>(
+    final textAreaSize = context.knobs.options<funds.FunDsTextAreaSize>(
       label: 'Text Area Size',
-      initial: funds.TextAreaSize.small,
+      initial: funds.FunDsTextAreaSize.small,
       options: [
         const Option(
           label: 'Small',
-          value: funds.TextAreaSize.small,
+          value: funds.FunDsTextAreaSize.small,
         ),
         const Option(
           label: 'Large',
-          value: funds.TextAreaSize.large,
+          value: funds.FunDsTextAreaSize.large,
         ),
       ],
     );
@@ -132,7 +132,7 @@ class TextAreaCatalog extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: funds.TextArea(
+            child: funds.FunDsTextArea(
               labelText: labelText,
               descriptionText: descriptionText.isEmpty ? null : descriptionText,
               hintText: hintText,

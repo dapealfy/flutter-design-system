@@ -22,7 +22,7 @@ void main() {
   group('AnimatedPageControl with slide effect', () {
     Widget buildTestWidget(int activeIndex) {
       return Center(
-        child: AnimatedPageControl(
+        child: FunDsAnimatedPageControl(
           activeIndex: activeIndex,
           effect: const SlideEffect(
             activeDotColor: Colors.red,
@@ -42,7 +42,7 @@ void main() {
         await tester.pumpWidget(buildTestWidget(0));
 
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/slide_0.png'),
         );
       },
@@ -53,7 +53,7 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(buildTestWidget(5));
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/slide_5.png'),
         );
       },
@@ -64,7 +64,7 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(buildTestWidget(9));
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/slide_9.png'),
         );
       },
@@ -74,7 +74,7 @@ void main() {
   group('AnimatedPageControl with scrolling dots effect', () {
     Widget buildTestWidget(int activeIndex) {
       return Center(
-        child: AnimatedPageControl(
+        child: FunDsAnimatedPageControl(
           activeIndex: activeIndex,
           effect: const ScrollingDotsEffect(
             activeDotColor: Colors.red,
@@ -95,7 +95,7 @@ void main() {
         await tester.pumpWidget(buildTestWidget(0));
 
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/scrolling_dot_0.png'),
         );
       },
@@ -106,7 +106,7 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(buildTestWidget(5));
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/scrolling_dot_5.png'),
         );
       },
@@ -117,7 +117,7 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(buildTestWidget(9));
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/scrolling_dot_9.png'),
         );
       },
@@ -127,7 +127,7 @@ void main() {
   group('AnimatedPageControl with filled effect', () {
     Widget buildTestWidget(int activeIndex) {
       return Center(
-        child: AnimatedPageControl(
+        child: FunDsAnimatedPageControl(
           activeIndex: activeIndex,
           effect: const FilledEffect(
             activeDotColor: Colors.red,
@@ -149,7 +149,7 @@ void main() {
         );
 
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/filled_0.png'),
         );
       },
@@ -160,7 +160,7 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(buildTestWidget(5));
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/filled_5.png'),
         );
       },
@@ -171,7 +171,7 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(buildTestWidget(9));
         await expectLater(
-          find.byType(AnimatedPageControl),
+          find.byType(FunDsAnimatedPageControl),
           matchesGoldenFile('golden/filled_9.png'),
         );
       },
@@ -198,7 +198,7 @@ void main() {
                   itemCount: 10,
                 ),
               ),
-              AttachedPageControl(
+              FunDsAttachedPageControl(
                 controller: controller,
                 effect: const SlideEffect(
                   activeDotColor: Colors.red,

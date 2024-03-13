@@ -11,7 +11,7 @@ void main() {
       await tester.pumpWidget(
         buildTestableWidget(
           child: Builder(builder: (context) {
-            return funds.Select.bottomSheet(
+            return funds.FunDsSelect.bottomSheet(
               context: context,
               labelText: 'Test Label',
               descriptionText: 'Test Description',
@@ -41,7 +41,7 @@ void main() {
     await tester.pumpWidget(
       buildTestableWidget(
         child: Builder(builder: (context) {
-          return funds.Select.bottomSheet(
+          return funds.FunDsSelect.bottomSheet(
             context: context,
             selected: const ['Item 1'],
             sheetConfig: funds.SelectionSheetConfig<String>(
@@ -63,7 +63,7 @@ void main() {
     await tester.pumpWidget(
       buildTestableWidget(
         child: Builder(builder: (context) {
-          return funds.Select.bottomSheet(
+          return funds.FunDsSelect.bottomSheet(
             context: context,
             selected: const ['Item 1', 'Item 2'],
             sheetConfig: funds.SelectionSheetConfig<String>(
@@ -85,7 +85,7 @@ void main() {
     await tester.pumpWidget(
       buildTestableWidget(
         child: Builder(builder: (context) {
-          return funds.Select<String>.bottomSheet(
+          return funds.FunDsSelect<String>.bottomSheet(
             context: context,
             selected: const ['Item 1'],
             sheetConfig: funds.SelectionSheetConfig<String>(
@@ -111,7 +111,7 @@ void main() {
       ),
     );
 
-    await tester.tap(find.byType(funds.Select<String>));
+    await tester.tap(find.byType(funds.FunDsSelect<String>));
     await tester.pumpAndSettle();
 
     expect(find.text('header'), findsOneWidget);

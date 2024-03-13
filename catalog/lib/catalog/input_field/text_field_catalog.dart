@@ -1,7 +1,7 @@
 import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/funds.dart' hide TextField;
+import 'package:flutter_design_system/funds.dart' hide FunDsTextField;
 import 'package:flutter_design_system/funds.dart' as funds;
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -207,14 +207,14 @@ class TextFieldCatalog extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: funds.TextField(
+            child: funds.FunDsTextField(
               labelText: labelText,
               descriptionText: descriptionText.isEmpty ? null : descriptionText,
               hintText: hintText,
               helperText: helperText.isEmpty ? null : helperText,
               prefix: prefix,
               leftIcon: leftIcon,
-              size: TextFieldSize.small,
+              size: FunDsTextFieldSize.small,
               suffix1: suffix1,
               suffix2: suffix2,
               rightIcon1: rightIcon1,
@@ -249,14 +249,14 @@ class TextFieldCatalog extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: funds.TextField(
+            child: funds.FunDsTextField(
               labelText: labelText,
               descriptionText: descriptionText.isEmpty ? null : descriptionText,
               hintText: hintText,
               helperText: helperText.isEmpty ? null : helperText,
               prefix: prefix,
               leftIcon: leftIcon,
-              size: TextFieldSize.medium,
+              size: FunDsTextFieldSize.medium,
               suffix1: suffix1,
               suffix2: suffix2,
               rightIcon1: rightIcon1,

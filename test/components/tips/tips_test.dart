@@ -6,12 +6,12 @@ import '../../utils/test_utils.dart';
 
 void main() {
   testWidgets('Tips shown correctly', (tester) async {
-    final controller = FunOverlayController();
+    final controller = FunDsOverlayController();
     await tester.pumpWidget(
       buildTestableWidget(
         child: Builder(
           builder: (BuildContext context) {
-            return Tips.overlayTarget(
+            return FunDsTips.overlayTarget(
               context,
               controller: controller,
               title: 'Title',

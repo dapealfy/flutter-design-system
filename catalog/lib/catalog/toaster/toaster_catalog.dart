@@ -31,7 +31,7 @@ class ToasterCatalog extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () {
-              final toaster = Toaster(
+              final toaster = FunDsToaster(
                 context: context,
                 message: 'Put short description here!',
                 label: 'Action',
@@ -53,9 +53,9 @@ class ToasterCatalog extends StatelessWidget {
           SizedBox(height: 16.h),
           ElevatedButton(
             onPressed: () {
-              final toaster = Toaster(
+              final toaster = FunDsToaster(
                 context: context,
-                type: ToasterType.error,
+                type: FunDsToasterType.error,
                 message: 'Put short description here!',
                 label: 'Action',
                 onAction: () {

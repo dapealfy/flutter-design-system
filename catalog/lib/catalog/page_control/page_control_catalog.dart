@@ -94,10 +94,10 @@ class _PageControlCatalogState extends State<PageControlCatalog> {
           const Divider(),
           Text('Circle - 5 dots', style: FunDsTypography.body12B),
           const SizedBox(height: 8),
-          AnimatedPageControl(
+          FunDsAnimatedPageControl(
             count: 5,
             activeIndex: activeIndexShort,
-            effect: PageControlEffect.circleEffect(
+            effect: FunDsPageControlEffect.circleEffect(
               count: 5,
               dotSize: dotSize.w,
               spacing: spacing.w,
@@ -133,10 +133,10 @@ class _PageControlCatalogState extends State<PageControlCatalog> {
           const Divider(),
           Text('Circle - 10 dots', style: FunDsTypography.body12B),
           const SizedBox(height: 8),
-          AnimatedPageControl(
+          FunDsAnimatedPageControl(
             count: 10,
             activeIndex: activeIndexLong,
-            effect: PageControlEffect.circleEffect(
+            effect: FunDsPageControlEffect.circleEffect(
               count: 10,
               dotSize: dotSize.w,
               spacing: spacing.w,
@@ -172,10 +172,10 @@ class _PageControlCatalogState extends State<PageControlCatalog> {
           const Divider(),
           Text('Strip - 6 item', style: FunDsTypography.body12B),
           const SizedBox(height: 8),
-          AnimatedPageControl(
+          FunDsAnimatedPageControl(
             count: 6,
             activeIndex: activeIndexStrip,
-            effect: PageControlEffect.stripEffect(
+            effect: FunDsPageControlEffect.stripEffect(
               width: stripWidth.w,
               height: stripHeight.h,
               spacing: spacing.w,
@@ -212,10 +212,10 @@ class _PageControlCatalogState extends State<PageControlCatalog> {
           const Divider(),
           Text('Filled Strip - 6 item', style: FunDsTypography.body12B),
           const SizedBox(height: 8),
-          AnimatedPageControl(
+          FunDsAnimatedPageControl(
             count: 6,
             activeIndex: activeFilledStrip,
-            effect: PageControlEffect.filledStripEffect(
+            effect: FunDsPageControlEffect.filledStripEffect(
               width: stripWidth.w,
               height: stripHeight.h,
               spacing: spacing.w,
@@ -264,10 +264,10 @@ class _PageControlCatalogState extends State<PageControlCatalog> {
             controller: circleController!,
             count: 5,
           ),
-          AttachedPageControl(
+          FunDsAttachedPageControl(
             controller: circleController!,
             count: 5,
-            effect: PageControlEffect.circleEffect(
+            effect: FunDsPageControlEffect.circleEffect(
               count: 5,
               dotSize: dotSize.w,
               spacing: spacing.w,
@@ -290,10 +290,10 @@ class _PageControlCatalogState extends State<PageControlCatalog> {
             controller: circleLongController!,
             count: 10,
           ),
-          AttachedPageControl(
+          FunDsAttachedPageControl(
             controller: circleLongController!,
             count: 10,
-            effect: PageControlEffect.circleEffect(
+            effect: FunDsPageControlEffect.circleEffect(
               count: 10,
               dotSize: dotSize.w,
               spacing: spacing.w,
@@ -316,10 +316,10 @@ class _PageControlCatalogState extends State<PageControlCatalog> {
             controller: stripController!,
             count: 6,
           ),
-          AttachedPageControl(
+          FunDsAttachedPageControl(
             controller: stripController!,
             count: 6,
-            effect: PageControlEffect.stripEffect(
+            effect: FunDsPageControlEffect.stripEffect(
               width: stripWidth.w,
               height: stripHeight.h,
               spacing: spacing.w,
@@ -343,10 +343,10 @@ class _PageControlCatalogState extends State<PageControlCatalog> {
             controller: filledStripController!,
             count: 6,
           ),
-          AttachedPageControl(
+          FunDsAttachedPageControl(
             controller: filledStripController!,
             count: 6,
-            effect: PageControlEffect.filledStripEffect(
+            effect: FunDsPageControlEffect.filledStripEffect(
               width: stripWidth.w,
               height: stripHeight.h,
               spacing: spacing.w,
@@ -600,8 +600,8 @@ class _StoryExampleState extends State<StoryExample>
               return AnimatedBuilder(
                 animation: _animController,
                 builder: (context, child) {
-                  return BasicPageControl(
-                    effect: PageControlEffect.filledStripEffect(
+                  return FunDsBasicPageControl(
+                    effect: FunDsPageControlEffect.filledStripEffect(
                       onZero: OnZero.empty,
                       width: dotWidth,
                       height: 5.h,

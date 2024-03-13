@@ -8,9 +8,9 @@ export 'scrolling_dots_effect.dart';
 export 'slide_effect.dart';
 
 /// An Abstraction for a dot-indicator animation effect
-abstract class PageControlEffect {
+abstract class FunDsPageControlEffect {
   /// Const constructor
-  const PageControlEffect();
+  const FunDsPageControlEffect();
 
   /// Builds a new painter every time the page offset changes
   IndicatorPainter buildPainter(int count, double offset);
@@ -29,7 +29,7 @@ abstract class PageControlEffect {
   int hitTestDots(double dx, int count, double current);
 
   /// Builder for common effect
-  static PageControlEffect circleEffect({
+  static FunDsPageControlEffect circleEffect({
     required int count,
     Color dotColor = FunDsColors.colorNeutral400,
     Color activeDotColor = FunDsColors.colorPrimary,
@@ -53,7 +53,7 @@ abstract class PageControlEffect {
           );
   }
 
-  static PageControlEffect stripEffect({
+  static FunDsPageControlEffect stripEffect({
     Color dotColor = FunDsColors.colorNeutral400,
     Color activeDotColor = FunDsColors.colorPrimary,
     double? width,
@@ -70,7 +70,7 @@ abstract class PageControlEffect {
     );
   }
 
-  static PageControlEffect filledStripEffect({
+  static FunDsPageControlEffect filledStripEffect({
     Color dotColor = FunDsColors.colorNeutral400,
     Color activeDotColor = FunDsColors.colorPrimary,
     double? width,
@@ -90,9 +90,9 @@ abstract class PageControlEffect {
   }
 }
 
-/// Basic implementation of [PageControlEffect] that holds some shared
+/// Basic implementation of [FunDsPageControlEffect] that holds some shared
 /// properties and behaviors between different effects
-abstract class BasicIndicatorEffect extends PageControlEffect {
+abstract class FunDsBasicIndicatorEffect extends FunDsPageControlEffect {
   /// Singe dot width
   final double dotWidth;
 
@@ -118,7 +118,7 @@ abstract class BasicIndicatorEffect extends PageControlEffect {
   final double strokeWidth;
 
   /// Default construe
-  const BasicIndicatorEffect({
+  const FunDsBasicIndicatorEffect({
     required this.strokeWidth,
     required this.dotWidth,
     required this.dotHeight,

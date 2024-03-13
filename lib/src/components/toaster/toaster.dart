@@ -3,11 +3,11 @@ import 'package:flutter_design_system/src/colors/colors.dart';
 import 'package:flutter_design_system/src/typography/typography.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum ToasterType { normal, error }
+enum FunDsToasterType { normal, error }
 
-class Toaster extends SnackBar {
+class FunDsToaster extends SnackBar {
   /// Creates a [SnackBar] with some [content] and an [action].
-  Toaster({
+  FunDsToaster({
     Key? key,
     required BuildContext context,
 
@@ -18,7 +18,7 @@ class Toaster extends SnackBar {
     String? label,
 
     /// The type of toaster to be displayed.
-    ToasterType type = ToasterType.normal,
+    FunDsToasterType type = FunDsToasterType.normal,
 
     /// The action to be displayed.
     void Function()? onAction,
@@ -100,7 +100,7 @@ class Toaster extends SnackBar {
             vertical: 12.h,
             horizontal: 16.w,
           ),
-          backgroundColor: (type == ToasterType.normal)
+          backgroundColor: (type == FunDsToasterType.normal)
               ? FunDsColors.colorNeutral900
               : FunDsColors.colorRed500,
           behavior: SnackBarBehavior.floating,

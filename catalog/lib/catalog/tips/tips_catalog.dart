@@ -34,18 +34,18 @@ class TipsCatalog extends StatefulWidget {
 }
 
 class _TipsCatalogState extends State<TipsCatalog> {
-  final FunOverlayController _controller1 = FunOverlayController();
-  final FunOverlayController _controller2 = FunOverlayController();
-  final FunOverlayController _controller3 = FunOverlayController();
-  final FunOverlayController _controller4 = FunOverlayController();
+  final FunDsOverlayController _controller1 = FunDsOverlayController();
+  final FunDsOverlayController _controller2 = FunDsOverlayController();
+  final FunDsOverlayController _controller3 = FunDsOverlayController();
+  final FunDsOverlayController _controller4 = FunDsOverlayController();
 
   /// In Practice, when you want to create tips chain,
   /// You can put this code on ViewModel so it can be accessed by any child widget
 
   int _currentTipsIdx = -1;
-  List<FunOverlayController> _controllerChains = [];
+  List<FunDsOverlayController> _controllerChains = [];
 
-  void showTipsChain(List<FunOverlayController> controlles) {
+  void showTipsChain(List<FunDsOverlayController> controlles) {
     _currentTipsIdx = 0;
     _controllerChains = controlles;
 
@@ -82,7 +82,7 @@ class _TipsCatalogState extends State<TipsCatalog> {
           ),
           Row(
             children: [
-              Tips.overlayTarget(
+              FunDsTips.overlayTarget(
                 context,
                 controller: _controller1,
                 title: 'Akses bantuan lebih mudah 👌🏻',
@@ -101,7 +101,7 @@ class _TipsCatalogState extends State<TipsCatalog> {
                 ),
               ),
               const Spacer(),
-              Tips.overlayTarget(
+              FunDsTips.overlayTarget(
                 context,
                 controller: _controller2,
                 title: 'Halaman Tanggung Renteng',
@@ -122,7 +122,7 @@ class _TipsCatalogState extends State<TipsCatalog> {
             ],
           ),
           const SizedBox(height: 200),
-          Tips.overlayTarget(
+          FunDsTips.overlayTarget(
             context,
             controller: _controller3,
             title: 'Musang',
@@ -157,7 +157,7 @@ class _TipsCatalogState extends State<TipsCatalog> {
           const SizedBox(
             height: 700,
           ),
-          Tips.overlayTarget(
+          FunDsTips.overlayTarget(
             context,
             title: 'Very Long Title That Long Long Very Long Title Long Title',
             description:

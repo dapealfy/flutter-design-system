@@ -7,7 +7,7 @@ class FunDsChip extends StatelessWidget {
   final FunDsIcon? trailing; //size will always replace to 20
   final FunDsChipType type;
   final String text;
-  final Label? label; // label size will always replace to FunDsChipType
+  final FunDsLabel? label; // label size will always replace to FunDsChipType
   final bool isActive;
   final bool enable;
   final VoidCallback? onPress;
@@ -86,8 +86,8 @@ class FunDsChip extends StatelessWidget {
                   padding: EdgeInsets.only(left: _chipPadding()),
                   child: label?.copyWith(
                     size: type == FunDsChipType.large
-                        ? LabelSize.medium
-                        : LabelSize.small,
+                        ? FunDsLabelSize.medium
+                        : FunDsLabelSize.small,
                   ),
                 ),
               ),

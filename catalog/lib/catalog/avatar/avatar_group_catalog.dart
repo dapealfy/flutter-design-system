@@ -77,18 +77,18 @@ class GroupAvatarCatalog extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(8, 16, 0, 8),
           child: Text('Text Avatar', style: FunDsTypography.heading16),
         ),
-        GroupAvatar(
+        FunDsGroupAvatar(
           itemCount: listName.length,
           itemBuilder: (context, index) {
             /// Simulate If index 2 don't have image then use text avatar
             if (index == 2) {
-              return Avatar.network(
+              return FunDsAvatar.network(
                 imageUrl: '',
                 name: listName[index],
-                size: AvatarSize.xxl,
+                size: FunDsAvatarSize.xxl,
                 backgroundColor: FunDsColors.colorPrimary100,
                 foregroundColor: FunDsColors.colorPrimary500,
-                shape: AvatarShape.round,
+                shape: FunDsAvatarShape.round,
                 border: Border.all(
                   color: FunDsColors.colorWhite,
                   width: 2,
@@ -96,13 +96,13 @@ class GroupAvatarCatalog extends StatelessWidget {
               );
             }
 
-            return Avatar.network(
+            return FunDsAvatar.network(
               imageUrl: 'https://i.pravatar.cc/150?img=${index + 1}',
               name: listName[index],
-              size: AvatarSize.xxl,
+              size: FunDsAvatarSize.xxl,
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
-              shape: AvatarShape.round,
+              shape: FunDsAvatarShape.round,
               border: Border.all(
                 color: FunDsColors.colorWhite,
                 width: 2,
@@ -134,16 +134,16 @@ class GroupAvatarCatalog extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(8, 16, 0, 8),
           child: Text('Image Avatar', style: FunDsTypography.heading16),
         ),
-        GroupAvatar(
+        FunDsGroupAvatar(
           maxLength: 4,
           itemCount: listAvatar.length,
           itemBuilder: (context, index) {
-            return Avatar.asset(
+            return FunDsAvatar.asset(
               imagePath: listAvatar[index],
-              size: AvatarSize.xxl,
+              size: FunDsAvatarSize.xxl,
               backgroundColor: FunDsColors.colorPrimary100,
               foregroundColor: FunDsColors.colorPrimary500,
-              shape: AvatarShape.round,
+              shape: FunDsAvatarShape.round,
               border: Border.all(
                 color: FunDsColors.colorWhite,
                 width: 2,

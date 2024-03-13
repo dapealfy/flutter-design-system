@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_system/funds.dart' hide TextField;
+import 'package:flutter_design_system/funds.dart' hide FunDsTextField;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Counter extends StatefulWidget {
-  const Counter({
+class FunDsCounter extends StatefulWidget {
+  const FunDsCounter({
     super.key,
     this.enabled = true,
     required this.label,
@@ -25,10 +25,10 @@ class Counter extends StatefulWidget {
   final int range;
 
   @override
-  State<Counter> createState() => _CounterState();
+  State<FunDsCounter> createState() => _FunDsCounterState();
 }
 
-class _CounterState extends State<Counter> {
+class _FunDsCounterState extends State<FunDsCounter> {
   late int value;
   TextEditingController controller = TextEditingController();
   @override

@@ -3,7 +3,7 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_design_system/src/components/page_control/painter/indicator_painter.dart';
 import 'package:flutter_design_system/src/components/page_control/painter/slide_painter.dart';
 
-class SlideEffect extends BasicIndicatorEffect {
+class SlideEffect extends FunDsBasicIndicatorEffect {
   final SlideType type;
 
   const SlideEffect({

@@ -11,7 +11,7 @@ void main() {
       double value = 0;
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.Slider.slider(
+          child: funds.FunDsSlider.slider(
             value: value,
             onChanged: (newValue) {
               value = newValue;
@@ -41,7 +41,7 @@ void main() {
         buildTestableWidget(
           child: SizedBox(
             width: 200,
-            child: funds.Slider.slider(
+            child: funds.FunDsSlider.slider(
               value: value,
               onChanged: (newValue) {
                 value = newValue;
@@ -74,7 +74,7 @@ void main() {
       RangeValues values = const RangeValues(0.4, 0.7);
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.Slider.rangeSlider(
+          child: funds.FunDsSlider.rangeSlider(
             value: values,
             onChanged: (newValue) {
               values = newValue;
@@ -110,7 +110,7 @@ void main() {
       RangeValues values = const RangeValues(30, 70);
       await tester.pumpWidget(
         buildTestableWidget(
-          child: funds.Slider.rangeSlider(
+          child: funds.FunDsSlider.rangeSlider(
             value: values,
             onChanged: (newValue) {
               values = newValue;

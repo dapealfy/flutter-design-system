@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum ToggleType { small, medium }
+enum FunDsToggleType { small, medium }
 
-class Toggle extends StatefulWidget {
+class FunDsToggle extends StatefulWidget {
   final String? title;
   final String? subtitle;
-  final ToggleType type;
+  final FunDsToggleType type;
   final bool isActive;
   final bool isEnabled;
   final Function(bool)? onChanged;
 
-  const Toggle({
+  const FunDsToggle({
     super.key,
     required this.type,
     this.title,
@@ -23,10 +23,10 @@ class Toggle extends StatefulWidget {
   });
 
   @override
-  State<Toggle> createState() => _ToggleState();
+  State<FunDsToggle> createState() => _FunDsToggleState();
 }
 
-class _ToggleState extends State<Toggle> {
+class _FunDsToggleState extends State<FunDsToggle> {
   late bool _isActive;
 
   @override
@@ -88,8 +88,8 @@ class _ToggleState extends State<Toggle> {
 
   _buildToggle() {
     double width = switch (widget.type) {
-      ToggleType.small => 36.h,
-      ToggleType.medium => 44.h,
+      FunDsToggleType.small => 36.h,
+      FunDsToggleType.medium => 44.h,
     };
 
     Color thumbColor =

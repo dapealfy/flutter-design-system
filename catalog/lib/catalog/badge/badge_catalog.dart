@@ -19,26 +19,26 @@ class BadgeCatalog extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.light,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.light,
                   inverted: false,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.light,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.light,
                   inverted: true,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.light,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.light,
                   inverted: false,
                   count: 9,
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.light,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.light,
                   inverted: true,
                   count: 9,
                 ),
@@ -49,26 +49,26 @@ class BadgeCatalog extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.info,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.info,
                   inverted: false,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.info,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.info,
                   inverted: true,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.info,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.info,
                   inverted: false,
                   count: 9,
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.info,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.info,
                   inverted: true,
                   count: 9,
                 ),
@@ -79,26 +79,26 @@ class BadgeCatalog extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.success,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.success,
                   inverted: false,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.success,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.success,
                   inverted: true,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.success,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.success,
                   inverted: false,
                   count: 9,
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.success,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.success,
                   inverted: true,
                   count: 9,
                 ),
@@ -109,26 +109,26 @@ class BadgeCatalog extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.warning,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.warning,
                   inverted: false,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.warning,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.warning,
                   inverted: true,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.warning,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.warning,
                   inverted: false,
                   count: 9,
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.warning,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.warning,
                   inverted: true,
                   count: 9,
                 ),
@@ -139,32 +139,32 @@ class BadgeCatalog extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.alert,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.alert,
                   inverted: false,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                const funds.Badge(
-                  badgeStatus: funds.BadgeStatus.alert,
+                const funds.FunDsBadge(
+                  badgeStatus: funds.FunDsBadgeStatus.alert,
                   inverted: true,
                   label: 'Label',
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.alert,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.alert,
                   inverted: false,
                   count: 9,
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.alert,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.alert,
                   inverted: true,
                   count: 9,
                 ),
                 const SizedBox(width: 8),
-                funds.Badge.circled(
-                  badgeStatus: funds.BadgeStatus.alert,
+                funds.FunDsBadge.circled(
+                  badgeStatus: funds.FunDsBadgeStatus.alert,
                   inverted: false,
                   count: 100,
                 ),

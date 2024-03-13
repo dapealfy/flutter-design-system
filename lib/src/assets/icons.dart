@@ -221,6 +221,8 @@ class FunDsIconography {
       'packages/flutter_design_system/assets/icons/transaction/ic_withdraw.svg';
   static const String icAvatar =
       'packages/flutter_design_system/assets/icons/icon_avatar.svg';
+  static const String damagedMapFilled =
+      'packages/flutter_design_system/assets/icons/operate/ic_damage_map_filled.svg';
 
   static List<String> getAllIcons() {
     return [
@@ -333,7 +335,8 @@ class FunDsIconography {
       transactionIcRefreshMoney2,
       transactionIcWallet,
       transactionIcWithdraw,
-      icAvatar
+      icAvatar,
+      damagedMapFilled,
     ];
   }
 }

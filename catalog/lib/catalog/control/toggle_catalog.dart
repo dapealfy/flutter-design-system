@@ -38,9 +38,9 @@ class _ToggleCatalogState extends State<ToggleCatalog> {
                 style: FunDsTypography.body12,
               ),
               const Row(children: [
-                Toggle(type: ToggleType.medium),
-                Toggle(
-                  type: ToggleType.medium,
+                FunDsToggle(type: FunDsToggleType.medium),
+                FunDsToggle(
+                  type: FunDsToggleType.medium,
                   isActive: false,
                 ),
               ]),
@@ -50,9 +50,8 @@ class _ToggleCatalogState extends State<ToggleCatalog> {
                 style: FunDsTypography.body12,
               ),
               const Row(children: [
-                Toggle(type: ToggleType.small),
-                Toggle(
-                    type: ToggleType.small, isActive: false),
+                FunDsToggle(type: FunDsToggleType.small),
+                FunDsToggle(type: FunDsToggleType.small, isActive: false),
               ]),
               const SizedBox(height: 16),
             ]),
@@ -62,11 +61,11 @@ class _ToggleCatalogState extends State<ToggleCatalog> {
                 style: FunDsTypography.heading20,
               ),
               const SizedBox(height: 16),
-              Toggle(
+              FunDsToggle(
                 title: 'Active Default',
                 subtitle: 'Value $_toggleValueActive',
                 isActive: _toggleValueActive,
-                type: ToggleType.medium,
+                type: FunDsToggleType.medium,
                 onChanged: (bool isActive) {
                   setState(() {
                     _toggleValueActive = isActive;
@@ -74,11 +73,11 @@ class _ToggleCatalogState extends State<ToggleCatalog> {
                 },
               ),
               const SizedBox(height: 16),
-              Toggle(
+              FunDsToggle(
                 title: 'In active Default',
                 subtitle: 'Value $_toggleValueInActive',
                 isActive: false,
-                type: ToggleType.medium,
+                type: FunDsToggleType.medium,
                 onChanged: (bool isActive) {
                   setState(() {
                     _toggleValueInActive = isActive;
@@ -86,23 +85,23 @@ class _ToggleCatalogState extends State<ToggleCatalog> {
                 },
               ),
               const SizedBox(height: 16),
-              const Toggle(
+              const FunDsToggle(
                 title: 'Title only',
                 isActive: false,
-                type: ToggleType.medium,
+                type: FunDsToggleType.medium,
               ),
               const SizedBox(height: 16),
-              const Toggle(
+              const FunDsToggle(
                 title: 'Disabled',
                 isActive: false,
-                type: ToggleType.medium,
+                type: FunDsToggleType.medium,
                 isEnabled: false,
               ),
               const SizedBox(height: 16),
-              const Toggle(
+              const FunDsToggle(
                 title: 'Disabled',
                 isActive: true,
-                type: ToggleType.medium,
+                type: FunDsToggleType.medium,
                 isEnabled: false,
               ),
             ]),

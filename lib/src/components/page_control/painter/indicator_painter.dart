@@ -10,7 +10,7 @@ abstract class BasicIndicatorPainter extends IndicatorPainter {
 
   /// The provided effect is passed to this super class
   /// to make some calculations and paint still dots
-  final BasicIndicatorEffect _effect;
+  final FunDsBasicIndicatorEffect _effect;
 
   /// Inactive dot paint or base paint in one-color effects.
   final Paint dotPaint;

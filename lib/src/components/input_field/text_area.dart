@@ -6,17 +6,17 @@ import 'package:flutter_design_system/src/utils/disable_color_filter.dart';
 import 'package:flutter_design_system/src/utils/double_border.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum TextAreaSize {
+enum FunDsTextAreaSize {
   small(3),
   large(4);
 
-  const TextAreaSize(this.maxLines);
+  const FunDsTextAreaSize(this.maxLines);
 
   final int maxLines;
 }
 
-class TextArea extends StatefulWidget {
-  const TextArea({
+class FunDsTextArea extends StatefulWidget {
+  const FunDsTextArea({
     super.key,
     this.labelText,
     this.label,
@@ -28,7 +28,7 @@ class TextArea extends StatefulWidget {
     this.rightIcon1,
     this.rightIcon2,
     this.maxLines,
-    this.textAreaSize = TextAreaSize.small,
+    this.textAreaSize = FunDsTextAreaSize.small,
     this.isError = false,
     this.enabled = true,
     this.focusNode,
@@ -86,7 +86,7 @@ class TextArea extends StatefulWidget {
   /// Will set the [maxLines] value
   ///
   /// If [maxLines] is not null, this will be ignored
-  final TextAreaSize textAreaSize;
+  final FunDsTextAreaSize textAreaSize;
 
   /// Will be used to control the focus of the text field
   final FocusNode? focusNode;
@@ -123,10 +123,10 @@ class TextArea extends StatefulWidget {
   final bool useColorFilterForDisabled;
 
   @override
-  State<TextArea> createState() => _TextAreaState();
+  State<FunDsTextArea> createState() => _FunDsTextAreaState();
 }
 
-class _TextAreaState extends State<TextArea> {
+class _FunDsTextAreaState extends State<FunDsTextArea> {
   FocusNode? _focusNode;
   FunDsTextController? _controller;
   ScrollController? _scrollController;
@@ -292,9 +292,12 @@ class _TextAreaState extends State<TextArea> {
                     isDense: true,
                     contentPadding: EdgeInsets.symmetric(
                       horizontal:
-                          (widget.textAreaSize == TextAreaSize.small) ? 10 : 16,
-                      vertical:
-                          (widget.textAreaSize == TextAreaSize.small) ? 6 : 12,
+                          (widget.textAreaSize == FunDsTextAreaSize.small)
+                              ? 10
+                              : 16,
+                      vertical: (widget.textAreaSize == FunDsTextAreaSize.small)
+                          ? 6
+                          : 12,
                     ),
                     border: InputBorder.none,
                     hintText: widget.hintText,
@@ -361,9 +364,9 @@ class _TextAreaState extends State<TextArea> {
 
   TextStyle _textStyle() {
     switch (widget.textAreaSize) {
-      case TextAreaSize.small:
+      case FunDsTextAreaSize.small:
         return FunDsTypography.body14;
-      case TextAreaSize.large:
+      case FunDsTextAreaSize.large:
         return FunDsTypography.body16;
     }
   }

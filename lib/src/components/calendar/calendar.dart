@@ -6,12 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /// Calendar component
 /// https://www.figma.com/file/VWK8ra7NhxzTW9iY4MQ9KG/FunDS---Component-Library?type=design&node-id=7831-15923&mode=design&t=QYete7CRUJnPg0fx-0
 
-typedef Range = ({int start, int end});
+typedef FunDsRange = ({int start, int end});
 
-class Calendar extends StatefulWidget {
+class FunDsCalendar extends StatefulWidget {
   static final itemExtent = 48.h;
 
-  const Calendar({
+  const FunDsCalendar({
     super.key,
     this.titleText,
     required this.initialDate,
@@ -66,7 +66,7 @@ class Calendar extends StatefulWidget {
         ),
       ),
       builder: (context) {
-        return Calendar(
+        return FunDsCalendar(
           titleText: titleText,
           initialDate: initialDate,
           minDate: minDate,
@@ -84,10 +84,10 @@ class Calendar extends StatefulWidget {
   }
 
   @override
-  State<Calendar> createState() => _CalendarState();
+  State<FunDsCalendar> createState() => _FunDsCalendarState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _FunDsCalendarState extends State<FunDsCalendar> {
   DateTime get effectiveMinDate => widget.minDate ?? DateTime(1950, 1, 1);
 
   // Month 13 day 0 means last day of the month 12
@@ -98,9 +98,9 @@ class _CalendarState extends State<Calendar> {
   late FixedExtentScrollController monthController;
   late FixedExtentScrollController yearController;
 
-  Range dayRange = (start: 0, end: 0);
-  Range monthRange = (start: 0, end: 0);
-  Range yearRange = (start: 0, end: 0);
+  FunDsRange dayRange = (start: 0, end: 0);
+  FunDsRange monthRange = (start: 0, end: 0);
+  FunDsRange yearRange = (start: 0, end: 0);
   String? errorText;
 
   @override
@@ -227,7 +227,7 @@ class _CalendarState extends State<Calendar> {
   }
 
   Widget _buildDayPicker() {
-    return _CalendarList(
+    return _FunDsCalendarList(
       key: const Key('calendar-day'),
       controller: dayController,
       range: dayRange,
@@ -240,7 +240,7 @@ class _CalendarState extends State<Calendar> {
   }
 
   Widget _buildMonthPicker() {
-    return _CalendarList(
+    return _FunDsCalendarList(
       key: const Key('calendar-month'),
       controller: monthController,
       range: monthRange,
@@ -255,7 +255,7 @@ class _CalendarState extends State<Calendar> {
   }
 
   Widget _buildYearPicker() {
-    return _CalendarList(
+    return _FunDsCalendarList(
       key: const Key('calendar-year'),
       controller: yearController,
       range: yearRange,
@@ -339,7 +339,7 @@ class _CalendarState extends State<Calendar> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Container(
-                        height: Calendar.itemExtent * 5,
+                        height: FunDsCalendar.itemExtent * 5,
                         padding: EdgeInsets.only(
                           bottom: (errorText == null) ? 0 : 16,
                         ),
@@ -364,13 +364,15 @@ class _CalendarState extends State<Calendar> {
                           ? CrossFadeState.showFirst
                           : CrossFadeState.showSecond,
                       firstChild: const SizedBox(),
-                      secondChild: Ticker(
-                        key: const Key('calendar-error'),
-                        child: Text(
-                          errorText ?? '',
+                      secondChild: Offstage(
+                        child: FunDsTicker(
+                          key: const Key('calendar-error'),
+                          description: errorText ?? '',
+                          icon: FunDsIconography.infoIcWarning,
+                          variant: FunDsTickerVariant.danger,
+                          type: FunDsTickerType.outline,
                         ),
-                        type: TickerType.danger,
-                        funDsIconography: FunDsIconography.infoIcWarning,
+                        offstage: errorText == null,
                       ),
                     ),
                   ],
@@ -411,14 +413,14 @@ class _CalendarState extends State<Calendar> {
   }
 }
 
-class _CalendarList extends StatelessWidget {
+class _FunDsCalendarList extends StatelessWidget {
   final FixedExtentScrollController controller;
-  final Range range;
+  final FunDsRange range;
   final Function(int index) onSelectedItemChanged;
   final int selectedItem;
   final Widget Function(int indexInRange) itemBuilder;
 
-  const _CalendarList({
+  const _FunDsCalendarList({
     super.key,
     required this.controller,
     required this.range,
@@ -430,7 +432,7 @@ class _CalendarList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListWheelScrollView(
-      itemExtent: Calendar.itemExtent,
+      itemExtent: FunDsCalendar.itemExtent,
       diameterRatio: 10,
       controller: controller,
       physics: const FixedExtentScrollPhysics(),

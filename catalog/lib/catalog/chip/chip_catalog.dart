@@ -42,22 +42,22 @@ class _ChipCatalogState extends State<ChipCatalog> {
       ],
     );
 
-    final labelType = context.knobs.options<LabelType>(
+    final labelType = context.knobs.options<FunDsLabelType>(
       label: 'Label Type',
       description: 'Change Label Type by this knobs',
-      initial: LabelType.filled,
+      initial: FunDsLabelType.filled,
       options: [
         const Option(
           label: 'Filled',
-          value: LabelType.filled,
+          value: FunDsLabelType.filled,
         ),
         const Option(
           label: 'Invert',
-          value: LabelType.invert,
+          value: FunDsLabelType.invert,
         ),
         const Option(
           label: 'Outline',
-          value: LabelType.outline,
+          value: FunDsLabelType.outline,
         ),
       ],
     );
@@ -153,10 +153,10 @@ class _ChipCatalogState extends State<ChipCatalog> {
                   funDsIconography: FunDsIconography.basicIcChevronDown,
                   size: 20.r,
                 ),
-                label: Label(
+                label: FunDsLabel(
                   'Label',
                   type: labelType,
-                  color: LabelColor.red,
+                  color: FunDsLabelColor.red,
                 ),
                 onPress: () {
                   setState(() {

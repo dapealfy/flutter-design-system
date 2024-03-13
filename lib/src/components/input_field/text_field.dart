@@ -6,7 +6,7 @@ import 'package:flutter_design_system/src/utils/disable_color_filter.dart';
 import 'package:flutter_design_system/src/utils/double_border.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TextField extends StatefulWidget {
+class FunDsTextField extends StatefulWidget {
   /// Will be displayed above the text field
   final String? labelText;
 
@@ -94,7 +94,7 @@ class TextField extends StatefulWidget {
   final ValueChanged<String>? onSubmitted;
 
   /// Will be called when the keyboard action button is pressed
-  final TextFieldSize? size;
+  final FunDsTextFieldSize? size;
 
   /// Will make the text field read only
   final bool readOnly;
@@ -110,7 +110,7 @@ class TextField extends StatefulWidget {
   /// [rightIcon1], [rightIcon2]
   final bool useColorFilterForDisabled;
 
-  const TextField({
+  const FunDsTextField({
     Key? key,
     this.labelText,
     this.label,
@@ -139,7 +139,7 @@ class TextField extends StatefulWidget {
     this.inputFormatters,
     this.textInputAction,
     this.onSubmitted,
-    this.size = TextFieldSize.small,
+    this.size = FunDsTextFieldSize.small,
     this.readOnly = false,
     this.readOnlyTextOverflow,
     this.onTap,
@@ -147,10 +147,10 @@ class TextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<TextField> createState() => _TextFieldState();
+  State<FunDsTextField> createState() => _FunDsTextFieldState();
 }
 
-class _TextFieldState extends State<TextField> {
+class _FunDsTextFieldState extends State<FunDsTextField> {
   FocusNode? _focusNode;
   FunDsTextController? _controller;
 
@@ -243,18 +243,18 @@ class _TextFieldState extends State<TextField> {
           LengthLimitingTextInputFormatter(widget.maxLength),
         ...widget.inputFormatters ?? [],
       ],
-      style: widget.size == TextFieldSize.small
+      style: widget.size == FunDsTextFieldSize.small
           ? FunDsTypography.body12
           : FunDsTypography.body14,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
-          vertical: widget.size == TextFieldSize.small ? 6.h : 8.h,
-          horizontal: widget.size == TextFieldSize.small ? 10.w : 12.w,
+          vertical: widget.size == FunDsTextFieldSize.small ? 6.h : 8.h,
+          horizontal: widget.size == FunDsTextFieldSize.small ? 10.w : 12.w,
         ),
         isDense: true,
         border: InputBorder.none,
         hintText: widget.hintText,
-        hintStyle: widget.size == TextFieldSize.small
+        hintStyle: widget.size == FunDsTextFieldSize.small
             ? FunDsTypography.body12
             : FunDsTypography.body14
                 .copyWith(color: FunDsColors.colorNeutral500),
@@ -277,7 +277,7 @@ class _TextFieldState extends State<TextField> {
               // Show hint
               return Text(
                 widget.hintText ?? '',
-                style: widget.size == TextFieldSize.small
+                style: widget.size == FunDsTextFieldSize.small
                     ? FunDsTypography.body12
                     : FunDsTypography.body14
                         .copyWith(color: FunDsColors.colorNeutral500),
@@ -289,7 +289,7 @@ class _TextFieldState extends State<TextField> {
               value.text,
               maxLines: 1,
               overflow: widget.readOnlyTextOverflow,
-              style: widget.size == TextFieldSize.small
+              style: widget.size == FunDsTextFieldSize.small
                   ? FunDsTypography.body12
                   : FunDsTypography.body14,
             );
@@ -384,7 +384,7 @@ class _TextFieldState extends State<TextField> {
       children: [
         if (widget.labelText != null || widget.label != null)
           DefaultTextStyle(
-            style: (widget.size == TextFieldSize.medium
+            style: (widget.size == FunDsTextFieldSize.medium
                     ? FunDsTypography.body14B
                     : FunDsTypography.body12B)
                 .copyWith(color: labelColor),
@@ -396,7 +396,7 @@ class _TextFieldState extends State<TextField> {
           ),
         if (widget.descriptionText != null || widget.description != null)
           DefaultTextStyle(
-            style: (widget.size == TextFieldSize.medium
+            style: (widget.size == FunDsTextFieldSize.medium
                     ? FunDsTypography.body14
                     : FunDsTypography.body12)
                 .copyWith(color: descriptionColor),
@@ -407,7 +407,7 @@ class _TextFieldState extends State<TextField> {
                 ),
           ),
         SizedBox(
-          height: widget.size == TextFieldSize.small ? 4.h : 8.h,
+          height: widget.size == FunDsTextFieldSize.small ? 4.h : 8.h,
         ),
         GestureDetector(
           onTap: () {
@@ -443,7 +443,9 @@ class _TextFieldState extends State<TextField> {
                     Padding(
                       key: const Key('leftIcon'),
                       padding: EdgeInsets.only(
-                        left: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                        left: widget.size == FunDsTextFieldSize.small
+                            ? 10.w
+                            : 12.w,
                       ),
                       child: DisabledColorFilter(
                         apply: applyDisabledColorFilter,
@@ -457,7 +459,9 @@ class _TextFieldState extends State<TextField> {
                     Padding(
                       key: const Key('suffix1'),
                       padding: EdgeInsets.only(
-                        right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                        right: widget.size == FunDsTextFieldSize.small
+                            ? 10.w
+                            : 12.w,
                       ),
                       child: DisabledColorFilter(
                         apply: applyDisabledColorFilter,
@@ -468,7 +472,9 @@ class _TextFieldState extends State<TextField> {
                     Padding(
                       key: const Key('rightIcon1'),
                       padding: EdgeInsets.only(
-                        right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                        right: widget.size == FunDsTextFieldSize.small
+                            ? 10.w
+                            : 12.w,
                       ),
                       child: DisabledColorFilter(
                         apply: applyDisabledColorFilter,
@@ -479,7 +485,9 @@ class _TextFieldState extends State<TextField> {
                     Padding(
                       key: const Key('rightIcon2'),
                       padding: EdgeInsets.only(
-                        right: widget.size == TextFieldSize.small ? 10.w : 12.w,
+                        right: widget.size == FunDsTextFieldSize.small
+                            ? 10.w
+                            : 12.w,
                       ),
                       child: DisabledColorFilter(
                         apply: applyDisabledColorFilter,
@@ -497,13 +505,15 @@ class _TextFieldState extends State<TextField> {
                       child: Padding(
                         key: const Key('clearIcon'),
                         padding: EdgeInsets.only(
-                          right:
-                              widget.size == TextFieldSize.small ? 10.w : 12.w,
+                          right: widget.size == FunDsTextFieldSize.small
+                              ? 10.w
+                              : 12.w,
                         ),
                         child: Icon(
                           Icons.cancel,
-                          size:
-                              widget.size == TextFieldSize.small ? 16.w : 18.w,
+                          size: widget.size == FunDsTextFieldSize.small
+                              ? 16.w
+                              : 18.w,
                           color: FunDsColors.colorNeutral600,
                         ),
                       ),
@@ -515,11 +525,11 @@ class _TextFieldState extends State<TextField> {
           ),
         ),
         SizedBox(
-          height: widget.size == TextFieldSize.small ? 4.h : 8.h,
+          height: widget.size == FunDsTextFieldSize.small ? 4.h : 8.h,
         ),
         if (widget.helperText != null || widget.helper != null)
           DefaultTextStyle(
-            style: (widget.size == TextFieldSize.small
+            style: (widget.size == FunDsTextFieldSize.small
                     ? FunDsTypography.body12
                     : FunDsTypography.body14)
                 .copyWith(
@@ -537,7 +547,7 @@ class _TextFieldState extends State<TextField> {
   }
 }
 
-enum TextFieldSize {
+enum FunDsTextFieldSize {
   small,
   medium,
 }

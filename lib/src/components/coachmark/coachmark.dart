@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 
-class CoachMark extends StatelessWidget {
+class FunDsCoachMark extends StatelessWidget {
   final String title;
   final String description;
   final String overflow;
@@ -10,7 +10,7 @@ class CoachMark extends StatelessWidget {
   final void Function()? onPressedPrimary;
   final void Function()? onPressedSecondary;
 
-  const CoachMark({
+  const FunDsCoachMark({
     super.key,
     required this.title,
     required this.description,
@@ -81,7 +81,7 @@ class CoachMark extends StatelessWidget {
 
   static Widget overlayTarget(
     BuildContext context, {
-    required FunOverlayController controller,
+    required FunDsOverlayController controller,
     required String title,
     required String description,
     required String primaryButtonText,
@@ -91,15 +91,15 @@ class CoachMark extends StatelessWidget {
     VoidCallback? onClickSecondary,
     String overflow = '',
   }) {
-    return FunOverlay(
+    return FunDsOverlay(
       controller: controller,
       showArrow: false,
       focusPadding: const EdgeInsets.all(8),
       focusRadius: 8,
       overlayWidth: MediaQuery.of(context).size.width - 36,
-      overlayPosition: OverlayPosition.preferBottom,
+      overlayPosition: FunDsOverlayPosition.preferBottom,
       overlaySpace: 16,
-      overlayWidget: CoachMark(
+      overlayWidget: FunDsCoachMark(
         title: title,
         description: description,
         overflow: overflow,

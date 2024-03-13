@@ -63,7 +63,7 @@ class _AccordionCatalogState extends State<AccordionCatalog> {
             .copyWith(color: FunDsColors.colorNeutral900),
       ),
       SizedBox(height: 4.h),
-      Accordion(
+      FunDsAccordion(
         title: title,
         description: description,
         isLoading: isLoading ? _isLoading : false,

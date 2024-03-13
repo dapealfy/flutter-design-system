@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum BadgeStatus { light, info, success, alert, warning }
+enum FunDsBadgeStatus { light, info, success, alert, warning }
 
-class Badge extends StatelessWidget {
+class FunDsBadge extends StatelessWidget {
   /// BadgeStatus: use this enum to set the badge status.
-  final BadgeStatus? badgeStatus;
+  final FunDsBadgeStatus? badgeStatus;
 
   /// label: use this to set the badge label.
   final String? label;
@@ -22,7 +22,7 @@ class Badge extends StatelessWidget {
   final maxCount = 99;
 
   /// Badge: use this constructor when you want to make a badge.
-  const Badge({
+  const FunDsBadge({
     Key? key,
     this.badgeStatus,
     this.label,
@@ -35,13 +35,13 @@ class Badge extends StatelessWidget {
         super(key: key);
 
   /// Circled: use this type when you want to make numbering badge.
-  factory Badge.circled({
+  factory FunDsBadge.circled({
     Key? key,
-    BadgeStatus? badgeStatus,
+    FunDsBadgeStatus? badgeStatus,
     bool inverted = false,
     int? count,
   }) {
-    return Badge(
+    return FunDsBadge(
       key: key,
       badgeStatus: badgeStatus,
       inverted: inverted,
@@ -64,7 +64,7 @@ class Badge extends StatelessWidget {
   }
 
   ShapeDecoration _buildDecoration(
-    BadgeStatus? badgeStatus, {
+    FunDsBadgeStatus? badgeStatus, {
     bool inverted = false,
     int? count,
   }) {
@@ -84,7 +84,7 @@ class Badge extends StatelessWidget {
   }
 
   Widget _buildText(
-    BadgeStatus? badgeStatus,
+    FunDsBadgeStatus? badgeStatus,
     int? count, {
     bool inverted = false,
   }) {
@@ -108,51 +108,53 @@ class Badge extends StatelessWidget {
     }
   }
 
-  Color _getTextColor(BadgeStatus? badgeStatus, {bool inverted = false}) {
+  Color _getTextColor(FunDsBadgeStatus? badgeStatus, {bool inverted = false}) {
     final colorMap = {
-      BadgeStatus.light:
+      FunDsBadgeStatus.light:
           inverted ? FunDsColors.colorNeutral900 : FunDsColors.colorWhite,
-      BadgeStatus.info:
+      FunDsBadgeStatus.info:
           inverted ? FunDsColors.colorBlue600 : FunDsColors.colorWhite,
-      BadgeStatus.success:
+      FunDsBadgeStatus.success:
           inverted ? FunDsColors.colorGreen600 : FunDsColors.colorWhite,
-      BadgeStatus.alert:
+      FunDsBadgeStatus.alert:
           inverted ? FunDsColors.colorRed500 : FunDsColors.colorWhite,
-      BadgeStatus.warning:
+      FunDsBadgeStatus.warning:
           inverted ? FunDsColors.colorOrange600 : FunDsColors.colorWhite,
     };
 
     return colorMap[badgeStatus] ?? FunDsColors.colorWhite;
   }
 
-  Color _getBackgroundColor(BadgeStatus? badgeStatus, {bool inverted = false}) {
+  Color _getBackgroundColor(FunDsBadgeStatus? badgeStatus,
+      {bool inverted = false}) {
     final colorMap = {
-      BadgeStatus.light:
+      FunDsBadgeStatus.light:
           inverted ? FunDsColors.colorWhite : FunDsColors.colorPrimary500,
-      BadgeStatus.info:
+      FunDsBadgeStatus.info:
           inverted ? FunDsColors.colorBlue50 : FunDsColors.colorBlue600,
-      BadgeStatus.success:
+      FunDsBadgeStatus.success:
           inverted ? FunDsColors.colorGreen50 : FunDsColors.colorGreen600,
-      BadgeStatus.warning:
+      FunDsBadgeStatus.warning:
           inverted ? FunDsColors.colorRed50 : FunDsColors.colorOrange500,
-      BadgeStatus.alert:
+      FunDsBadgeStatus.alert:
           inverted ? FunDsColors.colorRed50 : FunDsColors.colorRed500,
     };
 
     return colorMap[badgeStatus] ?? FunDsColors.colorWhite;
   }
 
-  Color _getBorderColor(BadgeStatus? badgeStatus, {bool inverted = false}) {
+  Color _getBorderColor(FunDsBadgeStatus? badgeStatus,
+      {bool inverted = false}) {
     final colorMap = {
-      BadgeStatus.light:
+      FunDsBadgeStatus.light:
           inverted ? FunDsColors.colorNeutral200 : FunDsColors.colorPrimary500,
-      BadgeStatus.info:
+      FunDsBadgeStatus.info:
           inverted ? FunDsColors.colorBlue200 : FunDsColors.colorBlue600,
-      BadgeStatus.success:
+      FunDsBadgeStatus.success:
           inverted ? FunDsColors.colorGreen200 : FunDsColors.colorGreen600,
-      BadgeStatus.warning:
+      FunDsBadgeStatus.warning:
           inverted ? FunDsColors.colorOrange200 : FunDsColors.colorOrange500,
-      BadgeStatus.alert:
+      FunDsBadgeStatus.alert:
           inverted ? FunDsColors.colorRed200 : FunDsColors.colorRed500,
     };
 

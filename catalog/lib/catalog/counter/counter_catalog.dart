@@ -74,7 +74,7 @@ class _CounterCatalogState extends State<CounterCatalog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            funds.Counter(
+            funds.FunDsCounter(
               label: labelSingle,
               enabled: enabled,
               onChanged: (value) {

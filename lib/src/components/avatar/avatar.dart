@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Avatar extends StatelessWidget {
+class FunDsAvatar extends StatelessWidget {
   /// The text to display as the avatar.
   final String? name;
 
@@ -21,21 +21,21 @@ class Avatar extends StatelessWidget {
   final BoxBorder? border;
 
   /// The size of the avatar.
-  final AvatarSize size;
+  final FunDsAvatarSize size;
 
   /// The shape of the avatar.
-  final AvatarShape shape;
+  final FunDsAvatarShape shape;
 
   /// Create FunDsAvatar of all types i.e. round,rectangle with different sizes.
-  const Avatar({
+  const FunDsAvatar({
     Key? key,
     this.name,
     this.backgroundColor,
     this.foregroundColor,
     this.imagePath,
     this.imageUrl,
-    this.size = AvatarSize.medium,
-    this.shape = AvatarShape.round,
+    this.size = FunDsAvatarSize.medium,
+    this.shape = FunDsAvatarShape.round,
     this.border,
   })  : assert(
           (imagePath != null && imageUrl == null) ||
@@ -46,17 +46,17 @@ class Avatar extends StatelessWidget {
         super(key: key);
 
   /// Create Avatar with image from network.
-  factory Avatar.network({
+  factory FunDsAvatar.network({
     Key? key,
     required String imageUrl,
     String? name,
     Color? backgroundColor,
     Color? foregroundColor,
-    AvatarSize size = AvatarSize.medium,
-    AvatarShape shape = AvatarShape.round,
+    FunDsAvatarSize size = FunDsAvatarSize.medium,
+    FunDsAvatarShape shape = FunDsAvatarShape.round,
     BoxBorder? border,
   }) {
-    return Avatar(
+    return FunDsAvatar(
       key: key,
       imageUrl: imageUrl,
       name: name,
@@ -69,17 +69,17 @@ class Avatar extends StatelessWidget {
   }
 
   /// Create Avatar with image from asset.
-  factory Avatar.asset({
+  factory FunDsAvatar.asset({
     Key? key,
     required String imagePath,
     String? name,
     Color? backgroundColor,
     Color? foregroundColor,
-    AvatarSize size = AvatarSize.medium,
-    AvatarShape shape = AvatarShape.round,
+    FunDsAvatarSize size = FunDsAvatarSize.medium,
+    FunDsAvatarShape shape = FunDsAvatarShape.round,
     BoxBorder? border,
   }) {
-    return Avatar(
+    return FunDsAvatar(
       key: key,
       imagePath: imagePath,
       name: name,
@@ -107,15 +107,15 @@ class Avatar extends StatelessWidget {
 
   double getCircularProgressStrokeWidth() {
     switch (size) {
-      case AvatarSize.xxs:
-      case AvatarSize.xs:
+      case FunDsAvatarSize.xxs:
+      case FunDsAvatarSize.xs:
         return 1;
-      case AvatarSize.small:
-      case AvatarSize.medium:
+      case FunDsAvatarSize.small:
+      case FunDsAvatarSize.medium:
         return 2;
-      case AvatarSize.large:
-      case AvatarSize.xl:
-      case AvatarSize.xxl:
+      case FunDsAvatarSize.large:
+      case FunDsAvatarSize.xl:
+      case FunDsAvatarSize.xxl:
         return 3;
       default:
         return 3;
@@ -124,15 +124,15 @@ class Avatar extends StatelessWidget {
 
   double get _borderRadius {
     switch (size) {
-      case AvatarSize.xxs:
-      case AvatarSize.xs:
+      case FunDsAvatarSize.xxs:
+      case FunDsAvatarSize.xs:
         return 4;
-      case AvatarSize.small:
-      case AvatarSize.medium:
+      case FunDsAvatarSize.small:
+      case FunDsAvatarSize.medium:
         return 8;
-      case AvatarSize.large:
-      case AvatarSize.xl:
-      case AvatarSize.xxl:
+      case FunDsAvatarSize.large:
+      case FunDsAvatarSize.xl:
+      case FunDsAvatarSize.xxl:
         return 12;
       default:
         return 8;
@@ -141,19 +141,19 @@ class Avatar extends StatelessWidget {
 
   TextStyle get textStyle {
     switch (size) {
-      case AvatarSize.xxs:
+      case FunDsAvatarSize.xxs:
         return FunDsTypography.body10B.copyWith(color: foregroundColor);
-      case AvatarSize.xs:
+      case FunDsAvatarSize.xs:
         return FunDsTypography.body12B.copyWith(color: foregroundColor);
-      case AvatarSize.small:
+      case FunDsAvatarSize.small:
         return FunDsTypography.heading14.copyWith(color: foregroundColor);
-      case AvatarSize.medium:
+      case FunDsAvatarSize.medium:
         return FunDsTypography.heading16.copyWith(color: foregroundColor);
-      case AvatarSize.large:
+      case FunDsAvatarSize.large:
         return FunDsTypography.body18B.copyWith(color: foregroundColor);
-      case AvatarSize.xl:
+      case FunDsAvatarSize.xl:
         return FunDsTypography.heading20.copyWith(color: foregroundColor);
-      case AvatarSize.xxl:
+      case FunDsAvatarSize.xxl:
         return FunDsTypography.heading24.copyWith(color: foregroundColor);
       default:
         return FunDsTypography.heading16.copyWith(color: foregroundColor);
@@ -161,9 +161,9 @@ class Avatar extends StatelessWidget {
   }
 
   BoxShape get _avatarBoxShape {
-    if (shape == AvatarShape.round) {
+    if (shape == FunDsAvatarShape.round) {
       return BoxShape.circle;
-    } else if (shape == AvatarShape.rectangle) {
+    } else if (shape == FunDsAvatarShape.rectangle) {
       return BoxShape.rectangle;
     } else {
       return BoxShape.circle;
@@ -190,7 +190,7 @@ class Avatar extends StatelessWidget {
             : null,
         shape: _avatarBoxShape,
         border: border,
-        borderRadius: shape == AvatarShape.rectangle
+        borderRadius: shape == FunDsAvatarShape.rectangle
             ? BorderRadius.circular(_borderRadius)
             : null,
       ),
@@ -208,7 +208,7 @@ class Avatar extends StatelessWidget {
                       : null,
                   shape: _avatarBoxShape,
                   border: border,
-                  borderRadius: shape == AvatarShape.rectangle
+                  borderRadius: shape == FunDsAvatarShape.rectangle
                       ? BorderRadius.circular(_borderRadius)
                       : null,
                 ),
@@ -224,7 +224,7 @@ class Avatar extends StatelessWidget {
                   color: FunDsColors.colorNeutral200,
                   shape: _avatarBoxShape,
                   border: border,
-                  borderRadius: shape == AvatarShape.rectangle
+                  borderRadius: shape == FunDsAvatarShape.rectangle
                       ? BorderRadius.circular(_borderRadius)
                       : null,
                 ),

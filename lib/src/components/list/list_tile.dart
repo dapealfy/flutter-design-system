@@ -9,8 +9,8 @@ class FunDsListTile<T> extends StatelessWidget {
   final String? subtitle;
   final String? alertText;
   final Widget? trailing;
-  final funds.Badge? badge;
-  final funds.Label? label;
+  final funds.FunDsBadge? badge;
+  final funds.FunDsLabel? label;
   final void Function()? onTap;
   const FunDsListTile({
     super.key,
@@ -30,8 +30,8 @@ class FunDsListTile<T> extends StatelessWidget {
     String? subtitle,
     String? alertText,
     Widget? trailing,
-    funds.Badge? badge,
-    funds.Label? label,
+    funds.FunDsBadge? badge,
+    funds.FunDsLabel? label,
     void Function()? onTap,
   }) {
     return FunDsListTile(
@@ -56,8 +56,8 @@ class FunDsListTile<T> extends StatelessWidget {
     required String title,
     String? subtitle,
     String? alertText,
-    funds.Badge? badge,
-    funds.Label? label,
+    funds.FunDsBadge? badge,
+    funds.FunDsLabel? label,
     required bool value,
     void Function()? onTap,
     required Function(bool?) onCheckedChanged,
@@ -84,8 +84,8 @@ class FunDsListTile<T> extends StatelessWidget {
     required String title,
     String? subtitle,
     String? alertText,
-    funds.Badge? badge,
-    funds.Label? label,
+    funds.FunDsBadge? badge,
+    funds.FunDsLabel? label,
     void Function()? onTap,
     required T value,
     required T selectedValue,
@@ -113,9 +113,9 @@ class FunDsListTile<T> extends StatelessWidget {
     required String title,
     String? subtitle,
     String? alertText,
-    funds.Badge? badge,
-    funds.Label? subTitlelabel,
-    required funds.Label label,
+    funds.FunDsBadge? badge,
+    funds.FunDsLabel? subTitlelabel,
+    required funds.FunDsLabel label,
     void Function()? onTap,
   }) {
     return FunDsListTile(
@@ -125,7 +125,7 @@ class FunDsListTile<T> extends StatelessWidget {
       label: subTitlelabel,
       badge: badge,
       leading: leading,
-      trailing: funds.Label(
+      trailing: funds.FunDsLabel(
         label.text,
         color: label.color,
         onTap: label.onTap,
@@ -144,8 +144,8 @@ class FunDsListTile<T> extends StatelessWidget {
     required String title,
     String? subtitle,
     String? alertText,
-    funds.Badge? badge,
-    funds.Label? label,
+    funds.FunDsBadge? badge,
+    funds.FunDsLabel? label,
     required funds.FunDsButton button,
     void Function()? onTap,
   }) {

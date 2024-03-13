@@ -7,24 +7,24 @@ export 'effect/page_control_effect.dart';
 ///
 /// Figma: https://www.figma.com/file/VWK8ra7NhxzTW9iY4MQ9KG/FunDS---Component-Library?type=design&node-id=5700-6734&mode=design&t=WdoV80k2UAiJQnXb-0
 
-typedef OnDotClicked = Function(int index);
+typedef FunDsOnDotClicked = Function(int index);
 
 /// Page control that attached to a [PageView] and animates with it
-class AttachedPageControl extends StatelessWidget {
+class FunDsAttachedPageControl extends StatelessWidget {
   /// The page controller to attach to
   final PageController controller;
 
   /// The effect to use
-  /// See [PageControlEffect]
-  final PageControlEffect effect;
+  /// See [FunDsPageControlEffect]
+  final FunDsPageControlEffect effect;
 
   /// The number of dots
   final int count;
 
   /// Callback when a dot is clicked
-  final OnDotClicked? onDotClicked;
+  final FunDsOnDotClicked? onDotClicked;
 
-  const AttachedPageControl({
+  const FunDsAttachedPageControl({
     super.key,
     required this.controller,
     required this.count,
@@ -47,7 +47,7 @@ class AttachedPageControl extends StatelessWidget {
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
-        return BasicPageControl(
+        return FunDsBasicPageControl(
           effect: effect,
           count: count,
           offset: _offset,
@@ -59,7 +59,7 @@ class AttachedPageControl extends StatelessWidget {
 }
 
 /// A page control widget that animates when the active index changes
-class AnimatedPageControl extends StatelessWidget {
+class FunDsAnimatedPageControl extends StatelessWidget {
   /// The active index
   final int activeIndex;
 
@@ -67,16 +67,16 @@ class AnimatedPageControl extends StatelessWidget {
   final Duration duration;
 
   /// The effect to use
-  /// See [PageControlEffect]
-  final PageControlEffect effect;
+  /// See [FunDsPageControlEffect]
+  final FunDsPageControlEffect effect;
 
   /// The number of dots
   final int count;
 
   /// Callback when a dot is clicked
-  final OnDotClicked? onDotClicked;
+  final FunDsOnDotClicked? onDotClicked;
 
-  const AnimatedPageControl({
+  const FunDsAnimatedPageControl({
     super.key,
     required this.activeIndex,
     required this.effect,
@@ -91,7 +91,7 @@ class AnimatedPageControl extends StatelessWidget {
       tween: Tween(end: activeIndex.toDouble()),
       duration: duration,
       builder: (context, value, child) {
-        return BasicPageControl(
+        return FunDsBasicPageControl(
           effect: effect,
           count: count,
           offset: value,
@@ -103,21 +103,21 @@ class AnimatedPageControl extends StatelessWidget {
 }
 
 /// Basic page control where you need to provide the offset yourself
-class BasicPageControl extends StatelessWidget {
+class FunDsBasicPageControl extends StatelessWidget {
   /// The offset of the page control
   final double offset;
 
   /// The effect to use
-  final PageControlEffect effect;
+  final FunDsPageControlEffect effect;
 
   /// The number of dots
   final int count;
 
   /// Callback when a dot is clicked
-  final OnDotClicked? onDotClicked;
+  final FunDsOnDotClicked? onDotClicked;
 
   /// Default constructor
-  const BasicPageControl({
+  const FunDsBasicPageControl({
     Key? key,
     required this.offset,
     required this.effect,

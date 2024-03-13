@@ -15,15 +15,16 @@ class _GroupAccordionCatalogState extends State<GroupAccordionCatalog> {
   @override
   Widget build(BuildContext context) {
     const accordions = [
-      Accordion(title: 'title 1', description: 'description'),
-      Accordion(
+      FunDsAccordion(title: 'title 1', description: 'description'),
+      FunDsAccordion(
         title: 'title 2',
         description: 'description',
         isInitiallyExpanded: true, // ignored
       ),
-      Accordion(
+      FunDsAccordion(
           title: 'Can be initially opened\nWith [initiallyOpenedAt] property',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          description:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
               'Nunc nec erat ex. Mauris ullamcorper lectus sed est '
               'consectetur, vitae condimentum elit efficitur. '
               'Praesent ultricies fringilla felis, et tempor ex '
@@ -36,7 +37,7 @@ class _GroupAccordionCatalogState extends State<GroupAccordionCatalog> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AccordionGroup(
+          FunDsAccordionGroup(
             accordions: accordions,
             initiallyOpenedAt: 2,
             isLoading: _isLoading,

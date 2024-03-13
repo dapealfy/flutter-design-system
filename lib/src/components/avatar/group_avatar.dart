@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 
-class GroupAvatar extends StatelessWidget {
-  const GroupAvatar({
+class FunDsGroupAvatar extends StatelessWidget {
+  const FunDsGroupAvatar({
     Key? key,
     required this.itemCount,
     required this.itemBuilder,
@@ -26,9 +26,9 @@ class GroupAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [];
-    Avatar? avatar;
+    FunDsAvatar? avatar;
     for (int i = 0; i <= maxLength; i++) {
-      avatar = itemBuilder(context, i) as Avatar;
+      avatar = itemBuilder(context, i) as FunDsAvatar;
 
       /// Count the number of avatars that are not displayed.
       if (i == maxLength) {
@@ -41,11 +41,11 @@ class GroupAvatar extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: FunDsColors.colorNeutral200,
-              shape: avatar.shape == AvatarShape.round
+              shape: avatar.shape == FunDsAvatarShape.round
                   ? BoxShape.circle
                   : BoxShape.rectangle,
               border: avatar.border,
-              borderRadius: avatar.shape == AvatarShape.rectangle
+              borderRadius: avatar.shape == FunDsAvatarShape.rectangle
                   ? BorderRadius.circular(8)
                   : null,
             ),

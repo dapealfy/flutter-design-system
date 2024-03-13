@@ -28,9 +28,9 @@ main() {
     var isSecondaryClicked = false;
 
     await tester.pumpWidget(buildTestableWidget(
-        child: Alert(
+        child: FunDsAlert(
       key: const Key('test-alert'),
-      type: AlertType.danger,
+      type: FunDsAlertType.danger,
       title: 'Main',
       description: 'description',
       primaryActionText: 'Main',
@@ -65,9 +65,9 @@ Future<void> _buildTestableWidget(
 }) {
   return tester.pumpWidget(
     buildTestableWidget(
-      child: Alert(
+      child: FunDsAlert(
         key: const Key('test-alert'),
-        type: AlertType.danger,
+        type: FunDsAlertType.danger,
         title: 'Main',
         description: 'description',
         primaryActionText: 'Main',

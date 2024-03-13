@@ -68,24 +68,24 @@ class _ListTileCatalogState extends State<ListTileCatalog> {
             funds.FunDsListTile.chevron(
               title: 'List Title Chevron',
               badge: badge
-                  ? const funds.Badge(
+                  ? const funds.FunDsBadge(
                       label: 'Badge',
-                      badgeStatus: funds.BadgeStatus.light,
+                      badgeStatus: funds.FunDsBadgeStatus.light,
                     )
                   : null,
               subtitle: subtitle ? 'Supporting text' : null,
               alertText: alert ? 'Alert text' : null,
               leading: leading
-                  ? const funds.Avatar(
+                  ? const funds.FunDsAvatar(
                       name: 'Avatar',
-                      size: funds.AvatarSize.large,
+                      size: funds.FunDsAvatarSize.large,
                       backgroundColor: funds.FunDsColors.colorNeutral200,
                     )
                   : null,
               label: label
-                  ? const funds.Label(
+                  ? const funds.FunDsLabel(
                       'Label',
-                      color: funds.LabelColor.purple,
+                      color: funds.FunDsLabelColor.purple,
                     )
                   : null,
               onTap: onTileClicked,
@@ -93,24 +93,24 @@ class _ListTileCatalogState extends State<ListTileCatalog> {
             funds.FunDsListTile.checkbox(
               title: 'List Title Checkbox',
               badge: badge
-                  ? const funds.Badge(
+                  ? const funds.FunDsBadge(
                       label: 'Badge',
-                      badgeStatus: funds.BadgeStatus.light,
+                      badgeStatus: funds.FunDsBadgeStatus.light,
                     )
                   : null,
               subtitle: subtitle ? 'Supporting text' : null,
               alertText: alert ? 'Alert text' : null,
               leading: leading
-                  ? const funds.Avatar(
+                  ? const funds.FunDsAvatar(
                       name: 'Avatar',
-                      size: funds.AvatarSize.large,
+                      size: funds.FunDsAvatarSize.large,
                       backgroundColor: funds.FunDsColors.colorNeutral200,
                     )
                   : null,
               label: label
-                  ? const funds.Label(
+                  ? const funds.FunDsLabel(
                       'Label',
-                      color: funds.LabelColor.purple,
+                      color: funds.FunDsLabelColor.purple,
                     )
                   : null,
               value: false,
@@ -126,24 +126,24 @@ class _ListTileCatalogState extends State<ListTileCatalog> {
             funds.FunDsListTile.radio(
               title: 'List Title Radio',
               badge: badge
-                  ? const funds.Badge(
+                  ? const funds.FunDsBadge(
                       label: 'Badge',
-                      badgeStatus: funds.BadgeStatus.light,
+                      badgeStatus: funds.FunDsBadgeStatus.light,
                     )
                   : null,
               subtitle: subtitle ? 'Supporting text' : null,
               alertText: alert ? 'Alert text' : null,
               leading: leading
-                  ? const funds.Avatar(
+                  ? const funds.FunDsAvatar(
                       name: 'Avatar',
-                      size: funds.AvatarSize.large,
+                      size: funds.FunDsAvatarSize.large,
                       backgroundColor: funds.FunDsColors.colorNeutral200,
                     )
                   : null,
               label: label
-                  ? const funds.Label(
+                  ? const funds.FunDsLabel(
                       'Label',
-                      color: funds.LabelColor.purple,
+                      color: funds.FunDsLabelColor.purple,
                     )
                   : null,
               value: 1,
@@ -160,53 +160,53 @@ class _ListTileCatalogState extends State<ListTileCatalog> {
             funds.FunDsListTile.label(
               title: 'List Title Label',
               badge: badge
-                  ? const funds.Badge(
+                  ? const funds.FunDsBadge(
                       label: 'Badge',
-                      badgeStatus: funds.BadgeStatus.light,
+                      badgeStatus: funds.FunDsBadgeStatus.light,
                     )
                   : null,
               subtitle: subtitle ? 'Supporting text' : null,
               alertText: alert ? 'Alert text' : null,
               leading: leading
-                  ? const funds.Avatar(
+                  ? const funds.FunDsAvatar(
                       name: 'Avatar',
-                      size: funds.AvatarSize.large,
+                      size: funds.FunDsAvatarSize.large,
                       backgroundColor: funds.FunDsColors.colorNeutral200,
                     )
                   : null,
               subTitlelabel: label
-                  ? const funds.Label(
+                  ? const funds.FunDsLabel(
                       'Label',
-                      color: funds.LabelColor.purple,
+                      color: funds.FunDsLabelColor.purple,
                     )
                   : null,
-              label: const funds.Label(
+              label: const funds.FunDsLabel(
                 'Label',
-                color: funds.LabelColor.orange,
+                color: funds.FunDsLabelColor.orange,
               ),
               onTap: onTileClicked,
             ),
             funds.FunDsListTile.button(
               title: 'List Title Button',
               badge: badge
-                  ? const funds.Badge(
+                  ? const funds.FunDsBadge(
                       label: 'Badge',
-                      badgeStatus: funds.BadgeStatus.light,
+                      badgeStatus: funds.FunDsBadgeStatus.light,
                     )
                   : null,
               subtitle: subtitle ? 'Supporting text' : null,
               alertText: alert ? 'Alert text' : null,
               leading: leading
-                  ? const funds.Avatar(
+                  ? const funds.FunDsAvatar(
                       name: 'Avatar',
-                      size: funds.AvatarSize.large,
+                      size: funds.FunDsAvatarSize.large,
                       backgroundColor: funds.FunDsColors.colorNeutral200,
                     )
                   : null,
               label: label
-                  ? const funds.Label(
+                  ? const funds.FunDsLabel(
                       'Label',
-                      color: funds.LabelColor.purple,
+                      color: funds.FunDsLabelColor.purple,
                     )
                   : null,
               button: funds.FunDsButton(

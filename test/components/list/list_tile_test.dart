@@ -12,20 +12,20 @@ void main() {
         buildTestableWidget(
           child: funds.FunDsListTile(
             title: 'Test Title',
-            badge: const funds.Badge(
+            badge: const funds.FunDsBadge(
               label: 'Test Badge',
-              badgeStatus: funds.BadgeStatus.light,
+              badgeStatus: funds.FunDsBadgeStatus.light,
             ),
             subtitle: 'Test Subtitle',
             alertText: 'Test Alert',
-            leading: const funds.Avatar(
+            leading: const funds.FunDsAvatar(
               name: 'Avatar',
-              size: funds.AvatarSize.large,
+              size: funds.FunDsAvatarSize.large,
               backgroundColor: funds.FunDsColors.colorNeutral200,
             ),
-            label: const funds.Label(
+            label: const funds.FunDsLabel(
               'Test Label',
-              color: funds.LabelColor.purple,
+              color: funds.FunDsLabelColor.purple,
             ),
             onTap: () {},
           ),
@@ -36,7 +36,7 @@ void main() {
       expect(find.text('Test Subtitle'), findsOneWidget);
       expect(find.text('Test Alert'), findsOneWidget);
       expect(find.text('Test Label'), findsOneWidget);
-      expect(find.byType(funds.Avatar), findsOneWidget);
+      expect(find.byType(funds.FunDsAvatar), findsOneWidget);
 
       await tester.pumpAndSettle();
     },
@@ -48,20 +48,20 @@ void main() {
         buildTestableWidget(
           child: funds.FunDsListTile.chevron(
             title: 'Test Title',
-            badge: const funds.Badge(
+            badge: const funds.FunDsBadge(
               label: 'Test Badge',
-              badgeStatus: funds.BadgeStatus.light,
+              badgeStatus: funds.FunDsBadgeStatus.light,
             ),
             subtitle: 'Test Subtitle',
             alertText: 'Test Alert',
-            leading: const funds.Avatar(
+            leading: const funds.FunDsAvatar(
               name: 'Avatar',
-              size: funds.AvatarSize.large,
+              size: funds.FunDsAvatarSize.large,
               backgroundColor: funds.FunDsColors.colorNeutral200,
             ),
-            label: const funds.Label(
+            label: const funds.FunDsLabel(
               'Test Label',
-              color: funds.LabelColor.purple,
+              color: funds.FunDsLabelColor.purple,
             ),
             onTap: () {},
           ),
@@ -90,20 +90,20 @@ void main() {
         buildTestableWidget(
           child: funds.FunDsListTile.radio(
             title: 'Test Title',
-            badge: const funds.Badge(
+            badge: const funds.FunDsBadge(
               label: 'Test Badge',
-              badgeStatus: funds.BadgeStatus.light,
+              badgeStatus: funds.FunDsBadgeStatus.light,
             ),
             subtitle: 'Test Subtitle',
             alertText: 'Test Alert',
-            leading: const funds.Avatar(
+            leading: const funds.FunDsAvatar(
               name: 'Avatar',
-              size: funds.AvatarSize.large,
+              size: funds.FunDsAvatarSize.large,
               backgroundColor: funds.FunDsColors.colorNeutral200,
             ),
-            label: const funds.Label(
+            label: const funds.FunDsLabel(
               'Test Label',
-              color: funds.LabelColor.purple,
+              color: funds.FunDsLabelColor.purple,
             ),
             value: 1,
             onRadioChanged: (p0) {},
@@ -135,24 +135,24 @@ void main() {
         buildTestableWidget(
           child: funds.FunDsListTile.label(
             title: 'Test Title',
-            badge: const funds.Badge(
+            badge: const funds.FunDsBadge(
               label: 'Test Badge',
-              badgeStatus: funds.BadgeStatus.light,
+              badgeStatus: funds.FunDsBadgeStatus.light,
             ),
             subtitle: 'Test Subtitle',
             alertText: 'Test Alert',
-            leading: const funds.Avatar(
+            leading: const funds.FunDsAvatar(
               name: 'Avatar',
-              size: funds.AvatarSize.large,
+              size: funds.FunDsAvatarSize.large,
               backgroundColor: funds.FunDsColors.colorNeutral200,
             ),
-            subTitlelabel: const funds.Label(
+            subTitlelabel: const funds.FunDsLabel(
               'Test Label',
-              color: funds.LabelColor.purple,
+              color: funds.FunDsLabelColor.purple,
             ),
-            label: const funds.Label(
+            label: const funds.FunDsLabel(
               'Label',
-              color: funds.LabelColor.orange,
+              color: funds.FunDsLabelColor.orange,
             ),
             onTap: () {},
           ),
@@ -181,20 +181,20 @@ void main() {
         buildTestableWidget(
           child: funds.FunDsListTile.checkbox(
             title: 'Test Title',
-            badge: const funds.Badge(
+            badge: const funds.FunDsBadge(
               label: 'Test Badge',
-              badgeStatus: funds.BadgeStatus.light,
+              badgeStatus: funds.FunDsBadgeStatus.light,
             ),
             subtitle: 'Test Subtitle',
             alertText: 'Test Alert',
-            leading: const funds.Avatar(
+            leading: const funds.FunDsAvatar(
               name: 'Avatar',
-              size: funds.AvatarSize.large,
+              size: funds.FunDsAvatarSize.large,
               backgroundColor: funds.FunDsColors.colorNeutral200,
             ),
-            label: const funds.Label(
+            label: const funds.FunDsLabel(
               'Test Label',
-              color: funds.LabelColor.purple,
+              color: funds.FunDsLabelColor.purple,
             ),
             onCheckedChanged: (p0) {},
             value: true,
@@ -226,20 +226,20 @@ void main() {
         buildTestableWidget(
           child: funds.FunDsListTile.button(
             title: 'Test Title',
-            badge: const funds.Badge(
+            badge: const funds.FunDsBadge(
               label: 'Test Badge',
-              badgeStatus: funds.BadgeStatus.light,
+              badgeStatus: funds.FunDsBadgeStatus.light,
             ),
             subtitle: 'Test Subtitle',
             alertText: 'Test Alert',
-            leading: const funds.Avatar(
+            leading: const funds.FunDsAvatar(
               name: 'Avatar',
-              size: funds.AvatarSize.large,
+              size: funds.FunDsAvatarSize.large,
               backgroundColor: funds.FunDsColors.colorNeutral200,
             ),
-            label: const funds.Label(
+            label: const funds.FunDsLabel(
               'Test Label',
-              color: funds.LabelColor.purple,
+              color: funds.FunDsLabelColor.purple,
             ),
             onTap: () {},
             button: funds.FunDsButton(

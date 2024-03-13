@@ -4,6 +4,7 @@ import 'package:catalog/catalog/alert/alert_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_catalog.dart';
 import 'package:catalog/catalog/avatar/avatar_group_catalog.dart';
 import 'package:catalog/catalog/badge/badge_catalog.dart';
+import 'package:catalog/catalog/banner/banner_catalog.dart';
 import 'package:catalog/catalog/bottom_sheet/bottom_sheet_catalog.dart';
 import 'package:catalog/catalog/button/button_catalog.dart';
 import 'package:catalog/catalog/button/group_button_catalog.dart';
@@ -15,6 +16,7 @@ import 'package:catalog/catalog/coachmark/coachmark_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
 import 'package:catalog/catalog/control/toggle_catalog.dart';
 import 'package:catalog/catalog/counter/counter_catalog.dart';
+import 'package:catalog/catalog/divider/divider_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/icon_catalog.dart';
 import 'package:catalog/catalog/foundation/typography_catalog.dart';
@@ -24,11 +26,15 @@ import 'package:catalog/catalog/input_field/text_field_catalog.dart';
 import 'package:catalog/catalog/label/label_catalog.dart';
 import 'package:catalog/catalog/list/list_tile_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
+import 'package:catalog/catalog/local_load/local_load_catalog.dart';
 import 'package:catalog/catalog/modal/modal_catalog.dart';
 import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
+import 'package:catalog/catalog/progress_circle/progress_circle_catalog.dart';
 import 'package:catalog/catalog/progress_indicator/progress_indicator_catalog.dart';
 import 'package:catalog/catalog/select/select_catalog.dart';
+import 'package:catalog/catalog/tab/tab_catalog.dart';
+import 'package:catalog/catalog/ticker/ticker_catalog.dart';
 import 'package:catalog/catalog/tips/tips_catalog.dart';
 import 'package:catalog/catalog/toaster/toaster_catalog.dart';
 import 'package:catalog/core/catalog_entry.dart';
@@ -93,6 +99,11 @@ final entries = [
   Entry(
     name: 'Component/Button/Button',
     builder: (context) => const ButtonCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Banner/Banner',
+    builder: (context) => const BannerCatalog(),
   ),
   Entry(
     name: 'Component/Button/Group Button',
@@ -173,6 +184,11 @@ final entries = [
   ),
 
   Entry(
+    name: 'Component/Ticker/Ticker',
+    builder: (context) => const TickerCatalog(),
+  ),
+
+  Entry(
     name: 'Component/Tips/Tips',
     builder: (context) => const TipsCatalog(),
   ),
@@ -188,6 +204,11 @@ final entries = [
   ),
 
   Entry(
+    name: 'Component/ProgressCircle/ProgressCircle',
+    builder: (context) => const ProgressCircleCatalog(),
+  ),
+
+  Entry(
     name: 'Component/ProgressIndicator/ProgressIndicator',
     builder: (context) => const FunDsProgressIndicatorCatalog(),
   ),
@@ -198,7 +219,22 @@ final entries = [
   ),
 
   Entry(
+    name: 'Component/Local Load/Local Load',
+    builder: (context) => const LocalLoadCatalog(),
+  ),
+
+  Entry(
     name: 'Component/Header/Header',
     builder: (context) => const HeaderCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Tab/Tab',
+    builder: (context) => const TabCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Divider/Divider',
+    builder: (context) => const DividerCatalog(),
   ),
 ];

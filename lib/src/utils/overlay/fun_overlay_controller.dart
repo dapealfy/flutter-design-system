@@ -1,7 +1,7 @@
-class FunOverlayController {
-  FunOverlayInteractor? _interactor;
+class FunDsOverlayController {
+  FunDsOverlayInteractor? _interactor;
 
-  void attach(FunOverlayInteractor target) {
+  void attach(FunDsOverlayInteractor target) {
     _interactor = target;
   }
 
@@ -22,7 +22,7 @@ class FunOverlayController {
   }
 }
 
-abstract class FunOverlayInteractor {
+abstract class FunDsOverlayInteractor {
   void onShow();
   void onHide();
   void onToggle();
