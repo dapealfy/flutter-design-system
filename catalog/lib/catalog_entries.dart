@@ -27,6 +27,7 @@ import 'package:catalog/catalog/loader/loader_catalog.dart';
 import 'package:catalog/catalog/modal/modal_catalog.dart';
 import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
+import 'package:catalog/catalog/progress_indicator/progress_indicator_catalog.dart';
 import 'package:catalog/catalog/select/select_catalog.dart';
 import 'package:catalog/catalog/tips/tips_catalog.dart';
 import 'package:catalog/catalog/toaster/toaster_catalog.dart';
@@ -184,6 +185,11 @@ final entries = [
   Entry(
     name: 'Component/ProgressBar/ProgressBar',
     builder: (context) => const ProgressBarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/ProgressIndicator/ProgressIndicator',
+    builder: (context) => const FunDsProgressIndicatorCatalog(),
   ),
 
   Entry(
