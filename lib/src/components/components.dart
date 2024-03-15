@@ -17,6 +17,7 @@ export 'coachmark/coachmark.dart';
 export 'control/slider.dart';
 export 'control/toggle.dart';
 export 'counter/counter.dart';
+export 'navbar/navbar.dart';
 export 'header/header.dart';
 export 'icon/icon.dart';
 export 'input_field/funds_text_controller.dart';

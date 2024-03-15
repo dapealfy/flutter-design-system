@@ -28,6 +28,7 @@ import 'package:catalog/catalog/list/list_tile_catalog.dart';
 import 'package:catalog/catalog/loader/loader_catalog.dart';
 import 'package:catalog/catalog/local_load/local_load_catalog.dart';
 import 'package:catalog/catalog/modal/modal_catalog.dart';
+import 'package:catalog/catalog/navbar/navbar_catalog.dart';
 import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
 import 'package:catalog/catalog/progress_circle/progress_circle_catalog.dart';
@@ -210,6 +211,11 @@ final entries = [
   Entry(
     name: 'Component/Select/Select',
     builder: (context) => const SelectCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/NavBar/NavBar',
+    builder: (context) => const NavBarCatalog(),
   ),
 
   Entry(
