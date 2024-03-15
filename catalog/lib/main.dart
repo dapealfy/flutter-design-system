@@ -7,6 +7,7 @@ import 'package:catalog/core/storybook/fun_ds_storybook.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,8 +24,23 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _showPanel = true;
-  double _x = 88.0;
-  double _y = 88.0;
+  double _x = 70.0;
+  double _y = 120.0;
+
+  String? _appVersion;
+  void fetchVersion() {
+    PackageInfo.fromPlatform().then((info) {
+      setState(() {
+        _appVersion = info.version;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    fetchVersion();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +101,19 @@ class _MyAppState extends State<MyApp> {
                     : DeviceFramePlugin(),
               ],
             ),
+            if (_showPanel && _appVersion != null)
+              Positioned(
+                bottom: 15,
+                right: 10,
+                child: Text(
+                  'FunDs ${_appVersion!}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+              ),
             Positioned(
               left: screenSize.width - _x,
               top: screenSize.height - _y,

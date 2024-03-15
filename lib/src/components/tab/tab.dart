@@ -73,10 +73,10 @@ class FunDsTab extends StatelessWidget {
               ),
               Visibility(
                 visible: badgeNumber != null,
-                child: funds.Badge.circled(
+                child: funds.FunDsBadge.circled(
                   key: const Key('funDsTabBadgeNumber'),
                   count: badgeNumber ?? 0,
-                  badgeStatus: funds.BadgeStatus.light,
+                  badgeStatus: funds.FunDsBadgeStatus.light,
                   inverted: true,
                 ),
               )

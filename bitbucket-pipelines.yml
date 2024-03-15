@@ -72,6 +72,26 @@ definitions:
           - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
           - firebase appdistribution:distribute app-release.apk --app 1:272130137531:android:5839788c41f2e388ee389e --groups "flutter-design-system"
 
+    - step: &build-apk-with-tag
+        name: Build APK catalog with tag name version
+        caches:
+          - flutter-pub-cache
+        script:
+          - cd catalog
+          - flutter build apk --release --build-name=${BITBUCKET_TAG}
+        artifacts:
+          - catalog/build/app/outputs/flutter-apk/app-release.apk
+
+    - step: &build-web-with-tag
+        name: Build catalog
+        caches:
+          - flutter-pub-cache
+        script:
+          - cd catalog
+          - flutter build web --release --web-renderer canvaskit --build-name=${BITBUCKET_TAG}
+        artifacts:
+          - catalog/build/web/**
+
 clone:
   depth: full
 
@@ -96,3 +116,17 @@ pipelines:
       - step: *analyze-test
       - step: *build-catalog
       - step: *deploy-catalog-preview
+  tags:
+    '*.*.*':
+      - step: *prepare-build
+      - step: *build-apk-with-tag
+      - step: *distribute-apk
+    '*.*':
+      - step: *analyze-test
+      - step: *prepare-build
+      - parallel:
+          - step: *build-web-with-tag
+          - step: *build-apk-with-tag
+      - parallel:
+          - step: *deploy-catalog-main
+          - step: *distribute-apk

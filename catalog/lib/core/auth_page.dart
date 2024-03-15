@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/crypto.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({
@@ -90,6 +91,21 @@ class _AuthPageState extends State<AuthPage> {
     return _password.toString() == hmacValue.toString();
   }
 
+  String? _appVersion;
+  void fetchVersion() {
+    PackageInfo.fromPlatform().then((info) {
+      setState(() {
+        _appVersion = info.version;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    fetchVersion();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (authenticated || !kIsWeb) {
@@ -114,13 +130,15 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                   ),
                   const SizedBox(height: 54),
-                  Text(
-                    'v 0.4',
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: Colors.black54,
-                        ),
-                    textAlign: TextAlign.center,
-                  ),
+                  if (_appVersion != null)
+                    Text(
+                      _appVersion!,
+                      style:
+                          Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                color: Colors.black54,
+                              ),
+                      textAlign: TextAlign.center,
+                    ),
                   const SizedBox(height: 24),
                   TextField(
                     decoration: InputDecoration(
