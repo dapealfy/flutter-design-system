@@ -136,28 +136,30 @@ class _InternalAccordionState
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Shimmer(
-          isLoading: widget.isLoading,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.h),
-            child: Row(children: [
-              Expanded(
-                  child: Container(
-                margin: EdgeInsets.only(right: 32.w),
-                height: 12.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6.r),
-                  color: FunDsColors.colorWhite,
-                ),
-              )),
-              Container(
-                height: 17.1.h,
-                width: 20.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6.r),
-                  color: FunDsColors.colorWhite,
-                ),
-              )
-            ]),
+          child: ShimmerLoading(
+            isLoading: widget.isLoading,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 12.h),
+              child: Row(children: [
+                Expanded(
+                    child: Container(
+                  margin: EdgeInsets.only(right: 32.w),
+                  height: 12.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6.r),
+                    color: FunDsColors.colorWhite,
+                  ),
+                )),
+                Container(
+                  height: 17.1.h,
+                  width: 20.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(6.r),
+                    color: FunDsColors.colorWhite,
+                  ),
+                )
+              ]),
+            ),
           ),
         ),
         Divider(height: 1.h, color: FunDsColors.colorNeutral200)
