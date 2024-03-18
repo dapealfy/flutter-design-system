@@ -94,10 +94,6 @@ definitions:
 
     - step: &create-tag
         name: Creating tag
-        condition:
-          changesets:
-            includePaths:
-              - catalog/pubspec.yaml
         script:
           - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' catalog/pubspec.yaml)
           - git tag -am "Tag version ${APP_VERSION_NAME}" ${APP_VERSION_NAME}
