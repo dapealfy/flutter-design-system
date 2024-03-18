@@ -71,12 +71,12 @@ definitions:
           - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
           - firebase appdistribution:distribute app-release.apk --app 1:272130137531:android:5839788c41f2e388ee389e --groups "flutter-design-system"
 
-    - step: &create-tag
+    - step: &create-tag-if-not-exists
         name: Create tag if not exists
         script:
           - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' catalog/pubspec.yaml)
           - export TAG_COUNT=$(git ls-remote --tags origin|awk "/${APP_VERSION_NAME}$/ {c++} END{print c}")
-          - | 
+          - |
             if [ "$TAG_COUNT" -gt 0 ]; then
               echo "Tag ${APP_VERSION_NAME} already exists"
               exit 0
@@ -99,12 +99,12 @@ pipelines:
       - parallel:
         - step: *deploy-catalog-main
         - step: *distribute-apk
+      - step: *create-tag-if-not-exists
 
     '{feature/*,bugfix/*}':
         - step: *analyze-test
         - step: *build-web-catalog
         - step: *deploy-catalog-preview
-        - step: *create-tag
 
   custom:
     distribute-apk:
@@ -116,17 +116,3 @@ pipelines:
       - step: *prepare-build
       - step: *build-web-catalog
       - step: *deploy-catalog-main
-  tags:
-    '*.*.*':
-      - step: *prepare-build
-      - step: *build-apk-catalog
-      - step: *distribute-apk
-    '*.*':
-      - step: *analyze-test
-      - step: *prepare-build
-      - parallel:
-          - step: *build-web-catalog
-          - step: *build-apk-catalog
-      - parallel:
-          - step: *deploy-catalog-main
-          - step: *distribute-apk
