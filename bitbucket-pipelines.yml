@@ -81,7 +81,8 @@ definitions:
               echo "Tag ${APP_VERSION_NAME} already exists"
               exit 0
             fi
-          - git tag -am "Tag version ${APP_VERSION_NAME}" ${APP_VERSION_NAME}
+          - export LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          - git tag -am "${LAST_COMMIT_MESSAGE}" ${APP_VERSION_NAME}
           - git push origin ${APP_VERSION_NAME}
 
 clone:
@@ -98,19 +99,23 @@ pipelines:
       - parallel:
         - step: *deploy-catalog-main
         - step: *distribute-apk
-  custom:
-    build-dev:
-      - step: *prepare-build
-      - step: *build-apk-catalog
-      - step: *distribute-apk
-    build-tag:
-      - step: *create-tag
-    pull-requests:
-      '{feature/*,bugfix/*}':
+
+    '{feature/*,bugfix/*}':
         - step: *analyze-test
         - step: *build-web-catalog
         - step: *deploy-catalog-preview
         - step: *create-tag
+
+  custom:
+    distribute-apk:
+      - step: *prepare-build
+      - step: *build-apk-catalog
+      - step: *distribute-apk
+    deploy-web:
+      - step: *analyze-test
+      - step: *prepare-build
+      - step: *build-web-catalog
+      - step: *deploy-catalog-main
   tags:
     '*.*.*':
       - step: *prepare-build
