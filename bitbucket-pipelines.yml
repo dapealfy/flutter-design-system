@@ -122,13 +122,15 @@ pipelines:
       - step: *prepare-build
       - step: *build-apk-catalog
       - step: *distribute-apk
-  pull-requests:
-    '{feature/*,bugfix/*}':
-      - step: *analyze-test
-      - step: *build-catalog
-      - step: *deploy-catalog-preview
-    'feature/CON-1319':
+    build-tag:
       - step: *create-tag
+#  pull-requests:
+#    '{feature/*,bugfix/*}':
+#      - step: *analyze-test
+#      - step: *build-catalog
+#      - step: *deploy-catalog-preview
+#    'feature/CON-1319':
+#      - step: *create-tag
   tags:
     '*.*.*':
       - step: *prepare-build
