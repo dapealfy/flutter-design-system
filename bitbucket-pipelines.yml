@@ -96,6 +96,12 @@ definitions:
         name: Creating tag
         script:
           - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' catalog/pubspec.yaml)
+          - export TAG_COUNT=$(git ls-remote --tags origin|awk "/${APP_VERSION_NAME}$/ {c++} END{print c}")
+          - | 
+            if [TAG_COUNT > 0]; then
+              echo "Tag ${APP_VERSION_NAME} already exists"
+              exit 0
+            fi
           - git tag -am "Tag version ${APP_VERSION_NAME}" ${APP_VERSION_NAME}
           - git push origin ${APP_VERSION_NAME}
 
