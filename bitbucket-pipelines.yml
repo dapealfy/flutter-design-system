@@ -24,7 +24,7 @@ definitions:
           - cd catalog
           - flutter pub get
 
-    - step: &build-catalog
+    - step: &build-web-catalog
         name: Build catalog
         caches:
           - flutter-pub-cache
@@ -33,7 +33,6 @@ definitions:
           - flutter build web --release --web-renderer canvaskit
         artifacts:
           - catalog/build/web/**
-
 
     - step: &build-apk-catalog
         name: Build APK catalog
@@ -72,28 +71,8 @@ definitions:
           - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
           - firebase appdistribution:distribute app-release.apk --app 1:272130137531:android:5839788c41f2e388ee389e --groups "flutter-design-system"
 
-    - step: &build-apk-with-tag
-        name: Build APK catalog with tag name version
-        caches:
-          - flutter-pub-cache
-        script:
-          - cd catalog
-          - flutter build apk --release --build-name=${BITBUCKET_TAG}
-        artifacts:
-          - catalog/build/app/outputs/flutter-apk/app-release.apk
-
-    - step: &build-web-with-tag
-        name: Build catalog
-        caches:
-          - flutter-pub-cache
-        script:
-          - cd catalog
-          - flutter build web --release --web-renderer canvaskit --build-name=${BITBUCKET_TAG}
-        artifacts:
-          - catalog/build/web/**
-
     - step: &create-tag
-        name: Creating tag
+        name: Create tag if not exists
         script:
           - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' catalog/pubspec.yaml)
           - export TAG_COUNT=$(git ls-remote --tags origin|awk "/${APP_VERSION_NAME}$/ {c++} END{print c}")
@@ -114,7 +93,7 @@ pipelines:
       - step: *analyze-test
       - step: *prepare-build
       - parallel:
-        - step: *build-catalog
+        - step: *build-web-catalog
         - step: *build-apk-catalog
       - parallel:
         - step: *deploy-catalog-main
@@ -126,24 +105,23 @@ pipelines:
       - step: *distribute-apk
     build-tag:
       - step: *create-tag
-#  pull-requests:
-#    '{feature/*,bugfix/*}':
-#      - step: *analyze-test
-#      - step: *build-catalog
-#      - step: *deploy-catalog-preview
-#    'feature/CON-1319':
-#      - step: *create-tag
+    pull-requests:
+      '{feature/*,bugfix/*}':
+        - step: *analyze-test
+        - step: *build-web-catalog
+        - step: *deploy-catalog-preview
+        - step: *create-tag
   tags:
     '*.*.*':
       - step: *prepare-build
-      - step: *build-apk-with-tag
+      - step: *build-apk-catalog
       - step: *distribute-apk
     '*.*':
       - step: *analyze-test
       - step: *prepare-build
       - parallel:
-          - step: *build-web-with-tag
-          - step: *build-apk-with-tag
+          - step: *build-web-catalog
+          - step: *build-apk-catalog
       - parallel:
           - step: *deploy-catalog-main
           - step: *distribute-apk
