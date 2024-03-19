@@ -24,6 +24,7 @@ class FunDsTypography {
     fontWeight: FontWeight.w500,
     letterSpacing: letterSpacing,
     color: FunDsColors.colorTextDefault,
+    decoration: TextDecoration.none,
   );
 
   static final TextStyle defB = TextStyle(
@@ -31,6 +32,7 @@ class FunDsTypography {
     fontWeight: FontWeight.w700,
     letterSpacing: letterSpacing,
     color: FunDsColors.colorTextDefault,
+    decoration: TextDecoration.none,
   );
 
   //Heading
