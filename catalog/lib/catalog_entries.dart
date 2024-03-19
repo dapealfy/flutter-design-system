@@ -33,6 +33,7 @@ import 'package:catalog/catalog/page_control/page_control_catalog.dart';
 import 'package:catalog/catalog/progress_bar/progress_bar_catalog.dart';
 import 'package:catalog/catalog/progress_circle/progress_circle_catalog.dart';
 import 'package:catalog/catalog/progress_indicator/progress_indicator_catalog.dart';
+import 'package:catalog/catalog/scrollbar/scrollbar_catalog.dart';
 import 'package:catalog/catalog/select/select_catalog.dart';
 import 'package:catalog/catalog/tab/tab_catalog.dart';
 import 'package:catalog/catalog/ticker/ticker_catalog.dart';
@@ -222,6 +223,11 @@ final entries = [
   Entry(
     name: 'Component/NavBar/NavBar',
     builder: (context) => const NavBarCatalog(),
+  ),
+
+  Entry(
+    name: 'Component/Scrollbar/Scrollbar',
+    builder: (context) => const ScrollbarCatalog(),
   ),
 
   Entry(

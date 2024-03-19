@@ -32,6 +32,7 @@ export 'progress_bar/progress_bar.dart';
 export 'select/select.dart';
 export 'tab/tab_bar.dart';
 export 'tab/tab.dart';
+export 'scrollbar/scrollbar.dart';
 export 'ticker/ticker.dart';
 export 'tips/tips.dart';
 export 'toaster/toaster.dart';

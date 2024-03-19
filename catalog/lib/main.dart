@@ -77,6 +77,7 @@ class _MyAppState extends State<MyApp> {
                           PointerDeviceKind.mouse,
                           PointerDeviceKind.trackpad,
                         },
+                        scrollbars: false,
                       ),
                       debugShowCheckedModeBanner: false,
                       home: Scaffold(
