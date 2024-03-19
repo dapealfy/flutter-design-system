@@ -61,7 +61,9 @@ class TickerCatalog extends StatelessWidget {
     return List.from(FunDsTickerVariant.values).map((e) {
       final Widget widget;
       widget = FunDsTicker(
-        label: isVersion1 ? 'Add the title here, no more than 1 line' : null,
+        label: isVersion1
+            ? const Text('Add the title here, no more than 1 line')
+            : null,
         description: 'Ticker description can be put here. Be brief ya! '
             'Can add link in the end too.',
         variant: e,
