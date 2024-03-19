@@ -91,6 +91,7 @@ clone:
 pipelines:
   branches:
     master:
+      - step: *create-tag-if-not-exists
       - step: *analyze-test
       - step: *prepare-build
       - parallel:
@@ -99,7 +100,6 @@ pipelines:
       - parallel:
         - step: *deploy-catalog-main
         - step: *distribute-apk
-      - step: *create-tag-if-not-exists
 
     '{feature/*,bugfix/*}':
         - step: *analyze-test
