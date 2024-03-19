@@ -15,7 +15,7 @@ void main() {
         await tester.pumpWidget(
           buildTestableWidget(
             child: FunDsTicker(
-                label: const Text('Add the title here, no more than 1 line'),
+                label: 'Add the title here, no more than 1 line',
                 key: const Key('ticker-v1'),
                 description: 'Description',
                 variant: FunDsTickerVariant.success,

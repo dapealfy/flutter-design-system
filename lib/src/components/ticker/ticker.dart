@@ -16,7 +16,7 @@ enum FunDsTickerVariant {
 ///
 /// Usage :
 /// ```dart
-/// Widget? label = 'optional';
+/// String? label = 'optional';
 /// Ticker(
 ///  label: label,
 ///  description: 'a brief description here',
@@ -46,7 +46,7 @@ class FunDsTicker extends StatelessWidget {
   final FunDsTickerVariant variant;
   final FunDsTickerType type;
   final String? icon;
-  final Widget? label;
+  final String? label;
   final String description;
   final String? textLink;
   final VoidCallback? onTextLinkTap;
@@ -136,19 +136,18 @@ class FunDsTicker extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Visibility(
-                          child: SizedBox(
-                            height: 23.h,
-                            child: DefaultTextStyle(
-                              style: FunDsTypography.heading14.copyWith(
-                                color: FunDsColors.colorNeutral900,
+                            child: SizedBox(
+                              height: 23.h,
+                              child: Text(
+                                label ?? '',
+                                style: FunDsTypography.heading14.copyWith(
+                                  color: FunDsColors.colorNeutral900,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              child: label ?? const SizedBox(),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                          visible: isLabelPresent,
-                        ),
+                            visible: isLabelPresent),
                         RichText(
                           text: TextSpan(
                               style: FunDsTypography.body12.copyWith(
