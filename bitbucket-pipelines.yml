@@ -24,7 +24,7 @@ definitions:
           - cd catalog
           - flutter pub get
 
-    - step: &build-catalog
+    - step: &build-web-catalog
         name: Build catalog
         caches:
           - flutter-pub-cache
@@ -33,7 +33,6 @@ definitions:
           - flutter build web --release --web-renderer canvaskit
         artifacts:
           - catalog/build/web/**
-
 
     - step: &build-apk-catalog
         name: Build APK catalog
@@ -72,25 +71,19 @@ definitions:
           - export GOOGLE_APPLICATION_CREDENTIALS=/tmp/firebase-service-account.json
           - firebase appdistribution:distribute app-release.apk --app 1:272130137531:android:5839788c41f2e388ee389e --groups "flutter-design-system"
 
-    - step: &build-apk-with-tag
-        name: Build APK catalog with tag name version
-        caches:
-          - flutter-pub-cache
+    - step: &create-tag-if-not-exists
+        name: Create tag if not exists
         script:
-          - cd catalog
-          - flutter build apk --release --build-name=${BITBUCKET_TAG}
-        artifacts:
-          - catalog/build/app/outputs/flutter-apk/app-release.apk
-
-    - step: &build-web-with-tag
-        name: Build catalog
-        caches:
-          - flutter-pub-cache
-        script:
-          - cd catalog
-          - flutter build web --release --web-renderer canvaskit --build-name=${BITBUCKET_TAG}
-        artifacts:
-          - catalog/build/web/**
+          - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' catalog/pubspec.yaml)
+          - export TAG_COUNT=$(git ls-remote --tags origin|awk "/${APP_VERSION_NAME}$/ {c++} END{print c}")
+          - |
+            if [ "$TAG_COUNT" -gt 0 ]; then
+              echo "Tag ${APP_VERSION_NAME} already exists"
+              exit 0
+            fi
+          - export LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          - git tag -am "${LAST_COMMIT_MESSAGE}" ${APP_VERSION_NAME}
+          - git push origin ${APP_VERSION_NAME}
 
 clone:
   depth: full
@@ -98,35 +91,28 @@ clone:
 pipelines:
   branches:
     master:
+      - step: *create-tag-if-not-exists
       - step: *analyze-test
       - step: *prepare-build
       - parallel:
-        - step: *build-catalog
+        - step: *build-web-catalog
         - step: *build-apk-catalog
       - parallel:
         - step: *deploy-catalog-main
         - step: *distribute-apk
+
+    '{feature/*,bugfix/*}':
+        - step: *analyze-test
+        - step: *build-web-catalog
+        - step: *deploy-catalog-preview
+
   custom:
-    build-dev:
+    distribute-apk:
       - step: *prepare-build
       - step: *build-apk-catalog
       - step: *distribute-apk
-  pull-requests:
-    '{feature/*,bugfix/*}':
-      - step: *analyze-test
-      - step: *build-catalog
-      - step: *deploy-catalog-preview
-  tags:
-    '*.*.*':
-      - step: *prepare-build
-      - step: *build-apk-with-tag
-      - step: *distribute-apk
-    '*.*':
+    deploy-web:
       - step: *analyze-test
       - step: *prepare-build
-      - parallel:
-          - step: *build-web-with-tag
-          - step: *build-apk-with-tag
-      - parallel:
-          - step: *deploy-catalog-main
-          - step: *distribute-apk
+      - step: *build-web-catalog
+      - step: *deploy-catalog-main
