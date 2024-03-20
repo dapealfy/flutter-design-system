@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum FunDsSkeletonType { list, list2, card, card2, card3, banner, banner2 }
 
-const shimmerGradient = LinearGradient(
+const _shimmerGradient = LinearGradient(
   colors: [
     Color(0xFFF2F3F5),
     Color(0xFFE3E5EA),
@@ -43,9 +43,9 @@ class _FunDsSkeletonState extends State<FunDsSkeleton> {
     return AnimatedCrossFade(
       firstChild: Shimmer(
         child: firstChild(),
-        linearGradient: shimmerGradient,
+        linearGradient: _shimmerGradient,
       ),
-      secondChild: widget.child,
+      secondChild: Offstage(child: widget.child, offstage: widget.isLoading),
       crossFadeState: widget.isLoading
           ? CrossFadeState.showFirst
           : CrossFadeState.showSecond,
