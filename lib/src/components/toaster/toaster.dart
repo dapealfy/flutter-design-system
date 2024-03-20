@@ -36,12 +36,11 @@ class FunDsToaster extends SnackBar {
                   padding: const EdgeInsets.only(right: 8),
                   child: leftIcon,
                 ),
-              Text(
-                message,
-                style: FunDsTypography.body14.copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+              Text(message,
+                  style: FunDsTypography.body14.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: FunDsColors.colorWhite,
+                  )),
               const Spacer(),
               if (label != null)
                 Padding(

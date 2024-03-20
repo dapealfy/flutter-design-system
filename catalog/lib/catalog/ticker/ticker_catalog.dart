@@ -17,57 +17,57 @@ class TickerCatalog extends StatelessWidget {
         description: _description,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              'Ticker Version 1',
-              style: FunDsTypography.heading24,
-            ),
-            Text(
-              'Ticker Outline',
-              style: FunDsTypography.heading16,
-            ),
-            const SizedBox(height: 16),
-            ..._buildTicker(context, FunDsTickerType.outline),
-            Text(
-              'Ticker Non-Outline',
-              style: FunDsTypography.heading16,
-            ),
-            ..._buildTicker(context, FunDsTickerType.nonOutline),
-            const SizedBox(height: 32),
-            Text(
-              'Ticker Version 2',
-              style: FunDsTypography.heading24,
-            ),
-            Text(
-              'Ticker Outline',
-              style: FunDsTypography.heading16,
-            ),
-            const SizedBox(height: 16),
-            ..._buildTicker(context, FunDsTickerType.outline,
-                isVersion1: false),
-            Text(
-              'Ticker Non-Outline',
-              style: FunDsTypography.heading16,
-            ),
-            ..._buildTicker(context, FunDsTickerType.nonOutline,
-                isVersion1: false),
-          ]),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Ticker Version 1',
+                style: FunDsTypography.heading24,
+              ),
+              Text(
+                'Ticker Outline',
+                style: FunDsTypography.heading16,
+              ),
+              const SizedBox(height: 16),
+              ..._buildTicker(context, TickerOutlineType.outline),
+              Text(
+                'Ticker Non-Outline',
+                style: FunDsTypography.heading16,
+              ),
+              ..._buildTicker(context, TickerOutlineType.nonOutline),
+              const SizedBox(height: 32),
+              Text(
+                'Ticker Version 2',
+                style: FunDsTypography.heading24,
+              ),
+              Text(
+                'Ticker Outline',
+                style: FunDsTypography.heading16,
+              ),
+              const SizedBox(height: 16),
+              ..._buildTicker(context, TickerOutlineType.outline,
+                  isVersion1: false),
+              Text(
+                'Ticker Non-Outline',
+                style: FunDsTypography.heading16,
+              ),
+              ..._buildTicker(context, TickerOutlineType.nonOutline,
+                  isVersion1: false),
+            ],
+          ),
         ));
   }
 
-  List<Widget> _buildTicker(BuildContext context, FunDsTickerType type,
+  List<Widget> _buildTicker(BuildContext context, TickerOutlineType type,
       {bool isVersion1 = true}) {
-    return List.from(FunDsTickerVariant.values).map((e) {
+    return List.from(TickerVariant.values).map((e) {
       final Widget widget;
       widget = FunDsTicker(
-        label: isVersion1
-            ? const Text('Add the title here, no more than 1 line')
-            : null,
+        title: isVersion1 ? 'Add the title here, no more than 1 line' : null,
         description: 'Ticker description can be put here. Be brief ya! '
             'Can add link in the end too.',
         variant: e,
-        type: type,
+        outlineType: type,
         textLink: 'Custom Text Link',
         onCloseTap: () {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();

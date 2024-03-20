@@ -146,9 +146,8 @@ class FunDsAlert extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Visibility(
-                  child: Container(
+                  child: SizedBox(
                     height: 20,
-                    padding: const EdgeInsets.only(right: 8.0),
                     child: FunDsIcon(
                       funDsIconography: icon ?? defaultIcon,
                       size: 18.r,
@@ -163,9 +162,12 @@ class FunDsAlert extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                      Text(title,
-                          style: FunDsTypography.heading14.copyWith(
-                              color: mainColor ?? FunDsColors.colorNeutral900)),
+                      Text(
+                        title,
+                        style: FunDsTypography.heading14.copyWith(
+                          color: mainColor ?? FunDsColors.colorNeutral900,
+                        ),
+                      ),
                       const SizedBox(height: 2),
                       Text(
                         description,
@@ -179,7 +181,7 @@ class FunDsAlert extends StatelessWidget {
                   visible: secondaryActionText == null,
                   child: FunDsButton(
                     key: const Key('btn-primary'),
-                    type: FunDsButtonType.small,
+                    type: FunDsButtonType.xSmall,
                     variant: FunDsButtonVariant.primary,
                     text: primaryActionText,
                     onPressed: () {
@@ -206,17 +208,17 @@ class FunDsAlert extends StatelessWidget {
         children: [
           FunDsButton(
             key: const Key('btn-primary'),
-            type: FunDsButtonType.small,
+            type: FunDsButtonType.xSmall,
             variant: FunDsButtonVariant.primary,
             text: primaryActionText,
             onPressed: () {
               onPrimaryActionTap?.call();
             },
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 8),
           FunDsButton(
             key: const Key('btn-secondary'),
-            type: FunDsButtonType.small,
+            type: FunDsButtonType.xSmall,
             variant: FunDsButtonVariant.secondary,
             text: secondaryActionText ?? '',
             onPressed: () {

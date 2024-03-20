@@ -256,8 +256,9 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
         hintText: widget.hintText,
         hintStyle: widget.size == FunDsTextFieldSize.small
             ? FunDsTypography.body12
+                .copyWith(color: FunDsColors.colorTextPlaceholder)
             : FunDsTypography.body14
-                .copyWith(color: FunDsColors.colorNeutral500),
+                .copyWith(color: FunDsColors.colorTextPlaceholder),
       ),
     );
   }
@@ -279,8 +280,9 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
                 widget.hintText ?? '',
                 style: widget.size == FunDsTextFieldSize.small
                     ? FunDsTypography.body12
+                        .copyWith(color: FunDsColors.colorTextPlaceholder)
                     : FunDsTypography.body14
-                        .copyWith(color: FunDsColors.colorNeutral500),
+                        .copyWith(color: FunDsColors.colorTextPlaceholder),
                 overflow: widget.readOnlyTextOverflow,
                 maxLines: 1,
               );
@@ -406,9 +408,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
                   key: const Key('description'),
                 ),
           ),
-        SizedBox(
-          height: widget.size == FunDsTextFieldSize.small ? 4.h : 8.h,
-        ),
+        const SizedBox(height: 4),
         GestureDetector(
           onTap: () {
             if (widget.readOnly) {
@@ -524,9 +524,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
             ),
           ),
         ),
-        SizedBox(
-          height: widget.size == FunDsTextFieldSize.small ? 4.h : 8.h,
-        ),
+        const SizedBox(height: 4),
         if (widget.helperText != null || widget.helper != null)
           DefaultTextStyle(
             style: (widget.size == FunDsTextFieldSize.small

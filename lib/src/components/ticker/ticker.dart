@@ -3,187 +3,226 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum FunDsTickerType { outline, nonOutline }
+enum TickerOutlineType {
+  outline,
+  nonOutline;
+}
 
-enum FunDsTickerVariant {
-  info,
-  success,
-  warning,
-  danger,
+enum TickerVariant {
+  info(
+    backgroundColor: FunDsColors.colorBlue50,
+    foregroundColor: FunDsColors.colorBlue600,
+    icon: FunDsIconography.infoIcInformation,
+  ),
+  success(
+    backgroundColor: FunDsColors.colorGreen50,
+    foregroundColor: FunDsColors.colorGreen600,
+    icon: FunDsIconography.actionIcCheckCircle,
+  ),
+  warning(
+    backgroundColor: FunDsColors.colorOrange50,
+    foregroundColor: FunDsColors.colorOrange600,
+    icon: FunDsIconography.infoIcWarning,
+  ),
+  danger(
+    backgroundColor: FunDsColors.colorRed50,
+    foregroundColor: FunDsColors.colorRed500,
+    icon: FunDsIconography.actionIcTrashCan,
+  );
+
+  final Color backgroundColor;
+  final Color foregroundColor;
+  final String icon;
+
+  const TickerVariant({
+    required this.backgroundColor,
+    required this.foregroundColor,
+    required this.icon,
+  });
 }
 
 /// Ticker
 ///
 /// Usage :
 /// ```dart
-/// Widget? label = 'optional';
 /// Ticker(
-///  label: label,
-///  description: 'a brief description here',
-///  variant: TickerVariant.info,
-///  type: TickerType.outline,
-///  textLink: 'Custom Text Link',
-///  onCloseTap: () {
-///    // do something
-///  },
-///  onTextLinkTap: () {
-///    // do something
-///  },
+///   title: 'Optional title for Ticker',
+///   description: 'a brief description here',
+///   variant: TickerVariant.info,
+///   outlineType: TickerOutlineType.outline,
+///   textLink: 'Custom Text Link',
+///   onCloseTap: () {
+///     // do something
+///   },
+///   onTextLinkTap: () {
+///     // do something
+///   },
+/// );
+///
+/// or
+///
+/// Ticker.span(
+///   title: 'Optional title for Ticker',
+///   description: TextSpan(text: 'a brief description here'),
+///   variant: TickerVariant.info,
+///   outlineType: TickerOutlineType.outline,
+///   onCloseTap: () {
+///     // do something
+///   },
 /// );
 /// ```
 class FunDsTicker extends StatelessWidget {
-  const FunDsTicker(
-      {super.key,
-      this.label,
-      required this.description,
-      required this.variant,
-      required this.type,
-      this.icon,
-      this.textLink,
-      this.onTextLinkTap,
-      this.onCloseTap});
+  FunDsTicker({
+    super.key,
+    this.title,
+    required String description,
+    required this.variant,
+    required this.outlineType,
+    this.icon,
+    String? textLink,
+    this.onTextLinkTap,
+    this.onCloseTap,
+  })  : description = TextSpan(text: description + ' '),
+        textLink = (textLink != null)
+            ? TextSpan(
+                text: textLink,
+                style: FunDsTypography.body12B.copyWith(
+                  color: FunDsColors.colorPrimary500,
+                ),
+                recognizer: TapGestureRecognizer()..onTap = onTextLinkTap,
+              )
+            : null;
 
-  final FunDsTickerVariant variant;
-  final FunDsTickerType type;
+  const FunDsTicker.span({
+    super.key,
+    this.title,
+    required this.description,
+    required this.variant,
+    required this.outlineType,
+    this.icon,
+    this.onCloseTap,
+  })  : textLink = null,
+        onTextLinkTap = null;
+
+  final TickerOutlineType outlineType;
+  final TickerVariant variant;
   final String? icon;
-  final Widget? label;
-  final String description;
-  final String? textLink;
+  final String? title;
+  final TextSpan description;
+  final TextSpan? textLink;
   final VoidCallback? onTextLinkTap;
   final VoidCallback? onCloseTap;
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = switch (variant) {
-      FunDsTickerVariant.danger => FunDsColors.colorRed50,
-      FunDsTickerVariant.info => FunDsColors.colorBlue50,
-      FunDsTickerVariant.success => FunDsColors.colorGreen50,
-      FunDsTickerVariant.warning => FunDsColors.colorOrange50,
+    final borderColor = switch (outlineType) {
+      TickerOutlineType.nonOutline => variant.backgroundColor,
+      TickerOutlineType.outline => variant.foregroundColor,
     };
 
-    final fontColor = switch (variant) {
-      FunDsTickerVariant.danger => FunDsColors.colorRed500,
-      FunDsTickerVariant.info => FunDsColors.colorBlue600,
-      FunDsTickerVariant.success => FunDsColors.colorGreen500,
-      FunDsTickerVariant.warning => FunDsColors.colorOrange600,
-    };
+    final isLabelPresent = title != null && title!.isNotEmpty;
 
-    final borderColor = switch (type) {
-      FunDsTickerType.nonOutline => backgroundColor,
-      FunDsTickerType.outline => fontColor
-    };
+    final fontColor =
+        isLabelPresent ? FunDsColors.colorTextDefault : variant.foregroundColor;
 
-    final defaultIcon = switch (variant) {
-      FunDsTickerVariant.danger => FunDsIconography.actionIcTrashCan,
-      FunDsTickerVariant.info => FunDsIconography.infoIcInformation,
-      FunDsTickerVariant.success => FunDsIconography.actionIcCheckCircle,
-      FunDsTickerVariant.warning => FunDsIconography.infoIcWarning,
-    };
-
-    bool isLabelPresent = label != null;
-
-    return Container(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        border: Border.all(
-          color: borderColor,
-          width: 1.spMin,
+    return Material(
+      type: MaterialType.transparency,
+      child: Ink(
+        decoration: BoxDecoration(
+          color: variant.backgroundColor,
+          border: Border.all(color: borderColor, width: 1),
+          borderRadius: BorderRadius.circular(8.r),
         ),
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      clipBehavior: Clip.hardEdge,
-      child: Stack(
-        children: [
-          Positioned(
-              child: Visibility(
-                visible: isLabelPresent,
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(50.r),
-                    onTap: () {
-                      onCloseTap?.call();
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 12.h, horizontal: 12.w),
-                      child: FunDsIcon(
-                        funDsIconography: FunDsIconography.actionIcCrossNude,
-                        size: 16.w,
-                        color: FunDsColors.colorNeutral900,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              right: 0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+        padding: const EdgeInsets.all(12),
+        child: IntrinsicHeight(
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: 12.w, right: 8.w),
-                child: FunDsIcon(
-                  funDsIconography: icon ?? defaultIcon,
-                  size: 24.w,
-                  color: fontColor,
-                ),
-              ),
+              _buildIcon(),
+              const SizedBox(width: 8),
               Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 12.h),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Visibility(
-                          child: SizedBox(
-                            height: 23.h,
-                            child: DefaultTextStyle(
-                              style: FunDsTypography.heading14.copyWith(
-                                color: FunDsColors.colorNeutral900,
-                              ),
-                              child: label ?? const SizedBox(),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          visible: isLabelPresent,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                              style: FunDsTypography.body12.copyWith(
-                                  color: FunDsColors.colorNeutral900,
-                                  height: 1.4),
-                              children: [
-                                TextSpan(
-                                    text: description + ' ',
-                                    style: TextStyle(
-                                        color: isLabelPresent
-                                            ? FunDsColors.colorNeutral900
-                                            : fontColor)),
-                                TextSpan(
-                                  text: textLink,
-                                  style: FunDsTypography.body12B.copyWith(
-                                      color: FunDsColors.colorPrimary500),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      onTextLinkTap?.call();
-                                    },
-                                )
-                              ]),
-                        )
-                      ]),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildTitle(
+                      fontColor: fontColor,
+                      visible: isLabelPresent,
+                    ),
+                    _buildDescription(fontColor: fontColor),
+                  ],
                 ),
               ),
-              Visibility(
-                child: SizedBox(
-                  width: 40.w,
-                ),
-                visible: isLabelPresent,
-              )
+              _buildCloseIcon(visible: isLabelPresent),
             ],
           ),
-        ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildIcon() {
+    return FunDsIcon(
+      funDsIconography: icon ?? variant.icon,
+      size: 24.w,
+      color: variant.foregroundColor,
+    );
+  }
+
+  Widget _buildTitle({required Color fontColor, required bool visible}) {
+    return Visibility(
+      visible: visible,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 2),
+        child: Text(
+          title ?? '',
+          style: FunDsTypography.heading14.copyWith(color: fontColor),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDescription({required Color fontColor}) {
+    final content = [description];
+    if(textLink != null) {
+      content.add(textLink!);
+    }
+
+    return RichText(
+      text: TextSpan(
+        style: FunDsTypography.body12.copyWith(
+          color: fontColor,
+          height: 1.4,
+        ),
+        children: content,
+      ),
+    );
+  }
+
+  Widget _buildCloseIcon({required bool visible}) {
+    return Visibility(
+      visible: visible,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12),
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: InkResponse(
+            key: const Key('icon-close'),
+            highlightShape: BoxShape.circle,
+            containedInkWell: false,
+            onTap: onCloseTap,
+            child: FunDsIcon(
+              funDsIconography: FunDsIconography.actionIcCrossNude,
+              size: 16.w,
+              color: FunDsColors.colorNeutral900,
+            ),
+          ),
+        ),
       ),
     );
   }

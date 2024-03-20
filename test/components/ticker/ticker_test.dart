@@ -14,16 +14,20 @@ void main() {
         String value = '';
         await tester.pumpWidget(
           buildTestableWidget(
-            child: FunDsTicker(
-                label: const Text('Add the title here, no more than 1 line'),
-                key: const Key('ticker-v1'),
-                description: 'Description',
-                variant: FunDsTickerVariant.success,
-                type: FunDsTickerType.outline,
-                textLink: 'Custom Text Link',
-                onCloseTap: () {
-                  value = 'clicked';
-                }),
+            child: Builder(
+              builder: (context) {
+                return FunDsTicker(
+                    title: 'Add the title here, no more than 1 line',
+                    key: const Key('ticker-v1'),
+                    description: 'Description',
+                    variant: TickerVariant.success,
+                    outlineType: TickerOutlineType.outline,
+                    textLink: 'Custom Text Link',
+                    onCloseTap: () {
+                      value = 'clicked';
+                    });
+              }
+            ),
           ),
         );
         expect(find.text('Add the title here, no more than 1 line'),
@@ -31,7 +35,7 @@ void main() {
         expect(find.byKey(const Key('ticker-v1')), findsAny);
         expect(value.isEmpty, isTrue);
 
-        Finder closeIcon = find.byType(InkWell);
+        Finder closeIcon = find.byKey(const Key('icon-close'));
         expect(closeIcon, findsOneWidget);
         await tester.tap(closeIcon);
         expect(value, 'clicked');
@@ -48,15 +52,19 @@ void main() {
 
         await tester.pumpWidget(
           buildTestableWidget(
-            child: FunDsTicker(
-              key: const Key('ticker-v2'),
-              description: 'Description',
-              variant: FunDsTickerVariant.success,
-              type: FunDsTickerType.outline,
-              textLink: clickableString,
-              onTextLinkTap: () {
-                value = 2;
-              },
+            child: Builder(
+              builder: (context) {
+                return FunDsTicker(
+                  key: const Key('ticker-v2'),
+                  description: 'Description',
+                  variant: TickerVariant.success,
+                  outlineType: TickerOutlineType.outline,
+                  textLink: clickableString,
+                  onTextLinkTap: () {
+                    value = 2;
+                  },
+                );
+              }
             ),
           ),
         );
