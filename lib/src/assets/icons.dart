@@ -61,6 +61,10 @@ class FunDsIconography {
       'packages/flutter_design_system/assets/icons/basic/ic_chevron_right.svg';
   static const String basicIcChevronUp =
       'packages/flutter_design_system/assets/icons/basic/ic_chevron_up.svg';
+  static const String basicDoubleIcChevronLeft =
+      'packages/flutter_design_system/assets/icons/basic/ic_double_chevron_left.svg';
+  static const String basicDoubleIcChevronRight =
+      'packages/flutter_design_system/assets/icons/basic/ic_double_chevron_right.svg';
   static const String basicIcSortAscending =
       'packages/flutter_design_system/assets/icons/basic/ic_sort_ascending.svg';
   static const String basicIcSortDefault =
@@ -223,6 +227,8 @@ class FunDsIconography {
       'packages/flutter_design_system/assets/icons/icon_avatar.svg';
   static const String damagedMapFilled =
       'packages/flutter_design_system/assets/icons/operate/ic_damage_map_filled.svg';
+  static const String swapRight =
+      'packages/flutter_design_system/assets/icons/swap_right.svg';
 
   static List<String> getAllIcons() {
     return [
@@ -337,6 +343,9 @@ class FunDsIconography {
       transactionIcWithdraw,
       icAvatar,
       damagedMapFilled,
+      basicDoubleIcChevronRight,
+      basicDoubleIcChevronLeft,
+      swapRight,
     ];
   }
 }

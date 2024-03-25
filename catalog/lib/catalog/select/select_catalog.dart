@@ -106,6 +106,14 @@ class _SelectCatalogState extends State<SelectCatalog> {
       ],
     );
     final isError = context.knobs.boolean(label: 'isError', initial: false);
+    final size = context.knobs.options(
+      label: 'Size',
+      initial: funds.FunDsFieldSize.small,
+      options: const [
+        Option(label: 'Small', value: funds.FunDsFieldSize.small),
+        Option(label: 'Medium', value: funds.FunDsFieldSize.medium),
+      ],
+    );
 
     return CatalogPage(
       title: 'Select',
@@ -127,6 +135,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             hintText: hintText,
             helperText: helperText,
             isError: isError,
+            size: size,
             onTap: () {
               // Using dedicated widget as a child is recommended to make sure
               // hot reload is working while sheet is showing
@@ -160,6 +169,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             leftIcon: leftIcon,
             helperText: helperText,
             isError: isError,
+            size: size,
             sheetConfig: funds.SelectionSheetConfig<Model>(
               getItems: (controller) async {
                 await Future.delayed(const Duration(seconds: 1));
@@ -248,6 +258,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             leftIcon: leftIcon,
             helperText: helperText,
             isError: isError,
+            size: size,
             sheetConfig: funds.SelectionSheetConfig<Model>(
               getItems: (controller) => Future.value(items),
               onSelected: (selected) {
@@ -287,6 +298,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             leftIcon: leftIcon,
             helperText: helperText,
             isError: isError,
+            size: size,
             sheetConfig: funds.SelectionSheetConfig<NestedModel>(
               getItems: (controller) async {
                 return nestedItems;
@@ -373,6 +385,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
             leftIcon: leftIcon,
             helperText: helperText,
             isError: isError,
+            size: size,
             sheetConfig: funds.SelectionSheetConfig<NestedModel>(
               getItems: (controller) async {
                 return nestedItems;

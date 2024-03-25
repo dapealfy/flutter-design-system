@@ -2,8 +2,6 @@ import 'package:flutter/material.dart' as m;
 import 'package:flutter/material.dart' hide TextField;
 import 'package:flutter/services.dart';
 import 'package:flutter_design_system/funds.dart';
-import 'package:flutter_design_system/src/utils/disable_color_filter.dart';
-import 'package:flutter_design_system/src/utils/double_border.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FunDsTextField extends StatefulWidget {
@@ -93,8 +91,8 @@ class FunDsTextField extends StatefulWidget {
   /// Will be called when the keyboard action button is pressed
   final ValueChanged<String>? onSubmitted;
 
-  /// Will be called when the keyboard action button is pressed
-  final FunDsTextFieldSize? size;
+  /// Will change the size of the text field
+  final FunDsFieldSize? size;
 
   /// Will make the text field read only
   final bool readOnly;
@@ -139,7 +137,7 @@ class FunDsTextField extends StatefulWidget {
     this.inputFormatters,
     this.textInputAction,
     this.onSubmitted,
-    this.size = FunDsTextFieldSize.small,
+    this.size = FunDsFieldSize.small,
     this.readOnly = false,
     this.readOnlyTextOverflow,
     this.onTap,
@@ -159,7 +157,6 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
 
   FocusNode get _effectiveFocusNode => widget.focusNode ?? _focusNode!;
 
-  bool _hasFocus = false;
   bool _isFilled = false;
 
   Debouncer? _debouncer;
@@ -176,7 +173,6 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
       _controller = FunDsTextController();
     }
 
-    _effectiveFocusNode.addListener(_focusListener);
     _effectiveController.addListener(_textListener);
 
     if (widget.onChangedDebounced != null) {
@@ -192,12 +188,6 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
   void _clear() {
     _effectiveController.clear();
     _handleOnChange('');
-  }
-
-  void _focusListener() {
-    setState(() {
-      _hasFocus = _effectiveFocusNode.hasFocus;
-    });
   }
 
   void _textListener() {
@@ -217,7 +207,6 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
 
   @override
   void dispose() {
-    _effectiveFocusNode.removeListener(_focusListener);
     _effectiveController.removeListener(_textListener);
     _focusNode?.dispose();
     _controller?.dispose();
@@ -243,18 +232,26 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
           LengthLimitingTextInputFormatter(widget.maxLength),
         ...widget.inputFormatters ?? [],
       ],
-      style: widget.size == FunDsTextFieldSize.small
+      style: widget.size == FunDsFieldSize.small
           ? FunDsTypography.body12
           : FunDsTypography.body14,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
-          vertical: widget.size == FunDsTextFieldSize.small ? 6.h : 8.h,
-          horizontal: widget.size == FunDsTextFieldSize.small ? 10.w : 12.w,
+          vertical: widget.size == FunDsFieldSize.small
+              ? 6.h
+              : widget.size == FunDsFieldSize.medium
+                  ? 8.h
+                  : 12.h,
+          horizontal: widget.size == FunDsFieldSize.small
+              ? 10.w
+              : widget.size == FunDsFieldSize.medium
+                  ? 12.w
+                  : 16.w,
         ),
         isDense: true,
         border: InputBorder.none,
         hintText: widget.hintText,
-        hintStyle: widget.size == FunDsTextFieldSize.small
+        hintStyle: widget.size == FunDsFieldSize.small
             ? FunDsTypography.body12
                 .copyWith(color: FunDsColors.colorTextPlaceholder)
             : FunDsTypography.body14
@@ -278,7 +275,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
               // Show hint
               return Text(
                 widget.hintText ?? '',
-                style: widget.size == FunDsTextFieldSize.small
+                style: widget.size == FunDsFieldSize.small
                     ? FunDsTypography.body12
                         .copyWith(color: FunDsColors.colorTextPlaceholder)
                     : FunDsTypography.body14
@@ -291,7 +288,7 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
               value.text,
               maxLines: 1,
               overflow: widget.readOnlyTextOverflow,
-              style: widget.size == FunDsTextFieldSize.small
+              style: widget.size == FunDsFieldSize.small
                   ? FunDsTypography.body12
                   : FunDsTypography.body14,
             );
@@ -309,243 +306,42 @@ class _FunDsTextFieldState extends State<FunDsTextField> {
 
   @override
   Widget build(BuildContext context) {
-    Color? outerBorderColor;
-    Color innerBorderColor = FunDsColors.colorNeutral200;
-    Color labelColor = FunDsColors.colorNeutral900;
-    Color descriptionColor = FunDsColors.colorNeutral700;
-    Color containerColor = FunDsColors.colorWhite;
-
-    final applyDisabledColorFilter =
-        !widget.enabled && widget.useColorFilterForDisabled;
-
-    if (widget.isError) {
-      innerBorderColor = FunDsColors.colorRed500;
-    }
-
-    if (!widget.enabled) {
-      innerBorderColor = FunDsColors.colorNeutral200;
-      labelColor = FunDsColors.colorNeutral500;
-      containerColor = FunDsColors.colorNeutral50;
-      descriptionColor = FunDsColors.colorNeutral500;
-    }
-
-    if (_hasFocus && !widget.isError && widget.enabled) {
-      outerBorderColor = FunDsColors.colorPrimary200;
-      innerBorderColor = FunDsColors.colorPrimary400;
-    }
-
-    Widget? prefixWidget;
-    if (widget.prefix != null) {
-      prefixWidget = Row(
-        key: const Key('prefix'),
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(width: 12.w),
-          DisabledColorFilter(
-            apply: applyDisabledColorFilter,
-            child: Center(
-              child: widget.prefix!,
-            ),
-          ),
-          SizedBox(width: 12.w),
-          Container(
-            height: double.infinity,
-            width: 1,
-            color: innerBorderColor,
-          ),
-        ],
-      );
-    }
-
-    Widget? suffix2Widget;
-    if (widget.suffix2 != null) {
-      suffix2Widget = Row(
-        key: const Key('suffix2'),
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            height: double.infinity,
-            width: 1,
-            color: innerBorderColor,
-          ),
-          SizedBox(width: 12.w),
-          DisabledColorFilter(
-            apply: applyDisabledColorFilter,
-            child: Center(
-              child: widget.suffix2!,
-            ),
-          ),
-          SizedBox(width: 8.w),
-        ],
-      );
-    }
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        if (widget.labelText != null || widget.label != null)
-          DefaultTextStyle(
-            style: (widget.size == FunDsTextFieldSize.medium
-                    ? FunDsTypography.body14B
-                    : FunDsTypography.body12B)
-                .copyWith(color: labelColor),
-            child: widget.label ??
-                Text(
-                  widget.labelText ?? '',
-                  key: const Key('label'),
-                ),
-          ),
-        if (widget.descriptionText != null || widget.description != null)
-          DefaultTextStyle(
-            style: (widget.size == FunDsTextFieldSize.medium
-                    ? FunDsTypography.body14
-                    : FunDsTypography.body12)
-                .copyWith(color: descriptionColor),
-            child: widget.description ??
-                Text(
-                  widget.descriptionText ?? '',
-                  key: const Key('description'),
-                ),
-          ),
-        const SizedBox(height: 4),
-        GestureDetector(
-          onTap: () {
-            if (widget.readOnly) {
-              _effectiveFocusNode.requestFocus();
-            }
-
-            widget.onTap?.call();
-          },
-          child: Container(
-            key: const Key('border'),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(
-                12.r,
+    return FunDsBaseField(
+      focusNode: _effectiveFocusNode,
+      labelText: widget.labelText,
+      label: widget.label,
+      descriptionText: widget.descriptionText,
+      description: widget.description,
+      helperText: widget.helperText,
+      helper: widget.helper,
+      prefix: widget.prefix,
+      leftIcon: widget.leftIcon,
+      suffix1: widget.suffix1,
+      suffix2: widget.suffix2,
+      rightIcon1: widget.rightIcon1,
+      rightIcon2: (_isFilled &&
+              widget.showClear &&
+              widget.enabled &&
+              widget.rightIcon2 == null)
+          ? GestureDetector(
+              key: const Key('clearIcon'),
+              onTap: () {
+                _clear();
+              },
+              child: Icon(
+                Icons.cancel,
+                size: widget.size == FunDsFieldSize.small ? 16.w : 18.w,
+                color: FunDsColors.colorNeutral600,
               ),
-              border: DoubleBorder(
-                outerBorder: Border.all(
-                  color: outerBorderColor ?? Colors.transparent,
-                  width: 2,
-                ),
-                innerBorder: Border.all(
-                  color: innerBorderColor,
-                  width: 1,
-                ),
-              ),
-              color: containerColor,
-            ),
-            child: IntrinsicHeight(
-              child: Row(
-                children: [
-                  prefixWidget ?? const SizedBox(),
-                  if (widget.leftIcon != null)
-                    Padding(
-                      key: const Key('leftIcon'),
-                      padding: EdgeInsets.only(
-                        left: widget.size == FunDsTextFieldSize.small
-                            ? 10.w
-                            : 12.w,
-                      ),
-                      child: DisabledColorFilter(
-                        apply: applyDisabledColorFilter,
-                        child: widget.leftIcon!,
-                      ),
-                    ),
-                  Expanded(
-                    child: _buildTextField(),
-                  ),
-                  if (widget.suffix1 != null)
-                    Padding(
-                      key: const Key('suffix1'),
-                      padding: EdgeInsets.only(
-                        right: widget.size == FunDsTextFieldSize.small
-                            ? 10.w
-                            : 12.w,
-                      ),
-                      child: DisabledColorFilter(
-                        apply: applyDisabledColorFilter,
-                        child: widget.suffix1!,
-                      ),
-                    ),
-                  if (widget.rightIcon1 != null)
-                    Padding(
-                      key: const Key('rightIcon1'),
-                      padding: EdgeInsets.only(
-                        right: widget.size == FunDsTextFieldSize.small
-                            ? 10.w
-                            : 12.w,
-                      ),
-                      child: DisabledColorFilter(
-                        apply: applyDisabledColorFilter,
-                        child: widget.rightIcon1!,
-                      ),
-                    ),
-                  if (widget.rightIcon2 != null)
-                    Padding(
-                      key: const Key('rightIcon2'),
-                      padding: EdgeInsets.only(
-                        right: widget.size == FunDsTextFieldSize.small
-                            ? 10.w
-                            : 12.w,
-                      ),
-                      child: DisabledColorFilter(
-                        apply: applyDisabledColorFilter,
-                        child: widget.rightIcon2!,
-                      ),
-                    ),
-                  if (_isFilled &&
-                      widget.showClear &&
-                      widget.enabled &&
-                      widget.rightIcon2 == null)
-                    GestureDetector(
-                      onTap: () {
-                        _clear();
-                      },
-                      child: Padding(
-                        key: const Key('clearIcon'),
-                        padding: EdgeInsets.only(
-                          right: widget.size == FunDsTextFieldSize.small
-                              ? 10.w
-                              : 12.w,
-                        ),
-                        child: Icon(
-                          Icons.cancel,
-                          size: widget.size == FunDsTextFieldSize.small
-                              ? 16.w
-                              : 18.w,
-                          color: FunDsColors.colorNeutral600,
-                        ),
-                      ),
-                    ),
-                  suffix2Widget ?? const SizedBox(),
-                ],
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 4),
-        if (widget.helperText != null || widget.helper != null)
-          DefaultTextStyle(
-            style: (widget.size == FunDsTextFieldSize.small
-                    ? FunDsTypography.body12
-                    : FunDsTypography.body14)
-                .copyWith(
-                    color: widget.isError
-                        ? FunDsColors.colorRed500
-                        : descriptionColor),
-            child: widget.helper ??
-                Text(
-                  widget.helperText ?? '',
-                  key: const Key('helper'),
-                ),
-          ),
-      ],
+            )
+          : widget.rightIcon2,
+      isError: widget.isError,
+      enabled: widget.enabled,
+      size: widget.size,
+      focusOnTap: widget.readOnly,
+      onTap: widget.onTap,
+      useColorFilterForDisabled: widget.useColorFilterForDisabled,
+      child: _buildTextField(),
     );
   }
-}
-
-enum FunDsTextFieldSize {
-  small,
-  medium,
 }

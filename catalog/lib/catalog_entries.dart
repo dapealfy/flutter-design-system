@@ -16,6 +16,7 @@ import 'package:catalog/catalog/coachmark/coachmark_catalog.dart';
 import 'package:catalog/catalog/control/slider_catalog.dart';
 import 'package:catalog/catalog/control/toggle_catalog.dart';
 import 'package:catalog/catalog/counter/counter_catalog.dart';
+import 'package:catalog/catalog/datepicker/date_picker_catalog.dart';
 import 'package:catalog/catalog/divider/divider_catalog.dart';
 import 'package:catalog/catalog/foundation/colors_catalog.dart';
 import 'package:catalog/catalog/foundation/icon_catalog.dart';
@@ -254,5 +255,9 @@ final entries = [
   Entry(
     name: 'Component/Divider/Divider',
     builder: (context) => const DividerCatalog(),
+  ),
+  Entry(
+    name: 'Component/Date Picker/Date Picker',
+    builder: (context) => const DatePickerCatalog(),
   ),
 ];

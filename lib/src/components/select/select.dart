@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart' as funds;
+import 'package:flutter_design_system/src/components/components.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 part 'selection_sheet.dart';
@@ -17,6 +18,7 @@ class FunDsSelect<T> extends StatefulWidget {
     this.leftIcon,
     this.helperText,
     this.isError = false,
+    this.size = FunDsFieldSize.small,
     this.onTap,
   });
 
@@ -41,6 +43,8 @@ class FunDsSelect<T> extends StatefulWidget {
 
   final bool isError;
 
+  final FunDsFieldSize size;
+
   /// Build select with predefined bottom sheet
   factory FunDsSelect.bottomSheet({
     required BuildContext context,
@@ -53,6 +57,7 @@ class FunDsSelect<T> extends StatefulWidget {
     Widget? leftIcon,
     String? helperText,
     bool isError = false,
+    funds.FunDsFieldSize size = funds.FunDsFieldSize.small,
     required SelectionSheetConfig<T> sheetConfig,
   }) {
     return FunDsSelect<T>(
@@ -65,6 +70,7 @@ class FunDsSelect<T> extends StatefulWidget {
       leftIcon: leftIcon,
       helperText: helperText,
       isError: isError,
+      size: size,
       onTap: () {
         SelectionSheet.show(
           context,
@@ -125,6 +131,7 @@ class FunDsSelectState<T> extends State<FunDsSelect<T>> {
       leftIcon: widget.leftIcon,
       isError: widget.isError,
       showClear: false,
+      size: widget.size,
       suffix1: funds.FunDsIcon(
         funDsIconography: funds.FunDsIconography.basicIcChevronDown,
         size: 20.w,

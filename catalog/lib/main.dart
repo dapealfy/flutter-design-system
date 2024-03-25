@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:ui';
 
 import 'package:catalog/catalog_entries.dart';
@@ -10,8 +12,10 @@ import 'package:flutter_design_system/funds.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  await initializeDateFormatting();
   runApp(const MyApp());
 }
 
