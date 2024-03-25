@@ -10,6 +10,7 @@ class FunDsProgressCircle extends StatelessWidget {
   final FunDsProgressCircleVariant variant;
   final String? label;
   final bool useAnimation;
+
   const FunDsProgressCircle({
     super.key,
     required this.progress,
@@ -84,6 +85,7 @@ class FunDsProgressCircle extends StatelessWidget {
   TextStyle _getLabelTextStyle(FunDsProgressCircleSize size) {
     switch (size) {
       case FunDsProgressCircleSize.tiny ||
+            FunDsProgressCircleSize.xs ||
             FunDsProgressCircleSize.small ||
             FunDsProgressCircleSize.medium:
         return FunDsTypography.body12.copyWith(
@@ -255,7 +257,6 @@ enum FunDsProgressCircleSize {
   medium(
     strokeWidth: 20,
   ),
-
   large(
     strokeWidth: 24,
   ),

@@ -62,6 +62,7 @@ class FunDsScrollbar extends StatelessWidget {
     return RawScrollbar(
       thumbColor: FunDsColors.colorNeutral500,
       trackColor: FunDsColors.colorNeutral200,
+      trackBorderColor: FunDsColors.colorNeutral200,
       thickness: thickness,
       radius: const Radius.circular(24),
       trackRadius: const Radius.circular(24),

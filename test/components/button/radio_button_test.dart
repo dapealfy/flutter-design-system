@@ -44,7 +44,7 @@ void main() {
             label: 'Test Label',
             helper: 'Test Helper',
             value: 1,
-            disabled: true,
+            enabled: false,
             selectedValue: selectedValue,
             onChanged: (value) {
               selectedValue = value;

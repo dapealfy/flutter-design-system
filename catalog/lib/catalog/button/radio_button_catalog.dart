@@ -34,7 +34,7 @@ class _RadioButtonCatalogState extends State<RadioButtonCatalog> {
             key: const Key('Disabled Radio Button'),
             value: 1,
             selectedValue: 0,
-            disabled: true,
+            enabled: false,
             label: 'Label',
             helper: toogleKnob ? 'Help text goes here' : null,
           ),
@@ -58,7 +58,7 @@ class _RadioButtonCatalogState extends State<RadioButtonCatalog> {
             key: const Key('Disabled Selected Radio Button'),
             value: 3,
             selectedValue: 3,
-            disabled: true,
+            enabled: false,
             label: 'Label',
             helper: toogleKnob ? 'Help text goes here' : null,
           ),
@@ -75,7 +75,7 @@ class _RadioButtonCatalogState extends State<RadioButtonCatalog> {
               });
             },
             label: 'Yes',
-            helper: 'I Believe it\'s works',
+            helper: toogleKnob ? 'I Believe it\'s works' : null,
           ),
           FunDsRadioButton(
             value: 2,
@@ -86,7 +86,7 @@ class _RadioButtonCatalogState extends State<RadioButtonCatalog> {
               });
             },
             label: 'No',
-            helper: 'It\'s not working',
+            helper: toogleKnob ? 'It\'s not working' : null,
           ),
           FunDsRadioButton(
             value: 3,
@@ -97,7 +97,7 @@ class _RadioButtonCatalogState extends State<RadioButtonCatalog> {
               });
             },
             label: 'Not Sure',
-            helper: 'I don\'t know',
+            helper: toogleKnob ? 'I don\'t know' : null,
           ),
         ],
       ),

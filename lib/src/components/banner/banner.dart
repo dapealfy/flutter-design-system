@@ -160,7 +160,7 @@ class FunDsBanner extends StatelessWidget {
                             title,
                             key: const Key('title'),
                             maxLines: 1,
-                            style: FunDsTypography.body14B,
+                            style: FunDsTypography.heading14,
                           ),
                         ),
                         if (showCloseButton != null && showCloseButton!)
@@ -196,7 +196,7 @@ class FunDsBanner extends StatelessWidget {
           if (button != null)
             Padding(
               padding: EdgeInsets.only(
-                top: 12.h,
+                top: 8,
                 left: leftIcon != null
                     ? version == FunDsBannerVersion.v1
                         ? 32.w

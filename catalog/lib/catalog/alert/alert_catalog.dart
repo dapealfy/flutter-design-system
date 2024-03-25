@@ -28,7 +28,7 @@ class _AlertCatalogState extends State<AlertCatalog> {
           const SizedBox(height: 16),
           FunDsAlert(
             type: FunDsAlertType.neutral,
-            title: 'Master Component',
+            title: 'Master Component ',
             description: 'Put short description here.',
             primaryActionText: 'Main',
             icon: FunDsIconography.actionIcSetting,

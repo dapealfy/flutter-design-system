@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
+import 'package:flutter_design_system/src/components/button/alert/button_alert.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum FunDsAlertType { neutral, success, info, warning, danger }
@@ -62,9 +63,9 @@ class FunDsAlert extends StatelessWidget {
 
     final Color? mainColor = switch (type) {
       FunDsAlertType.neutral => null,
-      FunDsAlertType.success => FunDsColors.colorGreen500,
-      FunDsAlertType.info => FunDsColors.colorBlue500,
-      FunDsAlertType.warning => FunDsColors.colorOrange500,
+      FunDsAlertType.success => FunDsColors.colorGreen600,
+      FunDsAlertType.info => FunDsColors.colorBlue600,
+      FunDsAlertType.warning => FunDsColors.colorOrange600,
       FunDsAlertType.danger => FunDsColors.colorRed500,
     };
 
@@ -143,50 +144,76 @@ class FunDsAlert extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(12, 12, 40, 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Visibility(
-                  child: SizedBox(
-                    height: 20,
-                    child: FunDsIcon(
-                      funDsIconography: icon ?? defaultIcon,
-                      size: 18.r,
-                      color: mainColor,
-                    ),
-                  ),
-                  visible: (icon ?? defaultIcon) != '',
-                ),
-                const SizedBox(width: 8),
                 Expanded(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                      Text(
-                        title,
-                        style: FunDsTypography.heading14.copyWith(
-                          color: mainColor ?? FunDsColors.colorNeutral900,
-                        ),
+                          Visibility(
+                            child: SizedBox(
+                              width: 18,
+                              height: 18,
+                              child: FunDsIcon(
+                                funDsIconography: icon ?? defaultIcon,
+                                size: 18,
+                                color: mainColor,
+                              ),
+                            ),
+                            visible: (icon ?? defaultIcon).isNotEmpty,
+                          ),
+                          (icon ?? defaultIcon).isNotEmpty
+                              ? const SizedBox(width: 8)
+                              : const SizedBox.shrink(),
+                          Flexible(
+                            child: Text(
+                              title,
+                              style: FunDsTypography.heading14.copyWith(
+                                color: mainColor ?? FunDsColors.colorTextDefault,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 2),
-                      Text(
-                        description,
-                        style: FunDsTypography.body12.copyWith(
-                          color: descriptionColor,
-                        ),
+                      Row(
+                        children: [
+                          (icon ?? defaultIcon).isNotEmpty
+                              ? const SizedBox(width: 8 + 18)
+                              : const SizedBox.shrink(),
+                          Flexible(
+                            child: Text(
+                              description,
+                              style: FunDsTypography.body12.copyWith(
+                                color: descriptionColor,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      ..._showMultipleActions()
-                    ])),
+                      ..._showMultipleActions(alertType: type)
+                    ],
+                  ),
+                ),
                 Visibility(
                   visible: secondaryActionText == null,
-                  child: FunDsButton(
-                    key: const Key('btn-primary'),
-                    type: FunDsButtonType.xSmall,
-                    variant: FunDsButtonVariant.primary,
-                    text: primaryActionText,
-                    onPressed: () {
-                      onPrimaryActionTap?.call();
-                    },
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      FunDsButton(
+                        key: const Key('btn-primary'),
+                        type: FunDsButtonType.xSmall,
+                        variant: FunDsButtonVariant.tertiary,
+                        text: primaryActionText,
+                        onPressed: () {
+                          onPrimaryActionTap?.call();
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -197,7 +224,7 @@ class FunDsAlert extends StatelessWidget {
     );
   }
 
-  List<Widget> _showMultipleActions() {
+  List<Widget> _showMultipleActions({required FunDsAlertType alertType}) {
     if (secondaryActionText == null) {
       return [const SizedBox()];
     }
@@ -206,10 +233,11 @@ class FunDsAlert extends StatelessWidget {
       const SizedBox(height: 12),
       Row(
         children: [
-          FunDsButton(
+          const SizedBox(width: 8 + 18),
+          FunDsAlertButton(
             key: const Key('btn-primary'),
-            type: FunDsButtonType.xSmall,
-            variant: FunDsButtonVariant.primary,
+            buttonType: FunDsButtonType.xSmall,
+            alertType: alertType,
             text: primaryActionText,
             onPressed: () {
               onPrimaryActionTap?.call();
@@ -219,7 +247,7 @@ class FunDsAlert extends StatelessWidget {
           FunDsButton(
             key: const Key('btn-secondary'),
             type: FunDsButtonType.xSmall,
-            variant: FunDsButtonVariant.secondary,
+            variant: FunDsButtonVariant.tertiary,
             text: secondaryActionText ?? '',
             onPressed: () {
               onSecondaryActionTap?.call();

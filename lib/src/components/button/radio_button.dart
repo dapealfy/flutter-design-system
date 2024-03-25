@@ -7,7 +7,7 @@ class FunDsRadioButton<T> extends StatelessWidget {
   final T selectedValue;
   final String? label;
   final String? helper;
-  final bool? disabled;
+  final bool enabled;
   final Function(T?)? onChanged;
 
   const FunDsRadioButton({
@@ -16,7 +16,7 @@ class FunDsRadioButton<T> extends StatelessWidget {
     required this.selectedValue,
     this.label,
     this.onChanged,
-    this.disabled,
+    this.enabled = true,
     this.helper,
   }) : super(key: key);
 
@@ -65,45 +65,73 @@ class FunDsRadioButton<T> extends StatelessWidget {
         splashRadius: 12.r,
       );
     } else {
-      return ListTileTheme.merge(
-        horizontalTitleGap: 8.w,
-        minLeadingWidth: 8.w,
-        titleAlignment: ListTileTitleAlignment.top,
-        child: RadioListTile<T>(
-          value: value,
-          groupValue: selectedValue,
-          activeColor: FunDsColors.colorPrimary,
-          contentPadding: const EdgeInsets.all(0),
-          overlayColor: MaterialStateProperty.resolveWith(getOverlayColor),
-          fillColor: MaterialStateProperty.resolveWith(getColor),
-          hoverColor: FunDsColors.colorPrimary,
-          visualDensity: const VisualDensity(
-            horizontal: VisualDensity.minimumDensity,
-            vertical: VisualDensity.minimumDensity,
-          ),
-          isThreeLine: helper != null,
-          dense: true,
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          splashRadius: 12.r,
-          onChanged: disabled ?? false
-              ? null
-              : ((value) {
+      return InkWell(
+        splashFactory:
+            enabled ? InkSplash.splashFactory : NoSplash.splashFactory,
+        onTap: enabled
+            ? () {
+                if (value != selectedValue) {
                   onChanged?.call(value);
-                }),
-          title: Text(
-            label ?? '',
-            key: const Key('label'),
-            style: FunDsTypography.body14,
-          ),
-          subtitle: helper == null
-              ? null
-              : Text(
-                  helper ?? '',
-                  key: const Key('helper'),
-                  style: FunDsTypography.body14.copyWith(
-                    color: FunDsColors.colorTextCaption,
+                }
+              }
+            : null,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(height: 4),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: 20.r,
+                  width: 20.r,
+                  child: Radio<T>(
+                    key: const Key('radio'),
+                    groupValue: selectedValue,
+                    value: value,
+                    activeColor: FunDsColors.colorPrimary,
+                    overlayColor:
+                        MaterialStateProperty.resolveWith(getOverlayColor),
+                    fillColor: MaterialStateProperty.resolveWith(getColor),
+                    hoverColor: FunDsColors.colorPrimary,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    splashRadius: 12,
+                    visualDensity: VisualDensity.compact,
+                    onChanged: enabled
+                        ? (T? newValue) {
+                            onChanged?.call(newValue);
+                          }
+                        : null,
                   ),
                 ),
+                const SizedBox(width: 8),
+                Text(
+                  label ?? '',
+                  key: const Key('label'),
+                  style: FunDsTypography.body14,
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Visibility(
+              visible: helper != null && helper!.isNotEmpty,
+              child: Row(
+                children: [
+                  SizedBox(width: 20.r),
+                  const SizedBox(width: 8),
+                  Text(
+                    helper ?? '',
+                    key: const Key('helper'),
+                    style: FunDsTypography.body14.copyWith(
+                      color: FunDsColors.colorTextCaption,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       );
     }
