@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FunDsHeader extends StatelessWidget {
+class FunDsHeader extends StatelessWidget implements PreferredSizeWidget {
   final bool useDarkBg;
   final bool automaticallyImplyBack;
   final Function? onClickBack;
@@ -13,6 +15,7 @@ class FunDsHeader extends StatelessWidget {
   final Function? onClickRightIcon1;
   final FunDsIcon? rightIcon2;
   final Function? onClickRightIcon2;
+  final bool? withSafeArea;
 
   const FunDsHeader({
     super.key,
@@ -26,13 +29,26 @@ class FunDsHeader extends StatelessWidget {
     this.onClickRightIcon1,
     this.rightIcon2,
     this.onClickRightIcon2,
+    this.withSafeArea = true,
   });
+
+  double getTextHight(TextStyle style) {
+    return (style.height ?? 1) * (style.fontSize ?? 1);
+  }
+
+  /// Height of the header
+  /// Padding top and bottom 16.h
+  /// Size of icon 24.w or size of text heading16
+  /// Don't forget to change the height of the header if you change the size of the icon or text
+  @override
+  Size get preferredSize => Size.fromHeight(
+        (16.h * 2) + max(24.w, getTextHight(FunDsTypography.heading16)),
+      );
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      key: key,
-      color: useDarkBg ? FunDsColors.colorNeutral900 : FunDsColors.colorWhite,
+    final content = Material(
+      color: useDarkBg ? FunDsColors.colorPrimary : FunDsColors.colorWhite,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
         child: Row(
@@ -149,5 +165,13 @@ class FunDsHeader extends StatelessWidget {
         ),
       ),
     );
+
+    if (withSafeArea == true) {
+      return SafeArea(
+        bottom: false,
+        child: content,
+      );
+    }
+    return content;
   }
 }

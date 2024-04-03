@@ -11,7 +11,7 @@ class CheckboxCatalog extends StatefulWidget {
 }
 
 class _CheckboxCatalogState extends State<CheckboxCatalog> {
-  bool checked = false;
+  bool? checked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,19 +51,27 @@ class _CheckboxCatalogState extends State<CheckboxCatalog> {
             FunDsCheckbox(
               key: const Key('cb_primary'),
               variant: variant,
-              defaultValue: true,
+              checked: checked,
               rightCheckbox: rightCheckbox,
               tristate: tristate,
-              onChanged: (value) {},
+              onChanged: (value) {
+                setState(() {
+                  checked = value;
+                });
+              },
             ),
             FunDsCheckbox(
               key: const Key('cb_primary_label'),
               variant: variant,
               title: 'Label Label Label Label Label Labelssi Label Label Label',
-              defaultValue: true,
+              checked: checked,
               rightCheckbox: rightCheckbox,
               tristate: tristate,
-              onChanged: (value) {},
+              onChanged: (value) {
+                setState(() {
+                  checked = value;
+                });
+              },
             ),
             FunDsCheckbox(
               key: const Key('cb_primary_label_desc'),
@@ -71,10 +79,14 @@ class _CheckboxCatalogState extends State<CheckboxCatalog> {
               title: 'Label',
               subtitle:
                   'Desc auhdaw khdak akjshduawhd kajsn djahndkjahnwdjna sjndkadnajkndawuhdkaj  ashdua hdakjhdka shdkahw dkahduiagh ksgagd jak',
-              defaultValue: true,
+              checked: checked,
               rightCheckbox: rightCheckbox,
               tristate: tristate,
-              onChanged: (value) {},
+              onChanged: (value) {
+                setState(() {
+                  checked = value;
+                });
+              },
             ),
           ],
         ),

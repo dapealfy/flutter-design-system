@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FunDsCheckbox extends StatefulWidget {
+class FunDsCheckbox extends StatelessWidget {
   const FunDsCheckbox({
     super.key,
     this.title,
     this.subtitle,
-    this.defaultValue = false,
+    this.checked = false,
     this.rightCheckbox = false,
     this.tristate = false,
     required this.variant,
@@ -16,80 +16,65 @@ class FunDsCheckbox extends StatefulWidget {
 
   final String? title;
   final String? subtitle;
-  final bool defaultValue;
+  final bool? checked;
   final bool rightCheckbox;
   final bool tristate;
   final FunDsCheckboxVariant variant;
   final Function(bool?) onChanged;
 
   @override
-  State<FunDsCheckbox> createState() => _FunDsCheckboxState();
-}
-
-class _FunDsCheckboxState extends State<FunDsCheckbox> {
-  bool? isChecked;
-
-  @override
-  void initState() {
-    super.initState();
-    isChecked = widget.defaultValue;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (widget.subtitle == null && widget.title == null) {
+    if (subtitle == null && title == null) {
       return _getCheckBox();
     } else {
-      return ListTile(
-        contentPadding: EdgeInsets.zero,
-        horizontalTitleGap: 0,
-        isThreeLine: widget.subtitle != null,
-        onTap: widget.variant == FunDsCheckboxVariant.disabled
-            ? null
-            : () {
-                setState(() {
-                  switch (isChecked) {
-                    case false:
-                      isChecked = true;
-                    case true:
-                      isChecked = widget.tristate ? null : false;
-                    case null:
-                      isChecked = false;
-                  }
-                  widget.onChanged(isChecked);
-                });
-              },
-        title: widget.title == null
-            ? null
-            : Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.h),
-                child: Text(
-                  widget.title ?? '',
-                  style: FunDsTypography.body14.copyWith(
-                    color: widget.variant == FunDsCheckboxVariant.disabled
-                        ? FunDsColors.colorNeutral500
-                        : FunDsColors.colorNeutral900,
-                  ),
-                ),
+      return GestureDetector(
+        onTap: () {
+          final newChecked = switch (checked) {
+            false => true,
+            true => tristate ? null : false,
+            _ => false,
+          };
+          onChanged(newChecked);
+        },
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (!rightCheckbox) ...[
+              _getCheckBox(),
+              SizedBox(width: 8.w),
+            ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (title != null)
+                    Text(
+                      title ?? '',
+                      style: FunDsTypography.body14.copyWith(
+                        color: variant == FunDsCheckboxVariant.disabled
+                            ? FunDsColors.colorNeutral500
+                            : FunDsColors.colorNeutral900,
+                      ),
+                    ),
+                  if (subtitle != null)
+                    Text(
+                      subtitle ?? '',
+                      style: FunDsTypography.body14.copyWith(
+                        color: variant == FunDsCheckboxVariant.disabled
+                            ? FunDsColors.colorNeutral500
+                            : FunDsColors.colorNeutral600,
+                      ),
+                    ),
+                ],
               ),
-        subtitle: widget.subtitle == null
-            ? null
-            : Padding(
-                padding: EdgeInsets.only(
-                  left: 8.h,
-                  right: 8.h,
-                ),
-                child: Text(
-                  widget.subtitle ?? '',
-                  style: FunDsTypography.body14.copyWith(
-                    color: widget.variant == FunDsCheckboxVariant.disabled
-                        ? FunDsColors.colorNeutral500
-                        : FunDsColors.colorNeutral600,
-                  ),
-                ),
-              ),
-        leading: widget.rightCheckbox ? null : _getCheckBox(),
-        trailing: widget.rightCheckbox ? _getCheckBox() : null,
+            ),
+            if (rightCheckbox) ...[
+              SizedBox(width: 8.w),
+              _getCheckBox(),
+            ],
+          ],
+        ),
       );
     }
   }
@@ -99,42 +84,41 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
       width: 20.h,
       height: 20.h,
       decoration: BoxDecoration(
-        border: widget.variant == FunDsCheckboxVariant.tertiary
+        border: variant == FunDsCheckboxVariant.tertiary
             ? Border.all(
                 color: FunDsColors.colorPrimary200,
                 width: 2.0,
                 style: BorderStyle.solid,
               )
             : null,
-        borderRadius: widget.variant == FunDsCheckboxVariant.tertiary
+        borderRadius: variant == FunDsCheckboxVariant.tertiary
             ? BorderRadius.circular(5.r)
             : null,
       ),
       child: Padding(
-        padding: widget.variant == FunDsCheckboxVariant.tertiary
+        padding: variant == FunDsCheckboxVariant.tertiary
             ? EdgeInsets.symmetric(horizontal: 1.h)
             : const EdgeInsets.only(),
         child: Checkbox(
-          tristate: widget.tristate,
+          tristate: tristate,
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(2.0),
           ),
           side: MaterialStateBorderSide.resolveWith(
             (states) => BorderSide(
-              width: (isChecked ?? false) ? 0.r : 1.5,
+              width: (checked ?? false) ? 0.r : 1.5,
               color: _getBorderColor(),
             ),
           ),
           onChanged: (bool? value) {
-            widget.variant == FunDsCheckboxVariant.disabled
-                ? null
-                : setState(() {
-                    isChecked = value;
-                    widget.onChanged(value);
-                  });
+            if (variant == FunDsCheckboxVariant.disabled) {
+              return;
+            }
+
+            onChanged(value);
           },
-          value: widget.tristate == true ? isChecked : (isChecked ?? false),
+          value: tristate == true ? checked : (checked ?? false),
           activeColor: _getActiveColor(),
         ),
       ),
@@ -142,9 +126,9 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
   }
 
   Color _getBorderColor() {
-    switch (widget.variant) {
+    switch (variant) {
       case FunDsCheckboxVariant.primary:
-        if (isChecked ?? false) {
+        if (checked ?? false) {
           return FunDsColors.colorPrimary;
         }
         return FunDsColors.colorNeutral900;
@@ -160,7 +144,7 @@ class _FunDsCheckboxState extends State<FunDsCheckbox> {
   }
 
   Color _getActiveColor() {
-    switch (widget.variant) {
+    switch (variant) {
       case FunDsCheckboxVariant.primary:
         return FunDsColors.colorPrimary;
       case FunDsCheckboxVariant.tertiary:

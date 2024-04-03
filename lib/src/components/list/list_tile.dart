@@ -74,7 +74,7 @@ class FunDsListTile<T> extends StatelessWidget {
         key: const Key('trailing_checkbox'),
         variant: funds.FunDsCheckboxVariant.primary,
         onChanged: onCheckedChanged,
-        defaultValue: value,
+        checked: value,
       ),
     );
   }

@@ -11,11 +11,13 @@ class CatalogPage extends StatefulWidget {
     required this.title,
     this.description,
     required this.child,
+    this.contentPadding = true,
   });
 
   final String title;
   final String? description;
   final Widget child;
+  final bool contentPadding;
 
   @override
   State<CatalogPage> createState() => _CatalogPageState();
@@ -112,7 +114,9 @@ class _CatalogPageState extends State<CatalogPage> {
                       ),
                     const SizedBox(height: 32),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      padding: widget.contentPadding
+                          ? const EdgeInsets.symmetric(horizontal: 8)
+                          : EdgeInsets.zero,
                       child: widget.child,
                     ),
                   ],

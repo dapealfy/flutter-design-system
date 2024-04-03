@@ -228,7 +228,7 @@ class _SelectCatalogState extends State<SelectCatalog> {
                 return funds.FunDsCheckbox(
                   variant: funds.FunDsCheckboxVariant.primary,
                   title: item.title,
-                  defaultValue: selected,
+                  checked: selected,
                   onChanged: (value) {
                     if (value == true) {
                       controller.select(item);

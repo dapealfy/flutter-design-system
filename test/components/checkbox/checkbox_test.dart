@@ -16,7 +16,7 @@ void main() {
             variant: FunDsCheckboxVariant.primary,
             title: 'Test Title',
             subtitle: 'Test Subtitle',
-            defaultValue: selectedValue,
+            checked: selectedValue,
             onChanged: (value) {
               selectedValue = value!;
             },
@@ -35,7 +35,7 @@ void main() {
 
   testWidgets(
     'FunDsCheckbox tristate property show correctly',
-        (WidgetTester tester) async {
+    (WidgetTester tester) async {
       bool? selectedValue = true;
       await tester.pumpWidget(
         buildTestableWidget(
@@ -44,7 +44,7 @@ void main() {
             variant: FunDsCheckboxVariant.primary,
             title: 'Test Tristate Title',
             subtitle: 'Test Tristate Subtitle',
-            defaultValue: selectedValue,
+            checked: selectedValue,
             tristate: true,
             onChanged: (value) {
               selectedValue = value;
