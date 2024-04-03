@@ -37,6 +37,7 @@ import 'package:catalog/catalog/progress_indicator/progress_indicator_catalog.da
 import 'package:catalog/catalog/scrollbar/scrollbar_catalog.dart';
 import 'package:catalog/catalog/select/select_catalog.dart';
 import 'package:catalog/catalog/switcher/switcher_catalog.dart';
+import 'package:catalog/catalog/skeleton/skeleton_catalog.dart';
 import 'package:catalog/catalog/tab/tab_catalog.dart';
 import 'package:catalog/catalog/ticker/ticker_catalog.dart';
 import 'package:catalog/catalog/tips/tips_catalog.dart';
@@ -256,6 +257,12 @@ final entries = [
     name: 'Component/Divider/Divider',
     builder: (context) => const DividerCatalog(),
   ),
+
+  Entry(
+    name: 'Component/Skeleton/Skeleton',
+    builder: (context) => const SkeletonCatalog(),
+  ),
+
   Entry(
     name: 'Component/Date Picker/Date Picker',
     builder: (context) => const DatePickerCatalog(),
