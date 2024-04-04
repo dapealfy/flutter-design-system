@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +24,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /// final tabs = [
 ///   FunDsSwitcherTab(text: 'Tab 0',),
 ///   FunDsSwitcherTab(text: 'Tab 1',),
-///   FunDsSwitcherTab(text: 'Tab ',)
+///   FunDsSwitcherTab(text: 'Tab 2',)
 /// ];
 ///
 /// DefaultTabController(
@@ -77,7 +79,7 @@ class FunDsSwitcher extends StatefulWidget {
 }
 
 class _FunDsSwitcherState extends State<FunDsSwitcher> {
-  late List<_FunDsSwitcherTab> _tabs;
+  List<_FunDsSwitcherTab> _tabs = [];
 
   @override
   void initState() {
@@ -87,22 +89,29 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
           'designed to handle more than 3 tabs');
     }
 
-    _tabs = widget.tabs
-        .asMap()
-        .map((index, value) {
-          return MapEntry(
-              index,
-              _FunDsSwitcherTab(
-                key: value.key,
-                icon: value.icon,
-                text: value.text,
-                selectedIndex: widget.controller?.index ?? 0,
-                index: index,
-                maxIndex: widget.tabs.length - 1,
-              ));
-        })
-        .values
-        .toList();
+    _tabs = _createTabs();
+  }
+
+  @override
+  void didUpdateWidget(covariant FunDsSwitcher oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.tabs != widget.tabs) {
+      _tabs = _createTabs();
+    }
+  }
+
+  List<_FunDsSwitcherTab> _createTabs() {
+    return widget.tabs.mapIndexed((index, value) {
+      return _FunDsSwitcherTab(
+        key: Key('tab-$index'),
+        icon: value.icon,
+        text: value.text,
+        selectedIndex: widget.controller?.index ?? 0,
+        index: index,
+        maxIndex: widget.tabs.length - 1,
+      );
+    }).toList();
   }
 
   @override
@@ -121,7 +130,7 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
           setState(() {
             if (_tabs.length == 3) {
               // set middle
-              _tabs[1] = _tabs[1].copyWith(index);
+              _tabs[1] = _tabs[1].copyWith(selectedIndex: index);
             }
           });
         },
@@ -162,16 +171,14 @@ class _FunDsSwitcherState extends State<FunDsSwitcher> {
 }
 
 /// The single Tab of [FunDsSwitcher]
-class FunDsSwitcherTab extends StatelessWidget {
-  const FunDsSwitcherTab({super.key, this.icon, required this.text});
+class FunDsSwitcherTab extends Equatable {
+  const FunDsSwitcherTab({this.icon, required this.text});
 
   final String? icon;
   final String text;
 
   @override
-  Widget build(BuildContext context) {
-    return _FunDsSwitcherTab(icon: icon, text: text);
-  }
+  List<Object?> get props => [icon, text];
 }
 
 class _FunDsSwitcherTab extends StatelessWidget {
@@ -190,11 +197,13 @@ class _FunDsSwitcherTab extends StatelessWidget {
   final int index;
   final int maxIndex;
 
-  _FunDsSwitcherTab copyWith(int selectedIndex) {
+  _FunDsSwitcherTab copyWith({
+    int? selectedIndex,
+  }) {
     return _FunDsSwitcherTab(
       text: text,
       icon: icon,
-      selectedIndex: selectedIndex,
+      selectedIndex: selectedIndex ?? this.selectedIndex,
       index: index,
       maxIndex: maxIndex,
     );

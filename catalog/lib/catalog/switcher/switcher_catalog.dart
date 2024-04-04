@@ -24,7 +24,8 @@ class _SwitcherCatalogState extends State<SwitcherCatalog>
 
   late TabController controller;
   late TabController smallController;
-  late List<FunDsSwitcherTab> tabs;
+
+  List<FunDsSwitcherTab> tabs = [];
 
   @override
   void initState() {
@@ -32,9 +33,18 @@ class _SwitcherCatalogState extends State<SwitcherCatalog>
     controller = TabController(length: _defaultLength, vsync: this);
     smallController = TabController(length: 2, vsync: this);
 
-    tabs = List.generate(_defaultLength, (index) {
-      String icon = _icons[Random().nextInt(_icons.length)];
-      return FunDsSwitcherTab(icon: icon, text: 'Tab $index');
+    createTabs(_showIcon);
+  }
+
+  void createTabs(bool showIcon) {
+    setState(() {
+      tabs = List.generate(_defaultLength, (index) {
+        String icon = _icons[Random().nextInt(_icons.length)];
+        return FunDsSwitcherTab(
+          icon: showIcon ? icon : null,
+          text: 'Tab $index',
+        );
+      });
     });
   }
 
@@ -53,11 +63,7 @@ class _SwitcherCatalogState extends State<SwitcherCatalog>
               onPressed: () {
                 setState(() {
                   _showIcon = !_showIcon;
-                  tabs = List.generate(_defaultLength, (index) {
-                    String icon = _icons[Random().nextInt(_icons.length)];
-                    return FunDsSwitcherTab(
-                        icon: _showIcon ? icon : null, text: 'Tab $index');
-                  });
+                  createTabs(_showIcon);
                 });
               },
             ),
