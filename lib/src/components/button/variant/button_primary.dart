@@ -75,13 +75,13 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
               side: BorderSide(
                 width: 1,
                 color: Colors.white.withOpacity(0.12),
+                strokeAlign: BorderSide.strokeAlignOutside,
               ),
               borderRadius: BorderRadius.circular(internalButtonType.radius),
             ),
           ),
           child: ElevatedButton(
-            onFocusChange: (isFocused) =>
-                setState(() => _isFocused = isFocused),
+            onFocusChange: (isFocused) => setState(() => _isFocused = isFocused),
             onPressed: widget.enabled ? widget.onPressed : null,
             style:
                 widget.enabled ? enabledButtonStyle() : disabledButtonStyle(),

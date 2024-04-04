@@ -31,41 +31,45 @@ class _ButtonDestructiveOutlineState extends State<ButtonDestructiveOutline> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: internalButtonType.height,
-      decoration: BoxDecoration(
-        border: _isFocused
-            ? Border.all(
-                color: FunDsColors.colorRed400,
-                width: 1.0,
-                style: BorderStyle.solid,
-              )
-            : null,
-        borderRadius: BorderRadius.circular(internalButtonType.radius),
-      ),
-      child: Container(
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-              width: 1,
-              color: Colors.white.withOpacity(0.12),
-            ),
-            borderRadius: BorderRadius.circular(internalButtonType.radius),
-          ),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: _isFocused
+              ? Border.all(
+                  color: FunDsColors.colorRed400,
+                  width: 1.0,
+                  style: BorderStyle.solid,
+                )
+              : null,
+          borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
-        child: OutlinedButton(
-          onFocusChange: (isFocused) => setState(() => _isFocused = isFocused),
-          onPressed: widget.enabled ? widget.onPressed : null,
-          style: widget.enabled ? enabledButtonStyle() : disabledButtonStyle(),
-          child: ButtonContent(
-            icon: widget.leftIcon,
-            text: widget.text,
-            textStyle: internalButtonType.textStyle.copyWith(
-              color: widget.enabled
-                  ? _isFocused
-                      ? FunDsColors.colorRed600
-                      : FunDsColors.colorRed500
-                  : FunDsColors.colorNeutral500,
+        child: DecoratedBox(
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                width: 1,
+                color: Colors.white.withOpacity(0.12),
+              ),
+              borderRadius: BorderRadius.circular(internalButtonType.radius),
+            ),
+          ),
+          child: OutlinedButton(
+            onFocusChange: (isFocused) =>
+                setState(() => _isFocused = isFocused),
+            onPressed: widget.enabled ? widget.onPressed : null,
+            style:
+                widget.enabled ? enabledButtonStyle() : disabledButtonStyle(),
+            child: ButtonContent(
+              icon: widget.leftIcon,
+              text: widget.text,
+              textStyle: internalButtonType.textStyle.copyWith(
+                color: widget.enabled
+                    ? _isFocused
+                        ? FunDsColors.colorRed600
+                        : FunDsColors.colorRed500
+                    : FunDsColors.colorNeutral500,
+              ),
             ),
           ),
         ),
@@ -94,6 +98,7 @@ class _ButtonDestructiveOutlineState extends State<ButtonDestructiveOutline> {
           color: _isFocused ? FunDsColors.colorRed600 : FunDsColors.colorRed500,
           width: 1.0,
           style: BorderStyle.solid,
+          strokeAlign: BorderSide.strokeAlignOutside,
         ),
       ),
       shape: MaterialStateProperty.all(

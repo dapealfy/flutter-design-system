@@ -1,7 +1,6 @@
 import 'package:catalog/core/catalog_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_design_system/funds.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 class ButtonCatalog extends StatelessWidget {
@@ -9,7 +8,7 @@ class ButtonCatalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const List<FunDsButtonVariant> buttonVariant = [
+    const List<FunDsButtonVariant> buttonVariants = [
       FunDsButtonVariant.primary,
       FunDsButtonVariant.secondary,
       FunDsButtonVariant.tertiary,
@@ -17,26 +16,26 @@ class ButtonCatalog extends StatelessWidget {
       FunDsButtonVariant.destructive,
       FunDsButtonVariant.destructiveOutline,
     ];
-    const List<FunDsButtonType> buttonType = [
-      FunDsButtonType.xLarge,
-      FunDsButtonType.large,
-      FunDsButtonType.medium,
-      FunDsButtonType.small,
+    const List<FunDsButtonType> buttonTypes = [
       FunDsButtonType.xSmall,
+      FunDsButtonType.small,
+      FunDsButtonType.medium,
+      FunDsButtonType.large,
+      FunDsButtonType.xLarge,
     ];
 
-    final toogleKnob = context.knobs.boolean(
+    final knobEnabled = context.knobs.boolean(
       label: 'Is Enable Button',
       description: 'Enable/Disable button by this knobs',
       initial: true,
     );
 
-    final buttonText = context.knobs.text(
+    final knobText = context.knobs.text(
       label: 'Button Text',
       initial: '',
     );
 
-    final leftIcon = context.knobs.options<Widget?>(
+    final knobLeftIcon = context.knobs.options<Widget?>(
       label: 'Left Icon',
       initial: null,
       options: [
@@ -55,37 +54,52 @@ class ButtonCatalog extends StatelessWidget {
       title: 'Button',
       description: 'Widget name: FunDsButton',
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: buttonVariant.map((variant) {
+              children: buttonTypes.map((type) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 12.h, top: 20.h),
-                      child: Text('~~${variant.name.toUpperCase()}',
-                          style: FunDsTypography.heading24),
+                    ColoredBox(
+                      color: FunDsColors.colorPrimaryLight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          type.name,
+                          style: FunDsTypography.heading16,
+                        ),
+                      ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: buttonType.map((typeButton) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: FunDsButton(
-                            key: Key('$variant ${typeButton.name}'),
-                            onPressed: () {},
-                            type: typeButton,
-                            enabled: toogleKnob,
-                            variant: variant,
-                            leftIcon: leftIcon,
-                            text: 'Button ${typeButton.name}$buttonText',
-                          ),
-                        );
-                      }).toList(),
-                    )
+                    const SizedBox(height: 8),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: buttonVariants.map(
+                          (variant) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 4),
+                              child: FunDsButton(
+                                key: Key('$variant ${type.name}'),
+                                onPressed: () {},
+                                type: type,
+                                enabled: knobEnabled,
+                                variant: variant,
+                                leftIcon: knobLeftIcon,
+                                text: knobText.isNotEmpty
+                                    ? knobText
+                                    : variant.name,
+                              ),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                   ],
                 );
               }).toList(),

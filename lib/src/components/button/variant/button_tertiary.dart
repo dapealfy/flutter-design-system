@@ -30,52 +30,25 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: _isFocused
-            ? Border.all(
-                color: FunDsColors.colorNeutral200,
-                width: 1.0,
-                style: BorderStyle.solid,
-              )
-            : null,
-        borderRadius: BorderRadius.circular(internalButtonType.radius),
-      ),
+    return SizedBox(
       height: internalButtonType.height,
-      child: Container(
-        decoration: ShapeDecoration(
-          gradient: widget.enabled
-              ? LinearGradient(
-                  begin: const Alignment(0, -1.2),
-                  end: const Alignment(0, 0),
-                  colors: [
-                    Colors.white.withOpacity(0.12),
-                    FunDsColors.colorNeutral200
-                  ],
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: _isFocused
+              ? Border.all(
+                  color: FunDsColors.colorNeutral200,
+                  width: 1.0,
+                  style: BorderStyle.solid,
                 )
               : null,
-          shadows: widget.enabled
-              ? const [
-                  BoxShadow(
-                    color: FunDsColors.colorNeutral200,
-                    blurRadius: 1,
-                    offset: Offset(0, 1),
-                    spreadRadius: 0,
-                  )
-                ]
-              : [],
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-              width: 1,
-              color: Colors.white.withOpacity(0.12),
-            ),
-            borderRadius: BorderRadius.circular(internalButtonType.radius),
-          ),
+          borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
         child: OutlinedButton(
-          onFocusChange: (isFocused) => setState(() => _isFocused = isFocused),
+          onFocusChange: (isFocused) =>
+              setState(() => _isFocused = isFocused),
           onPressed: widget.enabled ? widget.onPressed : null,
-          style: widget.enabled ? enabledButtonStyle() : disabledButtonStyle(),
+          style:
+              widget.enabled ? enabledButtonStyle() : disabledButtonStyle(),
           child: ButtonContent(
             icon: widget.leftIcon,
             text: widget.text,
@@ -106,6 +79,14 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
       animationDuration: const Duration(milliseconds: 500),
       overlayColor: MaterialStateProperty.all(FunDsColors.colorNeutral50),
       backgroundColor: MaterialStateProperty.all(FunDsColors.colorWhite),
+      side: MaterialStateProperty.all(
+        const BorderSide(
+          color: FunDsColors.colorNeutral500,
+          width: 1.0,
+          style: BorderStyle.solid,
+          strokeAlign: BorderSide.strokeAlignOutside,
+        ),
+      ),
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(internalButtonType.radius),

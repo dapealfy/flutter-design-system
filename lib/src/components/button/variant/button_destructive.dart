@@ -30,65 +30,69 @@ class _ButtonDestructiveState extends State<ButtonDestructive> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: internalButtonType.height,
-      decoration: BoxDecoration(
-        border: _isFocused
-            ? Border.all(
-                color: FunDsColors.colorRed500,
-                width: 1.0,
-                style: BorderStyle.solid,
-              )
-            : null,
-        borderRadius: BorderRadius.circular(internalButtonType.radius),
-      ),
-      child: Container(
-        decoration: ShapeDecoration(
-          gradient: widget.enabled
-              ? LinearGradient(
-                  begin: const Alignment(0.00, -1.2),
-                  end: const Alignment(0, 0),
-                  colors: [
-                    Colors.white.withOpacity(0.12),
-                    FunDsColors.colorRed500
-                  ],
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: _isFocused
+              ? Border.all(
+                  color: FunDsColors.colorRed500,
+                  width: 1.0,
+                  style: BorderStyle.solid,
                 )
               : null,
-          shadows: widget.enabled
-              ? const [
-                  BoxShadow(
-                    color: FunDsColors.colorRed500,
-                    blurRadius: 3,
-                    offset: Offset(0, 1),
-                    spreadRadius: 0,
-                  ),
-                  BoxShadow(
-                    color: FunDsColors.colorRed600,
-                    blurRadius: 0,
-                    offset: Offset(0, 0),
-                    spreadRadius: 1,
-                  )
-                ]
-              : [],
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-              width: 1,
-              color: Colors.white.withOpacity(0.12),
-            ),
-            borderRadius: BorderRadius.circular(internalButtonType.radius),
-          ),
+          borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
-        child: ElevatedButton(
-          onFocusChange: (isFocused) => setState(() => _isFocused = isFocused),
-          onPressed: widget.enabled ? widget.onPressed : null,
-          style: widget.enabled ? enabledButtonStyle() : disabledButtonStyle(),
-          child: ButtonContent(
-            icon: widget.leftIcon,
-            text: widget.text,
-            textStyle: internalButtonType.textStyle.copyWith(
-              color: widget.enabled
-                  ? FunDsColors.colorWhite
-                  : FunDsColors.colorNeutral500,
+        child: DecoratedBox(
+          decoration: ShapeDecoration(
+            gradient: widget.enabled
+                ? LinearGradient(
+                    begin: const Alignment(0.00, -1.2),
+                    end: const Alignment(0, 0),
+                    colors: [
+                      Colors.white.withOpacity(0.12),
+                      FunDsColors.colorRed500
+                    ],
+                  )
+                : null,
+            shadows: widget.enabled
+                ? const [
+                    BoxShadow(
+                      color: FunDsColors.colorRed500,
+                      blurRadius: 3,
+                      offset: Offset(0, 1),
+                      spreadRadius: 0,
+                    ),
+                    BoxShadow(
+                      color: FunDsColors.colorRed600,
+                      blurRadius: 0,
+                      offset: Offset(0, 0),
+                      spreadRadius: 1,
+                    )
+                  ]
+                : [],
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                width: 1,
+                color: Colors.white.withOpacity(0.12),
+              ),
+              borderRadius: BorderRadius.circular(internalButtonType.radius),
+            ),
+          ),
+          child: ElevatedButton(
+            onFocusChange: (isFocused) =>
+                setState(() => _isFocused = isFocused),
+            onPressed: widget.enabled ? widget.onPressed : null,
+            style:
+                widget.enabled ? enabledButtonStyle() : disabledButtonStyle(),
+            child: ButtonContent(
+              icon: widget.leftIcon,
+              text: widget.text,
+              textStyle: internalButtonType.textStyle.copyWith(
+                color: widget.enabled
+                    ? FunDsColors.colorWhite
+                    : FunDsColors.colorNeutral500,
+              ),
             ),
           ),
         ),
