@@ -63,7 +63,7 @@ class FunDsBottomSheet extends StatelessWidget {
     required BuildContext context,
     required Widget child,
     double? barrierOpacity,
-    double? horizontalPadding,
+    EdgeInsets? padding,
   }) {
     return showModalBottomSheet<T>(
       context: context,
@@ -80,7 +80,7 @@ class FunDsBottomSheet extends StatelessWidget {
       builder: (BuildContext context) {
         return _FunDsCustomBottomSheet(
           key: key,
-          horizontalPadding: horizontalPadding,
+          padding: padding,
           child: child,
         );
       },
@@ -321,20 +321,18 @@ class FunDsBottomSheet extends StatelessWidget {
 
 class _FunDsCustomBottomSheet extends StatelessWidget {
   final Widget child;
-  final double? horizontalPadding;
+  final EdgeInsets? padding;
 
   const _FunDsCustomBottomSheet({
     Key? key,
     required this.child,
-    this.horizontalPadding,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: horizontalPadding ?? 20,
-      ),
+      padding: padding,
       decoration: BoxDecoration(
         color: FunDsColors.colorWhite,
         borderRadius: BorderRadius.only(
