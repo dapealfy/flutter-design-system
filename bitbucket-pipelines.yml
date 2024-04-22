@@ -29,8 +29,9 @@ definitions:
         caches:
           - flutter-pub-cache
         script:
+          - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' pubspec.yaml)
           - cd catalog
-          - flutter build web --release --web-renderer canvaskit
+          - flutter build web --release --web-renderer canvaskit --build-name=${APP_VERSION_NAME}
         artifacts:
           - catalog/build/web/**
 
@@ -39,8 +40,9 @@ definitions:
         caches:
           - flutter-pub-cache
         script:
+          - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' pubspec.yaml)
           - cd catalog
-          - flutter build apk --release
+          - flutter build apk --release --build-name=${APP_VERSION_NAME}
         artifacts:
           - catalog/build/app/outputs/flutter-apk/app-release.apk
 
@@ -74,7 +76,7 @@ definitions:
     - step: &create-tag-if-not-exists
         name: Create tag if not exists
         script:
-          - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' catalog/pubspec.yaml)
+          - export APP_VERSION_NAME=$(awk '/version:/ { split($2, arr, "+"); print arr[1]; }' pubspec.yaml)
           - export TAG_COUNT=$(git ls-remote --tags origin|awk "/${APP_VERSION_NAME}$/ {c++} END{print c}")
           - |
             if [ "$TAG_COUNT" -gt 0 ]; then
@@ -101,6 +103,7 @@ pipelines:
         - step: *deploy-catalog-main
         - step: *distribute-apk
 
+  pull-requests:
     '{feature/*,bugfix/*}':
         - step: *analyze-test
         - step: *build-web-catalog
