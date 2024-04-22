@@ -63,7 +63,10 @@ class FunDsBottomSheet extends StatelessWidget {
     required BuildContext context,
     required Widget child,
     double? barrierOpacity,
-    EdgeInsets? padding,
+    EdgeInsets padding = const EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 16,
+    ),
   }) {
     return showModalBottomSheet<T>(
       context: context,
@@ -321,18 +324,20 @@ class FunDsBottomSheet extends StatelessWidget {
 
 class _FunDsCustomBottomSheet extends StatelessWidget {
   final Widget child;
-  final EdgeInsets? padding;
+  final EdgeInsets padding;
 
   const _FunDsCustomBottomSheet({
     Key? key,
     required this.child,
-    this.padding = const EdgeInsets.symmetric(horizontal: 20),
+    this.padding = const EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 16,
+    ),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding,
       decoration: BoxDecoration(
         color: FunDsColors.colorWhite,
         borderRadius: BorderRadius.only(
@@ -346,47 +351,48 @@ class _FunDsCustomBottomSheet extends StatelessWidget {
         ),
         child: Wrap(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Center(
-                    child: Container(
-                      width: 30.w,
-                      height: 4.h,
-                      decoration: ShapeDecoration(
-                        color: FunDsColors.colorNeutral200,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(1160.r),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Center(
+                      child: Container(
+                        width: 30.w,
+                        height: 4.h,
+                        decoration: ShapeDecoration(
+                          color: FunDsColors.colorNeutral200,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(1160.r),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 12),
-                    child: FunDsIcon(
-                      funDsIconography: FunDsIconography.actionIcCrossNude,
-                      size: 24.w,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: FunDsIcon(
+                        funDsIconography: FunDsIconography.actionIcCrossNude,
+                        size: 24.w,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                  ),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(maxHeight: 500.h),
-                    child: child,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
+            Padding(
+              padding: padding,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: 500.h),
+                child: child,
+              ),
+            )
           ],
         ),
       ),
