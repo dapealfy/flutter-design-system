@@ -47,7 +47,6 @@ class FunDsNavBar extends StatelessWidget {
         ],
       ),
       padding: const EdgeInsets.symmetric(horizontal: 6),
-      alignment: Alignment.bottomCenter,
       child: LayoutBuilder(builder: (context, constraints) {
         // Calculate size for each item
         // Each item has 4 spacing
@@ -67,6 +66,7 @@ class FunDsNavBar extends StatelessWidget {
                   bottom: 16,
                 ),
                 child: Material(
+                  color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
                       onTap(index);
@@ -74,11 +74,11 @@ class FunDsNavBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(24),
                     child: Container(
                       width: itemSize,
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: itemSpacing),
-                      alignment: Alignment.bottomCenter,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: itemSpacing,
+                      ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           SizedBox(
                             width: isCenter ? 40 : 24,
@@ -95,7 +95,8 @@ class FunDsNavBar extends StatelessWidget {
                                     color: FunDsColors.colorTextLink,
                                   )
                                 : FunDsTypography.body10.copyWith(
-                                    color: FunDsColors.colorTextCaption),
+                                    color: FunDsColors.colorTextCaption,
+                                  ),
                           ),
                         ],
                       ),
