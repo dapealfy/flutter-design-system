@@ -1,234 +1,179 @@
 class FunDsIconography {
   FunDsIconography._();
 
+  static const String iconPath = 'packages/flutter_design_system/assets/icons';
+
   static const String actionIcCheckCircle =
-      'packages/flutter_design_system/assets/icons/action/ic_check_circle.svg';
-  static const String actionIcCheckNude =
-      'packages/flutter_design_system/assets/icons/action/ic_check_nude.svg';
-  static const String actionIcCloud =
-      'packages/flutter_design_system/assets/icons/action/ic_cloud.svg';
+      '$iconPath/action/ic_check_circle.svg';
+  static const String actionIcCheckNude = '$iconPath/action/ic_check_nude.svg';
+  static const String actionIcCloud = '$iconPath/action/ic_cloud.svg';
   static const String actionIcCrossCircle =
-      'packages/flutter_design_system/assets/icons/action/ic_cross_circle.svg';
-  static const String actionIcCrossNude =
-      'packages/flutter_design_system/assets/icons/action/ic_cross_nude.svg';
-  static const String actionIcDownload =
-      'packages/flutter_design_system/assets/icons/action/ic_download.svg';
-  static const String actionIcEyeClose =
-      'packages/flutter_design_system/assets/icons/action/ic_eye_close.svg';
-  static const String actionIcEyeOpen =
-      'packages/flutter_design_system/assets/icons/action/ic_eye_open.svg';
-  static const String actionIcFilter =
-      'packages/flutter_design_system/assets/icons/action/ic_filter.svg';
-  static const String actionIcMenu =
-      'packages/flutter_design_system/assets/icons/action/ic_menu.svg';
+      '$iconPath/action/ic_cross_circle.svg';
+  static const String actionIcCrossNude = '$iconPath/action/ic_cross_nude.svg';
+  static const String actionIcDownload = '$iconPath/action/ic_download.svg';
+  static const String actionIcEyeClose = '$iconPath/action/ic_eye_close.svg';
+  static const String actionIcEyeOpen = '$iconPath/action/ic_eye_open.svg';
+  static const String actionIcFilter = '$iconPath/action/ic_filter.svg';
+  static const String actionIcMenu = '$iconPath/action/ic_menu.svg';
   static const String actionIcPaperPlane =
-      'packages/flutter_design_system/assets/icons/action/ic_paper_plane.svg';
-  static const String actionIcQrCode1 =
-      'packages/flutter_design_system/assets/icons/action/ic_qr_code_1.svg';
-  static const String actionIcQrCode2 =
-      'packages/flutter_design_system/assets/icons/action/ic_qr_code_2.svg';
-  static const String actionIcRefresh =
-      'packages/flutter_design_system/assets/icons/action/ic_refresh.svg';
-  static const String actionIcScan =
-      'packages/flutter_design_system/assets/icons/action/ic_scan.svg';
-  static const String actionIcSetting =
-      'packages/flutter_design_system/assets/icons/action/ic_setting.svg';
-  static const String actionIcShare =
-      'packages/flutter_design_system/assets/icons/action/ic_share.svg';
-  static const String actionIcSignOut =
-      'packages/flutter_design_system/assets/icons/action/ic_sign_out.svg';
-  static const String actionIcSort =
-      'packages/flutter_design_system/assets/icons/action/ic_sort.svg';
-  static const String actionIcTrashCan =
-      'packages/flutter_design_system/assets/icons/action/ic_trash_can.svg';
-  static const String actionIcZoomIn =
-      'packages/flutter_design_system/assets/icons/action/ic_zoom_in.svg';
-  static const String actionIcZoomOut =
-      'packages/flutter_design_system/assets/icons/action/ic_zoom_out.svg';
-  static const String basicIcArrowDown =
-      'packages/flutter_design_system/assets/icons/basic/ic_arrow_down.svg';
-  static const String basicIcArrowLeft =
-      'packages/flutter_design_system/assets/icons/basic/ic_arrow_left.svg';
-  static const String basicIcArrowRight =
-      'packages/flutter_design_system/assets/icons/basic/ic_arrow_right.svg';
-  static const String basicIcArrowUp =
-      'packages/flutter_design_system/assets/icons/basic/ic_arrow_up.svg';
+      '$iconPath/action/ic_paper_plane.svg';
+  static const String actionIcQrCode1 = '$iconPath/action/ic_qr_code_1.svg';
+  static const String actionIcQrCode2 = '$iconPath/action/ic_qr_code_2.svg';
+  static const String actionIcRefresh = '$iconPath/action/ic_refresh.svg';
+  static const String actionIcScan = '$iconPath/action/ic_scan.svg';
+  static const String actionIcSetting = '$iconPath/action/ic_setting.svg';
+  static const String actionIcShare = '$iconPath/action/ic_share.svg';
+  static const String actionIcSignOut = '$iconPath/action/ic_sign_out.svg';
+  static const String actionIcSort = '$iconPath/action/ic_sort.svg';
+  static const String actionIcTrashCan = '$iconPath/action/ic_trash_can.svg';
+  static const String actionIcZoomIn = '$iconPath/action/ic_zoom_in.svg';
+  static const String actionIcZoomOut = '$iconPath/action/ic_zoom_out.svg';
+  static const String actionAddThin = '$iconPath/action/ic_add_thin.svg';
+  static const String basicIcArrowDown = '$iconPath/basic/ic_arrow_down.svg';
+  static const String basicIcArrowLeft = '$iconPath/basic/ic_arrow_left.svg';
+  static const String basicIcArrowRight = '$iconPath/basic/ic_arrow_right.svg';
+  static const String basicIcArrowUp = '$iconPath/basic/ic_arrow_up.svg';
   static const String basicIcChevronDown =
-      'packages/flutter_design_system/assets/icons/basic/ic_chevron_down.svg';
+      '$iconPath/basic/ic_chevron_down.svg';
   static const String basicIcChevronLeft =
-      'packages/flutter_design_system/assets/icons/basic/ic_chevron_left.svg';
+      '$iconPath/basic/ic_chevron_left.svg';
   static const String basicIcChevronRight =
-      'packages/flutter_design_system/assets/icons/basic/ic_chevron_right.svg';
-  static const String basicIcChevronUp =
-      'packages/flutter_design_system/assets/icons/basic/ic_chevron_up.svg';
+      '$iconPath/basic/ic_chevron_right.svg';
+  static const String basicIcChevronUp = '$iconPath/basic/ic_chevron_up.svg';
   static const String basicDoubleIcChevronLeft =
-      'packages/flutter_design_system/assets/icons/basic/ic_double_chevron_left.svg';
+      '$iconPath/basic/ic_double_chevron_left.svg';
   static const String basicDoubleIcChevronRight =
-      'packages/flutter_design_system/assets/icons/basic/ic_double_chevron_right.svg';
+      '$iconPath/basic/ic_double_chevron_right.svg';
   static const String basicIcSortAscending =
-      'packages/flutter_design_system/assets/icons/basic/ic_sort_ascending.svg';
+      '$iconPath/basic/ic_sort_ascending.svg';
   static const String basicIcSortDefault =
-      'packages/flutter_design_system/assets/icons/basic/ic_sort_default.svg';
+      '$iconPath/basic/ic_sort_default.svg';
   static const String basicIcSortDescending =
-      'packages/flutter_design_system/assets/icons/basic/ic_sort_descending.svg';
-  static const String basicIcSortFilter =
-      'packages/flutter_design_system/assets/icons/basic/ic_sort_filter.svg';
+      '$iconPath/basic/ic_sort_descending.svg';
+  static const String basicIcSortFilter = '$iconPath/basic/ic_sort_filter.svg';
   static const String basicIcTriangleDown =
-      'packages/flutter_design_system/assets/icons/basic/ic_triangle_down.svg';
+      '$iconPath/basic/ic_triangle_down.svg';
   static const String basicIcTriangleLeft =
-      'packages/flutter_design_system/assets/icons/basic/ic_triangle_left.svg';
+      '$iconPath/basic/ic_triangle_left.svg';
   static const String basicIcTriangleRight =
-      'packages/flutter_design_system/assets/icons/basic/ic_triangle_right.svg';
-  static const String basicIcTriangleUp =
-      'packages/flutter_design_system/assets/icons/basic/ic_triangle_up.svg';
+      '$iconPath/basic/ic_triangle_right.svg';
+  static const String basicIcTriangleUp = '$iconPath/basic/ic_triangle_up.svg';
   static const String communicationIcChat =
-      'packages/flutter_design_system/assets/icons/communication/ic_chat.svg';
+      '$iconPath/communication/ic_chat.svg';
   static const String communicationIcChatDouble =
-      'packages/flutter_design_system/assets/icons/communication/ic_chat_double.svg';
+      '$iconPath/communication/ic_chat_double.svg';
   static const String communicationIcEnvelope =
-      'packages/flutter_design_system/assets/icons/communication/ic_envelope.svg';
+      '$iconPath/communication/ic_envelope.svg';
   static const String communicationIcFacebook =
-      'packages/flutter_design_system/assets/icons/communication/ic_facebook.svg';
-  static const String communicationIcFaq =
-      'packages/flutter_design_system/assets/icons/communication/ic_faq.svg';
+      '$iconPath/communication/ic_facebook.svg';
+  static const String communicationIcFaq = '$iconPath/communication/ic_faq.svg';
   static const String communicationIcHeadphone =
-      'packages/flutter_design_system/assets/icons/communication/ic_headphone.svg';
+      '$iconPath/communication/ic_headphone.svg';
   static const String communicationIcLine =
-      'packages/flutter_design_system/assets/icons/communication/ic_line.svg';
+      '$iconPath/communication/ic_line.svg';
   static const String communicationIcLink =
-      'packages/flutter_design_system/assets/icons/communication/ic_link.svg';
+      '$iconPath/communication/ic_link.svg';
   static const String communicationIcPhone =
-      'packages/flutter_design_system/assets/icons/communication/ic_phone.svg';
+      '$iconPath/communication/ic_phone.svg';
   static const String communicationIcQuestion =
-      'packages/flutter_design_system/assets/icons/communication/ic_question.svg';
+      '$iconPath/communication/ic_question.svg';
   static const String communicationIcSmartphone =
-      'packages/flutter_design_system/assets/icons/communication/ic_smartphone.svg';
+      '$iconPath/communication/ic_smartphone.svg';
   static const String communicationIcTelegram =
-      'packages/flutter_design_system/assets/icons/communication/ic_telegram.svg';
+      '$iconPath/communication/ic_telegram.svg';
   static const String communicationIcWhatsappBw =
-      'packages/flutter_design_system/assets/icons/communication/ic_whatsapp_bw.svg';
+      '$iconPath/communication/ic_whatsapp_bw.svg';
   static const String communicationIcWhatsappColored =
-      'packages/flutter_design_system/assets/icons/communication/ic_whatsapp_colored.svg';
-  static const String documentIcClip =
-      'packages/flutter_design_system/assets/icons/document/ic_clip.svg';
-  static const String documentIcCopy =
-      'packages/flutter_design_system/assets/icons/document/ic_copy.svg';
+      '$iconPath/communication/ic_whatsapp_colored.svg';
+  static const String documentIcClip = '$iconPath/document/ic_clip.svg';
+  static const String documentIcCopy = '$iconPath/document/ic_copy.svg';
   static const String documentIcDocsFile =
-      'packages/flutter_design_system/assets/icons/document/ic_docs_file.svg';
-  static const String documentIcDownload =
-      'packages/flutter_design_system/assets/icons/document/ic_download.svg';
-  static const String documentIcEdit =
-      'packages/flutter_design_system/assets/icons/document/ic_edit.svg';
-  static const String documentIcForm =
-      'packages/flutter_design_system/assets/icons/document/ic_form.svg';
-  static const String documentIcHistory =
-      'packages/flutter_design_system/assets/icons/document/ic_history.svg';
+      '$iconPath/document/ic_docs_file.svg';
+  static const String documentIcDownload = '$iconPath/document/ic_download.svg';
+  static const String documentIcEdit = '$iconPath/document/ic_edit.svg';
+  static const String documentIcForm = '$iconPath/document/ic_form.svg';
+  static const String documentIcHistory = '$iconPath/document/ic_history.svg';
   static const String documentIcMultipleFiles =
-      'packages/flutter_design_system/assets/icons/document/ic_multiple_files.svg';
-  static const String documentIcNote =
-      'packages/flutter_design_system/assets/icons/document/ic_note.svg';
+      '$iconPath/document/ic_multiple_files.svg';
+  static const String documentIcNote = '$iconPath/document/ic_note.svg';
   static const String documentIcPdfDownload =
-      'packages/flutter_design_system/assets/icons/document/ic_pdf_download.svg';
-  static const String documentIcPdfFile =
-      'packages/flutter_design_system/assets/icons/document/ic_pdf_file.svg';
+      '$iconPath/document/ic_pdf_download.svg';
+  static const String documentIcPdfFile = '$iconPath/document/ic_pdf_file.svg';
   static const String documentIcPhonebook =
-      'packages/flutter_design_system/assets/icons/document/ic_phonebook.svg';
+      '$iconPath/document/ic_phonebook.svg';
   static const String documentIcSignHand =
-      'packages/flutter_design_system/assets/icons/document/ic_sign_hand.svg';
-  static const String documentIcSignPen =
-      'packages/flutter_design_system/assets/icons/document/ic_sign_pen.svg';
+      '$iconPath/document/ic_sign_hand.svg';
+  static const String documentIcSignPen = '$iconPath/document/ic_sign_pen.svg';
   static const String documentIcSingleFile =
-      'packages/flutter_design_system/assets/icons/document/ic_single_file.svg';
-  static const String documentIcUpload =
-      'packages/flutter_design_system/assets/icons/document/ic_upload.svg';
-  static const String infoIcBell =
-      'packages/flutter_design_system/assets/icons/info/ic_bell.svg';
-  static const String infoIcBuilding =
-      'packages/flutter_design_system/assets/icons/info/ic_building.svg';
-  static const String infoIcBulletin =
-      'packages/flutter_design_system/assets/icons/info/ic_bulletin.svg';
-  static const String infoIcCalendar =
-      'packages/flutter_design_system/assets/icons/info/ic_calendar.svg';
-  static const String infoIcCamera =
-      'packages/flutter_design_system/assets/icons/info/ic_camera.svg';
-  static const String infoIcClock =
-      'packages/flutter_design_system/assets/icons/info/ic_clock.svg';
-  static const String infoIcInformation =
-      'packages/flutter_design_system/assets/icons/info/ic_information.svg';
-  static const String infoIcLocation =
-      'packages/flutter_design_system/assets/icons/info/ic_location.svg';
-  static const String infoIcLogoAplus =
-      'packages/flutter_design_system/assets/icons/info/ic_logo_aplus.svg';
-  static const String infoIcPadlock =
-      'packages/flutter_design_system/assets/icons/info/ic_padlock.svg';
-  static const String infoIcPicture =
-      'packages/flutter_design_system/assets/icons/info/ic_picture.svg';
-  static const String infoIcProfil =
-      'packages/flutter_design_system/assets/icons/info/ic_profil.svg';
-  static const String infoIcSearch =
-      'packages/flutter_design_system/assets/icons/info/ic_search.svg';
-  static const String infoIcShield =
-      'packages/flutter_design_system/assets/icons/info/ic_shield.svg';
-  static const String infoIcSpeaker =
-      'packages/flutter_design_system/assets/icons/info/ic_speaker.svg';
-  static const String infoIcStar =
-      'packages/flutter_design_system/assets/icons/info/ic_star.svg';
-  static const String infoIcTools =
-      'packages/flutter_design_system/assets/icons/info/ic_tools.svg';
-  static const String infoIcUmbrella =
-      'packages/flutter_design_system/assets/icons/info/ic_umbrella.svg';
-  static const String infoIcVideo =
-      'packages/flutter_design_system/assets/icons/info/ic_video.svg';
-  static const String infoIcVoucher =
-      'packages/flutter_design_system/assets/icons/info/ic_voucher.svg';
-  static const String infoIcWarning =
-      'packages/flutter_design_system/assets/icons/info/ic_warning.svg';
+      '$iconPath/document/ic_single_file.svg';
+  static const String documentIcUpload = '$iconPath/document/ic_upload.svg';
+  static const String infoIcBell = '$iconPath/info/ic_bell.svg';
+  static const String infoIcBuilding = '$iconPath/info/ic_building.svg';
+  static const String infoIcBulletin = '$iconPath/info/ic_bulletin.svg';
+  static const String infoIcCalendar = '$iconPath/info/ic_calendar.svg';
+  static const String infoIcCamera = '$iconPath/info/ic_camera.svg';
+  static const String infoIcClock = '$iconPath/info/ic_clock.svg';
+  static const String infoIcInformation = '$iconPath/info/ic_information.svg';
+  static const String infoIcLocation = '$iconPath/info/ic_location.svg';
+  static const String infoIcLogoAplus = '$iconPath/info/ic_logo_aplus.svg';
+  static const String infoIcPadlock = '$iconPath/info/ic_padlock.svg';
+  static const String infoIcPicture = '$iconPath/info/ic_picture.svg';
+  static const String infoIcProfil = '$iconPath/info/ic_profil.svg';
+  static const String infoIcSearch = '$iconPath/info/ic_search.svg';
+  static const String infoIcShield = '$iconPath/info/ic_shield.svg';
+  static const String infoIcSpeaker = '$iconPath/info/ic_speaker.svg';
+  static const String infoIcStar = '$iconPath/info/ic_star.svg';
+  static const String infoIcTools = '$iconPath/info/ic_tools.svg';
+  static const String infoIcUmbrella = '$iconPath/info/ic_umbrella.svg';
+  static const String infoIcVideo = '$iconPath/info/ic_video.svg';
+  static const String infoIcVoucher = '$iconPath/info/ic_voucher.svg';
+  static const String infoIcWarning = '$iconPath/info/ic_warning.svg';
   static const String navigationIcHomeActive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_home_active.svg';
+      '$iconPath/navigation/ic_home_active.svg';
   static const String navigationIcHomeInactive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_home_inactive.svg';
+      '$iconPath/navigation/ic_home_inactive.svg';
   static const String navigationIcKeuanganActive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_keuangan_active.svg';
+      '$iconPath/navigation/ic_keuangan_active.svg';
   static const String navigationIcKeuanganInactive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_keuangan_inactive.svg';
+      '$iconPath/navigation/ic_keuangan_inactive.svg';
   static const String navigationIcPinjamanActive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_pinjaman_active.svg';
+      '$iconPath/navigation/ic_pinjaman_active.svg';
   static const String navigationIcPinjamanInactive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_pinjaman_inactive.svg';
+      '$iconPath/navigation/ic_pinjaman_inactive.svg';
   static const String navigationIcProfileActive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_profile_active.svg';
+      '$iconPath/navigation/ic_profile_active.svg';
   static const String navigationIcProfileInactive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_profile_inactive.svg';
+      '$iconPath/navigation/ic_profile_inactive.svg';
   static const String navigationIcScanActive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_scan_active.svg';
+      '$iconPath/navigation/ic_scan_active.svg';
   static const String navigationIcScanInactive =
-      'packages/flutter_design_system/assets/icons/navigation/ic_scan_inactive.svg';
+      '$iconPath/navigation/ic_scan_inactive.svg';
   static const String transactionIcCardBack =
-      'packages/flutter_design_system/assets/icons/transaction/ic_card_back.svg';
+      '$iconPath/transaction/ic_card_back.svg';
   static const String transactionIcCardFront =
-      'packages/flutter_design_system/assets/icons/transaction/ic_card_front.svg';
+      '$iconPath/transaction/ic_card_front.svg';
   static const String transactionIcCoinSingle =
-      'packages/flutter_design_system/assets/icons/transaction/ic_coin_single.svg';
+      '$iconPath/transaction/ic_coin_single.svg';
   static const String transactionIcCoinStack =
-      'packages/flutter_design_system/assets/icons/transaction/ic_coin_stack.svg';
+      '$iconPath/transaction/ic_coin_stack.svg';
   static const String transactionIcMoneyFile =
-      'packages/flutter_design_system/assets/icons/transaction/ic_money_file.svg';
+      '$iconPath/transaction/ic_money_file.svg';
   static const String transactionIcMoneySack =
-      'packages/flutter_design_system/assets/icons/transaction/ic_money_sack.svg';
+      '$iconPath/transaction/ic_money_sack.svg';
   static const String transactionIcRefreshMoney1 =
-      'packages/flutter_design_system/assets/icons/transaction/ic_refresh_money_1.svg';
+      '$iconPath/transaction/ic_refresh_money_1.svg';
   static const String transactionIcRefreshMoney2 =
-      'packages/flutter_design_system/assets/icons/transaction/ic_refresh_money_2.svg';
+      '$iconPath/transaction/ic_refresh_money_2.svg';
   static const String transactionIcWallet =
-      'packages/flutter_design_system/assets/icons/transaction/ic_wallet.svg';
+      '$iconPath/transaction/ic_wallet.svg';
   static const String transactionIcWithdraw =
-      'packages/flutter_design_system/assets/icons/transaction/ic_withdraw.svg';
-  static const String icAvatar =
-      'packages/flutter_design_system/assets/icons/icon_avatar.svg';
+      '$iconPath/transaction/ic_withdraw.svg';
+  static const String transactionIcTransfer =
+      '$iconPath/transaction/ic_transfer.svg';
+  static const String icAvatar = '$iconPath/icon_avatar.svg';
   static const String damagedMapFilled =
-      'packages/flutter_design_system/assets/icons/operate/ic_damage_map_filled.svg';
-  static const String swapRight =
-      'packages/flutter_design_system/assets/icons/swap_right.svg';
+      '$iconPath/operate/ic_damage_map_filled.svg';
+  static const String swapRight = '$iconPath/swap_right.svg';
 
   static List<String> getAllIcons() {
     return [
@@ -254,6 +199,7 @@ class FunDsIconography {
       actionIcTrashCan,
       actionIcZoomIn,
       actionIcZoomOut,
+      actionAddThin,
       basicIcArrowDown,
       basicIcArrowLeft,
       basicIcArrowRight,
@@ -341,6 +287,7 @@ class FunDsIconography {
       transactionIcRefreshMoney2,
       transactionIcWallet,
       transactionIcWithdraw,
+      transactionIcTransfer,
       icAvatar,
       damagedMapFilled,
       basicDoubleIcChevronRight,
