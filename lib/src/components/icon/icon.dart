@@ -18,7 +18,7 @@ class FunDsIcon extends StatelessWidget {
       key: key,
       funDsIconography: funDsIconography,
       size: size ?? this.size,
-      color: color,
+      color: color ?? this.color,
     );
   }
 
