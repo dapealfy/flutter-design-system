@@ -9,6 +9,7 @@ class ButtonDestructiveOutline extends StatefulWidget {
   final FunDsButtonType type;
   final String text;
   final Widget? leftIcon;
+  final EdgeInsets? padding;
 
   const ButtonDestructiveOutline({
     Key? key,
@@ -17,6 +18,7 @@ class ButtonDestructiveOutline extends StatefulWidget {
     required this.type,
     required this.text,
     this.leftIcon,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -84,7 +86,9 @@ class _ButtonDestructiveOutlineState extends State<ButtonDestructiveOutline> {
           borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
       ),
-      padding: MaterialStatePropertyAll(internalButtonType.padding),
+      padding: MaterialStatePropertyAll(
+        widget.padding ?? internalButtonType.padding,
+      ),
     );
   }
 
@@ -106,7 +110,9 @@ class _ButtonDestructiveOutlineState extends State<ButtonDestructiveOutline> {
           borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
       ),
-      padding: MaterialStatePropertyAll(internalButtonType.padding),
+      padding: MaterialStatePropertyAll(
+        widget.padding ?? internalButtonType.padding,
+      ),
     );
   }
 }

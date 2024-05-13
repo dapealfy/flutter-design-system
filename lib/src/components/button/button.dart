@@ -13,6 +13,7 @@ class FunDsButton extends StatelessWidget {
   final FunDsButtonType type;
   final String text;
   final Widget? leftIcon;
+  final EdgeInsets? padding;
 
   const FunDsButton({
     Key? key,
@@ -22,17 +23,19 @@ class FunDsButton extends StatelessWidget {
     required this.variant,
     required this.text,
     this.leftIcon,
+    this.padding,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return switch (variant) {
       FunDsButtonVariant.primary => ButtonPrimary(
-            onPressed: onPressed,
-            enabled: enabled,
-            type: type,
-            text: text,
-            leftIcon: leftIcon,
+          onPressed: onPressed,
+          enabled: enabled,
+          type: type,
+          text: text,
+          leftIcon: leftIcon,
+          padding: padding,
         ),
       FunDsButtonVariant.secondary => ButtonSecondary(
           onPressed: onPressed,
@@ -40,6 +43,7 @@ class FunDsButton extends StatelessWidget {
           type: type,
           text: text,
           leftIcon: leftIcon,
+          padding: padding,
         ),
       FunDsButtonVariant.tertiary => ButtonTertiary(
           onPressed: onPressed,
@@ -47,6 +51,7 @@ class FunDsButton extends StatelessWidget {
           type: type,
           text: text,
           leftIcon: leftIcon,
+          padding: padding,
         ),
       FunDsButtonVariant.ghost => ButtonGhost(
           onPressed: onPressed,
@@ -54,6 +59,7 @@ class FunDsButton extends StatelessWidget {
           type: type,
           text: text,
           leftIcon: leftIcon,
+          padding: padding,
         ),
       FunDsButtonVariant.destructive => ButtonDestructive(
           onPressed: onPressed,
@@ -61,6 +67,7 @@ class FunDsButton extends StatelessWidget {
           type: type,
           text: text,
           leftIcon: leftIcon,
+          padding: padding,
         ),
       FunDsButtonVariant.destructiveOutline => ButtonDestructiveOutline(
           onPressed: onPressed,
@@ -68,6 +75,7 @@ class FunDsButton extends StatelessWidget {
           type: type,
           text: text,
           leftIcon: leftIcon,
+          padding: padding,
         )
     };
   }
