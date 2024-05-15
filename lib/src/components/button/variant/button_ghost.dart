@@ -9,6 +9,7 @@ class ButtonGhost extends StatefulWidget {
   final FunDsButtonType type;
   final String text;
   final Widget? leftIcon;
+  final EdgeInsets? padding;
 
   const ButtonGhost({
     Key? key,
@@ -17,6 +18,7 @@ class ButtonGhost extends StatefulWidget {
     required this.type,
     required this.text,
     this.leftIcon,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -66,7 +68,9 @@ class _ButtonGhostState extends State<ButtonGhost> {
           color: Colors.transparent,
         ),
       ),
-      padding: MaterialStatePropertyAll(internalButtonType.padding),
+      padding: MaterialStatePropertyAll(
+        widget.padding ?? internalButtonType.padding,
+      ),
     );
   }
 
@@ -85,7 +89,9 @@ class _ButtonGhostState extends State<ButtonGhost> {
           borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
       ),
-      padding: MaterialStatePropertyAll(internalButtonType.padding),
+      padding: MaterialStatePropertyAll(
+        widget.padding ?? internalButtonType.padding,
+      ),
     );
   }
 }

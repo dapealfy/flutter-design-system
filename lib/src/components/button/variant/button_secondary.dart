@@ -9,6 +9,7 @@ class ButtonSecondary extends StatefulWidget {
   final FunDsButtonType type;
   final String text;
   final Widget? leftIcon;
+  final EdgeInsets? padding;
 
   const ButtonSecondary({
     Key? key,
@@ -17,6 +18,7 @@ class ButtonSecondary extends StatefulWidget {
     required this.type,
     required this.text,
     this.leftIcon,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -68,7 +70,9 @@ class _ButtonSecondaryState extends State<ButtonSecondary> {
           borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
       ),
-      padding: MaterialStatePropertyAll(internalButtonType.padding),
+      padding: MaterialStatePropertyAll(
+        widget.padding ?? internalButtonType.padding,
+      ),
     );
   }
 
@@ -90,7 +94,9 @@ class _ButtonSecondaryState extends State<ButtonSecondary> {
           borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
       ),
-      padding: MaterialStatePropertyAll(internalButtonType.padding),
+      padding: MaterialStatePropertyAll(
+        widget.padding ?? internalButtonType.padding,
+      ),
     );
   }
 }

@@ -9,6 +9,7 @@ class ButtonPrimary extends StatefulWidget {
   final FunDsButtonType type;
   final String text;
   final Widget? leftIcon;
+  final EdgeInsets? padding;
 
   const ButtonPrimary({
     Key? key,
@@ -17,6 +18,7 @@ class ButtonPrimary extends StatefulWidget {
     required this.type,
     required this.text,
     this.leftIcon,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -81,7 +83,8 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
             ),
           ),
           child: ElevatedButton(
-            onFocusChange: (isFocused) => setState(() => _isFocused = isFocused),
+            onFocusChange: (isFocused) =>
+                setState(() => _isFocused = isFocused),
             onPressed: widget.enabled ? widget.onPressed : null,
             style:
                 widget.enabled ? enabledButtonStyle() : disabledButtonStyle(),
@@ -108,7 +111,9 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
           borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
       ),
-      padding: MaterialStatePropertyAll(internalButtonType.padding),
+      padding: MaterialStatePropertyAll(
+        widget.padding ?? internalButtonType.padding,
+      ),
     );
   }
 
@@ -124,7 +129,9 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
           borderRadius: BorderRadius.circular(internalButtonType.radius),
         ),
       ),
-      padding: MaterialStatePropertyAll(internalButtonType.padding),
+      padding: MaterialStatePropertyAll(
+        widget.padding ?? internalButtonType.padding,
+      ),
     );
   }
 }
