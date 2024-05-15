@@ -13,6 +13,8 @@ class FunDsButton extends StatelessWidget {
   final FunDsButtonType type;
   final String text;
   final Widget? leftIcon;
+
+  /// If padding is equal to `null`, then padding uses the default value from button `type`.
   final EdgeInsets? padding;
 
   const FunDsButton({
