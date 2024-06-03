@@ -27,9 +27,7 @@ class DoubleBorder extends BoxBorder with EquatableMixin {
   BorderSide get top => innerBorder.top;
 
   @override
-  EdgeInsetsGeometry get dimensions => innerBorder.dimensions
-      .add(outerBorder.dimensions)
-      .add(EdgeInsets.all(outerGap));
+  EdgeInsetsGeometry get dimensions => const EdgeInsets.all(1);
 
   @override
   bool get isUniform => innerBorder.isUniform;
