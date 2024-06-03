@@ -200,26 +200,26 @@ class _FunDsBaseFieldState extends State<FunDsBaseField> {
 
     Widget? prefixWidget;
     if (widget.prefix != null) {
-      prefixWidget = Padding(
-        padding: prefixPadding,
-        child: Row(
-          key: const Key('prefix'),
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            DisabledColorFilter(
-              apply: applyDisabledColorFilter,
+      prefixWidget = Row(
+        key: const Key('prefix'),
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          DisabledColorFilter(
+            apply: applyDisabledColorFilter,
+            child: Padding(
+              padding: prefixPadding,
               child: Center(
                 child: widget.prefix!,
               ),
             ),
-            SizedBox(width: 12.w),
-            Container(
-              height: double.infinity,
-              width: 1,
-              color: innerBorderColor,
-            ),
-          ],
-        ),
+          ),
+          SizedBox(width: 12.w),
+          Container(
+            height: double.infinity,
+            width: 1,
+            color: FunDsColors.colorNeutral200,
+          ),
+        ],
       );
     }
 
@@ -234,7 +234,7 @@ class _FunDsBaseFieldState extends State<FunDsBaseField> {
             Container(
               height: double.infinity,
               width: 1,
-              color: innerBorderColor,
+              color: FunDsColors.colorNeutral200,
             ),
             SizedBox(width: 12.w),
             DisabledColorFilter(
@@ -286,9 +286,10 @@ class _FunDsBaseFieldState extends State<FunDsBaseField> {
             padding: widget.contentPadding,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(
-                12.r,
+                8.r,
               ),
               border: DoubleBorder(
+                outerGap: 0,
                 outerBorder: Border.all(
                   color: outerBorderColor ?? Colors.transparent,
                   width: 2,
