@@ -8,7 +8,9 @@ enum FunDsBottomSheetType { common, bottomImage, smallImage }
 class FunDsBottomSheet extends StatelessWidget {
   final String? image;
   final String? title; //Max 1 line
-  final String? desc; //Max 2 line
+  final String? desc; //Max 3 line
+  /// if [textSpan] is present, [desc] will be ignored.
+  final List<TextSpan>? textSpan; //Max 2 line
   final FunDsBottomSheetType? type;
   final FunDsGroupButton? buttons;
   final Widget? child;
@@ -17,6 +19,7 @@ class FunDsBottomSheet extends StatelessWidget {
     Key? key,
     this.title,
     this.desc,
+    this.textSpan,
     this.image,
     this.type,
     this.buttons,
@@ -27,7 +30,8 @@ class FunDsBottomSheet extends StatelessWidget {
     Key? key,
     required BuildContext context,
     required String title,
-    required String desc,
+    String? desc,
+    List<TextSpan>? textSpan,
     required String image,
     required FunDsBottomSheetType type,
     required FunDsGroupButton groupButton,
@@ -50,6 +54,7 @@ class FunDsBottomSheet extends StatelessWidget {
           key: key,
           title: title,
           desc: desc,
+          textSpan: textSpan,
           image: image,
           type: type,
           buttons: groupButton,
@@ -182,16 +187,12 @@ class FunDsBottomSheet extends StatelessWidget {
                     .copyWith(color: FunDsColors.colorNeutral900, height: 0),
               ),
             ),
-            Text(
-              desc ?? '',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 3,
-              textAlign: TextAlign.center,
-              style: FunDsTypography.body14.copyWith(
-                  color: FunDsColors.colorNeutral600,
-                  height: 1.5,
-                  fontWeight: FontWeight.w500),
-            ),
+            getDescriptionWidget(
+                textAlign: TextAlign.center,
+                style: FunDsTypography.body14.copyWith(
+                    color: FunDsColors.colorNeutral600,
+                    height: 1.5,
+                    fontWeight: FontWeight.w500))
           ],
         ),
       );
@@ -216,15 +217,12 @@ class FunDsBottomSheet extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  desc ?? '',
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                  textAlign: TextAlign.left,
+                child: getDescriptionWidget(
                   style: FunDsTypography.body14.copyWith(
-                      color: FunDsColors.colorNeutral600,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5),
+                    color: FunDsColors.colorNeutral600,
+                    fontWeight: FontWeight.w500,
+                    height: 1.5,
+                  ),
                 ),
               ),
               Padding(
@@ -270,20 +268,43 @@ class FunDsBottomSheet extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  desc ?? '',
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
+                child: getDescriptionWidget(
                   textAlign: TextAlign.left,
                   style: FunDsTypography.body14.copyWith(
-                      color: FunDsColors.colorNeutral600,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5),
+                    color: FunDsColors.colorNeutral600,
+                    fontWeight: FontWeight.w500,
+                    height: 1.5,
+                  ),
                 ),
               ),
             ],
           ),
         ],
+      );
+    }
+  }
+
+  Widget getDescriptionWidget({
+    TextAlign? textAlign,
+    required TextStyle style,
+  }) {
+    if (textSpan != null) {
+      return RichText(
+        overflow: TextOverflow.ellipsis,
+        maxLines: 3,
+        textAlign: textAlign ?? TextAlign.start,
+        text: TextSpan(
+          children: textSpan,
+          style: style,
+        ),
+      );
+    } else {
+      return Text(
+        desc ?? '',
+        overflow: TextOverflow.ellipsis,
+        maxLines: 3,
+        textAlign: textAlign,
+        style: style,
       );
     }
   }

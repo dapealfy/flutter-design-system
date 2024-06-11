@@ -22,6 +22,22 @@ class BottomSheetCatalog extends StatelessWidget {
       ],
     );
 
+    final isUsingStringDescription = context.knobs.options(
+        label: 'Modify Description',
+        description:
+            'Whether to use string or richText for more flexible styling',
+        initial: true,
+        options: [
+          const Option(
+            label: 'Common String',
+            value: true,
+          ),
+          const Option(
+            label: 'RichText',
+            value: false,
+          ),
+        ]);
+
     return CatalogPage(
       title: 'BottomSheetCatalog',
       description: 'Widget name: FunDsBottomSheet',
@@ -37,8 +53,23 @@ class BottomSheetCatalog extends StatelessWidget {
                 FunDsBottomSheet.showBottomSheet(
                   context: context,
                   title: 'Test Title ',
-                  desc: '''
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, quis aliquam nisl nisl eget urna. ''',
+                  desc: isUsingStringDescription
+                      ? '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget aliquam ultricies, nunc nisl aliquet nunc, quis aliquam nisl nisl eget urna. '''
+                      : null,
+                  textSpan: isUsingStringDescription
+                      ? null
+                      : const [
+                          TextSpan(text: 'Dengan ini saya menyetujui '),
+                          TextSpan(
+                            text: 'Syarat & Ketentuan',
+                            style: TextStyle(
+                              color: FunDsColors.colorPrimary500,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          TextSpan(text: ' yang berlaku dari AmarthaFin'),
+                        ],
                   image: 'assets/images/error_ibu_amanah_partial.png',
                   type: option,
                   groupButton: FunDsGroupButton(
