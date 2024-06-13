@@ -36,6 +36,8 @@ class FunDsBottomSheet extends StatelessWidget {
     required FunDsBottomSheetType type,
     required FunDsGroupButton groupButton,
     double? barrierOpacity,
+    bool isDismissible = true,
+    bool useRootNavigator = false,
   }) {
     return showModalBottomSheet<T>(
       context: context,
@@ -49,6 +51,8 @@ class FunDsBottomSheet extends StatelessWidget {
           topRight: Radius.circular(20.r),
         ),
       ),
+      isDismissible: isDismissible,
+      useRootNavigator: useRootNavigator,
       builder: (BuildContext context) {
         return FunDsBottomSheet(
           key: key,
@@ -72,6 +76,8 @@ class FunDsBottomSheet extends StatelessWidget {
       horizontal: 20,
       vertical: 16,
     ),
+    bool isDismissible = true,
+    bool useRootNavigator = false,
   }) {
     return showModalBottomSheet<T>(
       context: context,
@@ -85,6 +91,8 @@ class FunDsBottomSheet extends StatelessWidget {
           topRight: Radius.circular(20.r),
         ),
       ),
+      isDismissible: isDismissible,
+      useRootNavigator: useRootNavigator,
       builder: (BuildContext context) {
         return _FunDsCustomBottomSheet(
           key: key,
