@@ -128,6 +128,8 @@ class FunDsIconography {
   static const String infoIcVideo = '$iconPath/info/ic_video.svg';
   static const String infoIcVoucher = '$iconPath/info/ic_voucher.svg';
   static const String infoIcWarning = '$iconPath/info/ic_warning.svg';
+  static const String infoIcLock = '$iconPath/info/ic_lock.svg';
+  static const String infoIcUnLock = '$iconPath/info/ic_unlock.svg';
   static const String navigationIcHomeActive =
       '$iconPath/navigation/ic_home_active.svg';
   static const String navigationIcHomeInactive =
@@ -293,6 +295,8 @@ class FunDsIconography {
       basicDoubleIcChevronRight,
       basicDoubleIcChevronLeft,
       swapRight,
+      infoIcLock,
+      infoIcUnLock,
     ];
   }
 }
